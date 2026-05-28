@@ -11,6 +11,8 @@ Le tableau ci-dessous référence tous les profils FHIR résultat du processus d
 
 ### Exemples
 
+[Cette StructureMap](https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureMap/Q2FSL) permet de générer, à partir des QuestionnaireResponse, les ressources FHIR conformes.
+
 #### Cas 1 : Infarctus du myocarde
 
 à faire 
