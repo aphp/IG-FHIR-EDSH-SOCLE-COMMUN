@@ -2,11 +2,11 @@
       "resourceType" : "Procedure",
       "id" : "1b310860-da98-46fa-a956-8701936db776",
       "meta" : {
-        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/DMProcedure"]
+        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-procedure"]
       },
       "status" : "completed",
       "code" : {
-        "coding" : [{ "system" : "http://hl7.org/fhir/sid/ccam",
+        "coding" : [{ "system" : "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/CodeSystem/ccam-cs",
           "code" : "DDAF007", 
           "display" : "Dilatation intraluminale de 2 vaisseaux coronaires avec arteriographie coronaire, avec pose d'endoprothese, par voie arterielle transcutanee"
         }]

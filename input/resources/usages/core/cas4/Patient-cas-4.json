@@ -2,7 +2,7 @@
       "resourceType" : "Patient",
       "id" : "05584e1b-3435-415a-af33-aad1fca40fad",
       "meta" : {
-        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/DMPatient"]
+        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-patient"]
       },
       "identifier" : [{
         "type" : {
@@ -22,7 +22,7 @@
       "deceasedDateTime" : "2023-11-07T09:32:00.000Z",
       "address" : [{
         "extension" : [{
-          "url" : "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/PmsiCodeGeo",
+          "url" : "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-pmsi-code-geo",
           "valueCode" : "75016"
         },
         {

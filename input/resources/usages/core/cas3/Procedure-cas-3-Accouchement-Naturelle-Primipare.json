@@ -2,11 +2,11 @@
       "resourceType" : "Procedure",
       "id" : "19e575dd-b546-4f30-b8b9-95bcfaf65db8",
       "meta" : {
-        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/DMProcedure"]
+        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-procedure"]
       },
       "status" : "completed",
       "code" : {
-        "coding" : [{ "system" : "http://hl7.org/fhir/sid/ccam",
+        "coding" : [{ "system" : "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/CodeSystem/ccam-cs",
           "code" : "JQGD010",
           "display" : "Accouchement cephalique unique par voie naturelle, chez une primipare"
         }]

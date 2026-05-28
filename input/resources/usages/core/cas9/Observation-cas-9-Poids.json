@@ -2,7 +2,7 @@
       "resourceType" : "Observation",
       "id" : "8a41d4d2-dbed-43a5-9135-4c9a357ecf41",
       "meta" : {
-        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/DMObservationBodyWeight"]
+        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-body-weight"]
       },
       "status" : "final",
       "category" : [{

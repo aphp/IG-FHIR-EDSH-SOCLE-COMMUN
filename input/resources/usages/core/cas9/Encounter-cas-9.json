@@ -2,7 +2,7 @@
       "resourceType" : "Encounter",
       "id" : "74f2a55a-f256-41c2-8f2c-9677ca2df273",
       "meta" : {
-        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/DMEncounter"]
+        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-encounter"]
       },
       "status" : "finished",
       "class" : {

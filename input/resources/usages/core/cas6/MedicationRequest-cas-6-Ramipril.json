@@ -2,7 +2,7 @@
       "resourceType" : "MedicationRequest",
       "id" : "e40aa35e-22c3-4e08-8fbd-b8e66c5c835e",
       "meta" : {
-        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/DMMedicationRequest"]
+        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-medication-request"]
       },
       "status" : "active",
       "intent" : "order",

@@ -2,7 +2,7 @@
       "resourceType" : "MedicationAdministration",
       "id" : "7764d198-3da8-4a76-9299-565c108ae55e",
       "meta" : {
-        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/DMMedicationAdministration"]
+        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-medication-administration"]
       },
       "status" : "completed",
       "medicationCodeableConcept" : {

@@ -2,7 +2,7 @@
       "resourceType" : "Observation",
       "id" : "36bb989e-b49d-4a66-931e-39b17009733c",
       "meta" : {
-        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/dm-observation-laboratory-generic"]
+        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-generic"]
       },
       "status" : "final",
       "category" : [{

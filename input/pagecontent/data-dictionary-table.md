@@ -1,40 +1,41 @@
 | Groupe | Données | Caractéristiques |
 |--------|---------|------------------|
-| Identité patient | [Patient](StructureDefinition-DMPatient.html) | Données maîtres |
-| PMSI | [Séjour](StructureDefinition-DMEncounter.html) | Données d'intérêt |
-| PMSI | [Diagnostic CIM10](StructureDefinition-DMCondition.html) | Données d'intérêt |
-| PMSI | [Acte CCAM](StructureDefinition-DMProcedure.html) | Données d'intérêt |
-| Résultats d'examens biologiques | [Urémie](StructureDefinition-DMObservationLaboratoryUremie.html) | Données d'intérêt |
-| Résultats d'examens biologiques | [Créatininémie](StructureDefinition-DMObservationLaboratoryFonctionRenale.html) | Données d'intérêt |
-| Résultats d'examens biologiques | [Débit de filtration glomérulaire (DFG)](StructureDefinition-DMObservationLaboratoryFonctionRenale.html) | Données d'intérêt |
-| Résultats d'examens biologiques | [Leucocytes](StructureDefinition-DMObservationLaboratoryLeucocytes.html) | Données d'intérêt |
-| Résultats d'examens biologiques | [Hémoglobine](StructureDefinition-DMObservationLaboratoryHemoglobine.html) | Données d'intérêt |
-| Résultats d'examens biologiques | [Hématocrite](StructureDefinition-DMObservationLaboratoryHematocrite.html) | Données d'intérêt |
-| Résultats d'examens biologiques | [Globules rouges](StructureDefinition-DMObservationLaboratoryErythrocytes.html) | Données d'intérêt |
-| Résultats d'examens biologiques | [Volume Globulaire Moyen (VGM)](StructureDefinition-DMObservationLaboratoryVGM.html) | Données d'intérêt |
-| Résultats d'examens biologiques | [Plaquettes](StructureDefinition-DMObservationLaboratoryPlaquettes.html) | Données d'intérêt |
-| Résultats d'examens biologiques | [Neutrophiles](StructureDefinition-DMObservationLaboratoryNeutrophiles.html) | Données d'intérêt |
-| Résultats d'examens biologiques | [Lymphocytes](StructureDefinition-DMObservationLaboratoryLymphocytes.html) | Données d'intérêt |
-| Résultats d'examens biologiques | [Eosinophiles](StructureDefinition-DMObservationLaboratoryEosinophiles.html) | Données d'intérêt |
-| Résultats d'examens biologiques | [Monocytes](StructureDefinition-DMObservationLaboratoryMonocytes.html) | Données d'intérêt |
-| Résultats d'examens biologiques | [Taux de prothrombine (TP)](StructureDefinition-DMObservationLaboratoryTP.html) | Données d'intérêt |
-| Résultats d'examens biologiques | [Temps de céphaline activée (TCA)](StructureDefinition-DMObservationLaboratoryTCA.html) | Données d'intérêt |
-| Résultats d'examens biologiques | [Aspartate aminotransférase (AST)](StructureDefinition-DMObservationLaboratoryASAT.html) | Données d'intérêt |
-| Résultats d'examens biologiques | [Gamma-glutamyl transférase (GGT)](StructureDefinition-DMObservationLaboratoryGGT.html) | Données d'intérêt |
-| Résultats d'examens biologiques | [Phosphatases alcalines (PAL)](StructureDefinition-DMObservationLaboratoryPAL.html) | Données d'intérêt |
-| Résultats d'examens biologiques | [Bilirubine totale](StructureDefinition-DMObservationLaboratoryBilirubineTotale.html) | Données d'intérêt |
-| Résultats d'examens biologiques | [Bilirubine conjuguée](StructureDefinition-DMObservationLaboratoryBilirubineConjuguee.html) | Données d'intérêt |
-| Résultats d'examens biologiques | [Glycémie à jeun](StructureDefinition-DMObservationLaboratoryGlycemieAJeun.html) | Données d'intérêt |
-| Résultats d'examens biologiques | [Hémoglobine glyquée](StructureDefinition-DMObservationLaboratoryHbA1c.html) | Données d'intérêt |
-| Exposition médicamenteuse | [Médicament prescrit](StructureDefinition-DMMedicationRequest.html) | Données d'intérêt |
-| Exposition médicamenteuse | [Médicament administré](StructureDefinition-DMMedicationAdministration.html) | Données d'intérêt |
-| Dossier de soin | [Poids](StructureDefinition-DMObservationBodyWeight.html) | Données d'intérêt |
-| Dossier de soin | [Taille](StructureDefinition-DMObservationBodyHeight.html) | Données d'intérêt |
-| Dossier de soin | [Pression artérielle](StructureDefinition-DMObservationBloodPressure.html) | Données d'intérêt |
-| Style de vie | [Consommation de tabac](StructureDefinition-DMObservationSmokingStatus.html) | Données d'intérêt |
-| Style de vie | [Consommation d'alcool](StructureDefinition-DMObservationAlcoholUseStatus.html) | Données d'intérêt |
-| Style de vie | [Consommation d'autres drogues](StructureDefinition-DMObservationSubstanceUseStatus.html) | Données d'intérêt |
-| Style de vie | [Activité physique](StructureDefinition-DMObservationExerciceStatus.html) | Données d'intérêt |
+| Identité patient | [Patient](StructureDefinition-edsh-patient.html) | Données maîtres |
+| PMSI | [Séjour](StructureDefinition-edsh-encounter.html) | Données d'intérêt |
+| PMSI | [Diagnostic CIM10](StructureDefinition-edsh-condition.html) | Données d'intérêt |
+| PMSI | [Acte CCAM](StructureDefinition-edsh-procedure.html) | Données d'intérêt |
+| Résultats d'examens biologiques | [Urémie](StructureDefinition-edsh-observation-laboratory-uremie.html) | Données d'intérêt |
+| Résultats d'examens biologiques | [Créatininémie](StructureDefinition-edsh-observation-laboratory-fonction-renale.html) | Données d'intérêt |
+| Résultats d'examens biologiques | [Débit de filtration glomérulaire (DFG)](StructureDefinition-edsh-observation-laboratory-fonction-renale.html) | Données d'intérêt |
+| Résultats d'examens biologiques | [Leucocytes](StructureDefinition-edsh-observation-laboratory-leucocytes.html) | Données d'intérêt |
+| Résultats d'examens biologiques | [Hémoglobine](StructureDefinition-edsh-observation-laboratory-hemoglobine.html) | Données d'intérêt |
+| Résultats d'examens biologiques | [Hématocrite](StructureDefinition-edsh-observation-laboratory-hematocrite.html) | Données d'intérêt |
+| Résultats d'examens biologiques | [Globules rouges](StructureDefinition-edsh-observation-laboratory-erythrocytes.html) | Données d'intérêt |
+| Résultats d'examens biologiques | [Volume Globulaire Moyen (VGM)](StructureDefinition-edsh-observation-laboratory-vgm.html) | Données d'intérêt |
+| Résultats d'examens biologiques | [Plaquettes](StructureDefinition-edsh-observation-laboratoryplaquettes.html) | Données d'intérêt |
+| Résultats d'examens biologiques | [Neutrophiles](StructureDefinition-edsh-observation-laboratory-neutrophiles.html) | Données d'intérêt |
+| Résultats d'examens biologiques | [Lymphocytes](StructureDefinition-edsh-observation-laboratory-lymphocytes.html) | Données d'intérêt |
+| Résultats d'examens biologiques | [Eosinophiles](StructureDefinition-edsh-observation-laboratory-eosinophiles.html) | Données d'intérêt |
+| Résultats d'examens biologiques | [Monocytes](StructureDefinition-edsh-observation-laboratory-monocytes.html) | Données d'intérêt |
+| Résultats d'examens biologiques | [Taux de prothrombine (TP)](StructureDefinition-edsh-observation-laboratory-tp.html) | Données d'intérêt |
+| Résultats d'examens biologiques | [Temps de céphaline activée (TCA)](StructureDefinition-edsh-observation-laboratory-tca.html) | Données d'intérêt |
+| Résultats d'examens biologiques | [Aspartate aminotransférase (AST)](StructureDefinition-edsh-observation-laboratory-asat.html) | Données d'intérêt |
+| Résultats d'examens biologiques | [Aspartate aminotransférase (ALT)](StructureDefinition-edsh-observation-laboratory-alat.html) | Données d'intérêt |
+| Résultats d'examens biologiques | [Gamma-glutamyl transférase (GGT)](StructureDefinition-edsh-observation-laboratory-ggt.html) | Données d'intérêt |
+| Résultats d'examens biologiques | [Phosphatases alcalines (PAL)](StructureDefinition-edsh-observation-laboratory-pal.html) | Données d'intérêt |
+| Résultats d'examens biologiques | [Bilirubine totale](StructureDefinition-edsh-observation-laboratory-bilirubine-totale.html) | Données d'intérêt |
+| Résultats d'examens biologiques | [Bilirubine conjuguée](StructureDefinition-edsh-observation-laboratory-bilirubine-conjuguee.html) | Données d'intérêt |
+| Résultats d'examens biologiques | [Glycémie à jeun](StructureDefinition-edsh-observation-laboratory-glycemie-a-jeun.html) | Données d'intérêt |
+| Résultats d'examens biologiques | [Hémoglobine glyquée](StructureDefinition-edsh-observation-laboratory-hba1c.html) | Données d'intérêt |
+| Exposition médicamenteuse | [Médicament prescrit](StructureDefinition-edsh-medication-request.html) | Données d'intérêt |
+| Exposition médicamenteuse | [Médicament administré](StructureDefinition-edsh-medication-administration.html) | Données d'intérêt |
+| Dossier de soin | [Poids](StructureDefinition-edsh-observation-body-weight.html) | Données d'intérêt |
+| Dossier de soin | [Taille](StructureDefinition-edsh-observation-body-height.html) | Données d'intérêt |
+| Dossier de soin | [Pression artérielle](StructureDefinition-edsh-observation-blood-pressure.html) | Données d'intérêt |
+| Style de vie | [Consommation de tabac](StructureDefinition-edsh-observation-smoking-status.html) | Données d'intérêt |
+| Style de vie | [Consommation d'alcool](StructureDefinition-edsh-observation-alcohol-use-status.html) | Données d'intérêt |
+| Style de vie | [Consommation d'autres drogues](StructureDefinition-edsh-observation-substance-use-status.html) | Données d'intérêt |
+| Style de vie | [Activité physique](StructureDefinition-edsh-observation-exercice-status.html) | Données d'intérêt |
 {: .grid}
 
 Indications de lecture :

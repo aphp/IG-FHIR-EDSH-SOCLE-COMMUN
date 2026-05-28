@@ -2,7 +2,7 @@
       "resourceType" : "Condition",
       "id" : "9fe28c54-4f1a-4e4d-8f06-8636e52f3a33",
       "meta" : {
-        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/DMCondition"]
+        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-condition"]
       },
       "category" : [{
         "coding" : [{

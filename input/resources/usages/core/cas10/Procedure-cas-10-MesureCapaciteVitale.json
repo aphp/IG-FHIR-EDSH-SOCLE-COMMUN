@@ -2,11 +2,11 @@
       "resourceType" : "Procedure",
       "id" : "2cb4f3ff-f118-4e12-bfd7-1ac2c8ce1fea",
       "meta" : {
-        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/DMProcedure"]
+        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-procedure"]
       },
       "status" : "completed",
       "code" : {
-        "coding" : [{"system" : "http://hl7.org/fhir/sid/ccam",
+        "coding" : [{"system" : "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/CodeSystem/ccam-cs",
           "code" : "GLQP008",
          "display" : "Mesure de la capacite vitale lente et de l'expiration forcee, avec gazometrie sanguine arterielle [Spirometrie standard avec gaz du sang]"
         }]

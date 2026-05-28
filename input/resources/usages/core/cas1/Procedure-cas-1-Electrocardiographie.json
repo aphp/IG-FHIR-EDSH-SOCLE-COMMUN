@@ -2,11 +2,11 @@
       "resourceType" : "Procedure",
       "id" : "94a6caed-68c0-424a-be57-c649e74f5bd5",
       "meta" : {
-        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/DMProcedure"]
+        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-procedure"]
       },
       "status" : "completed",
       "code" : {
-        "coding" : [{"system" : "http://hl7.org/fhir/sid/ccam",
+        "coding" : [{"system" : "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/CodeSystem/ccam-cs",
           "code" : "DEQP003",
           "display" : "Electrocardiographie sur au moins 12 derivations"
         }]

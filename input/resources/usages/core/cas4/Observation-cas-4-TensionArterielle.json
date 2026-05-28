@@ -2,7 +2,7 @@
       "resourceType" : "Observation",
       "id" : "d8c93ba8-28d7-476e-a045-8d4086d38b8b",
       "meta" : {
-        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/DMObservationBloodPressure"]
+        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-blood-pressure"]
       },
       "status" : "final",
       "category" : [{

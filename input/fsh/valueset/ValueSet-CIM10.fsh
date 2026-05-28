@@ -1,4 +1,5 @@
-ValueSet: CIM10
+ValueSet: Cim10
+Id: cim10
 Title: "Liste des diagnostiques CIM-10 OMS"
 Description: "ValueSet reprenant la CIM10 OMS"
 * ^experimental = false
@@ -12,7 +13,7 @@ Title: "first import"
 Description: """first import"""
 Usage: #definition
 
-* target[0] = Reference(CIM10)
+* target[0] = Reference(Cim10)
 * occurredDateTime = "2025-02-02"
 * reason.text = """first import"""
 * activity = $v3-DataOperation#CREATE

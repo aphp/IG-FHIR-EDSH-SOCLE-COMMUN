@@ -1,4 +1,5 @@
-CodeSystem: GHM
+CodeSystem: Ghm
+Id: ghm
 Title:     "Classification des GHM  utilisée pour le groupage des séjours dans le PMSI MCO."
 Description: "Groupes Homogènes de Malades."
 
@@ -25,7 +26,7 @@ Title: "first import"
 Description: """first import"""
 Usage: #definition
 
-* target[0] = Reference(GHM)
+* target[0] = Reference(Ghm)
 * occurredDateTime = "2025-02-02"
 * reason.text = """first import"""
 * activity = $v3-DataOperation#CREATE
