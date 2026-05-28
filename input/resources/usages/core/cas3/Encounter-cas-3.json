@@ -2,7 +2,7 @@
       "resourceType" : "Encounter",
       "id" : "b16544a7-e91b-4e53-9a42-914e38c2727d",
       "meta" : {
-        "profile" : ["https://interop.aphp.fr/ig/fhir/dm/StructureDefinition/DMEncounter"]
+        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/DMEncounter"]
       },
       "status" : "finished",
       "class" : {

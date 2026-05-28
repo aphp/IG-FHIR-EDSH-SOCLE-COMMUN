@@ -2,11 +2,11 @@
       "resourceType" : "Condition",
       "id" : "a98a27de-f8cc-4294-9cc1-735e90260d0f",
       "meta" : {
-        "profile" : ["https://interop.aphp.fr/ig/fhir/dm/StructureDefinition/DMCondition"]
+        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/DMCondition"]
       },
       "category" : [{
         "coding" : [{
-          "system" : "https://interop.aphp.fr/ig/fhir/dm/CodeSystem/pmsi-mco-diag-type",
+          "system" : "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/CodeSystem/pmsi-mco-diag-type",
           "code" : "DA",
           "display" : "Diagnodtic associe"
         }]

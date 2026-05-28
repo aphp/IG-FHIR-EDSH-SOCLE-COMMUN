@@ -2,7 +2,7 @@
       "resourceType" : "MedicationRequest",
       "id" : "1a5943a0-adff-4020-8ca3-ee0807bdf587",
       "meta" : {
-        "profile" : ["https://interop.aphp.fr/ig/fhir/dm/StructureDefinition/DMMedicationRequest"]
+        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/DMMedicationRequest"]
       },
       "status" : "active",
       "intent" : "order",

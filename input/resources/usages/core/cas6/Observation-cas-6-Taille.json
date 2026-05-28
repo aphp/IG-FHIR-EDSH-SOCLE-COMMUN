@@ -2,7 +2,7 @@
       "resourceType" : "Observation",
       "id" : "46d8bd95-9e29-4936-a7b8-e2386219b668",
       "meta" : {
-        "profile" : ["https://interop.aphp.fr/ig/fhir/dm/StructureDefinition/DMObservationBodyHeight"]
+        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/DMObservationBodyHeight"]
       },
       "status" : "final",
       "category" : [{

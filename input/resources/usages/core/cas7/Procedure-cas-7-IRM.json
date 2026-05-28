@@ -2,7 +2,7 @@
       "resourceType" : "Procedure",
       "id" : "0a8a901b-e97b-493e-935f-9fef8da423e5",
       "meta" : {
-        "profile" : ["https://interop.aphp.fr/ig/fhir/dm/StructureDefinition/DMProcedure"]
+        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/DMProcedure"]
       },
       "status" : "completed",
       "code" : {

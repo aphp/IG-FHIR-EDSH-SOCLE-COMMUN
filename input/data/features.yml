@@ -4,4 +4,4 @@ feedback:
   - active: true
     dashboard:
       label: New Issue
-      url: https://github.com/aphp/aphp/IG-FHIR-EDSH-SOCLE-COMMUN/issues/new?template=Blank+issue
+      url: https://github.com/aphp/IG-FHIR-EDSH-SOCLE-COMMUN/issues/new?template=Blank+issue

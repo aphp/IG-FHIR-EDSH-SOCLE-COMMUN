@@ -3,7 +3,7 @@
   "id": "cas-2-usage-core",
   "status": "completed",
   "authored": "2026-03-20T14:55:18.756Z",
-  "questionnaire": "https://interop.aphp.fr/ig/fhir/dm/Questionnaire/UsageCore",
+  "questionnaire": "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/Questionnaire/UsageCore",
   "item": [
     {
       "linkId": "4647259356106",

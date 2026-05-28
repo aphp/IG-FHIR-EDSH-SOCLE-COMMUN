@@ -2,7 +2,7 @@
       "resourceType" : "Patient",
       "id" : "73ed8b6d-e761-4f71-b69d-475a1be9f487",
       "meta" : {
-        "profile" : ["https://interop.aphp.fr/ig/fhir/dm/StructureDefinition/DMPatient"]
+        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/DMPatient"]
       },
       "identifier" : [{
         "type" : {
@@ -22,7 +22,7 @@
       "birthDate" : "1985-09-21",
       "address" : [{
         "extension" : [{
-          "url" : "https://aphp.github.io/IG-fhir-dm/StructureDefinition/PmsiCodeGeo",
+          "url" : "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/PmsiCodeGeo",
           "valueCode" : "75001"
         },
         {
