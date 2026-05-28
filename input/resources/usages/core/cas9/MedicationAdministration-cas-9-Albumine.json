@@ -8,14 +8,13 @@
       "medicationCodeableConcept" : {
         "coding" : [{"system" : "http://www.whocc.no/atc",
           "code" : "B05AA01",
-          "display" : "Albumine",
-          "test" : "Albumine 20%"
+          "display" : "Albumine"
         }]
       },
       "subject" : {
         "reference" : "Patient/2d7c21fd-859a-493b-b20a-1a27237ea5ba"
       },
-      "encounter" : {
+      "context" : {
         "reference" : "Encounter/74f2a55a-f256-41c2-8f2c-9677ca2df273"
       },
       "effectivePeriod" : {
@@ -32,7 +31,9 @@
         },
         "dose" : {
           "value" : 50,
-          "unit" : "g"
+          "unit" : "g",
+          "code" : "g",
+          "system" : "http://unitsofmeasure.org"
         }
       }
     }

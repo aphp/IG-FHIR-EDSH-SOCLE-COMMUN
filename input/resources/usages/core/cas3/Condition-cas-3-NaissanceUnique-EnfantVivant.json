@@ -8,7 +8,7 @@
         "coding" : [{
           "system" : "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/CodeSystem/pmsi-mco-diag-type",
           "code" : "DA",
-          "display" : "Diagnodtic associe"
+          "display" : "Diagnostic Associé Significatif"
         }]
       }],
       "code" : {

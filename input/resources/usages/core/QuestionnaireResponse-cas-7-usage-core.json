@@ -402,7 +402,7 @@
           "text": "Médicament prescrit",
           "answer": [
             {
-              "valueString": "Ketoprofene ",
+              "valueString": "Ketoprofene",
               "item": [
                 {
                   "linkId": "1923143398283",
@@ -446,7 +446,7 @@
           "text": "Médicament administré",
           "answer": [
             {
-              "valueString": "Ketoprofene ",
+              "valueString": "Ketoprofene",
               "item": [
                 {
                   "linkId": "631972144976",
@@ -517,7 +517,7 @@
           "text": "Médicament prescrit",
           "answer": [
             {
-              "valueString": "Metoclopramide ",
+              "valueString": "Metoclopramide",
               "item": [
                 {
                   "linkId": "1923143398283",
@@ -561,7 +561,7 @@
           "text": "Médicament administré",
           "answer": [
             {
-              "valueString": "Metoclopramide ",
+              "valueString": "Metoclopramide",
               "item": [
                 {
                   "linkId": "631972144976",

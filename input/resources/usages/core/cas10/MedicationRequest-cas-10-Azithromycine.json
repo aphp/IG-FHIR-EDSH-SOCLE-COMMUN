@@ -7,9 +7,9 @@
       "status" : "active",
       "intent" : "order",
       "medicationCodeableConcept" : {
-        "coding" : [{"system" : "http://hl7.org/fhir/sid/icd-10",
+        "coding" : [{"system" : "http://www.whocc.no/atc",
           "code" : "J01FA10",
-          "display" : "Azithromycine "
+          "display" : "Azithromycine"
         }]
       },
       "subject" : {

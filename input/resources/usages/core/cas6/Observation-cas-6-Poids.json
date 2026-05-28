@@ -16,7 +16,7 @@
         "coding" : [{
           "system" : "http://loinc.org",
           "code" : "29463-7",
-          "display" : "Poids"
+          "display" : "Poids corporel [Masse] Patient ; Numérique"
         }]
       },
       "subject" : {

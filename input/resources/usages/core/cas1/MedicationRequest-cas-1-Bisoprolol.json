@@ -9,7 +9,7 @@
       "medicationCodeableConcept" : {
         "coding" : [{"system" : "http://www.whocc.no/atc",
           "code" : "C07AB07",
-          "display" : "Bisoprolol 10mg"
+          "display" : "Bisoprolol"
         }]
       },
       "subject" : {

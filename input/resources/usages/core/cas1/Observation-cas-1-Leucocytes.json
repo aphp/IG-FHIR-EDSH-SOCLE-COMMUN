@@ -15,7 +15,7 @@
         "coding" : [{
           "system" : "http://loinc.org",
           "code" : "6690-2",
-          "display" : "Leucocytes"
+          "display" : "Leucocytes [Nombre/Volume] Sang ; Numérique ; Comptage automate"
         }]
       },
       "subject" : {

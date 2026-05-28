@@ -9,7 +9,7 @@
       "medicationCodeableConcept" : {
         "coding" : [{"system": "http://www.whocc.no/atc",
           "code" : "A03FA01",
-          "display" : "Metoclopramide "
+          "display" : "Metoclopramide"
         }]
       },
       "subject" : {

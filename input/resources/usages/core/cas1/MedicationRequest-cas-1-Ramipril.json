@@ -9,7 +9,7 @@
       "medicationCodeableConcept" : {
         "coding" : [{"system" : "http://www.whocc.no/atc",
           "code" : "C09AA05",
-          "display" : "Ramipril 5 mg"
+          "display" : "Ramipril"
         }]
       },
       "subject" : {

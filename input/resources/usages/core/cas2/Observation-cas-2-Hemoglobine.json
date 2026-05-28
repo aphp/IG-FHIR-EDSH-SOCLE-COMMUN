@@ -14,7 +14,7 @@
       "code" : {
         "coding" : [{"system" : "http://loinc.org",
           "code" : "718-7",
-          "display" : "Hemoglobine"
+          "display" : "Hémoglobine [Masse/Volume] Sang ; Numérique"
         }]
       },
       "subject" : {

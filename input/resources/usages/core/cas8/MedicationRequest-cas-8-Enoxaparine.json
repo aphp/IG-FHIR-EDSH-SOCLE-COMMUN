@@ -9,7 +9,7 @@
       "medicationCodeableConcept" : {
         "coding" : [{"system" : "http://www.whocc.no/atc",
           "code" : "B01AB05",
-          "display" : "Enoxaparine "
+          "display" : "Enoxaparine"
         }]
       },
       "subject" : {

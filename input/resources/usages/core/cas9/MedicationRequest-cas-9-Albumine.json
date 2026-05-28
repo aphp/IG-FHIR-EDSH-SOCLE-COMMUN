@@ -9,8 +9,7 @@
       "medicationCodeableConcept" : {
         "coding" : [{"system" : "http://www.whocc.no/atc",
           "code" : "B05AA01",
-          "display" : "Albumine",
-          "text" : "Albumine 20%"
+          "display" : "Albumine"
         }]
       },
       "subject" : {

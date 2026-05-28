@@ -14,7 +14,7 @@
       "subject" : {
         "reference" : "Patient/ee82429a-e183-409e-bcf6-d01fb7a4d2e3"
       },
-      "encounter" : {
+      "context" : {
         "reference" : "Encounter/f769e4e3-c30e-4348-87ad-388d151d63d7"
       },
       "effectivePeriod" : {
@@ -31,7 +31,9 @@
         },
         "dose" : {
           "value" : 1,
-          "unit" : "g/jour"
+          "unit" : "g/d",
+          "code" : "g/d",
+          "system" : "http://unitsofmeasure.org"
         }
       }
     }

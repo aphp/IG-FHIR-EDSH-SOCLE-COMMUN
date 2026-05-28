@@ -9,9 +9,9 @@
       "medicationCodeableConcept" : {
         "coding" : [{"system" : "http://www.whocc.no/atc",
           "code" : "B01AC06",
-          "display": "Acide acetylsalicylique",
-           "text" : "Aspirine 250 mg comprime"
-        }]
+          "display": "Acide acetylsalicylique"
+        }],
+        "text" : "Aspirine"
       },
       "subject" : {
         "reference" : "Patient/05584e1b-3435-415a-af33-aad1fca40fad"

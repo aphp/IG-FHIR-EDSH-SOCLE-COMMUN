@@ -9,7 +9,7 @@
       "medicationCodeableConcept" : {
         "coding" : [{"system": "http://www.whocc.no/atc",
           "code" : "M02AA10",
-          "display" : "Ketoprofene "
+          "display" : "Ketoprofene"
         }]
       },
       "subject" : {

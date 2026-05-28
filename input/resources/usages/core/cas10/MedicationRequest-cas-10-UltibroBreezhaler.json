@@ -9,9 +9,9 @@
       "medicationCodeableConcept" : {
         "coding" : [{"system" : "http://www.whocc.no/atc",
           "code" : "R03AL04",
-          "display" : "indacaterol et bromure de glycopyrronium",
-            "text" : "ULTIBRO BREEZHALER 85 microgrammes/43 microgrammes, poudre pour inhalation en gelule"
-        }]
+          "display" : "indacaterol et bromure de glycopyrronium"
+        }],
+         "text" : "ULTIBRO BREEZHALER"
       },
       "subject" : {
         "reference" : "Patient/21f4ee98-4940-4d54-b573-523bc7718a6d"

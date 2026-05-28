@@ -14,7 +14,7 @@
       "subject" : {
         "reference" : "Patient/00d05edd-cffc-46e0-8ddb-91b7e801985a"
       },
-      "encounter" : {
+      "context" : {
         "reference" : "Encounter/a77d9d30-48cf-478f-b19e-6c90f625b3dc"
       },
       "effectivePeriod" : {
@@ -31,7 +31,9 @@
         },
         "dose" : {
           "value" : 50,
-          "unit" : "mg"
+          "unit" : "mg",
+          "code" : "mg",
+          "system" : "http://unitsofmeasure.org"
         }
       }
     }

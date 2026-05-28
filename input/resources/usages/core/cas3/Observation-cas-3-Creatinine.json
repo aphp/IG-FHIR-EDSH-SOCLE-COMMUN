@@ -14,7 +14,7 @@
       "code" : {
         "coding" : [{"system" : "http://loinc.org",
           "code" : "14682-9",
-          "display" : "Creatinine"
+          "display" : "Créatinine [Moles/Volume] Sérum/Plasma ; Numérique"
         }]
       },
       "subject" : {

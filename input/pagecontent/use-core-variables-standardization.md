@@ -27,7 +27,7 @@ Dans l'histoire du cas 1 on peut représenter plusieurs informations dans le mod
   - [DFG](Observation-839160d3-4ed6-4408-8725-08810127d978.html)
   - [hemoglobine](Observation-2ca390bc-3d5f-4357-92bf-2466c53e3225.html)
   - [leucocytes](Observation-b0a9b8cd-f2a7-4aec-867c-d76a6fe6496b.html)
-- ses prescriptions médicamenteuses : [aspirine](MedicationRequest-2399902c-585f-4eae-9ed8-519f9fe4da34.html), [Atorvastatine](MedicationRequest-aec11f99-dec8-49ac-bbfe-e8ebb7aa7ff6.html), [Bisoprolol](MedicationRequest-f70d0ea6-bf3f-423c-beb3-00fcff587f7f".html), [Ramipril](MedicationRequest-b7e2578f-2197-45c5-9b7c-4f52a615bb20.html) et [Ticagrelor](MedicationRequest-acb4d2b8-79cb-440b-afb1-5a875eaddb24".html)
+- ses prescriptions médicamenteuses : [aspirine](MedicationRequest-2399902c-585f-4eae-9ed8-519f9fe4da34.html), [Atorvastatine](MedicationRequest-aec11f99-dec8-49ac-bbfe-e8ebb7aa7ff6.html), [Bisoprolol](MedicationRequest-f70d0ea6-bf3f-423c-beb3-00fcff587f7f.html), [Ramipril](MedicationRequest-b7e2578f-2197-45c5-9b7c-4f52a615bb20.html) et [Ticagrelor](MedicationRequest-acb4d2b8-79cb-440b-afb1-5a875eaddb24.html)
 - ses administrations médicamenteuses
   - [aspirine](MedicationAdministration-2463eb1a-0e0a-40b9-b240-218c0f118ba5.html)
   - [Atorvastatine](MedicationAdministration-4cc5d2fa-a7c3-4fbd-b33a-39b384477e22.html)
@@ -73,13 +73,13 @@ Dans l'histoire du cas 9 on peut représenter plusieurs informations dans le mod
 <!--- [ses habitudes de consommation d'alcool](Observation-alcool-cas-9.html)-->
 - son [poids](Observation-8a41d4d2-dbed-43a5-9135-4c9a357ecf41.html)
 - les actes dont elle a bénéficié : [sa ponction d'ascite](Procedure-0a2f8750-d908-4bc4-ac31-700e91daf7b2.html) et [sa fibroscopie oeso-gastro-duodénale](Procedure-a9f6e570-d387-48a2-a137-a38feb04623e.html)
-<!-- - certains des dosages biologiques dont elle a bénéficié : 
-  - [asat](Observation-asat-cas-9.html)
-  - [alat](Observation-alat-cas-9.html)
-  - [phosphatases alcalines](Observation-phosphatases-alcalines-cas-9.html)
-  - [gamma-glutamyl-transférase](Observation-ggt-cas-9.html)
-  - [bilirubine totale](Observation-bilirubine-totale-cas-9.html)
-  - [taux de prothrombine](Observation-tp-cas-9.html) -->
+<!--- certains des dosages biologiques dont elle a bénéficié :-->
+<!--  - [asat](Observation-asat-cas-9.html)-->
+<!--  - [alat](Observation-alat-cas-9.html)-->
+<!--  - [phosphatases alcalines](Observation-phosphatases-alcalines-cas-9.html)-->
+<!--  - [gamma-glutamyl-transférase](Observation-ggt-cas-9.html)-->
+<!--  - [bilirubine totale](Observation-bilirubine-totale-cas-9.html)-->
+<!--  - [taux de prothrombine](Observation-tp-cas-9.html)-->
 - ses prescriptions médicamenteuses : [furosémide](MedicationRequest-cdf30d04-f8f8-4394-80b1-6272019086a3.html), [spironolactone](MedicationRequest-68dcf522-b285-4d25-85ba-539e734e618e.html) et [albumine](MedicationRequest-ab3ae565-3a7f-491b-a2db-924e388ed918.html)
 - ses administrations médicamenteuses
   - [J1 furosémide](MedicationAdministration-717b4d89-394b-41a6-a5c7-481cbbd8f368.html)

@@ -8,13 +8,13 @@
       "medicationCodeableConcept" : {
         "coding" : [{"system" : "http://www.whocc.no/atc",
           "code" : "C10AA05",
-          "display" : "Atorvastatine 40mg"
+          "display" : "Atorvastatine"
         }]
       },
       "subject" : {
         "reference" : "Patient/73ed8b6d-e761-4f71-b69d-475a1be9f487"
       },
-      "encounter" : {
+      "context" : {
         "reference" : "Encounter/b3e979e5-b9e6-4ef6-b7b5-ca218cab44c7"
       },
       "effectivePeriod" : {
@@ -30,7 +30,9 @@
         },
         "dose" : {
           "value" : 40,
-          "unit" : "mg"
+          "code" : "mg",
+          "unit" : "mg",
+          "system" : "http://unitsofmeasure.org"
         }
       }
     }

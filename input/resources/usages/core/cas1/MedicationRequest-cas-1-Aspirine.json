@@ -9,9 +9,9 @@
       "medicationCodeableConcept" : {
         "coding" : [{"system" : "http://www.whocc.no/atc",
           "code" : "B01AC06",
-          "display" : "Acide acetylsalicylique",
-           "text" : "Aspirine 75mg"
-        }]
+          "display" : "Acide acetylsalicylique"
+        }],
+        "text" : "Aspirine"
       },
       "subject" : {
         "reference" : "Patient/73ed8b6d-e761-4f71-b69d-475a1be9f487"

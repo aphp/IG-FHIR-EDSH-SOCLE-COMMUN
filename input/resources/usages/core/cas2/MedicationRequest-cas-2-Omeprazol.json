@@ -9,7 +9,7 @@
       "medicationCodeableConcept" : {
         "coding" : [{"system" : "http://www.whocc.no/atc",
           "code" : "A02BC01",
-          "display" : "Omeprazole 20mg"
+          "display" : "Omeprazole"
         }]
       },
       "subject" : {

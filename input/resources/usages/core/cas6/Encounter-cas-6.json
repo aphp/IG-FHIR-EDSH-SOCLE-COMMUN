@@ -27,7 +27,7 @@
         },
         "dischargeDisposition" : {
           "coding" : [{
-          "system": "http://terminology.hl7.org/CodeSystem/admit-source",
+          "system": "http://terminology.hl7.org/CodeSystem/discharge-disposition",
         "code": "home",
         "display": "Home"
           }]

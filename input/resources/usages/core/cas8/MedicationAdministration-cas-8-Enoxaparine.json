@@ -14,7 +14,7 @@
       "subject" : {
         "reference" : "Patient/00d05edd-cffc-46e0-8ddb-91b7e801985a"
       },
-      "encounter" : {
+      "context" : {
         "reference" : "Encounter/a77d9d30-48cf-478f-b19e-6c90f625b3dc"
       },
       "effectivePeriod" : {
@@ -30,7 +30,9 @@
         },
         "dose" : {
           "value" : 4000,
-          "unit" : "UI"
+          "unit" : "[IU]",
+          "code" : "[IU]",
+          "system" : "http://unitsofmeasure.org"
         }
       }
     }

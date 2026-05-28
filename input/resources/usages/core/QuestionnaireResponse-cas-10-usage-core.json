@@ -429,13 +429,13 @@
                 {
                   "valueQuantity": {
                     "value": 87,
-                    "unit": " fL"
+                    "unit": "fL"
                   },
                   "item": [
                     {
                       "answer": [
                         {
-                          "valueString": " 30428-7"
+                          "valueString": "30428-7"
                         }
                       ],
                       "linkId": "117718572179",

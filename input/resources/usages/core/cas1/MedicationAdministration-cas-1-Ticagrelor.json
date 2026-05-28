@@ -8,13 +8,13 @@
       "medicationCodeableConcept" : {
         "coding" : [{"system" : "http://www.whocc.no/atc",
           "code" : "B01AC24",
-          "display" : "Ticagrelor 90mg"
+          "display" : "Ticagrelor"
         }]
       },
       "subject" : {
         "reference" : "Patient/73ed8b6d-e761-4f71-b69d-475a1be9f487"
       },
-      "encounter" : {
+      "context" : {
         "reference" : "Encounter/b3e979e5-b9e6-4ef6-b7b5-ca218cab44c7"
       },
       "effectivePeriod" : {
@@ -30,7 +30,9 @@
         },
         "dose" : {
           "value" : 90,
-          "unit" : "mg"
+          "unit" : "mg",
+          "code" : "mg",
+          "system" : "http://unitsofmeasure.org"
         }
       }
     }

@@ -9,9 +9,9 @@
       "medicationCodeableConcept" : {
         "coding" : [{"system" : "http://www.whocc.no/atc",
           "code" : "N07BA01",
-          "display" :  "Nicotine",
-                  "text": "Nicopatch 15 mg/24 heures, dispositif transdermique"
-        }]
+          "display" : "Nicotine"
+        }],
+        "text": "Nicopatch"
       },
       "subject" : {
         "reference" : "Patient/21f4ee98-4940-4d54-b573-523bc7718a6d"

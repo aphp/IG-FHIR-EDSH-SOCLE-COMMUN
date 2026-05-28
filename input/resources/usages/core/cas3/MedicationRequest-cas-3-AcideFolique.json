@@ -9,7 +9,7 @@
       "medicationCodeableConcept" : {
         "coding" : [{"system" : "http://www.whocc.no/atc",
           "code" : "B03BB01",
-          "display" : "Acide folique 5mg"
+          "display" : "Acide folique"
         }]
       },
       "subject" : {
