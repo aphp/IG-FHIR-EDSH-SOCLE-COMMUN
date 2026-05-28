@@ -722,99 +722,99 @@ group CreateLaboratoryObservations(source src : QuestionnaireResponse, target pa
         hemoItem.answer as ans -> bundle then CreateLabObservation(ans, hemoItem, patient, bundle) "create-hemo-obs";
       } "extract-hemo";
 
-      // Hématocrite (linkId 5687959006070)
-      hemoGroup.item as hematItem where (linkId = '5687959006070') then {
+      // Hématocrite (linkId 813863316705)
+      hemoGroup.item as hematItem where (linkId = '813863316705') then {
         hematItem.answer as ans -> bundle then CreateLabObservation(ans, hematItem, patient, bundle) "create-hemat-obs";
       } "extract-hemat";
 
-      // Erythrocytes (linkId 8697447896867)
-      hemoGroup.item as eryItem where (linkId = '8697447896867') then {
+      // Erythrocytes (linkId 459731866614)
+      hemoGroup.item as eryItem where (linkId = '459731866614') then {
         eryItem.answer as ans -> bundle then CreateLabObservation(ans, eryItem, patient, bundle) "create-ery-obs";
       } "extract-ery";
 
-      // VGM (linkId 5584978899134)
-      hemoGroup.item as vgmItem where (linkId = '5584978899134') then {
+      // VGM (linkId 163624088831)
+      hemoGroup.item as vgmItem where (linkId = '163624088831') then {
         vgmItem.answer as ans -> bundle then CreateLabObservation(ans, vgmItem, patient, bundle) "create-vgm-obs";
       } "extract-vgm";
 
-      // Plaquettes (linkId 2881119993430)
-      hemoGroup.item as platItem where (linkId = '2881119993430') then {
+      // Plaquettes (linkId 794156787471)
+      hemoGroup.item as platItem where (linkId = '794156787471') then {
         platItem.answer as ans -> bundle then CreateLabObservation(ans, platItem, patient, bundle) "create-plat-obs";
       } "extract-plat";
 
-      // Neutrophiles (linkId 7408951746270)
-      hemoGroup.item as neutItem where (linkId = '7408951746270') then {
+      // Neutrophiles (linkId 961905168477)
+      hemoGroup.item as neutItem where (linkId = '961905168477') then {
         neutItem.answer as ans -> bundle then CreateLabObservation(ans, neutItem, patient, bundle) "create-neut-obs";
       } "extract-neut";
 
-      // Lymphocytes (linkId 809808816195)
-      hemoGroup.item as lymphItem where (linkId = '809808816195') then {
+      // Lymphocytes (linkId 695150914696)
+      hemoGroup.item as lymphItem where (linkId = '695150914696') then {
         lymphItem.answer as ans -> bundle then CreateLabObservation(ans, lymphItem, patient, bundle) "create-lymph-obs";
       } "extract-lymph";
 
-      // Eosinophiles (linkId 6451887990893)
-      hemoGroup.item as eosiItem where (linkId = '6451887990893') then {
+      // Eosinophiles (linkId 700490326748)
+      hemoGroup.item as eosiItem where (linkId = '700490326748') then {
         eosiItem.answer as ans -> bundle then CreateLabObservation(ans, eosiItem, patient, bundle) "create-eosi-obs";
       } "extract-eosi";
 
-      // Monocytes (linkId 7935935816936)
-      hemoGroup.item as monoItem where (linkId = '7935935816936') then {
+      // Monocytes (linkId 168661900522)
+      hemoGroup.item as monoItem where (linkId = '168661900522') then {
         monoItem.answer as ans -> bundle then CreateLabObservation(ans, monoItem, patient, bundle) "create-mono-obs";
       } "extract-mono";
 
-      // TP (linkId 2055949655770)
-      hemoGroup.item as tpItem where (linkId = '2055949655770') then {
+      // TP (linkId 658898841893)
+      hemoGroup.item as tpItem where (linkId = '658898841893') then {
         tpItem.answer as ans -> bundle then CreateLabObservation(ans, tpItem, patient, bundle) "create-tp-obs";
       } "extract-tp";
 
-      // TCA (linkId 2527095476817)
-      hemoGroup.item as tcaItem where (linkId = '2527095476817') then {
+      // TCA (linkId 795145096241)
+      hemoGroup.item as tcaItem where (linkId = '795145096241') then {
         tcaItem.answer as ans -> bundle then CreateLabObservation(ans, tcaItem, patient, bundle) "create-tca-obs";
       } "extract-tca";
     } "process-hemo";
 
-    // Bilan hépatique (linkId 3893612773040)
-    bioGroup.item as liverGroup where (linkId = '3893612773040') then {
-      // ASAT (linkId 3028330976100)
-      liverGroup.item as asatItem where (linkId = '3028330976100') then {
+    // Bilan hépatique (linkId 796308115381)
+    bioGroup.item as liverGroup where (linkId = '796308115381') then {
+      // ASAT (linkId 715226319725)
+      liverGroup.item as asatItem where (linkId = '715226319725') then {
         asatItem.answer as ans -> bundle then CreateLabObservation(ans, asatItem, patient, bundle) "create-asat-obs";
       } "extract-asat";
 
-      // ALAT (linkId 8486813893880)
-      liverGroup.item as alatItem where (linkId = '8486813893880') then {
+      // ALAT (linkId 876439410327)
+      liverGroup.item as alatItem where (linkId = '876439410327') then {
         alatItem.answer as ans -> bundle then CreateLabObservation(ans, alatItem, patient, bundle) "create-alat-obs";
       } "extract-alat";
 
-      // GGT (linkId 3663296044037)
-      liverGroup.item as ggtItem where (linkId = '3663296044037') then {
+      // GGT (linkId 287545455976)
+      liverGroup.item as ggtItem where (linkId = '287545455976') then {
         ggtItem.answer as ans -> bundle then CreateLabObservation(ans, ggtItem, patient, bundle) "create-ggt-obs";
       } "extract-ggt";
 
-      // PAL (linkId 2690026606933)
-      liverGroup.item as palItem where (linkId = '2690026606933') then {
+      // PAL (linkId 508269571594)
+      liverGroup.item as palItem where (linkId = '508269571594') then {
         palItem.answer as ans -> bundle then CreateLabObservation(ans, palItem, patient, bundle) "create-pal-obs";
       } "extract-pal";
 
-      // Bilirubine totale (linkId 9068831071023)
-      liverGroup.item as bilTotItem where (linkId = '9068831071023') then {
+      // Bilirubine totale (linkId 927344090061)
+      liverGroup.item as bilTotItem where (linkId = '927344090061') then {
         bilTotItem.answer as ans -> bundle then CreateLabObservation(ans, bilTotItem, patient, bundle) "create-biltot-obs";
       } "extract-biltot";
 
-      // Bilirubine conjuguée (linkId 8893717988787)
-      liverGroup.item as bilConjItem where (linkId = '8893717988787') then {
+      // Bilirubine conjuguée (linkId 208196328453)
+      liverGroup.item as bilConjItem where (linkId = '208196328453') then {
         bilConjItem.answer as ans -> bundle then CreateLabObservation(ans, bilConjItem, patient, bundle) "create-bilconj-obs";
       } "extract-bilconj";
     } "process-liver";
 
-    // Métabolisme glucidique (linkId 8929068894076)
-    bioGroup.item as glucoseGroup where (linkId = '8929068894076') then {
-      // Glycémie à jeun (linkId 8193929027997)
-      glucoseGroup.item as glycItem where (linkId = '8193929027997') then {
+    // Métabolisme glucidique (linkId 334039497382)
+    bioGroup.item as glucoseGroup where (linkId = '334039497382') then {
+      // Glycémie à jeun (linkId 273778921448)
+      glucoseGroup.item as glycItem where (linkId = '273778921448') then {
         glycItem.answer as ans -> bundle then CreateLabObservation(ans, glycItem, patient, bundle) "create-glyc-obs";
       } "extract-glyc";
 
-      // HbA1c (linkId 7063892830923)
-      glucoseGroup.item as hba1cItem where (linkId = '7063892830923') then {
+      // HbA1c (linkId 632894677152)
+      glucoseGroup.item as hba1cItem where (linkId = '632894677152') then {
         hba1cItem.answer as ans -> bundle then CreateLabObservation(ans, hba1cItem, patient, bundle) "create-hba1c-obs";
       } "extract-hba1c";
     } "process-glucose";
