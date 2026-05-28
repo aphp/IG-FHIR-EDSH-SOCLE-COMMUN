@@ -1,0 +1,27 @@
+{
+      "resourceType" : "Condition",
+      "id" : "aee034d1-bd88-434c-ad5f-764f9b64344d",
+      "meta" : {
+        "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-condition"]
+      },
+      "category" : [{
+        "coding" : [{
+          "system" : "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/CodeSystem/pmsi-mco-diag-type",
+          "code" : "DA",
+          "display" : "Diagnostic Associé Significatif"
+        }]
+      }],
+      "code" : {
+        "coding" : [{"system" : "http://id.who.int/fhir/icd/release/11",
+          "code" : "GB51",
+          "display" : "Pyelonephrite aigue"
+        }]
+      },
+      "subject" : {
+        "reference" : "Patient/ee82429a-e183-409e-bcf6-d01fb7a4d2e3"
+      },
+      "encounter" : {
+        "reference" : "Encounter/f769e4e3-c30e-4348-87ad-388d151d63d7"
+      },
+      "recordedDate" : "2024-01-12"
+    }
