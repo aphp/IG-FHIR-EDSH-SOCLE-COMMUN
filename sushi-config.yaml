@@ -1,6 +1,6 @@
 id: aphp.fhir.fr.edsh
-canonical: https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN
-name: Edsh
+canonical: https://interop.aphp.fr/ig/fhir/edsh
+name: EDSH
 title: Données socles des Entrepôts de Données de Santé Hospitalier
 description: "Ce guide d'implémentation décrit: (i) les données socles sélectionnées par le GT sur les EDSH, (ii) la méthode de modélisation de ces données et, (iii) les profils FHIR cible."
 status: draft
