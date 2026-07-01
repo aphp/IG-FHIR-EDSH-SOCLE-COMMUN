@@ -1,7 +1,7 @@
 {
   "resourceType" : "Requirements",
   "id" : "fromNarrative",
-  "url" : "https://aphp.github.io/ig/fhir/edsh/Requirements/fromNarrative",
+  "url" : "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/Requirements/fromNarrative",
   "name" : "FromNarrative",
   "title" : "Narrative Conformance Statements",
   "status" : "active",
