@@ -1,0 +1,5 @@
+
+# Encounter.identifier manquant
+# L'IG EDSH Socle Commun exige au minimum un identifier sur chaque Encounter. (profil edsh-encounter|0.1.0). Dans le cadre de ce projet de test, les ressources Encounter ont été générées sans identifier.
+# Cette insuffisance est documentée et sera corrigée dans une version ultérieure.
+Encounter.identifier: minimum required = 1, but only found 0 (from https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-encounter|0.1.0)

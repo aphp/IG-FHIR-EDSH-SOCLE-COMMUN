@@ -4,6 +4,19 @@
       "meta" : {
         "profile" : ["https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-encounter"]
       },
+      "identifier": [{
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "VN",
+            "display": "Visit number"
+          }
+        ]
+      },
+      "system": "https://interop.aphp.fr/ig/fhir/dm/NamingSystem/nda",
+      "value": "NDA-2024-006"
+      }],
       "status" : "finished",
       "class" : {
         "system" : "http://terminology.hl7.org/CodeSystem/v3-ActCode",
