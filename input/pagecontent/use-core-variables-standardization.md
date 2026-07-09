@@ -15,8 +15,6 @@ Le tableau ci-dessous référence tous les profils FHIR résultat du processus d
 
 #### Cas 1 : Infarctus du myocarde
 
-Dans l'histoire du cas 1 on peut représenter plusieurs informations dans le modèle standard :
-
 [Marie Dupont, née le 21 septembre 1965](Patient-73ed8b6d-e761-4f71-b69d-475a1be9f487.html), a été [hospitalisée du 10 au 14 janvier 2024](Encounter-b3e979e5-b9e6-4ef6-b7b5-ca218cab44c7.html) dans le service de cardiologie de l'hôpital Lariboisière pour un [infarctus du myocarde](Condition-669ba56c-68fe-4d47-b334-47c7304b588a.html) pris en charge par [coronarographie avec pose de stents](Procedure-1b310860-da98-46fa-a956-8701936db776.html).
 
 Histoire de la maladie :
