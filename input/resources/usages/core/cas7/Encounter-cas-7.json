@@ -14,7 +14,7 @@
           }
         ]
       },
-      "system": "https://interop.aphp.fr/ig/fhir/dm/NamingSystem/nda",
+      "system": "https://interop.aphp.fr/info/Encounter/nda",
       "value": "NDA-2024-006"
       }],
       "status" : "finished",
