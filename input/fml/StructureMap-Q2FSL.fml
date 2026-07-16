@@ -45,7 +45,6 @@ group QuestionnaireResponseToBundle(source src : QuestionnaireResponse, target b
 
 // Group: Create Patient from QuestionnaireResponse
 group CreatePatient(source src : QuestionnaireResponse, target patient : Patient) {
-  src -> patient.id = uuid() "patient-id";
   src -> patient.meta = create('Meta') as meta then {
     src -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-patient' "patient-profile";
   } "patient-meta";
@@ -53,6 +52,9 @@ group CreatePatient(source src : QuestionnaireResponse, target patient : Patient
   // Extract patient identity data from linkId 4647259356106 > 2958000860428
   src.item as socioDemo where (linkId = '4647259356106') then {
     socioDemo.item as identity where (linkId = '2958000860428') then {
+
+      // Patient id 
+      src -> patient.id = (%identity.linkId) "patient-id";
 
       // Patient name (linkId 8605698058770 = family, 6214879623503 = given)
       identity -> patient.name = create('HumanName') as name then {
@@ -235,7 +237,6 @@ group CreateEncounters(source src : QuestionnaireResponse, target patient : Pati
   // PMSI data group (linkId 2825244231605) - Note: This can repeat in the structure
   src.item as pmsiItem where (linkId = '2825244231605') -> bundle.entry as encounterEntry then {
     pmsiItem -> encounterEntry.resource = create('Encounter') as encounter then {
-      pmsiItem -> encounter.id = uuid() "encounter-id";
       pmsiItem -> encounter.meta = create('Meta') as meta then {
         pmsiItem -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-encounter' "encounter-profile";
       } "encounter-meta";
@@ -253,6 +254,7 @@ group CreateEncounters(source src : QuestionnaireResponse, target patient : Pati
       pmsiItem -> encounter.period = create('Period') as period then {
         pmsiItem.item as startItem where (linkId = '5991443718282') then {
           startItem.answer as ans -> period.start = (%ans.valueDate) "set-start";
+          startItem.answer as ans -> encounter.id = (%pmsiItem.linkId + ' - ' + %ans.valueDate.toString()) "encounterId";
         } "extract-start";
         pmsiItem.item as endItem where (linkId = '6114780320846') then {
           endItem.answer as ans -> period.end = (%ans.valueDate) "set-end";
@@ -294,7 +296,7 @@ group CreateConditions(source pmsiItem, target patient : Patient, target encount
   // Diagnostics group (linkId 9391816419630) - can repeat
   pmsiItem.item as diagGroup where (linkId = '9391816419630') -> bundle.entry as conditionEntry then {
     diagGroup -> conditionEntry.resource = create('Condition') as condition then {
-      diagGroup -> condition.id = uuid() "condition-id";
+      diagGroup -> condition.id = (%diagGroup.linkId + ' - ' + %diagGroup.item.where(linkId = '5505101189372').answer.valueString + ' - ' + %diagGroup.item.where(linkId = '7114466839467').answer.valueDate.toString()) "condition-id";
       diagGroup -> condition.meta = create('Meta') as meta then {
         diagGroup -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-condition' "condition-profile";
       } "condition-meta";
@@ -341,7 +343,7 @@ group CreateProcedures(source pmsiItem, target patient : Patient, target encount
   // Actes group (linkId 591926901726) - can repeat
   pmsiItem.item as acteGroup where (linkId = '591926901726') -> bundle.entry as procedureEntry then {
     acteGroup -> procedureEntry.resource = create('Procedure') as procedure then {
-      acteGroup -> procedure.id = uuid() "procedure-id";
+      acteGroup -> procedure.id = (%acteGroup.linkId + ' - ' + %acteGroup.item.where(linkId = '5066866286682').answer.valueDateTime.toString()) "procedure-id";
       acteGroup -> procedure.meta = create('Meta') as meta then {
         acteGroup -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-procedure' "procedure-profile";
       } "procedure-meta";
@@ -391,7 +393,7 @@ group CreateMedicationRequests(source src : QuestionnaireResponse, target patien
     // Médicament prescrit (linkId 156631794800) - repeating
     medExpoGroup.item as prescribedGroup where (linkId = '156631794800') -> bundle.entry as medReqEntry then {
       prescribedGroup -> medReqEntry.resource = create('MedicationRequest') as medReq then {
-        prescribedGroup -> medReq.id = uuid() "medreq-id";
+        prescribedGroup -> medReq.id = (%prescribedGroup.linkId + ' - ' + %prescribedGroup.answer.valueString) "medreq-id";
         // fullurl
         src -> medReq.id as medReqId, medReqEntry.fullUrl = append('urn:uuid:', medReqId) "set-fullUrl";
 
@@ -476,7 +478,7 @@ group CreateMedicationAdministrations(source src : QuestionnaireResponse, target
     // Médicament administré (linkId 266852453304) - repeating
     medExpoGroup.item as adminGroup where (linkId = '266852453304') -> bundle.entry as medAdminEntry then {
       adminGroup -> medAdminEntry.resource = create('MedicationAdministration') as medAdmin then {
-        adminGroup -> medAdmin.id = uuid() "medadmin-id";
+        adminGroup -> medAdmin.id = (%adminGroup.linkId + ' - ' + %adminGroup.answer.valueString + ' - ' + %medExpoGroup.item.where(linkId='5720103839343').item.where(linkId='1443558617577').answer.valueDateTime.toString()) "medadmin-id";
         // fullurl
         src -> medAdmin.id as medAdminId, medAdminEntry.fullUrl = append('urn:uuid:', medAdminId) "set-fullUrl";
 
@@ -574,7 +576,7 @@ group CreateVitalSignObservations(source src : QuestionnaireResponse, target pat
       dossierGroup.item as heightItem where (linkId = '4846902346416') then {
         heightItem.answer as ans -> bundle.entry as obsEntry then {
           ans -> obsEntry.resource = create('Observation') as obs then {
-            ans -> obs.id = uuid() "obs-id";
+            ans -> obs.id = (%heightItem.linkId + ' - ' + %heightItem.answer.item.where(linkId = '941821315470').answer.valuDate.toString()) "obs-id";
             ans -> obs.id as obsId, obsEntry.fullUrl = append('urn:uuid:', obsId) "set-fullUrl";
             ans -> obs.meta = create('Meta') as meta then {
               ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-body-height' "obs-profile";
@@ -606,7 +608,7 @@ group CreateVitalSignObservations(source src : QuestionnaireResponse, target pat
       dossierGroup.item as weightItem where (linkId = '451513217936') then {
         weightItem.answer as ans -> bundle.entry as obsEntry then {
           ans -> obsEntry.resource = create('Observation') as obs then {
-            ans -> obs.id = uuid() "obs-id";
+            ans -> obs.id = (%weightItem.linkId + ' - ' + %weightItem.answer.item.where(linkId = '151269044052').answer.valuDate.toString()) "obs-id";
             ans -> obs.id as obsId, obsEntry.fullUrl = append('urn:uuid:', obsId) "set-fullUrl";
             ans -> obs.meta = create('Meta') as meta then {
               ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-body-weight' "obs-profile";
@@ -640,7 +642,7 @@ group CreateVitalSignObservations(source src : QuestionnaireResponse, target pat
           dossierGroup.item as diaItem where (linkId = '848797127998') then {
             diaItem.answer as diaAns -> bundle.entry as obsEntry then {
               sysAns -> obsEntry.resource = create('Observation') as obs then {
-                sysAns -> obs.id = uuid() "obs-id";
+                sysAns -> obs.id = (%sysItem.linkId + ' - ' + %sysItem.answer.item.where(linkId = '987654638442').answer.valueDate.toString()) "obs-id";
                 sysAns -> obs.id as obsId, obsEntry.fullUrl = append('urn:uuid:', obsId) "set-fullUrl";
                 sysAns -> obs.meta = create('Meta') as meta then {
                   sysAns -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-blood-pressure' "obs-profile";
@@ -826,7 +828,7 @@ group CreateLaboratoryObservations(source src : QuestionnaireResponse, target pa
 group CreateLabObservation(source ans, source parentItem, target patient : Patient, target bundle : Bundle) {
   ans -> bundle.entry as obsEntry then {
     ans -> obsEntry.resource = create('Observation') as obs then {
-      ans -> obs.id = uuid() "obs-id";
+      ans -> obs.id = (%parentItem.linkId + ' - ' + %parentItem.text + ' - ' + %ans.item.where(text='Date et heure du prélèvement').answer.valueDateTime.toString()) "obs-id";
       ans -> obs.id as obsId, obsEntry.fullUrl = append('urn:uuid:', obsId) "set-fullUrl";
       ans -> obs.meta = create('Meta') as meta then {
         ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/dm-observation-laboratory-generic' "obs-profile";
