@@ -10,7 +10,6 @@ uses "http://hl7.org/fhir/StructureDefinition/Bundle" alias Bundle as target
 // Main entry point: Transform QuestionnaireResponse to Bundle
 group QuestionnaireResponseToBundle(source src : QuestionnaireResponse, target bundle : Bundle) {
   // Initialize Bundle
-  src -> bundle.id = uuid() "bundle-id";
   src -> bundle.type = 'collection' "bundle-type";
   src -> bundle.timestamp = (now()) "setTimestamp";
 
@@ -21,7 +20,7 @@ group QuestionnaireResponseToBundle(source src : QuestionnaireResponse, target b
       src -> patient.id as patientId, patientEntry.fullUrl = append('urn:uuid:', patientId) "set-fullUrl";  
 
       // Create Locations from geocoding data
-      //src then CreateLocations(src, patient, bundle) "create-locations";
+      src then CreateLocations(src, patient, bundle) "create-locations";
 
       // Create Encounters from PMSI data
       src then CreateEncounters(src, patient, bundle) "create-encounters";
@@ -53,8 +52,10 @@ group CreatePatient(source src : QuestionnaireResponse, target patient : Patient
   src.item as socioDemo where (linkId = '4647259356106') then {
     socioDemo.item as identity where (linkId = '2958000860428') then {
 
-      // Patient id 
-      src -> patient.id = (%identity.linkId) "patient-id";
+      // Patient id (saisi manuellement dans le champ "Identifiant", linkId 236790258446)
+      identity.item as patIdItem where (linkId = '236790258446') then {
+        patIdItem.answer as patIdAns -> patient.id = (%patIdAns.valueString) "set-patient-id";
+      } "extract-patient-id";
 
       // Patient name (linkId 8605698058770 = family, 6214879623503 = given)
       identity -> patient.name = create('HumanName') as name then {
@@ -158,75 +159,89 @@ group CreateLocations(source src : QuestionnaireResponse, target patient : Patie
   src.item as socioDemo where (linkId = '4647259356106') then {
     socioDemo.item as environment where (linkId = '5491974639955') then {
 
-      // Geocoding locations (repeating group 3816475533472)
-      environment.item as geocodingItem where (linkId = '3816475533472') -> bundle.entry as locationEntry then {
-        geocodingItem -> locationEntry.resource = create('Location') as location then {
-          geocodingItem -> location.id = uuid() "location-id";
-          geocodingItem -> location.meta = create('Meta') as meta then {
-            geocodingItem -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-location' "location-profile";
-          } "location-meta";
+      // Identifiant saisi manuellement pour l'environnement (linkId 708100685391)
+      // Combiné à la date de recueil de chaque entrée répétée pour obtenir un id distinct par Location
+      environment.item as envIdItem where (linkId = '708100685391') then {
+        envIdItem.answer as envIdAns then {
 
-          // Position with latitude and longitude
-          geocodingItem -> location.position = create('LocationPosition') as pos then {
-            // Latitude (linkId 3709843054556)
-            geocodingItem.item as latItem where (linkId = '3709843054556') then {
-              latItem.answer as ans -> pos.latitude = (%ans.valueDecimal) "set-latitude";
-            } "extract-latitude";
-            // Longitude (linkId 7651448032665)
-            geocodingItem.item as longItem where (linkId = '7651448032665') then {
-              longItem.answer as ans -> pos.longitude = (%ans.valueDecimal) "set-longitude";
-            } "extract-longitude";
-          } "set-position";
+          // Geocoding locations (repeating group 3816475533472)
+          environment.item as geocodingItem where (linkId = '3816475533472') -> bundle.entry as locationEntry then {
+            geocodingItem -> locationEntry.resource = create('Location') as location then {
+              // id = Identifiant Environnement + date du recueil (linkId 1185653257776)
+              geocodingItem.item as geoDateItem where (linkId = '1185653257776') then {
+                geoDateItem.answer as geoDateAns -> location.id = (%envIdAns.valueString + '-' + %geoDateAns.valueDate.toString()) "location-id";
+              } "extract-location-id";
+              geocodingItem -> location.meta = create('Meta') as meta then {
+                geocodingItem -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-location' "location-profile";
+              } "location-meta";
 
-          // Extension for collection date (linkId 1185653257776)
-          /*geocodingItem.item as dateItem where (linkId = '1185653257776') then {
-            dateItem.answer as ans -> location.extension = create('Extension') as ext then {
-              ans -> ext.url = 'http://hl7.org/fhir/StructureDefinition/data-collection-date' "date-url";
-              ans -> ext.value = (%ans.valueDate) "date-value";
-            } "set-collection-date";
-          } "extract-collection-date";*/
+              // Position with latitude and longitude
+              geocodingItem -> location.position = create('LocationPosition') as pos then {
+                // Latitude (linkId 3709843054556)
+                geocodingItem.item as latItem where (linkId = '3709843054556') then {
+                  latItem.answer as ans -> pos.latitude = (%ans.valueDecimal) "set-latitude";
+                } "extract-latitude";
+                // Longitude (linkId 7651448032665)
+                geocodingItem.item as longItem where (linkId = '7651448032665') then {
+                  longItem.answer as ans -> pos.longitude = (%ans.valueDecimal) "set-longitude";
+                } "extract-longitude";
+              } "set-position";
 
-          location -> locationEntry.request as request then {
-            location -> request.method = 'POST' "set-method";
-            location -> request.url = 'Location' "set-url";
-          } "set-request";
-          location.id as locId -> locationEntry.fullUrl = append('urn:uuid:', locId) "set-fullUrl";
+              // Extension for collection date (linkId 1185653257776)
+              /*geocodingItem.item as dateItem where (linkId = '1185653257776') then {
+                dateItem.answer as ans -> location.extension = create('Extension') as ext then {
+                  ans -> ext.url = 'http://hl7.org/fhir/StructureDefinition/data-collection-date' "date-url";
+                  ans -> ext.value = (%ans.valueDate) "date-value";
+                } "set-collection-date";
+              } "extract-collection-date";*/
 
-        } "create-location";
-      } "geocoding-location-entry";
+              location -> locationEntry.request as request then {
+                location -> request.method = 'POST' "set-method";
+                location -> request.url = 'Location' "set-url";
+              } "set-request";
+              location.id as locId -> locationEntry.fullUrl = append('urn:uuid:', locId) "set-fullUrl";
 
-      // IRIS locations (repeating item 7621032273792)
-      environment.item as irisItem where (linkId = '7621032273792') then {
-        irisItem.answer as irisAnswer -> bundle.entry as locationEntry then {
-          irisAnswer -> locationEntry.resource = create('Location') as location then {
-            irisAnswer -> location.id = uuid() "location-id";
-            irisAnswer -> location.meta = create('Meta') as meta then {
-              irisAnswer -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-location' "location-profile";
-            } "location-meta";
+            } "create-location";
+          } "geocoding-location-entry";
 
-            // IRIS code as identifier
-            irisAnswer -> location.identifier = create('Identifier') as identifier then {
-              irisAnswer -> identifier.system = 'urn:oid:2.16.840.1.113883.2.8.1.5.5' "iris-system";
-              irisAnswer -> identifier.value = (%irisAnswer.valueCoding.code) "iris-value";
-            } "set-iris-identifier";
+          // IRIS locations (repeating item 7621032273792)
+          environment.item as irisItem where (linkId = '7621032273792') then {
+            irisItem.answer as irisAnswer -> bundle.entry as locationEntry then {
+              irisAnswer -> locationEntry.resource = create('Location') as location then {
+                // id = Identifiant Environnement + date du recueil (linkId 4999580038872)
+                irisAnswer.item as irisDateItem where (linkId = '4999580038872') then {
+                  irisDateItem.answer as irisDateAns -> location.id = (%envIdAns.valueString + '-' + %irisDateAns.valueDate.toString()) "location-id";
+                } "extract-location-id";
+                irisAnswer -> location.meta = create('Meta') as meta then {
+                  irisAnswer -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-location' "location-profile";
+                } "location-meta";
 
-            // Collection date from nested item (linkId 4999580038872)
-            /*irisAnswer.item as dateItem where (linkId = '4999580038872') then {
-              dateItem.answer as ans -> location.extension = create('Extension') as ext then {
-                ans -> ext.url = 'http://hl7.org/fhir/StructureDefinition/data-collection-date' "date-url";
-                ans -> ext.value = (%ans.valueDate) "date-value";
-              } "set-collection-date";
-            } "extract-iris-date";*/
+                // IRIS code as identifier
+                irisAnswer -> location.identifier = create('Identifier') as identifier then {
+                  irisAnswer -> identifier.system = 'urn:oid:2.16.840.1.113883.2.8.1.5.5' "iris-system";
+                  irisAnswer -> identifier.value = (%irisAnswer.valueCoding.code) "iris-value";
+                } "set-iris-identifier";
 
-            location -> locationEntry.request as request then {
-              location -> request.method = 'POST' "set-method";
-              location -> request.url = 'Location' "set-url";
-            } "set-request";
-            location.id as locId -> locationEntry.fullUrl = append('urn:uuid:', locId) "set-fullUrl";
+                // Collection date from nested item (linkId 4999580038872)
+                /*irisAnswer.item as dateItem where (linkId = '4999580038872') then {
+                  dateItem.answer as ans -> location.extension = create('Extension') as ext then {
+                    ans -> ext.url = 'http://hl7.org/fhir/StructureDefinition/data-collection-date' "date-url";
+                    ans -> ext.value = (%ans.valueDate) "date-value";
+                  } "set-collection-date";
+                } "extract-iris-date";*/
 
-          } "create-iris-location";
-        } "iris-location-entry";
-      } "process-iris";
+                location -> locationEntry.request as request then {
+                  location -> request.method = 'POST' "set-method";
+                  location -> request.url = 'Location' "set-url";
+                } "set-request";
+                location.id as locId -> locationEntry.fullUrl = append('urn:uuid:', locId) "set-fullUrl";
+
+              } "create-iris-location";
+            } "iris-location-entry";
+          } "process-iris";
+
+        } "navEnvIdAns";
+      } "extract-env-id";
 
     } "process-environment";
   } "process-sociodemographics-location";
@@ -254,7 +269,10 @@ group CreateEncounters(source src : QuestionnaireResponse, target patient : Pati
       pmsiItem -> encounter.period = create('Period') as period then {
         pmsiItem.item as startItem where (linkId = '5991443718282') then {
           startItem.answer as ans -> period.start = (%ans.valueDate) "set-start";
-          startItem.answer as ans -> encounter.id = (%pmsiItem.linkId + ' - ' + %ans.valueDate.toString()) "encounterId";
+          // Identifiant saisi manuellement (linkId 802652952373)
+          startItem.item as encIdItem where (linkId = '802652952373') then {
+            encIdItem.answer as encIdAns -> encounter.id = (%encIdAns.valueString) "set-encounter-id";
+          } "extract-encounter-id";
         } "extract-start";
         pmsiItem.item as endItem where (linkId = '6114780320846') then {
           endItem.answer as ans -> period.end = (%ans.valueDate) "set-end";
@@ -296,7 +314,10 @@ group CreateConditions(source pmsiItem, target patient : Patient, target encount
   // Diagnostics group (linkId 9391816419630) - can repeat
   pmsiItem.item as diagGroup where (linkId = '9391816419630') -> bundle.entry as conditionEntry then {
     diagGroup -> conditionEntry.resource = create('Condition') as condition then {
-      diagGroup -> condition.id = (%diagGroup.linkId + ' - ' + %diagGroup.item.where(linkId = '5505101189372').answer.valueString + ' - ' + %diagGroup.item.where(linkId = '7114466839467').answer.valueDate.toString()) "condition-id";
+      // Identifiant saisi manuellement (linkId 123759733087)
+      diagGroup.item as condIdItem where (linkId = '123759733087') then {
+        condIdItem.answer as condIdAns -> condition.id = (%condIdAns.valueString) "set-condition-id";
+      } "extract-condition-id";
       diagGroup -> condition.meta = create('Meta') as meta then {
         diagGroup -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-condition' "condition-profile";
       } "condition-meta";
@@ -343,7 +364,10 @@ group CreateProcedures(source pmsiItem, target patient : Patient, target encount
   // Actes group (linkId 591926901726) - can repeat
   pmsiItem.item as acteGroup where (linkId = '591926901726') -> bundle.entry as procedureEntry then {
     acteGroup -> procedureEntry.resource = create('Procedure') as procedure then {
-      acteGroup -> procedure.id = (%acteGroup.linkId + ' - ' + %acteGroup.item.where(linkId = '5066866286682').answer.valueDateTime.toString()) "procedure-id";
+      // Identifiant saisi manuellement (linkId 151762387793)
+      acteGroup.item as procIdItem where (linkId = '151762387793') then {
+        procIdItem.answer as procIdAns -> procedure.id = (%procIdAns.valueString) "set-procedure-id";
+      } "extract-procedure-id";
       acteGroup -> procedure.meta = create('Meta') as meta then {
         acteGroup -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-procedure' "procedure-profile";
       } "procedure-meta";
@@ -393,7 +417,12 @@ group CreateMedicationRequests(source src : QuestionnaireResponse, target patien
     // Médicament prescrit (linkId 156631794800) - repeating
     medExpoGroup.item as prescribedGroup where (linkId = '156631794800') -> bundle.entry as medReqEntry then {
       prescribedGroup -> medReqEntry.resource = create('MedicationRequest') as medReq then {
-        prescribedGroup -> medReq.id = (%prescribedGroup.linkId + ' - ' + %prescribedGroup.answer.valueString) "medreq-id";
+        // Identifiant saisi manuellement (linkId 145920953908)
+        prescribedGroup.answer as prescribedMedForId then {
+          prescribedMedForId.item as medReqIdItem where (linkId = '145920953908') then {
+            medReqIdItem.answer as medReqIdAns -> medReq.id = (%medReqIdAns.valueString) "set-medreq-id";
+          } "extract-medreq-id";
+        } "navPrescribedMedForId";
         // fullurl
         src -> medReq.id as medReqId, medReqEntry.fullUrl = append('urn:uuid:', medReqId) "set-fullUrl";
 
@@ -417,26 +446,6 @@ group CreateMedicationRequests(source src : QuestionnaireResponse, target patien
             medReqC.display = (%prescribedMedication.valueString) "setAtcCoding";
           } "navAtcItem";
         } "navPrescribedMedication";
-        
-        // Create Medication resource and reference
-/*        prescribedGroup -> bundle.entry as medEntry then {
-          prescribedGroup -> medEntry.resource = create('Medication') as medication then {
-            prescribedGroup -> medication.id = uuid() "med-id";
-
-            // ATC code from nested items
-            prescribedGroup.item as atcItem where (linkId.contains('ATC')) then {
-              atcItem.answer as ans -> medication.code = create('CodeableConcept') as code then {
-                ans -> code.coding = (%ans.valueCoding) "set-atc-coding";
-              } "set-med-code";
-            } "extract-atc";
-
-            prescribedGroup -> medication.id as medId, medEntry.fullUrl = append('urn:uuid:', medId) "set-fullUrl";
-
-            // Link MedicationRequest to Medication
-            prescribedGroup -> medication.id as medId, medReq.medication = create('Reference') as ref, ref.reference = append('Medication/', medId) "set-medication-reference";
-
-          } "create-medication";
-        } "medication-entry"; */
 
         // Dosage instructions
         prescribedGroup -> medReq.dosageInstruction = create('Dosage') as dosage then {
@@ -478,7 +487,12 @@ group CreateMedicationAdministrations(source src : QuestionnaireResponse, target
     // Médicament administré (linkId 266852453304) - repeating
     medExpoGroup.item as adminGroup where (linkId = '266852453304') -> bundle.entry as medAdminEntry then {
       adminGroup -> medAdminEntry.resource = create('MedicationAdministration') as medAdmin then {
-        adminGroup -> medAdmin.id = (%adminGroup.linkId + ' - ' + %adminGroup.answer.valueString + ' - ' + %medExpoGroup.item.where(linkId='5720103839343').item.where(linkId='1443558617577').answer.valueDateTime.toString()) "medadmin-id";
+        // Identifiant saisi manuellement (linkId 870029232684)
+        adminGroup.answer as administeredMedForId then {
+          administeredMedForId.item as medAdminIdItem where (linkId = '870029232684') then {
+            medAdminIdItem.answer as medAdminIdAns -> medAdmin.id = (%medAdminIdAns.valueString) "set-medadmin-id";
+          } "extract-medadmin-id";
+        } "navAdministeredMedForId";
         // fullurl
         src -> medAdmin.id as medAdminId, medAdminEntry.fullUrl = append('urn:uuid:', medAdminId) "set-fullUrl";
 
@@ -501,27 +515,6 @@ group CreateMedicationAdministrations(source src : QuestionnaireResponse, target
             medAdminC.display = (%administeredMedication.valueString) "setAtcCoding";
           } "navAtcItem";
         } "navadministeredMedication";
-
-
-        // Create Medication resource and reference
-/*        adminGroup -> bundle.entry as medEntry then {
-          adminGroup -> medEntry.resource = create('Medication') as medication then {
-            adminGroup -> medication.id = uuid() "med-id";
-
-            // ATC code from nested items
-            adminGroup.item as atcItem where (linkId.contains('ATC')) then {
-              atcItem.answer as ans -> medication.code = create('CodeableConcept') as code then {
-                ans -> code.coding = (%ans.valueCoding) "set-atc-coding";
-              } "set-med-code";
-            } "extract-atc";
-
-            adminGroup -> medication.id as medId, medEntry.fullUrl = append('Medication/', medId) "set-fullUrl";
-
-            // Link MedicationAdministration to Medication
-            adminGroup -> medication.id as medId, medAdmin.medication = create('Reference') as ref, ref.reference = append('urn:uuid:', medId) "set-medication-reference";
-
-          } "create-medication";
-        } "medication-entry"; */
 
         // Dosage (FHIR)
         adminGroup -> medAdmin.dosage as dosage then {
@@ -576,7 +569,10 @@ group CreateVitalSignObservations(source src : QuestionnaireResponse, target pat
       dossierGroup.item as heightItem where (linkId = '4846902346416') then {
         heightItem.answer as ans -> bundle.entry as obsEntry then {
           ans -> obsEntry.resource = create('Observation') as obs then {
-            ans -> obs.id = (%heightItem.linkId + ' - ' + %heightItem.answer.item.where(linkId = '941821315470').answer.valuDate.toString()) "obs-id";
+            // Identifiant saisi manuellement (linkId 854021250495)
+            ans.item as heightIdItem where (linkId = '854021250495') then {
+              heightIdItem.answer as heightIdAns -> obs.id = (%heightIdAns.valueString) "set-obs-id";
+            } "extract-height-id";
             ans -> obs.id as obsId, obsEntry.fullUrl = append('urn:uuid:', obsId) "set-fullUrl";
             ans -> obs.meta = create('Meta') as meta then {
               ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-body-height' "obs-profile";
@@ -608,7 +604,10 @@ group CreateVitalSignObservations(source src : QuestionnaireResponse, target pat
       dossierGroup.item as weightItem where (linkId = '451513217936') then {
         weightItem.answer as ans -> bundle.entry as obsEntry then {
           ans -> obsEntry.resource = create('Observation') as obs then {
-            ans -> obs.id = (%weightItem.linkId + ' - ' + %weightItem.answer.item.where(linkId = '151269044052').answer.valuDate.toString()) "obs-id";
+            // Identifiant saisi manuellement (linkId 199208534521)
+            ans.item as weightIdItem where (linkId = '199208534521') then {
+              weightIdItem.answer as weightIdAns -> obs.id = (%weightIdAns.valueString) "set-obs-id";
+            } "extract-weight-id";
             ans -> obs.id as obsId, obsEntry.fullUrl = append('urn:uuid:', obsId) "set-fullUrl";
             ans -> obs.meta = create('Meta') as meta then {
               ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-body-weight' "obs-profile";
@@ -642,7 +641,15 @@ group CreateVitalSignObservations(source src : QuestionnaireResponse, target pat
           dossierGroup.item as diaItem where (linkId = '848797127998') then {
             diaItem.answer as diaAns -> bundle.entry as obsEntry then {
               sysAns -> obsEntry.resource = create('Observation') as obs then {
-                sysAns -> obs.id = (%sysItem.linkId + ' - ' + %sysItem.answer.item.where(linkId = '987654638442').answer.valueDate.toString()) "obs-id";
+                // Identifiant saisi manuellement (linkId 734815456784, champ de la mesure systolique)
+                // Identifiants saisis manuellement (systolique 734815456784 + diastolique 926430936118), combinés pour former l'id de l'observation combinée
+                sysAns.item as sysIdItem where (linkId = '734815456784') then {
+                  sysIdItem.answer as sysIdAns then {
+                    diaAns.item as diaIdItem where (linkId = '926430936118') then {
+                      diaIdItem.answer as diaIdAns -> obs.id = (%sysIdAns.valueString + '-' + %diaIdAns.valueString) "set-obs-id";
+                    } "extract-dia-id";
+                  } "navSysIdAns";
+                } "extract-sys-id";
                 sysAns -> obs.id as obsId, obsEntry.fullUrl = append('urn:uuid:', obsId) "set-fullUrl";
                 sysAns -> obs.meta = create('Meta') as meta then {
                   sysAns -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-blood-pressure' "obs-profile";
@@ -828,7 +835,10 @@ group CreateLaboratoryObservations(source src : QuestionnaireResponse, target pa
 group CreateLabObservation(source ans, source parentItem, target patient : Patient, target bundle : Bundle) {
   ans -> bundle.entry as obsEntry then {
     ans -> obsEntry.resource = create('Observation') as obs then {
-      ans -> obs.id = (%parentItem.linkId + ' - ' + %parentItem.text + ' - ' + %ans.item.where(text='Date et heure du prélèvement').answer.valueDateTime.toString()) "obs-id";
+      // Identifiant saisi manuellement (champ "Identifiant" propre à chaque test, linkId variable selon l'analyte)
+      ans.item as labIdItem where (text = 'Identifiant') then {
+        labIdItem.answer as labIdAns -> obs.id = (%labIdAns.valueString) "set-obs-id";
+      } "extract-obs-id";
       ans -> obs.id as obsId, obsEntry.fullUrl = append('urn:uuid:', obsId) "set-fullUrl";
       ans -> obs.meta = create('Meta') as meta then {
         ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/dm-observation-laboratory-generic' "obs-profile";
