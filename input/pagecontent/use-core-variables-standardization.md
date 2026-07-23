@@ -174,7 +174,7 @@ Fait à Port Royal le 18 janvier 2024
 
 #### Cas 4 : Choc cardiogénique
 
-[Jean Moreau, né le 15 août 1961](Patient-05584e1b-3435-415a-af33-aad1fca40fad.html), a été [hospitalisé du 5 au 7 novembre 2023](Encounter-b2cde568-adbf-48b3-bcd9-dd8c7ccf4f7b..html) dans le service de réanimation médical de l'hôpital Bichat pour un [choc cardiogénique](Condition-ebecedd7-6f2e-483d-90ca-06d061b983d2.html).
+[Jean Moreau, né le 15 août 1961](Patient-05584e1b-3435-415a-af33-aad1fca40fad.html), a été [hospitalisé du 5 au 7 novembre 2023](Encounter-b2cde568-adbf-48b3-bcd9-dd8c7ccf4f7b.html) dans le service de réanimation médical de l'hôpital Bichat pour un [choc cardiogénique](Condition-ebecedd7-6f2e-483d-90ca-06d061b983d2.html).
 
 Le patient, âgé de 62 ans, est admis en urgence en réanimation médicale de l'hôpital Bichat le 5 novembre 2023 à 21h00 transporté par SAMU dans un contexte de [détresse respiratoire aiguë](Condition-3353fd19-881f-44b2-8cc2-e33fee93e591.html). Il a en effet présenté une douleur thoracique intense d'apparition brutale survenue au domicile 30 min plus tôt, associée à une dyspnée majeure et des sueurs profuses. Sa compagne a d'emblée contacté les secours.
 
@@ -189,7 +189,7 @@ La prise en charge immédiate a consisté en :
 
 La patiente transférée en dans le service de réanimation médicale de l'hôpital Bichat.
 
-Dans ses antécédents, on note un [carcinome épidermoïde pulmonaire métastatique (plève)](Condition-946c7921-1a47-4c80-87b1-724dd85fac9f.html) diagnostiqué en mars 2023 pour lequel le patient a été perdu de vue à l'issue du diagnostic, une notion [d'angor d'effort non exploré](Condition-21031872-ed5aca09-78b7-4eb4-aa9e-e0315608f28d.html), un [diabète de type 2](Condition-cb6ff62e-f886-4c22-8b31-98cb385f4e75.html) non traité et non suivi.
+Dans ses antécédents, on note un [carcinome épidermoïde pulmonaire métastatique (plève)](Condition-946c7921-1a47-4c80-87b1-724dd85fac9f.html) diagnostiqué en mars 2023 pour lequel le patient a été perdu de vue à l'issue du diagnostic, une notion [d'angor d'effort non exploré](Condition-ed5aca09-78b7-4eb4-aa9e-e0315608f28d.html), un [diabète de type 2](Condition-cb6ff62e-f886-4c22-8b31-98cb385f4e75.html) non traité et non suivi.
 
 Par ailleurs, le patient est [fumeur actif](à faire) avec une consommation de 1 paquet par jour depuis 30 ans et a une [consommation quotidienne d'alcool à 3 verres de vin par jour](à faire). [Pas d'activité physique](à faire).
 
@@ -331,7 +331,7 @@ Bilan biologique à l'admission :
   - Artère circonflexe : pas de sténose significative
 
 Décision d'opter pour un traitement médical optimal dans un premier temps avec réévaluation clinique et fonctionnelle rapprochée.
-Introduction de [Bisoprolol 5 mg](MedicationRequest-9cd48957-076c-4fcf-b917-2f6574499835) , [Ramipril 5 mg](MedicationRequest-e40aa35e-22c3-4e08-8fbd-b8e66c5c835e.html), [Simvastatine 20 mg](MedicationRequest-59e78c89-8d66-4e9c-8443-835847840a48.html) et [Aspirine 75 mg](MedicationRequest-42223c9d-b1e7-474d-8f10-631f8e099708.html) à partir du 6 janvier 2024.
+Introduction de [Bisoprolol 5 mg](MedicationRequest-9cd48957-076c-4fcf-b917-2f6574499835.html) , [Ramipril 5 mg](MedicationRequest-e40aa35e-22c3-4e08-8fbd-b8e66c5c835e.html), [Simvastatine 20 mg](MedicationRequest-59e78c89-8d66-4e9c-8443-835847840a48.html) et [Aspirine 75 mg](MedicationRequest-42223c9d-b1e7-474d-8f10-631f8e099708.html) à partir du 6 janvier 2024.
 
 En cas d'aggravation ou de persistance, il y aura une indication formelle à un geste de revascularisation.
 
@@ -362,7 +362,7 @@ Fait à Georges-Pompidou le 7 janvier 2024
 
 #### Cas 7 : État de mal migraineux
 
-[Elena Garcia, née le 13 novembre 1985](Patient-00c2b477-4649-46af-aa82-2337558a1ec8), [hospitalisée du 14 au 16 janvier 2024](Encounter-775e7473-7fa0-4950-94fe-4bd040437da8) dans le service de neurologie de l'hôpital Tenon, unité neuro-vasculaire, pour un céphalées inhabituelles.
+[Elena Garcia, née le 13 novembre 1985](Patient-00c2b477-4649-46af-aa82-2337558a1ec8.html), [hospitalisée du 14 au 16 janvier 2024](Encounter-775e7473-7fa0-4950-94fe-4bd040437da8.html) dans le service de neurologie de l'hôpital Tenon, unité neuro-vasculaire, pour un céphalées inhabituelles.
 
 Patiente de 38 ans se présentant aux urgences de l'hôpital Tenon le 14 janvier 2024 en début de matinée pour une céphalée sévère, continue, évoluant depuis 4 jours sans amélioration malgré la prise répétée d'antalgiques à domicile (paracétamol, ibuprofène).
 
@@ -378,7 +378,7 @@ Antécédents médicaux :
 
 Examen clinique à l'admission :
 
-Fréquence cardiaque : 78 /min (régulière) [Pression artérielle 120/75 mmHg](Observation-ee142c5d-8a63-4b13-a68b-51fa4c2ae7e6) (normale) Température : 36.7°C
+Fréquence cardiaque : 78 /min (régulière) [Pression artérielle 120/75 mmHg](Observation-ee142c5d-8a63-4b13-a68b-51fa4c2ae7e6.html) (normale) Température : 36.7°C
 
 Examen neurologique :
 
@@ -478,7 +478,7 @@ Les suites opératoires sont simples avec reprise d'appui possible à J1.
 
 Antalgie multimodale post-opératoire par [Paracetamol 1 g](MedicationRequest-bed770d1-5a51-446e-b55e-6f2ca3d06985.html), [Nefopam 20 mg](à faire), [Skenan 10 mg](à faire) et [Actiskenan 5 mg](à faire).
 
-Introduction d'une anticoagulation préventive par [Enoxaparine 4000 UI par jour par voie sous cutanée](MedicationRequest-474a076f-7345-4d58-bd96-3439db227ae1) le 11 janvier, à poursuivre pendant 1 mois.
+Introduction d'une anticoagulation préventive par [Enoxaparine 4000 UI par jour par voie sous cutanée](MedicationRequest-474a076f-7345-4d58-bd96-3439db227ae1.html) le 11 janvier, à poursuivre pendant 1 mois.
 
 Sur le plan de la rééducation :
 
@@ -544,8 +544,8 @@ Elle sera reconvoquée pour la prochaine ponction évacuatrice.
 
 Renouvellement de la prescription :
 
- - [Furosemide 40 mg, 1 comprimé le matin et le midi](MedicationRequest-cdf30d04-f8f8-4394-80b1-6272019086a3)
- - [Spironolactone 25 mg, 1 comprimé le matin](MedicationRequest-68dcf522-b285-4d25-85ba-539e734e618e)
+ - [Furosemide 40 mg, 1 comprimé le matin et le midi](MedicationRequest-cdf30d04-f8f8-4394-80b1-6272019086a3.html)
+ - [Spironolactone 25 mg, 1 comprimé le matin](MedicationRequest-68dcf522-b285-4d25-85ba-539e734e618e.html)
 
 Fait à Beaujon le 15 janvier 2024
 
