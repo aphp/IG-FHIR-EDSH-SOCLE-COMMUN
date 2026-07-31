@@ -16,6 +16,15 @@
             {
               "answer": [
                 {
+                  "valueString": "cas3-pat-01"
+                }
+              ],
+              "linkId": "236790258446",
+              "text": "Identifiant"
+            },
+            {
+              "answer": [
+                {
                   "valueString": "Leroy"
                 }
               ],
@@ -34,7 +43,7 @@
             {
               "answer": [
                 {
-                  "valueString": "294123876543210"
+                  "valueString": "294123876543281"
                 }
               ],
               "linkId": "5711960356160",
@@ -64,6 +73,15 @@
           "linkId": "5491974639955",
           "text": "Environnement",
           "item": [
+            {
+              "answer": [
+                {
+                  "valueString": "cas3-env-01"
+                }
+              ],
+              "linkId": "708100685391",
+              "text": "Identifiant"
+            },
             {
               "linkId": "3816475533472",
               "text": "Géocodage",
@@ -181,6 +199,15 @@
             {
               "answer": [
                 {
+                  "valueString": "cas3-diag-01"
+                }
+              ],
+              "linkId": "123759733087",
+              "text": "Identifiant"
+            },
+            {
+              "answer": [
+                {
                   "valueDate": "2024-01-15"
                 }
               ],
@@ -214,6 +241,15 @@
             {
               "answer": [
                 {
+                  "valueString": "cas3-diag-02"
+                }
+              ],
+              "linkId": "123759733087",
+              "text": "Identifiant"
+            },
+            {
+              "answer": [
+                {
                   "valueDate": "2024-01-15"
                 }
               ],
@@ -241,9 +277,60 @@
           ]
         },
         {
+          "linkId": "9391816419630",
+          "text": "Diagnostics",
+          "item": [
+            {
+              "answer": [
+                {
+                  "valueString": "cas3-diag-03"
+                }
+              ],
+              "linkId": "123759733087",
+              "text": "Identifiant"
+            },
+            {
+              "answer": [
+                {
+                  "valueDate": "2024-01-15"
+                }
+              ],
+              "linkId": "7114466839467",
+              "text": "Date du recueil de l'information"
+            },
+            {
+              "answer": [
+                {
+                  "valueString": "DA"
+                }
+              ],
+              "linkId": "6427586743735",
+              "text": "Type de diagnostic"
+            },
+            {
+              "answer": [
+                {
+                  "valueString": "Absence de déchirure périnéale significative"
+                }
+              ],
+              "linkId": "5505101189372",
+              "text": "Diagnostique"
+            }
+          ]
+        },
+        {
           "linkId": "591926901726",
           "text": "Actes",
           "item": [
+            {
+              "answer": [
+                {
+                  "valueString": "cas3-acte-01"
+                }
+              ],
+              "linkId": "151762387793",
+              "text": "Identifiant"
+            },
             {
               "answer": [
                 {
@@ -274,9 +361,146 @@
           ]
         },
         {
+          "linkId": "591926901726",
+          "text": "Actes",
+          "item": [
+            {
+              "answer": [
+                {
+                  "valueString": "cas3-acte-02"
+                }
+              ],
+              "linkId": "151762387793",
+              "text": "Identifiant"
+            },
+            {
+              "answer": [
+                {
+                  "valueDate": "2024-01-15"
+                }
+              ],
+              "linkId": "9436509453137",
+              "text": "Date du recueil de l'information"
+            },
+            {
+              "answer": [
+                {
+                  "valueDateTime": "2024-01-15T06:30:00.000Z"
+                }
+              ],
+              "linkId": "5066866286682",
+              "text": "Date de l'acte"
+            },
+            {
+              "answer": [
+                {
+                  "valueString": "AFLB010"
+                }
+              ],
+              "linkId": "7758110033600",
+              "text": "Acte"
+            }
+          ]
+        },
+        {
+          "linkId": "591926901726",
+          "text": "Actes",
+          "item": [
+            {
+              "answer": [
+                {
+                  "valueString": "cas3-acte-03"
+                }
+              ],
+              "linkId": "151762387793",
+              "text": "Identifiant"
+            },
+            {
+              "answer": [
+                {
+                  "valueDate": "2024-01-15"
+                }
+              ],
+              "linkId": "9436509453137",
+              "text": "Date du recueil de l'information"
+            },
+            {
+              "answer": [
+                {
+                  "valueDateTime": "2024-01-15T08:35:00.000Z"
+                }
+              ],
+              "linkId": "5066866286682",
+              "text": "Date de l'acte"
+            },
+            {
+              "answer": [
+                {
+                  "valueString": "JMCA002"
+                }
+              ],
+              "linkId": "7758110033600",
+              "text": "Acte"
+            }
+          ]
+        },
+        {
+          "linkId": "591926901726",
+          "text": "Actes",
+          "item": [
+            {
+              "answer": [
+                {
+                  "valueString": "cas3-acte-04"
+                }
+              ],
+              "linkId": "151762387793",
+              "text": "Identifiant"
+            },
+            {
+              "answer": [
+                {
+                  "valueDate": "2024-01-18"
+                }
+              ],
+              "linkId": "9436509453137",
+              "text": "Date du recueil de l'information"
+            },
+            {
+              "answer": [
+                {
+                  "valueDateTime": "2024-01-18T00:00:00.000Z"
+                }
+              ],
+              "linkId": "5066866286682",
+              "text": "Date de l'acte"
+            },
+            {
+              "answer": [
+                {
+                  "valueString": "Rééducation périnéale"
+                }
+              ],
+              "linkId": "7758110033600",
+              "text": "Acte"
+            }
+          ]
+        },
+        {
           "answer": [
             {
-              "valueDate": "2024-01-15"
+              "valueDate": "2024-01-15",
+              "item": [
+                {
+                  "answer": [
+                    {
+                      "valueString": "cas3-sej-01"
+                    }
+                  ],
+                  "linkId": "802652952373",
+                  "text": "Identifiant"
+                }
+              ]
             }
           ],
           "linkId": "5991443718282",
@@ -329,6 +553,15 @@
                     "unit": "umol/L"
                   },
                   "item": [
+                    {
+                      "answer": [
+                        {
+                          "valueString": "cas3-bio-creat-01"
+                        }
+                      ],
+                      "linkId": "325284450289",
+                      "text": "Identifiant"
+                    },
                     {
                       "answer": [
                         {
@@ -403,6 +636,15 @@
                     {
                       "answer": [
                         {
+                          "valueString": "cas3-bio-hb-01"
+                        }
+                      ],
+                      "linkId": "482444872597",
+                      "text": "Identifiant"
+                    },
+                    {
+                      "answer": [
+                        {
                           "valueString": "718-7"
                         }
                       ],
@@ -462,9 +704,18 @@
                 {
                   "valueQuantity": {
                     "value": 285,
-                    "unit": "10e9/L"
+                    "unit": "10*9/L"
                   },
                   "item": [
+                    {
+                      "answer": [
+                        {
+                          "valueString": "cas3-bio-plq-01"
+                        }
+                      ],
+                      "linkId": "184190731948",
+                      "text": "Identifiant"
+                    },
                     {
                       "answer": [
                         {
@@ -497,7 +748,7 @@
                         {
                           "valueQuantity": {
                             "value": 150,
-                            "unit": "10e9/L"
+                            "unit": "10*9/L"
                           }
                         }
                       ],
@@ -509,7 +760,7 @@
                         {
                           "valueQuantity": {
                             "value": 450,
-                            "unit": "10e9/L"
+                            "unit": "10*9/L"
                           }
                         }
                       ],
@@ -535,6 +786,15 @@
             {
               "valueString": "Acide folique 5mg",
               "item": [
+                {
+                  "answer": [
+                    {
+                      "valueString": "cas3-medpresc-01"
+                    }
+                  ],
+                  "linkId": "145920953908",
+                  "text": "Identifiant"
+                },
                 {
                   "linkId": "1923143398283",
                   "text": "codification",
@@ -580,71 +840,6 @@
               "text": "Date de fin de la prescription"
             }
           ]
-        },
-        {
-          "linkId": "266852453304",
-          "text": "Médicament administré",
-          "answer": [
-            {
-              "valueString": "Acide folique 5mg",
-              "item": [
-                {
-                  "linkId": "631972144976",
-                  "text": "codification",
-                  "answer": [
-                    {
-                      "valueString": "B03BB01"
-                    }
-                  ]
-                },
-                {
-                  "answer": [
-                    {
-                      "valueString": "20053000"
-                    }
-                  ],
-                  "linkId": "811931484859",
-                  "text": "Voie d'administration"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "linkId": "5720103839343",
-          "text": "Dosage",
-          "item": [
-            {
-              "answer": [
-                {
-                  "valueQuantity": {
-                    "value": 5,
-                    "unit": "mg"
-                  }
-                }
-              ],
-              "linkId": "4765772671997",
-              "text": "Quantité administrée"
-            },
-            {
-              "answer": [
-                {
-                  "valueDateTime": "2024-01-16T07:00:00.000Z"
-                }
-              ],
-              "linkId": "1443558617577",
-              "text": "Date et heure de début d'administration"
-            },
-            {
-              "answer": [
-                {
-                  "valueDateTime": "2024-01-16T07:05:00.000Z"
-                }
-              ],
-              "linkId": "780829110731",
-              "text": "Date et heure de fin d'administration"
-            }
-          ]
         }
       ]
     },
@@ -666,6 +861,15 @@
                     "unit": "cm"
                   },
                   "item": [
+                    {
+                      "answer": [
+                        {
+                          "valueString": "cas3-exam-taille-01"
+                        }
+                      ],
+                      "linkId": "854021250495",
+                      "text": "Identifiant"
+                    },
                     {
                       "answer": [
                         {
@@ -692,6 +896,15 @@
                     {
                       "answer": [
                         {
+                          "valueString": "cas3-exam-poids-01"
+                        }
+                      ],
+                      "linkId": "199208534521",
+                      "text": "Identifiant"
+                    },
+                    {
+                      "answer": [
+                        {
                           "valueDate": "2024-01-15"
                         }
                       ],
@@ -710,6 +923,15 @@
                     "unit": "mm[Hg]"
                   },
                   "item": [
+                    {
+                      "answer": [
+                        {
+                          "valueString": "cas3-exam-tas-01"
+                        }
+                      ],
+                      "linkId": "734815456784",
+                      "text": "Identifiant"
+                    },
                     {
                       "answer": [
                         {
@@ -733,6 +955,15 @@
                     "unit": "mm[Hg]"
                   },
                   "item": [
+                    {
+                      "answer": [
+                        {
+                          "valueString": "cas3-exam-tad-01"
+                        }
+                      ],
+                      "linkId": "926430936118",
+                      "text": "Identifiant"
+                    },
                     {
                       "answer": [
                         {

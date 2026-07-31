@@ -1,0 +1,33 @@
+{
+  "resourceType": "Condition",
+  "id": "cas8-diag-01",
+  "meta": {
+    "profile": [
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-condition"
+    ]
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/CodeSystem/pmsi-mco-diag-type",
+          "code": "DP"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "code": "S72.1"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/cas8-pat-01"
+  },
+  "encounter": {
+    "reference": "Encounter/cas8-sej-01"
+  },
+  "recordedDate": "2024-01-11"
+}

@@ -1,0 +1,33 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "cas5-medpresc-04",
+  "meta": {
+    "profile": [
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-medication-request"
+    ]
+  },
+  "status": "completed",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "code": "B05XA03",
+        "display": "NaCl 0.9% 1L/jour"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/cas5-pat-01"
+  },
+  "dosageInstruction": [
+    {
+      "timing": {
+        "repeat": {
+          "boundsPeriod": {
+            "start": "2024-01-12"
+          }
+        }
+      }
+    }
+  ]
+}

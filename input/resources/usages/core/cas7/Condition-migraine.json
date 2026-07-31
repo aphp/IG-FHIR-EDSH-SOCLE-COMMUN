@@ -1,0 +1,33 @@
+{
+  "resourceType": "Condition",
+  "id": "cas7-diag-02",
+  "meta": {
+    "profile": [
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-condition"
+    ]
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/CodeSystem/pmsi-mco-diag-type",
+          "code": "DA"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "code": "G43.9"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/cas7-pat-01"
+  },
+  "encounter": {
+    "reference": "Encounter/cas7-sej-01"
+  },
+  "recordedDate": "2024-01-14"
+}

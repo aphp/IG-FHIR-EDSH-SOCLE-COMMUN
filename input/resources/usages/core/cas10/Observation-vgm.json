@@ -1,0 +1,53 @@
+{
+  "resourceType": "Observation",
+  "id": "cas10-bio-vgm-01",
+  "meta": {
+    "profile": [
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-generic"
+    ]
+  },
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "code": "30428-7"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/cas10-pat-01"
+  },
+  "effectiveDateTime": "2024-01-16T07:45:34.167Z",
+  "valueQuantity": {
+    "value": 87,
+    "unit": "fL",
+    "system": "http://unitsofmeasure.org",
+    "code": "fL"
+  },
+  "referenceRange": [
+    {
+      "low": {
+        "system": "http://unitsofmeasure.org",
+        "code": "fL",
+        "value": 80,
+        "unit": "fL"
+      },
+      "high": {
+        "system": "http://unitsofmeasure.org",
+        "code": "fL",
+        "value": 100,
+        "unit": "fL"
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "resourceType": "Procedure",
+  "id": "cas4-acte-04",
+  "meta": {
+    "profile": [
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-procedure"
+    ]
+  },
+  "status": "completed",
+  "code": {
+    "coding": [
+      {
+        "code": "EPLF002"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/cas4-pat-01"
+  },
+  "encounter": {
+    "reference": "Encounter/cas4-sej-01"
+  },
+  "performedDateTime": "2023-11-05T22:00:00.000Z"
+}

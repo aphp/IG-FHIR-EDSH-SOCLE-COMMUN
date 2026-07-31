@@ -1,0 +1,41 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "cas10-medpresc-01",
+  "meta": {
+    "profile": [
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-medication-request"
+    ]
+  },
+  "status": "active",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "code": "R03AL04",
+        "display": "Ultibro Breezhaler"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/cas10-pat-01"
+  },
+  "dosageInstruction": [
+    {
+      "timing": {
+        "repeat": {
+          "boundsPeriod": {
+            "start": "2024-01-16",
+            "end": "2024-01-26"
+          }
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "code": "20020000"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "cas8-medpresc-06",
+  "meta": {
+    "profile": [
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-medication-request"
+    ]
+  },
+  "status": "active",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "code": "N02AA01",
+        "display": "Actiskenan"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/cas8-pat-01"
+  },
+  "dosageInstruction": [
+    {
+      "timing": {
+        "repeat": {
+          "boundsPeriod": {
+            "start": "2024-01-11"
+          }
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "code": "20053000"
+          }
+        ]
+      }
+    }
+  ]
+}

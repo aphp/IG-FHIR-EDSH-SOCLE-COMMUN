@@ -1,0 +1,24 @@
+{
+  "resourceType": "Procedure",
+  "id": "cas10-acte-02",
+  "meta": {
+    "profile": [
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-procedure"
+    ]
+  },
+  "status": "completed",
+  "code": {
+    "coding": [
+      {
+        "code": "ZBQK002"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/cas10-pat-01"
+  },
+  "encounter": {
+    "reference": "Encounter/cas10-sej-01"
+  },
+  "performedDateTime": "2024-01-16T09:00:00.000Z"
+}

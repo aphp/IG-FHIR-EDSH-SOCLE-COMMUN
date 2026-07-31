@@ -1,0 +1,40 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "cas7-medpresc-03",
+  "meta": {
+    "profile": [
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-medication-request"
+    ]
+  },
+  "status": "active",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "code": "A03FA01",
+        "display": "Metoclopramide"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/cas7-pat-01"
+  },
+  "dosageInstruction": [
+    {
+      "timing": {
+        "repeat": {
+          "boundsPeriod": {
+            "start": "2024-01-14"
+          }
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "code": "20053000"
+          }
+        ]
+      }
+    }
+  ]
+}

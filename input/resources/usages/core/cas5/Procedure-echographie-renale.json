@@ -1,0 +1,24 @@
+{
+  "resourceType": "Procedure",
+  "id": "cas5-acte-01",
+  "meta": {
+    "profile": [
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-procedure"
+    ]
+  },
+  "status": "completed",
+  "code": {
+    "coding": [
+      {
+        "code": "EDQJ900"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/cas5-pat-01"
+  },
+  "encounter": {
+    "reference": "Encounter/cas5-sej-01"
+  },
+  "performedDateTime": "2024-01-12T00:00:00.000Z"
+}

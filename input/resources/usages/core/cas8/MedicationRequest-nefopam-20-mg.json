@@ -1,0 +1,40 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "cas8-medpresc-04",
+  "meta": {
+    "profile": [
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-medication-request"
+    ]
+  },
+  "status": "active",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "code": "N02BG06",
+        "display": "Nefopam"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/cas8-pat-01"
+  },
+  "dosageInstruction": [
+    {
+      "timing": {
+        "repeat": {
+          "boundsPeriod": {
+            "start": "2024-01-11"
+          }
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "code": "20053000"
+          }
+        ]
+      }
+    }
+  ]
+}

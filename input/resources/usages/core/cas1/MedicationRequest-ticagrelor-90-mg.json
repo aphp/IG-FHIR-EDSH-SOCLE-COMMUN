@@ -1,0 +1,41 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "cas1-medpresc-03",
+  "meta": {
+    "profile": [
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-medication-request"
+    ]
+  },
+  "status": "active",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "code": "B01AC24",
+        "display": "Ticagrelor 90mg"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/cas1-pat-01"
+  },
+  "dosageInstruction": [
+    {
+      "timing": {
+        "repeat": {
+          "boundsPeriod": {
+            "start": "2024-01-11",
+            "end": "2025-01-12"
+          }
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "code": "20053000"
+          }
+        ]
+      }
+    }
+  ]
+}

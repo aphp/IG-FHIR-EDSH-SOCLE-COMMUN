@@ -1,0 +1,20 @@
+{
+  "resourceType": "Procedure",
+  "id": "cas4-acte-07",
+  "meta": {
+    "profile": [
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-procedure"
+    ]
+  },
+  "status": "completed",
+  "code": {
+    "text": "Ventilation mécanique invasive par ventilation assistée contrôlée"
+  },
+  "subject": {
+    "reference": "Patient/cas4-pat-01"
+  },
+  "encounter": {
+    "reference": "Encounter/cas4-sej-01"
+  },
+  "performedDateTime": "2023-11-05T22:15:00.000Z"
+}
