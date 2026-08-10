@@ -15,27 +15,6 @@ method, the profile families, how to build the IG) — read it first for content
 file covers how to work in the repo**: conventions, the skill entry point, and traps found
 during development that aren't visible from the published guide.
 
-Before creating or modifying a FHIR profile, extension, ValueSet/CodeSystem, or reviewing
-this repo for compliance, load the AP-HP FHIR standards via the `fhir-skills:load-standards`
-skill (naming conventions, resource id/name/title/FSH-header templates, the mandatory
-Provenance step, build & validation conventions).
-
-**Open question — Core vs. Project IG.** `fhir-skills:load-standards`'s naming-conventions
-reference determines IG type from `sushi-config.yaml`: `id: aphp.fhir.fr.core` or a `/core`
-canonical → Core; `dependencies` declaring `aphp.fhir.fr.core` → Project; neither signal →
-ask the author. Here **neither fires**: `id: aphp.fhir.fr.edsh`, canonical
-`https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN`, and dependencies are
-`hl7.fhir.uv.sdc`/`hl7.fhir.fr.core` (the *national ANS* core, not `aphp.fhir.fr.core`)/
-`ans.fhir.fr.annuaire`. A same-day compliance scan (`reports/compliance-*.md`, not yet
-committed) was run on an assumed answer of "Core" and found the codebase contradicts that
-assumption throughout (~90 `Must Support` flags, 43 narrowed `Reference` bounds, ~30
-tightened cardinalities across all 56 artifacts) — the report itself flags this as needing
-arbitration before any correction pass, not a simple cleanup. **Do not silently strip
-`Must Support`/narrow bounds, and do not silently treat them as fine — ask which reading
-applies before touching robustness-principle-related constraints.** If the answer turns out
-to be Project, declaring `aphp.fhir.fr.core` under `dependencies` would make the type
-mechanically determinable going forward.
-
 ## Project Description
 
 Standardises a **51-item "socle commun"** proposed by the GT « Standards et
@@ -43,7 +22,8 @@ Interopérabilité » (mandated Jan. 2023 by the comité stratégique des donné
 adoption by every French hospital EDS — split into **Lot 1** (patient identity, PMSI,
 socio-démographique, médicament, biologie, examen clinique — the priority, currently
 modelled set) and **Lot 2** (style de vie: tabac/alcool/drogues/activité physique —
-deliberately deferred, unformalised end-to-end; see Known Deviations).
+deliberately deferred, unformalised end-to-end across every layer of the pipeline; see
+README's "Travaux en cours et limites connues" for current status).
 
 The guide is built around a **three-step MDE pipeline**, each step with published
 deliverables you'll find referenced throughout `input/`:
@@ -58,7 +38,7 @@ deliverables you'll find referenced throughout `input/`:
    that mechanically transforms each `QuestionnaireResponse` into a `Bundle` of
    conformant resources — this is what generates the `casN/` example resources.
 
-Status `draft`, version `0.1.0`, FHIR R4 (4.0.1), jurisdiction FRA, publisher AP-HP. Guide
+Status `draft`, version `0.1.0`, FHIR R4 (4.0.1), jurisdiction FR, publisher AP-HP. Guide
 content (pages, FSH titles/descriptions) is authored in French; this file is in English
 per house convention.
 
@@ -97,8 +77,8 @@ The directory containing the guide inputs is located in `input`. It includes:
   `sushi-config.yaml`, or SUSHI/IG Publisher silently ignore it.
 - **`input/images-source`**: `.plantuml` sources, converted to SVG and included via
   `{%include some-diagram.svg%}`.
-- **`input/images`**: static images consumed directly. Currently 3 PNGs, all still prefixed
-  `DM*` from before the `Edsh*` rename (see Known Deviations).
+- **`input/images`**: static images consumed directly. Currently 3 PNGs, the conceptual
+  diagrams for the intro pages of `edsh-observation-{body-height,body-weight,laboratory-fonction-renale}`.
 - **`input/includes`**: `.mermaid` diagram sources and `markdown-link-references.md`.
 - **`input/pagecontent`**: Markdown guide pages. Each page must also be listed under `pages:`
   in `sushi-config.yaml` to be compiled into HTML by IG Publisher.
@@ -149,70 +129,16 @@ Other key files:
 
 ## Known Deviations and Traps
 
-Findings from a same-day compliance scan (`reports/compliance-2026-08-10-15-17.md`) plus
-direct verification, kept here so they aren't rediscovered — or propagated — next session:
+Two genuine authoring backlogs remain, both self-contained facts about the current state
+of the 56 FHIR artifacts — real work across dozens of files, not something a single pass
+fixes, so tracked here rather than as a TODO anyone could silently drop:
 
-1. **`input/pagecontent/dm-instruction.md` is not published** — it's missing from `pages:`
-   in `sushi-config.yaml`, so IG Publisher never compiles it, and it links to a
-   `data-management.html` page that doesn't exist in this IG. It describes a broader
-   5-step "processus d'instruction" (superset of the published 3-step method); check with
-   the author before deciding whether to publish it, delete it, or leave it as a draft.
-2. **Three `path-resource` entries in `sushi-config.yaml` point at directories that don't
-   exist**: `input/resources/ViewDefinition_OMOP`, `input/resources/usages/core/View_definition`,
-   `input/fml/usages/core`. Harmless to SUSHI (it skips missing paths) but likely leftover
-   from a planned OMOP ViewDefinition effort — don't assume content belongs there without checking.
-3. **Three intro pages are orphaned** by an old `DM*` → `Edsh*` rename:
-   `StructureDefinition-DMObservationBodyHeight-intro.md`, `-BodyWeight-`,
-   `-LaboratoryFonctionRenale-`. IG Publisher matches intro pages to artifacts by **id**, so
-   **0 of 56 artifacts currently have published intro documentation** — including these
-   three, for which text was written. Rename to the `edsh-*` id to reconnect them.
-4. **Naming deviations — don't copy these patterns**: `codesystems/CodeSystem-GHM.fsh` and
-   `valueset/ValueSet-CIM10.fsh` use non-kebab-case filenames; `Id:
-   edsh-observation-laboratoryplaquettes` is missing a hyphen (should be
-   `edsh-observation-laboratory-plaquettes`, unlike its 20 sibling lab profiles);
-   `profiles-datatypes/StructureDefinition-edsh-address.fsh:3` has `Id : edsh-address` (stray
-   space); `examples/Practioner-practioner-example.fsh` has a typo in the filename.
-5. **The two FSH examples aren't conformance examples** — `Patient-patient-example.fsh` and
-   the mistyped `Practioner-...` instantiate base `Patient`/`Practitioner`, not `EdshPatient`/
-   `EdshPractitioner`. 45 of 56 artifacts have no example at all.
-6. **Element documentation is thin**: 81 `^short` / 39 `^definition` / 23 `^comment` across
+1. **Example coverage is thin**: 44 of 56 artifacts have no example at all. (`EdshPatient`
+   and `EdshPractitioner` are covered — the former by the 10 `casN` vignettes, the latter
+   by `input/fsh/examples/Practitioner-edsh-practitioner-example.fsh`.)
+2. **Element documentation is thin**: 81 `^short` / 39 `^definition` / 23 `^comment` across
    ~700 constraint rules (~11% coverage). The `FrMedication*` profiles are the
    best-documented in the repo and are the model to follow.
-7. **Commit message style is mixed** — recent commits use a parenthesised conventional form
-   (`(build):`, `(ci):`, `(fix):`, `(chore):`); older ones are freeform French
-   (`Modification_correction`, `Amelioration_structuremap`). Prefer the parenthesised form
-   for new commits.
-8. **`StructureMap-Q2FSL.fml` references `StructureDefinition/edsh-patient-residence`** —
-   no such profile exists anywhere in `input/fsh/`. Either dead code in the map or a
-   profile that was never created; don't assume the reference is valid without checking.
-9. **`Questionnaire-UsageCore-intro.md` contains only `TODO contexte`** — the intro page
-   for the guide's central artifact (the Questionnaire every profile and the FML trace
-   back to) is unwritten.
-10. **`StructureMap-Q2FSL-intro.md` documents only 1 of 11 FML groups** (`CreatePatient`).
-    The other 10 groups (`CreateEncounters`, `CreateConditions`, `CreateLaboratoryObservations`,
-    etc.) have no narrative documentation — don't assume the intro page describes the whole map.
-11. **`help.md`'s naming conventions are stale and self-contradictory** — it documents a
-    convention explicitly **not conformant with ANS's own recommendations** (says so
-    in-page), illustrated with the obsolete `DMObservationBodyWeight` id pattern rather
-    than the real `edsh-observation-body-weight`. Its closing table (production-process
-    QQOQCP characteristics) is also truncated mid-row. Prefer `fhir-skills:load-standards`
-    over this page for naming rules.
-12. **Date inconsistency**: `index.md` says the GT was launched "janvier 2024";
-    `data-dictionary.md` says "janvier 2023", and the GT's own deliverable
-    (`DocumentReference/CoreExigences`) is dated 2023-09-15. `index.md` is the one that's
-    wrong — fix at source if touching that page.
-13. **Lot 2 (style de vie) is unformalised end-to-end, not just "thin"**: all 4
-    `Questionnaire/UsageCore` groups are marked "(A définir dans des travaux
-    complémentaires)" with no real items; 3 of the 4 glossary entries in
-    `use-core-variables-acquisition.md` say "Préciser formellement ce qui est attendu";
-    every mention in the 10 standardisation narratives is a literal dead link
-    `[…](à faire)`; `Q2FSL` has no group for these 4 profiles; none have examples. Don't
-    "complete" one layer (e.g. write an example) without the others — the whole chain
-    needs the same complementary work described in the README first.
-14. **`input/includes/use-core-conceptual.svg` is orphaned** — referenced by no page (the
-    conceptual model is rendered from the mermaid source instead).
-15. **`other.md`'s "Glossaire" link points at `help.html` instead of `glossary.html`**, and
-    the page omits a link to `changelog.html` even though it's in the menu.
 
 ## Specific Rules
 
@@ -235,10 +161,14 @@ direct verification, kept here so they aren't rediscovered — or propagated —
 
 - Avoid unnecessary over-constraining
 - Specify cardinalities and coded values
-- **Must Support flags, narrowed `Reference` bounds, tightened cardinalities**: whether
-  these are legitimate here depends on the open Core-vs-Project question above — don't
-  assume either reading. See `fhir-skills:load-standards`'s naming-conventions reference for
-  the underlying robustness principle once the question is settled.
+- **This is a Core IG** — the robustness principle applies in full:
+  **`Must Support` must not be used**, **`Reference` bounds must be widened, not
+  narrowed**, relative to inherited constraints, and **cardinalities must not be
+  tightened**. See `fhir-skills:load-standards`'s naming-conventions reference for the
+  principle itself. As of this writing, ~90 `Must Support` flags (13 artifacts), 43
+  narrowed `Reference` bounds (19 profiles), and ~30 tightened cardinalities remain to be
+  corrected across the 56 artifacts — run `fhir-skills:analyze-compliance` for the current
+  per-file detail rather than relying on a point-in-time report.
 - Ensure consistency with FHIR base model invariants
 - Provide **valid and representative** examples for each profile
 - Use validation tools (FHIR Validator, SUSHI/IG Publisher…)
