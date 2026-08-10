@@ -1,7 +1,7 @@
 {% include markdown-link-references.md %}
 
-Les [exigences de l'usage **Variables socles pour les EDSH** (fichier MSExcel)](DocumentReference-CoreExigences.html) 
-référencées issues des travaux du GT Standards & Interopérabilité. 
+Les [exigences de l'usage **Variables socles pour les EDSH** (fichier MSExcel)](DocumentReference-CoreExigences.html)
+référencées issues des travaux du GT Standards & Interopérabilité.
 
 ### Modèles standardisés (Profils FHIR)
 
@@ -23,9 +23,9 @@ La patiente, âgée de 59 ans, s'est présentée aux urgences le 10 janvier 2024
 
 La prise en charge immédiate a consisté en :
 
- - Dose de charge de charge [d'Aspirine 250 mg](MedicationAdministration-cas1-medadm-01.html)
- - Dose de charge de [Ticagrelor 180 mg](MedicationAdministration-cas1-medadm-02.html)
- - Bolus [d'HNF 3500 UI en IVD](MedicationAdministration-cas1-medadm-03.html)
+- Dose de charge de charge [d'Aspirine 250 mg](MedicationAdministration-cas1-medadm-01.html)
+- Dose de charge de [Ticagrelor 180 mg](MedicationAdministration-cas1-medadm-02.html)
+- Bolus [d'HNF 3500 UI en IVD](MedicationAdministration-cas1-medadm-03.html)
 
 La patiente transférée en coronarographie en urgence.
 
@@ -45,13 +45,13 @@ Examens complémentaires
 
 Son dernier bilan du 10/01/2024 montrent :
 
- - NFS normale ([hémoglobine : 14.2 g/dL](Observation-cas1-bio-hb-01.html), [leucocytes 7G/L](Observation-cas1-bio-leuco-01.html) , [plaquettes 295 G/L](Observation-cas1-bio-plq-01.html))
- - [Créatinine sérique : 85 µmol/L](Observation-cas1-bio-creat-01.html) avec [DFG estimé : 74 mL/min/1.73m²](Observation-cas1-bio-dfg-01.html)
- - Bilan hépatique sans particularité :
-   - [ASAT 50 UI/L](Observation-cas1-bio-asat-01.html)
-   - [alanine aminotransférase : 45 UI/L](Observation-cas1-bio-alat-01.html)
-   - [GGT 70 UI/L](Observation-cas1-bio-ggt-01.html)
-   - [PAL 30 UI/L](Observation-cas1-bio-pal-01.html)
+- NFS normale ([hémoglobine : 14.2 g/dL](Observation-cas1-bio-hb-01.html), [leucocytes 7G/L](Observation-cas1-bio-leuco-01.html) , [plaquettes 295 G/L](Observation-cas1-bio-plq-01.html))
+- [Créatinine sérique : 85 µmol/L](Observation-cas1-bio-creat-01.html) avec [DFG estimé : 74 mL/min/1.73m²](Observation-cas1-bio-dfg-01.html)
+- Bilan hépatique sans particularité :
+  - [ASAT 50 UI/L](Observation-cas1-bio-asat-01.html)
+  - [alanine aminotransférase : 45 UI/L](Observation-cas1-bio-alat-01.html)
+  - [GGT 70 UI/L](Observation-cas1-bio-ggt-01.html)
+  - [PAL 30 UI/L](Observation-cas1-bio-pal-01.html)
 
 L'évolution en USIC est favorable avec amendement rapide de la douleur thoracique et décroissance progressive de la troponinémie (à 1900 ng/mL à l'acmé).
 
@@ -63,11 +63,11 @@ Elle sera également convoquée prochainement en SMR de réadaptation cardiovasc
 
 Prescription de sortie :
 
- - [Aspirine 75 mg](MedicationRequest-cas1-medpresc-01.html) : 1 comprimé midi par jour par voie orale, traitement antiagrégant plaquettaire le midi
- - [Ticagrelor 90 mg](MedicationRequest-cas1-medpresc-03.html) : 1 comprimé matin et soir par jour par voie orale, traitement antiagrégant plaquettaire, à poursuivre pendant 1 an
- - [Atorvastatine 40 mg](MedicationRequest-cas1-medpresc-02.html) : 1 comprimé le soir par voie orale, traitement hypolipémiant
- - [Bisoprolol 10 mg](MedicationRequest-cas1-medpresc-04.html) : 1 comprimé le matin par voie orale, bêta-bloquant
- - [Ramipril 5 mg](MedicationRequest-cas1-medpresc-05.html) : 1 comprimé le matin par voie orale
+- [Aspirine 75 mg](MedicationRequest-cas1-medpresc-01.html) : 1 comprimé midi par jour par voie orale, traitement antiagrégant plaquettaire le midi
+- [Ticagrelor 90 mg](MedicationRequest-cas1-medpresc-03.html) : 1 comprimé matin et soir par jour par voie orale, traitement antiagrégant plaquettaire, à poursuivre pendant 1 an
+- [Atorvastatine 40 mg](MedicationRequest-cas1-medpresc-02.html) : 1 comprimé le soir par voie orale, traitement hypolipémiant
+- [Bisoprolol 10 mg](MedicationRequest-cas1-medpresc-04.html) : 1 comprimé le matin par voie orale, bêta-bloquant
+- [Ramipril 5 mg](MedicationRequest-cas1-medpresc-05.html) : 1 comprimé le matin par voie orale
 
 Fait à Lariboisière le 14 janvier 2024
 
