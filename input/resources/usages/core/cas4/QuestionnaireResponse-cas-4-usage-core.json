@@ -982,48 +982,6 @@
             {
               "answer": [
                 {
-                  "valueDateTime": "2023-11-05T21:05:00.000Z"
-                }
-              ],
-              "linkId": "5066866286682",
-              "text": "Date de l'acte"
-            },
-            {
-              "answer": [
-                {
-                  "valueString": "DEQP003"
-                }
-              ],
-              "linkId": "7758110033600",
-              "text": "Acte"
-            }
-          ]
-        },
-        {
-          "linkId": "591926901726",
-          "text": "Actes",
-          "item": [
-            {
-              "answer": [
-                {
-                  "valueString": "cas4-acte-08"
-                }
-              ],
-              "linkId": "151762387793",
-              "text": "Identifiant"
-            },
-            {
-              "answer": [
-                {
-                  "valueDate": "2023-11-05"
-                }
-              ],
-              "linkId": "9436509453137",
-              "text": "Date du recueil de l'information"
-            },
-            {
-              "answer": [
-                {
                   "valueDateTime": "2023-11-05T21:00:00.000Z"
                 }
               ],
@@ -1814,11 +1772,7 @@
     }
   ],
   "subject": {
-    "reference": "Patient/patient-example",
-    "display": "Anyperson John B"
-  },
-  "author": {
-    "reference": "Practitioner/practitioner-example",
-    "display": "Quenum Martin U"
+    "reference": "Patient/cas4-pat-01",
+    "display": "Moreau Jean"
   }
 }
