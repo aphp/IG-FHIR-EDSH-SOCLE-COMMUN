@@ -343,7 +343,7 @@
             {
               "answer": [
                 {
-                  "valueDateTime": "2024-01-15T07:30:00.000Z"
+                  "valueDateTime": "2024-01-15T08:30:00.000Z"
                 }
               ],
               "linkId": "5066866286682",
@@ -465,15 +465,6 @@
               ],
               "linkId": "9436509453137",
               "text": "Date du recueil de l'information"
-            },
-            {
-              "answer": [
-                {
-                  "valueDateTime": "2024-01-18T00:00:00.000Z"
-                }
-              ],
-              "linkId": "5066866286682",
-              "text": "Date de l'acte"
             },
             {
               "answer": [
@@ -985,11 +976,7 @@
     }
   ],
   "subject": {
-    "reference": "Patient/patient-example",
-    "display": "Anyperson John B"
-  },
-  "author": {
-    "reference": "Practitioner/practitioner-example",
-    "display": "Quenum Martin U"
+    "reference": "Patient/cas3-pat-01",
+    "display": "Leroy Sophie"
   }
 }
