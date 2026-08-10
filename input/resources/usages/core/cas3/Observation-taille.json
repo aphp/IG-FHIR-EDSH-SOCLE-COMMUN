@@ -1,0 +1,39 @@
+{
+  "resourceType": "Observation",
+  "id": "cas3-exam-taille-01",
+  "meta": {
+    "profile": [
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-body-height"
+    ]
+  },
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "8302-2"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/cas3-pat-01"
+  },
+  "effectiveDateTime": "2024-01-15",
+  "valueQuantity": {
+    "value": 165,
+    "unit": "cm",
+    "system": "http://unitsofmeasure.org",
+    "code": "cm"
+  }
+}

@@ -16,6 +16,15 @@
             {
               "answer": [
                 {
+                  "valueString": "cas2-pat-01"
+                }
+              ],
+              "linkId": "236790258446",
+              "text": "Identifiant"
+            },
+            {
+              "answer": [
+                {
                   "valueString": "Martin"
                 }
               ],
@@ -34,7 +43,7 @@
             {
               "answer": [
                 {
-                  "valueString": "170045298765432"
+                  "valueString": "170045298765430"
                 }
               ],
               "linkId": "5711960356160",
@@ -64,6 +73,15 @@
           "linkId": "5491974639955",
           "text": "Environnement",
           "item": [
+            {
+              "answer": [
+                {
+                  "valueString": "cas2-env-01"
+                }
+              ],
+              "linkId": "708100685391",
+              "text": "Identifiant"
+            },
             {
               "linkId": "3816475533472",
               "text": "Géocodage",
@@ -181,6 +199,15 @@
             {
               "answer": [
                 {
+                  "valueString": "cas2-diag-01"
+                }
+              ],
+              "linkId": "123759733087",
+              "text": "Identifiant"
+            },
+            {
+              "answer": [
+                {
                   "valueDate": "2024-01-08"
                 }
               ],
@@ -214,6 +241,15 @@
             {
               "answer": [
                 {
+                  "valueString": "cas2-diag-02"
+                }
+              ],
+              "linkId": "123759733087",
+              "text": "Identifiant"
+            },
+            {
+              "answer": [
+                {
                   "valueDate": "2024-01-08"
                 }
               ],
@@ -241,9 +277,60 @@
           ]
         },
         {
+          "linkId": "9391816419630",
+          "text": "Diagnostics",
+          "item": [
+            {
+              "answer": [
+                {
+                  "valueString": "cas2-diag-03"
+                }
+              ],
+              "linkId": "123759733087",
+              "text": "Identifiant"
+            },
+            {
+              "answer": [
+                {
+                  "valueDate": "2024-01-08"
+                }
+              ],
+              "linkId": "7114466839467",
+              "text": "Date du recueil de l'information"
+            },
+            {
+              "answer": [
+                {
+                  "valueString": "DA"
+                }
+              ],
+              "linkId": "6427586743735",
+              "text": "Type de diagnostic"
+            },
+            {
+              "answer": [
+                {
+                  "valueString": "K92.1"
+                }
+              ],
+              "linkId": "5505101189372",
+              "text": "Diagnostique"
+            }
+          ]
+        },
+        {
           "linkId": "591926901726",
           "text": "Actes",
           "item": [
+            {
+              "answer": [
+                {
+                  "valueString": "cas2-acte-01"
+                }
+              ],
+              "linkId": "151762387793",
+              "text": "Identifiant"
+            },
             {
               "answer": [
                 {
@@ -276,7 +363,18 @@
         {
           "answer": [
             {
-              "valueDate": "2024-01-08"
+              "valueDate": "2024-01-08",
+              "item": [
+                {
+                  "answer": [
+                    {
+                      "valueString": "cas2-sej-01"
+                    }
+                  ],
+                  "linkId": "802652952373",
+                  "text": "Identifiant"
+                }
+              ]
             }
           ],
           "linkId": "5991443718282",
@@ -329,6 +427,15 @@
                     "unit": "umol/L"
                   },
                   "item": [
+                    {
+                      "answer": [
+                        {
+                          "valueString": "cas2-bio-creat-01"
+                        }
+                      ],
+                      "linkId": "325284450289",
+                      "text": "Identifiant"
+                    },
                     {
                       "answer": [
                         {
@@ -403,6 +510,15 @@
                     {
                       "answer": [
                         {
+                          "valueString": "cas2-bio-hb-01"
+                        }
+                      ],
+                      "linkId": "482444872597",
+                      "text": "Identifiant"
+                    },
+                    {
+                      "answer": [
+                        {
                           "valueString": "718-7"
                         }
                       ],
@@ -465,6 +581,14 @@
                     "unit": "fL"
                   },
                   "item": [
+                    {
+                      "answer": [
+                        {
+                          "valueString": "cas2-bio-vgm-01"
+                        }
+                      ],
+                      "linkId": "573984483949"
+                    },
                     {
                       "answer": [
                         {
@@ -536,6 +660,15 @@
               "valueString": "Oméprazole 20mg",
               "item": [
                 {
+                  "answer": [
+                    {
+                      "valueString": "cas2-medpresc-01"
+                    }
+                  ],
+                  "linkId": "145920953908",
+                  "text": "Identifiant"
+                },
+                {
                   "linkId": "1923143398283",
                   "text": "codification",
                   "answer": [
@@ -564,7 +697,7 @@
             {
               "answer": [
                 {
-                  "valueDate": "2024-01-09"
+                  "valueDate": "2024-01-08"
                 }
               ],
               "linkId": "316347573327",
@@ -573,76 +706,11 @@
             {
               "answer": [
                 {
-                  "valueDate": "2024-02-08"
+                  "valueDate": "2024-03-04"
                 }
               ],
               "linkId": "429570775935",
               "text": "Date de fin de la prescription"
-            }
-          ]
-        },
-        {
-          "linkId": "266852453304",
-          "text": "Médicament administré",
-          "answer": [
-            {
-              "valueString": "Oméprazole 20mg",
-              "item": [
-                {
-                  "linkId": "631972144976",
-                  "text": "codification",
-                  "answer": [
-                    {
-                      "valueString": "A02BC01"
-                    }
-                  ]
-                },
-                {
-                  "answer": [
-                    {
-                      "valueString": "20053000"
-                    }
-                  ],
-                  "linkId": "811931484859",
-                  "text": "Voie d'administration"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "linkId": "5720103839343",
-          "text": "Dosage",
-          "item": [
-            {
-              "answer": [
-                {
-                  "valueQuantity": {
-                    "value": 20,
-                    "unit": "mg"
-                  }
-                }
-              ],
-              "linkId": "4765772671997",
-              "text": "Quantité administrée"
-            },
-            {
-              "answer": [
-                {
-                  "valueDateTime": "2024-01-09T07:00:00.000Z"
-                }
-              ],
-              "linkId": "1443558617577",
-              "text": "Date et heure de début d'administration"
-            },
-            {
-              "answer": [
-                {
-                  "valueDateTime": "2024-01-09T07:05:00.000Z"
-                }
-              ],
-              "linkId": "780829110731",
-              "text": "Date et heure de fin d'administration"
             }
           ]
         }

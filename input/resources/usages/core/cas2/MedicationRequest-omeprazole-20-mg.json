@@ -1,0 +1,41 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "cas2-medpresc-01",
+  "meta": {
+    "profile": [
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-medication-request"
+    ]
+  },
+  "status": "active",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "code": "A02BC01",
+        "display": "Oméprazole 20mg"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/cas2-pat-01"
+  },
+  "dosageInstruction": [
+    {
+      "timing": {
+        "repeat": {
+          "boundsPeriod": {
+            "start": "2024-01-08",
+            "end": "2024-03-04"
+          }
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "code": "20053000"
+          }
+        ]
+      }
+    }
+  ]
+}

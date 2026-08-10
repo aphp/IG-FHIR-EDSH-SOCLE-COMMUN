@@ -16,6 +16,15 @@
             {
               "answer": [
                 {
+                  "valueString": "cas1-pat-01"
+                }
+              ],
+              "linkId": "236790258446",
+              "text": "Identifiant"
+            },
+            {
+              "answer": [
+                {
                   "valueString": "Dupont"
                 }
               ],
@@ -34,7 +43,7 @@
             {
               "answer": [
                 {
-                  "valueString": "285094415372654"
+                  "valueString": "265094415372655"
                 }
               ],
               "linkId": "5711960356160",
@@ -43,7 +52,7 @@
             {
               "answer": [
                 {
-                  "valueDate": "1985-09-21"
+                  "valueDate": "1965-09-21"
                 }
               ],
               "linkId": "5036133558154",
@@ -64,6 +73,15 @@
           "linkId": "5491974639955",
           "text": "Environnement",
           "item": [
+            {
+              "answer": [
+                {
+                  "valueString": "cas1-env-01"
+                }
+              ],
+              "linkId": "708100685391",
+              "text": "Identifiant"
+            },
             {
               "linkId": "3816475533472",
               "text": "Géocodage",
@@ -128,7 +146,7 @@
         {
           "answer": [
             {
-              "valueInteger": 38,
+              "valueInteger": 59,
               "item": [
                 {
                   "answer": [
@@ -181,6 +199,15 @@
             {
               "answer": [
                 {
+                  "valueString": "cas1-diag-01"
+                }
+              ],
+              "linkId": "123759733087",
+              "text": "Identifiant"
+            },
+            {
+              "answer": [
+                {
                   "valueDate": "2024-01-10"
                 }
               ],
@@ -214,6 +241,15 @@
             {
               "answer": [
                 {
+                  "valueString": "cas1-diag-02"
+                }
+              ],
+              "linkId": "123759733087",
+              "text": "Identifiant"
+            },
+            {
+              "answer": [
+                {
                   "valueDate": "2024-01-10"
                 }
               ],
@@ -241,9 +277,102 @@
           ]
         },
         {
+          "linkId": "9391816419630",
+          "text": "Diagnostics",
+          "item": [
+            {
+              "answer": [
+                {
+                  "valueString": "cas1-diag-03"
+                }
+              ],
+              "linkId": "123759733087",
+              "text": "Identifiant"
+            },
+            {
+              "answer": [
+                {
+                  "valueDate": "2024-01-10"
+                }
+              ],
+              "linkId": "7114466839467",
+              "text": "Date du recueil de l'information"
+            },
+            {
+              "answer": [
+                {
+                  "valueString": "DA"
+                }
+              ],
+              "linkId": "6427586743735",
+              "text": "Type de diagnostic"
+            },
+            {
+              "answer": [
+                {
+                  "valueString": "Occlusion de l'IVA"
+                }
+              ],
+              "linkId": "5505101189372",
+              "text": "Diagnostique"
+            }
+          ]
+        },
+        {
+          "linkId": "9391816419630",
+          "text": "Diagnostics",
+          "item": [
+            {
+              "answer": [
+                {
+                  "valueString": "cas1-diag-04"
+                }
+              ],
+              "linkId": "123759733087",
+              "text": "Identifiant"
+            },
+            {
+              "answer": [
+                {
+                  "valueDate": "2024-01-10"
+                }
+              ],
+              "linkId": "7114466839467",
+              "text": "Date du recueil de l'information"
+            },
+            {
+              "answer": [
+                {
+                  "valueString": "DA"
+                }
+              ],
+              "linkId": "6427586743735",
+              "text": "Type de diagnostic"
+            },
+            {
+              "answer": [
+                {
+                  "valueString": "I21.9"
+                }
+              ],
+              "linkId": "5505101189372",
+              "text": "Diagnostique"
+            }
+          ]
+        },
+        {
           "linkId": "591926901726",
           "text": "Actes",
           "item": [
+            {
+              "answer": [
+                {
+                  "valueString": "cas1-acte-01"
+                }
+              ],
+              "linkId": "151762387793",
+              "text": "Identifiant"
+            },
             {
               "answer": [
                 {
@@ -265,7 +394,7 @@
             {
               "answer": [
                 {
-                  "valueString": "DDAF007"
+                  "valueString": "DDAF008"
                 }
               ],
               "linkId": "7758110033600",
@@ -277,6 +406,15 @@
           "linkId": "591926901726",
           "text": "Actes",
           "item": [
+            {
+              "answer": [
+                {
+                  "valueString": "cas1-acte-02"
+                }
+              ],
+              "linkId": "151762387793",
+              "text": "Identifiant"
+            },
             {
               "answer": [
                 {
@@ -307,9 +445,62 @@
           ]
         },
         {
+          "linkId": "591926901726",
+          "text": "Actes",
+          "item": [
+            {
+              "answer": [
+                {
+                  "valueString": "cas1-acte-03"
+                }
+              ],
+              "linkId": "151762387793",
+              "text": "Identifiant"
+            },
+            {
+              "answer": [
+                {
+                  "valueDate": "2024-01-10"
+                }
+              ],
+              "linkId": "9436509453137",
+              "text": "Date du recueil de l'information"
+            },
+            {
+              "answer": [
+                {
+                  "valueDateTime": "2024-01-10T15:00:00.000Z"
+                }
+              ],
+              "linkId": "5066866286682",
+              "text": "Date de l'acte"
+            },
+            {
+              "answer": [
+                {
+                  "valueString": "DZQM006"
+                }
+              ],
+              "linkId": "7758110033600",
+              "text": "Acte"
+            }
+          ]
+        },
+        {
           "answer": [
             {
-              "valueDate": "2024-01-10"
+              "valueDate": "2024-01-10",
+              "item": [
+                {
+                  "answer": [
+                    {
+                      "valueString": "cas1-sej-01"
+                    }
+                  ],
+                  "linkId": "802652952373",
+                  "text": "Identifiant"
+                }
+              ]
             }
           ],
           "linkId": "5991443718282",
@@ -362,6 +553,15 @@
                     "unit": "umol/L"
                   },
                   "item": [
+                    {
+                      "answer": [
+                        {
+                          "valueString": "cas1-bio-creat-01"
+                        }
+                      ],
+                      "linkId": "325284450289",
+                      "text": "Identifiant"
+                    },
                     {
                       "answer": [
                         {
@@ -427,6 +627,15 @@
                     "unit": "mL/min/{1.73_m2}"
                   },
                   "item": [
+                    {
+                      "answer": [
+                        {
+                          "valueString": "cas1-bio-dfg-01"
+                        }
+                      ],
+                      "linkId": "630405142029",
+                      "text": "Identifiant"
+                    },
                     {
                       "answer": [
                         {
@@ -501,6 +710,15 @@
                     {
                       "answer": [
                         {
+                          "valueString": "cas1-bio-leuco-01"
+                        }
+                      ],
+                      "linkId": "287512174181",
+                      "text": "Identifiant"
+                    },
+                    {
+                      "answer": [
+                        {
                           "valueString": "6690-2"
                         }
                       ],
@@ -510,7 +728,7 @@
                     {
                       "answer": [
                         {
-                          "valueDateTime": "2024-10-01T06:00:00.325Z"
+                          "valueDateTime": "2024-01-10T06:00:00.325Z"
                         }
                       ],
                       "linkId": "578695171519",
@@ -563,6 +781,15 @@
                     "unit": "g/dL"
                   },
                   "item": [
+                    {
+                      "answer": [
+                        {
+                          "valueString": "cas1-bio-hb-01"
+                        }
+                      ],
+                      "linkId": "482444872597",
+                      "text": "Identifiant"
+                    },
                     {
                       "answer": [
                         {
@@ -631,6 +858,15 @@
                     {
                       "answer": [
                         {
+                          "valueString": "cas1-bio-plq-01"
+                        }
+                      ],
+                      "linkId": "184190731948",
+                      "text": "Identifiant"
+                    },
+                    {
+                      "answer": [
+                        {
                           "valueString": "777-3"
                         }
                       ],
@@ -640,7 +876,7 @@
                     {
                       "answer": [
                         {
-                          "valueDateTime": "2024-10-01T06:00:00.375Z"
+                          "valueDateTime": "2024-01-10T06:00:00.375Z"
                         }
                       ],
                       "linkId": "504411027287",
@@ -696,9 +932,18 @@
                 {
                   "valueQuantity": {
                     "value": 50,
-                    "unit": "UI/L"
+                    "unit": "[iU]/L"
                   },
                   "item": [
+                    {
+                      "answer": [
+                        {
+                          "valueString": "cas1-bio-asat-01"
+                        }
+                      ],
+                      "linkId": "564316637511",
+                      "text": "Identifiant"
+                    },
                     {
                       "answer": [
                         {
@@ -711,7 +956,7 @@
                     {
                       "answer": [
                         {
-                          "valueDateTime": "2024-10-01T06:00:00.285Z"
+                          "valueDateTime": "2024-01-10T06:00:00.285Z"
                         }
                       ],
                       "linkId": "884511824515",
@@ -731,7 +976,7 @@
                         {
                           "valueQuantity": {
                             "value": 20,
-                            "unit": "UI/L"
+                            "unit": "[iU]/L"
                           }
                         }
                       ],
@@ -743,7 +988,7 @@
                         {
                           "valueQuantity": {
                             "value": 40,
-                            "unit": "UI/L"
+                            "unit": "[iU]/L"
                           }
                         }
                       ],
@@ -761,9 +1006,18 @@
                 {
                   "valueQuantity": {
                     "value": 45,
-                    "unit": "UI/L"
+                    "unit": "[iU]/L"
                   },
                   "item": [
+                    {
+                      "answer": [
+                        {
+                          "valueString": "cas1-bio-alat-01"
+                        }
+                      ],
+                      "linkId": "797767844750",
+                      "text": "Identifiant"
+                    },
                     {
                       "answer": [
                         {
@@ -796,7 +1050,7 @@
                         {
                           "valueQuantity": {
                             "value": 20,
-                            "unit": "UI/L"
+                            "unit": "[iU]/L"
                           }
                         }
                       ],
@@ -808,7 +1062,7 @@
                         {
                           "valueQuantity": {
                             "value": 40,
-                            "unit": "UI/L"
+                            "unit": "[iU]/L"
                           }
                         }
                       ],
@@ -826,9 +1080,18 @@
                 {
                   "valueQuantity": {
                     "value": 70,
-                    "unit": "UI/L"
+                    "unit": "[iU]/L"
                   },
                   "item": [
+                    {
+                      "answer": [
+                        {
+                          "valueString": "cas1-bio-ggt-01"
+                        }
+                      ],
+                      "linkId": "412131657722",
+                      "text": "Identifiant"
+                    },
                     {
                       "answer": [
                         {
@@ -841,7 +1104,7 @@
                     {
                       "answer": [
                         {
-                          "valueDateTime": "2024-10-01T06:00:00.191Z"
+                          "valueDateTime": "2024-01-10T06:00:00.191Z"
                         }
                       ],
                       "linkId": "191793018592",
@@ -861,7 +1124,7 @@
                         {
                           "valueQuantity": {
                             "value": 10,
-                            "unit": "UI/L"
+                            "unit": "[iU]/L"
                           }
                         }
                       ],
@@ -873,7 +1136,7 @@
                         {
                           "valueQuantity": {
                             "value": 30,
-                            "unit": "UI/L"
+                            "unit": "[iU]/L"
                           }
                         }
                       ],
@@ -891,9 +1154,18 @@
                 {
                   "valueQuantity": {
                     "value": 30,
-                    "unit": "UI/L"
+                    "unit": "[iU]/L"
                   },
                   "item": [
+                    {
+                      "answer": [
+                        {
+                          "valueString": "cas1-bio-pal-01"
+                        }
+                      ],
+                      "linkId": "125748925735",
+                      "text": "Identifiant"
+                    },
                     {
                       "answer": [
                         {
@@ -906,7 +1178,7 @@
                     {
                       "answer": [
                         {
-                          "valueDateTime": "2024-10-01T11:53:34.253Z"
+                          "valueDateTime": "2024-01-10T11:53:34.253Z"
                         }
                       ],
                       "linkId": "576101241859",
@@ -926,7 +1198,7 @@
                         {
                           "valueQuantity": {
                             "value": 30,
-                            "unit": "UI/L"
+                            "unit": "[iU]/L"
                           }
                         }
                       ],
@@ -938,7 +1210,7 @@
                         {
                           "valueQuantity": {
                             "value": 120,
-                            "unit": "UI/L"
+                            "unit": "[iU]/L"
                           }
                         }
                       ],
@@ -964,6 +1236,15 @@
             {
               "valueString": "Aspirine 75mg",
               "item": [
+                {
+                  "answer": [
+                    {
+                      "valueString": "cas1-medpresc-01"
+                    }
+                  ],
+                  "linkId": "145920953908",
+                  "text": "Identifiant"
+                },
                 {
                   "linkId": "1923143398283",
                   "text": "codification",
@@ -1009,71 +1290,6 @@
               "text": "Date de fin de la prescription"
             }
           ]
-        },
-        {
-          "linkId": "266852453304",
-          "text": "Médicament administré",
-          "answer": [
-            {
-              "valueString": "Aspirine 75mg",
-              "item": [
-                {
-                  "linkId": "631972144976",
-                  "text": "codification",
-                  "answer": [
-                    {
-                      "valueString": "B01AC06"
-                    }
-                  ]
-                },
-                {
-                  "answer": [
-                    {
-                      "valueString": "20053000"
-                    }
-                  ],
-                  "linkId": "811931484859",
-                  "text": "Voie d'administration"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "linkId": "5720103839343",
-          "text": "Dosage",
-          "item": [
-            {
-              "answer": [
-                {
-                  "valueQuantity": {
-                    "value": 75,
-                    "unit": "mg"
-                  }
-                }
-              ],
-              "linkId": "4765772671997",
-              "text": "Quantité administrée"
-            },
-            {
-              "answer": [
-                {
-                  "valueDateTime": "2024-01-11T07:00:00.000Z"
-                }
-              ],
-              "linkId": "1443558617577",
-              "text": "Date et heure de début d'administration"
-            },
-            {
-              "answer": [
-                {
-                  "valueDateTime": "2024-01-11T07:05:00.000Z"
-                }
-              ],
-              "linkId": "780829110731",
-              "text": "Date et heure de fin d'administration"
-            }
-          ]
         }
       ]
     },
@@ -1088,6 +1304,15 @@
             {
               "valueString": "Atorvastatine 40mg",
               "item": [
+                {
+                  "answer": [
+                    {
+                      "valueString": "cas1-medpresc-02"
+                    }
+                  ],
+                  "linkId": "145920953908",
+                  "text": "Identifiant"
+                },
                 {
                   "linkId": "1923143398283",
                   "text": "codification",
@@ -1133,71 +1358,6 @@
               "text": "Date de fin de la prescription"
             }
           ]
-        },
-        {
-          "linkId": "266852453304",
-          "text": "Médicament administré",
-          "answer": [
-            {
-              "valueString": "Atorvastatine 40mg",
-              "item": [
-                {
-                  "linkId": "631972144976",
-                  "text": "codification",
-                  "answer": [
-                    {
-                      "valueString": "C10AA05"
-                    }
-                  ]
-                },
-                {
-                  "answer": [
-                    {
-                      "valueString": "20053000"
-                    }
-                  ],
-                  "linkId": "811931484859",
-                  "text": "Voie d'administration"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "linkId": "5720103839343",
-          "text": "Dosage",
-          "item": [
-            {
-              "answer": [
-                {
-                  "valueQuantity": {
-                    "value": 40,
-                    "unit": "mg"
-                  }
-                }
-              ],
-              "linkId": "4765772671997",
-              "text": "Quantité administrée"
-            },
-            {
-              "answer": [
-                {
-                  "valueDateTime": "2024-01-11T19:00:00.000Z"
-                }
-              ],
-              "linkId": "1443558617577",
-              "text": "Date et heure de début d'administration"
-            },
-            {
-              "answer": [
-                {
-                  "valueDateTime": "2024-01-11T19:05:00.000Z"
-                }
-              ],
-              "linkId": "780829110731",
-              "text": "Date et heure de fin d'administration"
-            }
-          ]
         }
       ]
     },
@@ -1213,11 +1373,20 @@
               "valueString": "Ticagrelor 90mg",
               "item": [
                 {
+                  "answer": [
+                    {
+                      "valueString": "cas1-medpresc-03"
+                    }
+                  ],
+                  "linkId": "145920953908",
+                  "text": "Identifiant"
+                },
+                {
                   "linkId": "1923143398283",
                   "text": "codification",
                   "answer": [
                     {
-                      "valueString": "37533"
+                      "valueString": "B01AC24"
                     }
                   ]
                 },
@@ -1257,71 +1426,6 @@
               "text": "Date de fin de la prescription"
             }
           ]
-        },
-        {
-          "linkId": "266852453304",
-          "text": "Médicament administré",
-          "answer": [
-            {
-              "valueString": "Ticagrelor 90mg",
-              "item": [
-                {
-                  "linkId": "631972144976",
-                  "text": "codification",
-                  "answer": [
-                    {
-                      "valueString": "37533"
-                    }
-                  ]
-                },
-                {
-                  "answer": [
-                    {
-                      "valueString": "20053000"
-                    }
-                  ],
-                  "linkId": "811931484859",
-                  "text": "Voie d'administration"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "linkId": "5720103839343",
-          "text": "Dosage",
-          "item": [
-            {
-              "answer": [
-                {
-                  "valueQuantity": {
-                    "value": 90,
-                    "unit": "mg"
-                  }
-                }
-              ],
-              "linkId": "4765772671997",
-              "text": "Quantité administrée"
-            },
-            {
-              "answer": [
-                {
-                  "valueDateTime": "2024-01-11T07:00:00.000Z"
-                }
-              ],
-              "linkId": "1443558617577",
-              "text": "Date et heure de début d'administration"
-            },
-            {
-              "answer": [
-                {
-                  "valueDateTime": "2024-01-11T07:05:00.000Z"
-                }
-              ],
-              "linkId": "780829110731",
-              "text": "Date et heure de fin d'administration"
-            }
-          ]
         }
       ]
     },
@@ -1337,11 +1441,20 @@
               "valueString": "Bisoprolol 10mg",
               "item": [
                 {
+                  "answer": [
+                    {
+                      "valueString": "cas1-medpresc-04"
+                    }
+                  ],
+                  "linkId": "145920953908",
+                  "text": "Identifiant"
+                },
+                {
                   "linkId": "1923143398283",
                   "text": "codification",
                   "answer": [
                     {
-                      "valueString": "97658"
+                      "valueString": "C07AB07"
                     }
                   ]
                 },
@@ -1381,71 +1494,6 @@
               "text": "Date de fin de la prescription"
             }
           ]
-        },
-        {
-          "linkId": "266852453304",
-          "text": "Médicament administré",
-          "answer": [
-            {
-              "valueString": "Bisoprolol 10mg",
-              "item": [
-                {
-                  "linkId": "631972144976",
-                  "text": "codification",
-                  "answer": [
-                    {
-                      "valueString": "97658"
-                    }
-                  ]
-                },
-                {
-                  "answer": [
-                    {
-                      "valueString": "20053000"
-                    }
-                  ],
-                  "linkId": "811931484859",
-                  "text": "Voie d'administration"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "linkId": "5720103839343",
-          "text": "Dosage",
-          "item": [
-            {
-              "answer": [
-                {
-                  "valueQuantity": {
-                    "value": 10,
-                    "unit": "mg"
-                  }
-                }
-              ],
-              "linkId": "4765772671997",
-              "text": "Quantité administrée"
-            },
-            {
-              "answer": [
-                {
-                  "valueDateTime": "2024-01-14T07:45:07.963Z"
-                }
-              ],
-              "linkId": "1443558617577",
-              "text": "Date et heure de début d'administration"
-            },
-            {
-              "answer": [
-                {
-                  "valueDateTime": "2024-01-14T07:49:13.637Z"
-                }
-              ],
-              "linkId": "780829110731",
-              "text": "Date et heure de fin d'administration"
-            }
-          ]
         }
       ]
     },
@@ -1461,11 +1509,20 @@
               "valueString": "Ramipril 5 mg",
               "item": [
                 {
+                  "answer": [
+                    {
+                      "valueString": "cas1-medpresc-05"
+                    }
+                  ],
+                  "linkId": "145920953908",
+                  "text": "Identifiant"
+                },
+                {
                   "linkId": "1923143398283",
                   "text": "codification",
                   "answer": [
                     {
-                      "valueString": "11532"
+                      "valueString": "C09AA05"
                     }
                   ]
                 },
@@ -1505,20 +1562,35 @@
               "text": "Date de fin de la prescription"
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "linkId": "817801935685",
+      "text": "Exposition médicamenteuse",
+      "item": [
         {
           "linkId": "266852453304",
           "text": "Médicament administré",
           "answer": [
             {
-              "valueString": "Ramipril 5 mg",
+              "valueString": "Aspirine 250mg",
               "item": [
+                {
+                  "answer": [
+                    {
+                      "valueString": "cas1-medadm-01"
+                    }
+                  ],
+                  "linkId": "870029232684",
+                  "text": "Identifiant"
+                },
                 {
                   "linkId": "631972144976",
                   "text": "codification",
                   "answer": [
                     {
-                      "valueString": "11532"
+                      "valueString": "B01AC06"
                     }
                   ]
                 },
@@ -1543,7 +1615,7 @@
               "answer": [
                 {
                   "valueQuantity": {
-                    "value": 5,
+                    "value": 250,
                     "unit": "mg"
                   }
                 }
@@ -1554,7 +1626,7 @@
             {
               "answer": [
                 {
-                  "valueDateTime": "2024-01-14T07:50:20.189Z"
+                  "valueDateTime": "2024-01-10T12:00:00.000Z"
                 }
               ],
               "linkId": "1443558617577",
@@ -1563,7 +1635,167 @@
             {
               "answer": [
                 {
-                  "valueDateTime": "2024-01-14T07:55:12.271Z"
+                  "valueDateTime": "2024-01-10T12:05:00.000Z"
+                }
+              ],
+              "linkId": "780829110731",
+              "text": "Date et heure de fin d'administration"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "817801935685",
+      "text": "Exposition médicamenteuse",
+      "item": [
+        {
+          "linkId": "266852453304",
+          "text": "Médicament administré",
+          "answer": [
+            {
+              "valueString": "Ticagrelor 180mg",
+              "item": [
+                {
+                  "answer": [
+                    {
+                      "valueString": "cas1-medadm-02"
+                    }
+                  ],
+                  "linkId": "870029232684",
+                  "text": "Identifiant"
+                },
+                {
+                  "linkId": "631972144976",
+                  "text": "codification",
+                  "answer": [
+                    {
+                      "valueString": "B01AC24"
+                    }
+                  ]
+                },
+                {
+                  "answer": [
+                    {
+                      "valueString": "20053000"
+                    }
+                  ],
+                  "linkId": "811931484859",
+                  "text": "Voie d'administration"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "linkId": "5720103839343",
+          "text": "Dosage",
+          "item": [
+            {
+              "answer": [
+                {
+                  "valueQuantity": {
+                    "value": 180,
+                    "unit": "mg"
+                  }
+                }
+              ],
+              "linkId": "4765772671997",
+              "text": "Quantité administrée"
+            },
+            {
+              "answer": [
+                {
+                  "valueDateTime": "2024-01-10T12:06:00.000Z"
+                }
+              ],
+              "linkId": "1443558617577",
+              "text": "Date et heure de début d'administration"
+            },
+            {
+              "answer": [
+                {
+                  "valueDateTime": "2024-01-10T12:10:00.000Z"
+                }
+              ],
+              "linkId": "780829110731",
+              "text": "Date et heure de fin d'administration"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "817801935685",
+      "text": "Exposition médicamenteuse",
+      "item": [
+        {
+          "linkId": "266852453304",
+          "text": "Médicament administré",
+          "answer": [
+            {
+              "valueString": "Héparine sodique (HNF)",
+              "item": [
+                {
+                  "answer": [
+                    {
+                      "valueString": "cas1-medadm-03"
+                    }
+                  ],
+                  "linkId": "870029232684",
+                  "text": "Identifiant"
+                },
+                {
+                  "linkId": "631972144976",
+                  "text": "codification",
+                  "answer": [
+                    {
+                      "valueString": "B01AB01"
+                    }
+                  ]
+                },
+                {
+                  "answer": [
+                    {
+                      "valueString": "20045000"
+                    }
+                  ],
+                  "linkId": "811931484859",
+                  "text": "Voie d'administration"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "linkId": "5720103839343",
+          "text": "Dosage",
+          "item": [
+            {
+              "answer": [
+                {
+                  "valueQuantity": {
+                    "value": 3500,
+                    "unit": "UI"
+                  }
+                }
+              ],
+              "linkId": "4765772671997",
+              "text": "Quantité administrée"
+            },
+            {
+              "answer": [
+                {
+                  "valueDateTime": "2024-01-10T12:11:00.000Z"
+                }
+              ],
+              "linkId": "1443558617577",
+              "text": "Date et heure de début d'administration"
+            },
+            {
+              "answer": [
+                {
+                  "valueDateTime": "2024-01-10T12:15:00.000Z"
                 }
               ],
               "linkId": "780829110731",
@@ -1592,6 +1824,15 @@
                     {
                       "answer": [
                         {
+                          "valueString": "cas1-exam-tas-01"
+                        }
+                      ],
+                      "linkId": "734815456784",
+                      "text": "Identifiant"
+                    },
+                    {
+                      "answer": [
+                        {
                           "valueDate": "2024-01-10"
                         }
                       ],
@@ -1612,6 +1853,15 @@
                     "unit": "mm[Hg]"
                   },
                   "item": [
+                    {
+                      "answer": [
+                        {
+                          "valueString": "cas1-exam-tad-01"
+                        }
+                      ],
+                      "linkId": "926430936118",
+                      "text": "Identifiant"
+                    },
                     {
                       "answer": [
                         {

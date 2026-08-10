@@ -1,0 +1,67 @@
+{
+  "resourceType": "Patient",
+  "id": "cas4-pat-01",
+  "meta": {
+    "profile": [
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-patient"
+    ]
+  },
+  "identifier": [
+    {
+      "type": {
+        "coding": [
+          {
+            "system": "http://interopsante.org/fhir/CodeSystem/fr-v2-0203",
+            "code": "NIR"
+          }
+        ]
+      },
+      "system": "urn:oid:1.2.250.1.213.1.4.8",
+      "value": "161085487651273"
+    }
+  ],
+  "name": [
+    {
+      "family": "Moreau",
+      "given": [
+        "Jean"
+      ]
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1961-08-15",
+  "address": [
+    {
+      "extension": [
+        {
+          "url": "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-pmsi-code-geo",
+          "valueCode": "75016"
+        },
+        {
+          "extension": [
+            {
+              "url": "latitude",
+              "valueDecimal": 48.8584
+            },
+            {
+              "url": "longitude",
+              "valueDecimal": 2.2945
+            }
+          ],
+          "url": "http://hl7.org/fhir/StructureDefinition/geolocation"
+        }
+      ],
+      "_line": [
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-censusTract",
+              "valueString": "751166402"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "multipleBirthInteger": 1
+}

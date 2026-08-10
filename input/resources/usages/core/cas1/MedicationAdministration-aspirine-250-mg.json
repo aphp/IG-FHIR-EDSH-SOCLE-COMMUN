@@ -1,0 +1,40 @@
+{
+  "resourceType": "MedicationAdministration",
+  "id": "cas1-medadm-01",
+  "meta": {
+    "profile": [
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-medication-administration"
+    ]
+  },
+  "status": "completed",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "code": "B01AC06",
+        "display": "Aspirine 250mg"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/cas1-pat-01"
+  },
+  "effectivePeriod": {
+    "start": "2024-01-10T12:00:00.000Z",
+    "end": "2024-01-10T12:05:00.000Z"
+  },
+  "dosage": {
+    "route": {
+      "coding": [
+        {
+          "code": "20053000"
+        }
+      ]
+    },
+    "dose": {
+      "value": 250,
+      "unit": "mg",
+      "system": "http://unitsofmeasure.org",
+      "code": "mg"
+    }
+  }
+}

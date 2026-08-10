@@ -1,0 +1,33 @@
+{
+  "resourceType": "Condition",
+  "id": "cas4-diag-06",
+  "meta": {
+    "profile": [
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-condition"
+    ]
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/CodeSystem/pmsi-mco-diag-type",
+          "code": "DA"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "code": "E11"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/cas4-pat-01"
+  },
+  "encounter": {
+    "reference": "Encounter/cas4-sej-01"
+  },
+  "recordedDate": "2023-11-05"
+}

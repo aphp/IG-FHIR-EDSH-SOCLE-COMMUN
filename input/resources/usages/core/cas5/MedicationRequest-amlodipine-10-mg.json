@@ -1,0 +1,33 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "cas5-medpresc-03",
+  "meta": {
+    "profile": [
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-medication-request"
+    ]
+  },
+  "status": "completed",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "code": "C08CA01",
+        "display": "Amlodipine 10 mg"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/cas5-pat-01"
+  },
+  "dosageInstruction": [
+    {
+      "timing": {
+        "repeat": {
+          "boundsPeriod": {
+            "start": "2024-01-16"
+          }
+        }
+      }
+    }
+  ]
+}

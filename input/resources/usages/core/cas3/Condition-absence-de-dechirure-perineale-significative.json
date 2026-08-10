@@ -1,0 +1,29 @@
+{
+  "resourceType": "Condition",
+  "id": "cas3-diag-03",
+  "meta": {
+    "profile": [
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-condition"
+    ]
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/CodeSystem/pmsi-mco-diag-type",
+          "code": "DA"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "text": "Absence de déchirure périnéale significative"
+  },
+  "subject": {
+    "reference": "Patient/cas3-pat-01"
+  },
+  "encounter": {
+    "reference": "Encounter/cas3-sej-01"
+  },
+  "recordedDate": "2024-01-15"
+}

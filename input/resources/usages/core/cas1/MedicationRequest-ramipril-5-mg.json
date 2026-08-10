@@ -1,0 +1,41 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "cas1-medpresc-05",
+  "meta": {
+    "profile": [
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-medication-request"
+    ]
+  },
+  "status": "active",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "code": "C09AA05",
+        "display": "Ramipril 5 mg"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/cas1-pat-01"
+  },
+  "dosageInstruction": [
+    {
+      "timing": {
+        "repeat": {
+          "boundsPeriod": {
+            "start": "2024-01-14",
+            "end": "2024-02-15"
+          }
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "code": "20053000"
+          }
+        ]
+      }
+    }
+  ]
+}
