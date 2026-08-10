@@ -1017,11 +1017,7 @@
     }
   ],
   "subject": {
-    "reference": "Patient/patient-example",
-    "display": "Anyperson John B"
-  },
-  "author": {
-    "reference": "Practitioner/practitioner-example",
-    "display": "Quenum Martin U"
+    "reference": "Patient/cas9-pat-01",
+    "display": "Blanc Isabelle"
   }
 }

@@ -1883,11 +1883,7 @@
     }
   ],
   "subject": {
-    "reference": "Patient/patient-example",
-    "display": "Anyperson John B"
-  },
-  "author": {
-    "reference": "Practitioner/practitioner-example",
-    "display": "Quenum Martin U"
+    "reference": "Patient/cas1-pat-01",
+    "display": "Dupont Marie"
   }
 }
