@@ -1,6 +1,6 @@
 Profile: EdshObservationLaboratoryPlaquettes
 Parent: EdshObservationLaboratoryGeneric
-Id: edsh-observation-laboratoryplaquettes
+Id: edsh-observation-laboratory-plaquettes
 Title: "Plaquettes"
 Description: """
 Profil Plaquettes du socle commun des EDSH

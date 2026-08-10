@@ -2,7 +2,7 @@
 
 Ce guide d'implémentation a pour objet de :
 
-- lister les données sélectionnées par le groupe de travail “standards et interopérabilité” lancé en janvier 2024 
+- lister les données sélectionnées par le groupe de travail “standards et interopérabilité” lancé en janvier 2023 
 - proposer un processus de modélisation
 - présenter la modélisation cible FHIR retenue pour les données du socle
 

@@ -1,5 +1,6 @@
+
 | Groupe | Données | Caractéristiques |
-|--------|---------|------------------|
+| ------ | ------- | ---------------- |
 | Identité patient | [Patient](StructureDefinition-edsh-patient.html) | Données maîtres |
 | PMSI | [Séjour](StructureDefinition-edsh-encounter.html) | Données d'intérêt |
 | PMSI | [Diagnostic CIM10](StructureDefinition-edsh-condition.html) | Données d'intérêt |
@@ -12,7 +13,7 @@
 | Résultats d'examens biologiques | [Hématocrite](StructureDefinition-edsh-observation-laboratory-hematocrite.html) | Données d'intérêt |
 | Résultats d'examens biologiques | [Globules rouges](StructureDefinition-edsh-observation-laboratory-erythrocytes.html) | Données d'intérêt |
 | Résultats d'examens biologiques | [Volume Globulaire Moyen (VGM)](StructureDefinition-edsh-observation-laboratory-vgm.html) | Données d'intérêt |
-| Résultats d'examens biologiques | [Plaquettes](StructureDefinition-edsh-observation-laboratoryplaquettes.html) | Données d'intérêt |
+| Résultats d'examens biologiques | [Plaquettes](StructureDefinition-edsh-observation-laboratory-plaquettes.html) | Données d'intérêt |
 | Résultats d'examens biologiques | [Neutrophiles](StructureDefinition-edsh-observation-laboratory-neutrophiles.html) | Données d'intérêt |
 | Résultats d'examens biologiques | [Lymphocytes](StructureDefinition-edsh-observation-laboratory-lymphocytes.html) | Données d'intérêt |
 | Résultats d'examens biologiques | [Eosinophiles](StructureDefinition-edsh-observation-laboratory-eosinophiles.html) | Données d'intérêt |
