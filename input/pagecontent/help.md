@@ -3,27 +3,21 @@
 
 #### Ressources de conformité
 
-- id : PascalCase sans espace. Commence par une lettre (en majuscule donc). Contient uniquement des lettres et des chiffres. Il doit être unique dans son sous type (CodeSystem, Extension, ValueSet, etc.) et signifiant (proche du titre). 
-- name : identique à l'id (PascalCase sans espace donc).
-- url : [base]/[ResourceType]/[id] 
+Les conventions de nommage détaillées (format de l'`id`, du `name`, du `title`, gabarit
+d'en-tête FSH par type de ressource) sont maintenues dans le skill `fhir-skills:load-standards`
+plutôt que sur cette page, pour éviter qu'elles divergent d'une IG AP-HP à l'autre. Pour
+mémoire, la règle générale appliquée dans ce guide est conforme
+[aux conventions préconisées par l'ANS](https://interop.esante.gouv.fr/ig/documentation/bonnes_pratiques_modeler.html#r%C3%A8gles-de-nommage-des-ressources-de-conformit%C3%A9) :
 
-On nommera les fichiers selon la convention suivante : [ResourceType]-[Id].[extension fsh/json].
+- `id` : kebab-case (ex. `edsh-observation-body-weight`)
+- `name` : PascalCase dérivé de l'`id` (ex. `EdshObservationBodyWeight`)
+- `url` : `[base]/[ResourceType]/[id]`
+- nom de fichier : `[ResourceType]-[Id].[extension fsh/json]` (ex.
+  `StructureDefinition-edsh-observation-body-weight.fsh`)
 
-Par exemple, pour le questionnaire de représentation du modèle métier de l'usage "variables socles", on aura : 
--	id = name = UsageCore
--	url = [base]/Questionnaire/UsageCore
--	nom du fichier = Questionnaire-UsageCore.fsh
-
-à noter que ces règles ne sont pas conformes [aux conventions préconisées par l'ANS](https://interop.esante.gouv.fr/ig/documentation/bonnes_pratiques_modeler.html#r%C3%A8gles-de-nommage-des-ressources-de-conformit%C3%A9)
-
-##### Cas particulier des StructureDefinition
-
-- id doit préciser à quel type il s'applique (c'est-à-dire son Base)
-
-Par exemple pour le profil dédié au poids : 
--	id = name = DMObservationBodyWeight
--	nom du fichier est : StructureDefinition-DMObservationBodyWeight.fsh
--	url = [base]/StructureDefinition/DMObservationBodyWeight
+Exception documentée : les ressources produites par l'[AP-HP FormBuilder](https://github.com/aphp/formbuilder)
+(`Questionnaire`, `QuestionnaireResponse`) suivent leur propre convention, `id` = `name`
+en PascalCase — par exemple `Questionnaire/UsageCore`, fichier `Questionnaire-UsageCore.fsh`.
 
 #### Autres ressources (exemples, ou instances)
 
@@ -84,4 +78,4 @@ Chacune des situations illustrées par la figure donne lieu à la production d'u
 | Lieu                                | Endroit où les données sont produites.                                                                                                      |
 | Temps                               | Période pendant laquelle les données sont produites et saisies.                                                                             |
 | Modalité                            | La production de la donnée relève en générale d'une expertise métier, on se concentrera sur les manière dont les données sont enregistrées. |
-| Raison d'être                       | C'est le contexte métier qui a poussé au recueil et à la saisie de l'information.                           
+| Raison d'être                       | C'est le contexte métier qui a poussé au recueil et à la saisie de l'information.                                                            |
