@@ -5,18 +5,20 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This repo publishes `aphp.fhir.fr.edsh` — the AP-HP guide describing the core ("socle
 commun") data variables shared across Entrepôts de Données de Santé Hospitalier (EDSH),
 their modelling method, and their target FHIR profiles. It is published to GitHub Pages at
-the canonical above and consumed downstream: `IG-fhir-dm` depends on `aphp.fhir.fr.edsh: dev`.
+the canonical above and consumed downstream: `IG-fhir-dm` depends on `aphp.fhir.fr.edsh:
+dev` — and is *also* the upstream source of the "Data Management with FHIR" methodology
+this repo instantiates, and the home of the FHIR→OMOP derivation this repo deliberately
+does not cover.
+
+**`README.md` describes what the guide specifies** (the 51-item socle, the three-step
+method, the profile families, how to build the IG) — read it first for content. **This
+file covers how to work in the repo**: conventions, the skill entry point, and traps found
+during development that aren't visible from the published guide.
 
 Before creating or modifying a FHIR profile, extension, ValueSet/CodeSystem, or reviewing
 this repo for compliance, load the AP-HP FHIR standards via the `fhir-skills:load-standards`
 skill (naming conventions, resource id/name/title/FSH-header templates, the mandatory
 Provenance step, build & validation conventions).
-
-⚠️ **`README.md` is stale — do not trust it.** It is a leftover copy from the `IG-fhir-dm`
-repo: it is titled "AP-HP - DM : Data Management with FHIR", documents a `data-platform/`
-tree that **does not exist** here, and tells you to run a Gradle task `runSushi` that
-**does not exist** in this repo's `build.gradle.kts` (the real task is `sushiBuild`). Use
-this file, not the README, for anything about structure or commands.
 
 **Open question — Core vs. Project IG.** `fhir-skills:load-standards`'s naming-conventions
 reference determines IG type from `sushi-config.yaml`: `id: aphp.fhir.fr.core` or a `/core`
@@ -36,11 +38,29 @@ mechanically determinable going forward.
 
 ## Project Description
 
-Ce guide d'implémentation décrit : (i) les données socles sélectionnées par le GT sur les
-EDSH, (ii) la méthode de modélisation de ces données et, (iii) les profils FHIR cible.
-Status `draft`, version `0.1.0`, FHIR R4 (4.0.1), jurisdiction FRA, publisher AP-HP.
-Guide content (pages, FSH titles/descriptions) is authored in French; this file is in
-English per house convention.
+Standardises a **51-item "socle commun"** proposed by the GT « Standards et
+Interopérabilité » (mandated Jan. 2023 by the comité stratégique des données de santé) for
+adoption by every French hospital EDS — split into **Lot 1** (patient identity, PMSI,
+socio-démographique, médicament, biologie, examen clinique — the priority, currently
+modelled set) and **Lot 2** (style de vie: tabac/alcool/drogues/activité physique —
+deliberately deferred, unformalised end-to-end; see Known Deviations).
+
+The guide is built around a **three-step MDE pipeline**, each step with published
+deliverables you'll find referenced throughout `input/`:
+
+1. **Acquisition** — conceptual model + 40-concept business glossary + 10 annotated
+   clinical vignettes (`use-core-variables-acquisition.md`).
+2. **Formalisation** — `Questionnaire/UsageCore` (5 groups: socio-démographique, PMSI,
+   biologie, exposition médicamenteuse, examen clinique) + 10 `QuestionnaireResponse`
+   instances (one per vignette, `input/resources/usages/core/`).
+3. **Standardisation** — 52 FHIR profiles, plus a hand-authored StructureMap
+   **`Q2FSL`** ("Questionnaire to FHIR Semantic Layer", `input/fml/StructureMap-Q2FSL.fml`)
+   that mechanically transforms each `QuestionnaireResponse` into a `Bundle` of
+   conformant resources — this is what generates the `casN/` example resources.
+
+Status `draft`, version `0.1.0`, FHIR R4 (4.0.1), jurisdiction FRA, publisher AP-HP. Guide
+content (pages, FSH titles/descriptions) is authored in French; this file is in English
+per house convention.
 
 ## Technologies Used
 
@@ -59,9 +79,22 @@ The directory containing the guide inputs is located in `input`. It includes:
   `profiles-datatypes/` (4), `examples/` (2), `invariants/`, `usages/`, plus top-level
   `aliases.fsh` and `provenances.fsh`. Provenance coverage is 100% (107 instances for 56
   artifacts) — the repo's one fully-satisfied standard; keep it that way when adding artifacts.
-- **`input/fml`**: hand-authored StructureMap mapping (`StructureMap-Q2FSL.fml`). ⚠️ Dropping
-  a `.fml` file here does **not** make it part of the build — it must also be listed under
-  `parameters.path-resource` in `sushi-config.yaml`, or SUSHI/IG Publisher silently ignore it.
+  Two abstract parent hierarchies to derive from rather than re-deriving from base FHIR:
+  - `EdshObservationLaboratoryGeneric` (abstract) is the parent of **22 lab analyte
+    profiles**. It binds `code` to a 31-code LOINC ValueSet and enforces UCUM on every
+    quantity via **9 invariants** in `invariants.fsh` (`dm-lab-1..6` on labs; `dm-0`,
+    `dm-1`, `dm-exercice-minutes-per-day`/`-days-per-week` elsewhere). A new lab profile
+    that doesn't derive from this parent won't inherit UCUM enforcement and will validate
+    incorrectly.
+  - `Claim` → `EdshClaimPmsi` → `EdshClaimPmsiMco` → `EdshClaimRum` (all but the last are
+    abstract) models a French RUM, with diagnosis slices by type (DP/DR/DA/DAD).
+- **`input/fml`**: hand-authored StructureMap mapping — `Q2FSL`
+  (`StructureMap-Q2FSL.fml`, 1253 lines), `QuestionnaireResponse` → `Bundle`, 11 groups
+  navigating **by literal `linkId`**. Editing `Questionnaire/UsageCore`'s item structure
+  without updating the matching `linkId` literals in this FML breaks the map silently — no
+  compile-time link between the two. ⚠️ Dropping a `.fml` file here does **not** make it
+  part of the build — it must also be listed under `parameters.path-resource` in
+  `sushi-config.yaml`, or SUSHI/IG Publisher silently ignore it.
 - **`input/images-source`**: `.plantuml` sources, converted to SVG and included via
   `{%include some-diagram.svg%}`.
 - **`input/images`**: static images consumed directly. Currently 3 PNGs, all still prefixed
@@ -70,7 +103,11 @@ The directory containing the guide inputs is located in `input`. It includes:
 - **`input/pagecontent`**: Markdown guide pages. Each page must also be listed under `pages:`
   in `sushi-config.yaml` to be compiled into HTML by IG Publisher.
 - **`input/resources`**: hand-authored FHIR JSON, all under `usages/core/` (203 files —
-  Questionnaire/QuestionnaireResponse/example resources for the 10 documented clinical cases).
+  `Questionnaire/UsageCore`, its 10 `QuestionnaireResponse` instances, and a
+  `casN/` subfolder per vignette). **The `casN/` resources are `Q2FSL`'s generated
+  output, not independently hand-maintained examples** — hand-editing one desynchronises
+  it from its `QuestionnaireResponse`/the FML. Regenerate via the build rather than editing
+  in place.
 - **`input/test`**: `map/` (JSON EHR fixtures, one per test patient) and `sql/`.
 - **`input/ignoreWarnings.txt`**.
 
@@ -115,7 +152,11 @@ Other key files:
 Findings from a same-day compliance scan (`reports/compliance-2026-08-10-15-17.md`) plus
 direct verification, kept here so they aren't rediscovered — or propagated — next session:
 
-1. **`README.md` is stale** — see preamble above.
+1. **`input/pagecontent/dm-instruction.md` is not published** — it's missing from `pages:`
+   in `sushi-config.yaml`, so IG Publisher never compiles it, and it links to a
+   `data-management.html` page that doesn't exist in this IG. It describes a broader
+   5-step "processus d'instruction" (superset of the published 3-step method); check with
+   the author before deciding whether to publish it, delete it, or leave it as a draft.
 2. **Three `path-resource` entries in `sushi-config.yaml` point at directories that don't
    exist**: `input/resources/ViewDefinition_OMOP`, `input/resources/usages/core/View_definition`,
    `input/fml/usages/core`. Harmless to SUSHI (it skips missing paths) but likely leftover
@@ -141,6 +182,37 @@ direct verification, kept here so they aren't rediscovered — or propagated —
    (`(build):`, `(ci):`, `(fix):`, `(chore):`); older ones are freeform French
    (`Modification_correction`, `Amelioration_structuremap`). Prefer the parenthesised form
    for new commits.
+8. **`StructureMap-Q2FSL.fml` references `StructureDefinition/edsh-patient-residence`** —
+   no such profile exists anywhere in `input/fsh/`. Either dead code in the map or a
+   profile that was never created; don't assume the reference is valid without checking.
+9. **`Questionnaire-UsageCore-intro.md` contains only `TODO contexte`** — the intro page
+   for the guide's central artifact (the Questionnaire every profile and the FML trace
+   back to) is unwritten.
+10. **`StructureMap-Q2FSL-intro.md` documents only 1 of 11 FML groups** (`CreatePatient`).
+    The other 10 groups (`CreateEncounters`, `CreateConditions`, `CreateLaboratoryObservations`,
+    etc.) have no narrative documentation — don't assume the intro page describes the whole map.
+11. **`help.md`'s naming conventions are stale and self-contradictory** — it documents a
+    convention explicitly **not conformant with ANS's own recommendations** (says so
+    in-page), illustrated with the obsolete `DMObservationBodyWeight` id pattern rather
+    than the real `edsh-observation-body-weight`. Its closing table (production-process
+    QQOQCP characteristics) is also truncated mid-row. Prefer `fhir-skills:load-standards`
+    over this page for naming rules.
+12. **Date inconsistency**: `index.md` says the GT was launched "janvier 2024";
+    `data-dictionary.md` says "janvier 2023", and the GT's own deliverable
+    (`DocumentReference/CoreExigences`) is dated 2023-09-15. `index.md` is the one that's
+    wrong — fix at source if touching that page.
+13. **Lot 2 (style de vie) is unformalised end-to-end, not just "thin"**: all 4
+    `Questionnaire/UsageCore` groups are marked "(A définir dans des travaux
+    complémentaires)" with no real items; 3 of the 4 glossary entries in
+    `use-core-variables-acquisition.md` say "Préciser formellement ce qui est attendu";
+    every mention in the 10 standardisation narratives is a literal dead link
+    `[…](à faire)`; `Q2FSL` has no group for these 4 profiles; none have examples. Don't
+    "complete" one layer (e.g. write an example) without the others — the whole chain
+    needs the same complementary work described in the README first.
+14. **`input/includes/use-core-conceptual.svg` is orphaned** — referenced by no page (the
+    conceptual model is rendered from the mermaid source instead).
+15. **`other.md`'s "Glossaire" link points at `help.html` instead of `glossary.html`**, and
+    the page omits a link to `changelog.html` even though it's in the menu.
 
 ## Specific Rules
 
