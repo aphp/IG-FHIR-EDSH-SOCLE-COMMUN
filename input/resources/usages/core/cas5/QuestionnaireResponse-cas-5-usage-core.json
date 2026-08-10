@@ -582,6 +582,15 @@
                     {
                       "answer": [
                         {
+                          "valueString": "cas5-bio-creat-02"
+                        }
+                      ],
+                      "linkId": "325284450289",
+                      "text": "Identifiant"
+                    },
+                    {
+                      "answer": [
+                        {
                           "valueString": "14682-9"
                         }
                       ],
@@ -1124,11 +1133,7 @@
     }
   ],
   "subject": {
-    "reference": "Patient/patient-example",
-    "display": "Anyperson John B"
-  },
-  "author": {
-    "reference": "Practitioner/practitioner-example",
-    "display": "Quenum Martin U"
+    "reference": "Patient/cas5-pat-01",
+    "display": "Simon Camille"
   }
 }
