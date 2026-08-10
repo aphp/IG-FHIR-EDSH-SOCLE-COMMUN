@@ -2,9 +2,6 @@
 .idea
 .vscode
 .gradle
-/gradle
-gradlew
-gradlew.bat
 Thumbs.db
 /fsh-generated
 /fml-generated
