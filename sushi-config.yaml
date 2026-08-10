@@ -5,7 +5,7 @@ title: Données socles des Entrepôts de Données de Santé Hospitalier
 description: "Ce guide d'implémentation décrit: (i) les données socles sélectionnées par le GT sur les EDSH, (ii) la méthode de modélisation de ces données et, (iii) les profils FHIR cible."
 status: draft
 version: 0.1.0
-jurisdiction: urn:iso:std:iso:3166#FRA
+jurisdiction: urn:iso:std:iso:3166#FR
 fhirVersion: 4.0.1
 copyrightYear: 2023+
 releaseLabel: ci-build
@@ -79,9 +79,6 @@ parameters:  # see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-pa
     - input/resources/usages/core/cas9
     - input/resources/usages/core/cas10
     - input/fml
-    - input/fml/usages/core
-    - input/resources/ViewDefinition_OMOP
-    - input/resources/usages/core/View_definition
     
 # The instanceOptions property is used to configure certain aspects of how SUSHI processes instances.
 instanceOptions:
