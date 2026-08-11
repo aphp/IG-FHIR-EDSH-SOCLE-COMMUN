@@ -37,7 +37,7 @@ Dans ses antécédents, on note une [hypercholestérolémie essentielle](Conditi
 
 La patiente présente par ailleurs un [tabagisme estimé à 35 sevré depuis 1 an](à faire), et une consommation [occasionnelle d'alcool](à faire). Elle pratique la [marche à pied 30 minutes par jour](à faire).
 
-Cliniquement à l'admission : État hémodynamique stable. Fréquence cardiaque : 72 /min [Pression artérielle : 135/85 mmHg](Observation-cas1-exam-tas-01-cas1-exam-tad-01.html) Température corporelle : 36.8°C. A l'auscultation : bruits du cœur réguliers, pas de souffle, pouls périphériques tous perçus, mollets souples, pas de signe d'insuffisance cardiaque gauche ou droite. 
+Cliniquement à l'admission : État hémodynamique stable. Fréquence cardiaque : 72 /min [Pression artérielle : 135/85 mmHg](Observation-cas1-exam-tas-01-cas1-exam-tad-01.html) Température corporelle : 36.8°C. A l'auscultation : bruits du cœur réguliers, pas de souffle, pouls périphériques tous perçus, mollets souples, pas de signe d'insuffisance cardiaque gauche ou droite.
 
 Auscultation pulmonaire : normale
 
@@ -103,16 +103,15 @@ Le patient sort à domicile le 10 janvier avec [la prescription d'oméprazole 20
 
 Consignes de sortie :
 
- - Poursuite du traitement par oméprazole pendant 8 semaines
- - Éradication d'Helicobacter pylori si la recherche s'avère positive (résultats des biopsies en attente)
- - Consultation de contrôle avec endoscopie à 6-8 semaines pour vérifier la cicatrisation
- - Arrêt du tabac et réduction de la consommation d'alcool, facteurs aggravant l'ulcère gastrique
- - Éviter les anti-inflammatoires non stéroïdiens (AINS) et l'aspirine
+- Poursuite du traitement par oméprazole pendant 8 semaines
+- Éradication d'Helicobacter pylori si la recherche s'avère positive (résultats des biopsies en attente)
+- Consultation de contrôle avec endoscopie à 6-8 semaines pour vérifier la cicatrisation
+- Arrêt du tabac et réduction de la consommation d'alcool, facteurs aggravant l'ulcère gastrique
+- Éviter les anti-inflammatoires non stéroïdiens (AINS) et l'aspirine
 
 M. Martin est informé des signes d'alerte nécessitant une consultation en urgence : douleurs abdominales intenses, vomissements de sang, selles noires, malaise.
 
 Fait à la Pitié-Salpêtrière le 10 janvier 2024
-
 
 #### Cas 3 : Accouchement simple
 
@@ -130,10 +129,10 @@ Examens complémentaires
 
 Les analyses biologiques du 15/01/2024 montrent :
 
- - [Hémoglobine : 11.8 g/dL](Observation-cas3-bio-hb-01.html)
- - [Plaquettes : 285 x10⁹/L](Observation-cas3-bio-plq-01.html)
- - Pas de cytolyse hépatique
- - Bonne fonction rénale avec [créatininémie à 60 µmol/L](Observation-cas3-bio-creat-01.html)
+- [Hémoglobine : 11.8 g/dL](Observation-cas3-bio-hb-01.html)
+- [Plaquettes : 285 x10⁹/L](Observation-cas3-bio-plq-01.html)
+- Pas de cytolyse hépatique
+- Bonne fonction rénale avec [créatininémie à 60 µmol/L](Observation-cas3-bio-creat-01.html)
 
 Le reste du bilan est sans particularité. En particulier l'hémostase est normal, compatible avec un accouchement par voie basse sans contre-indication à une éventuelle péridurale.
 
@@ -159,18 +158,17 @@ Mme Leroy et sa fille sortent à domicile le 18 janvier 2024 après 3 nuits d'ho
 
 Consignes de sortie :
 
- - Poursuite de l'allaitement maternel exclusif à la demande
- - Surveillance de la cicatrisation périnéale, soins locaux
- - [Supplémentation en acide folique](MedicationRequest-cas3-medpresc-01.html) pendant 3 mois
- - Consultation post-natale avec le gynécologue à 6-8 semaines
- - Visite pédiatrique de suivi à J10 puis à 1 mois
- - [Rééducation périnéale](Procedure-cas3-acte-04.html) prescrite (à débuter 6 semaines après l'accouchement)
- - Contraception : information donnée, prescription différée à la consultation post-natale
+- Poursuite de l'allaitement maternel exclusif à la demande
+- Surveillance de la cicatrisation périnéale, soins locaux
+- [Supplémentation en acide folique](MedicationRequest-cas3-medpresc-01.html) pendant 3 mois
+- Consultation post-natale avec le gynécologue à 6-8 semaines
+- Visite pédiatrique de suivi à J10 puis à 1 mois
+- [Rééducation périnéale](Procedure-cas3-acte-04.html) prescrite (à débuter 6 semaines après l'accouchement)
+- Contraception : information donnée, prescription différée à la consultation post-natale
 
 Numéros d'urgence communiqués. Information sur les signes d'alerte nécessitant une consultation : fièvre, saignements abondants, douleurs abdominales intenses, difficultés d'allaitement majeures.
 
 Fait à Port Royal le 18 janvier 2024
-
 
 #### Cas 4 : Choc cardiogénique
 
@@ -182,10 +180,10 @@ A l'arrivée du SAMU, le patient est en état de choc avec une pression artérie
 
 La prise en charge immédiate a consisté en :
 
- - Dose de charge de charge [d'Aspirine 250 mg](MedicationAdministration-cas4-medadm-03.html)
- - Dose de charge de [Ticagrelor 180 mg](MedicationAdministration-cas4-medadm-04.html)
- - Bolus d'[HNF 4000 UI en IVD](MedicationAdministration-cas4-medadm-02.html)
- - Remplissage vasculaire par [1 L de NaCl 0.9%](MedicationAdministration-cas4-medadm-06.html)
+- Dose de charge de charge [d'Aspirine 250 mg](MedicationAdministration-cas4-medadm-03.html)
+- Dose de charge de [Ticagrelor 180 mg](MedicationAdministration-cas4-medadm-04.html)
+- Bolus d'[HNF 4000 UI en IVD](MedicationAdministration-cas4-medadm-02.html)
+- Remplissage vasculaire par [1 L de NaCl 0.9%](MedicationAdministration-cas4-medadm-06.html)
 
 La patiente transférée en dans le service de réanimation médicale de l'hôpital Bichat.
 
@@ -199,9 +197,9 @@ Fréquence cardiaque : 125 /min (tachycardie sinusale) [Pression artérielle : 7
 
 Prise en charge initiale :
 
- - [Intubation oro-trachéale](Procedure-cas4-acte-01.html) est réalisée en urgence le 5 novembre à 22h15 avec mise en place d'une [ventilation mécanique invasive par ventilation assistée contrôlée](Procedure-cas4-acte-07.html) devant la défaillance hémodynamique, respiratoire et neurologique.
- - [Pose d'un cathéter veineux central et d'un cathéter artériel en fémoral droit](Procedure-cas4-acte-04.html)
- - [Support vasopresseur par Dobutamine 10 µg/kg/min + Noradrénaline à 3 mg/h](MedicationAdministration-cas4-medadm-05.html) et poursuite du remplissage vasculaire par [1 L de NaCl 0.9% en débit libre](MedicationAdministration-cas4-medadm-07.html)
+- [Intubation oro-trachéale](Procedure-cas4-acte-01.html) est réalisée en urgence le 5 novembre à 22h15 avec mise en place d'une [ventilation mécanique invasive par ventilation assistée contrôlée](Procedure-cas4-acte-07.html) devant la défaillance hémodynamique, respiratoire et neurologique.
+- [Pose d'un cathéter veineux central et d'un cathéter artériel en fémoral droit](Procedure-cas4-acte-04.html)
+- [Support vasopresseur par Dobutamine 10 µg/kg/min + Noradrénaline à 3 mg/h](MedicationAdministration-cas4-medadm-05.html) et poursuite du remplissage vasculaire par [1 L de NaCl 0.9% en débit libre](MedicationAdministration-cas4-medadm-07.html)
 
 [L'échocardiographie transthoracique](Procedure-cas4-acte-06.html) à l'admission révèle une altération sévère de la fonction ventriculaire gauche avec une fraction d'éjection effondrée à 20%, une akinésie étendue de la paroi antérieure et septale, et une insuffisance mitrale significative. Péricarde sec.
 
@@ -243,13 +241,13 @@ Bandelette urinaire avec leucocyturie +++ et hématurie +.
 
 Le bilan biologique retrouve :
 
- - Syndrome inflammatoire biologique avec [leucocytes à 18 g/L](Observation-cas5-bio-leuco-01.html) dont [PNN 15 G/L](Observation-cas5-bio-neut-01.html)
- - [Insuffisance rénale aigue](Condition-cas5-diag-02.html) avec [créatininémie à 150 µmol/L](Observation-cas5-bio-creat-01.html)
+- Syndrome inflammatoire biologique avec [leucocytes à 18 g/L](Observation-cas5-bio-leuco-01.html) dont [PNN 15 G/L](Observation-cas5-bio-neut-01.html)
+- [Insuffisance rénale aigue](Condition-cas5-diag-02.html) avec [créatininémie à 150 µmol/L](Observation-cas5-bio-creat-01.html)
 
 La prise en charge initiale a consisté en :
 
- - Antibiothérapie probabiliste par voie intraveineuse par [Ceftriaxone 1 g/jour](MedicationRequest-cas5-medpresc-01.html)
- - [Hydratation intraveineuse par 1 L/jour de NaCl 0.9%](MedicationRequest-cas5-medpresc-04.html)
+- Antibiothérapie probabiliste par voie intraveineuse par [Ceftriaxone 1 g/jour](MedicationRequest-cas5-medpresc-01.html)
+- [Hydratation intraveineuse par 1 L/jour de NaCl 0.9%](MedicationRequest-cas5-medpresc-04.html)
 
 Une [échographie rénale](Procedure-cas5-acte-01.html) est réalisée et ne retrouve des reins de bonne morphologie sans dilatation des cavités pyélocalicielles ni d'abcès visualisé à gauche.
 
@@ -279,11 +277,10 @@ La patiente rentre à domicile le 16 janvier.
 
 Prescription de sortie :
 
- - [Amlodipine 10 mg le soir](MedicationRequest-cas5-medpresc-03.html)
- - [Amoxicilline + acide clavulanique 1 g / 125 mg matin, midi et soir à poursuivre jusqu'au 21 janvier inclus](MedicationRequest-cas5-medpresc-02.html)
+- [Amlodipine 10 mg le soir](MedicationRequest-cas5-medpresc-03.html)
+- [Amoxicilline + acide clavulanique 1 g / 125 mg matin, midi et soir à poursuivre jusqu'au 21 janvier inclus](MedicationRequest-cas5-medpresc-02.html)
 
 Fait à Saint-Louis le 16 janvier 2024
-
 
 #### Cas 6 : Suivi de cardiopathie ischémique
 
@@ -294,10 +291,11 @@ Patient de 58 ans adressé par son cardiologue traitant dans un contexte de doul
 Une [épreuve par ECG d'effort](Procedure-cas6-acte-04.html) avait été réalisée en ambulatoire et s'était révélée positive cliniquement et électriquement avec apparition d'un sus-décalage ST dans le territoire inférieur.
 
 Facteurs de risque cardiovasculaire :
-  - [Hypertension artérielle essentiellediagnostic](Condition-cas6-diag-02.html) connue depuis une dizaine d'années, traitée mais mal contrôlée
-  - [Tabagisme sevré](à faire) depuis 5 ans estimé à 15 paquets-années
-  - Pas d'antécédent personnel ou familial d'infarctus du myocarde ou d'accident vasculaire cérébral
-  - [Activité physique régulière de faible intensité](à faire) avec 30 minutes de marche par jour en moyenne
+
+- [Hypertension artérielle essentielle](Condition-cas6-diag-02.html) connue depuis une dizaine d'années, traitée mais mal contrôlée
+- [Tabagisme sevré](à faire) depuis 5 ans estimé à 15 paquets-années
+- Pas d'antécédent personnel ou familial d'infarctus du myocarde ou d'accident vasculaire cérébral
+- [Activité physique régulière de faible intensité](à faire) avec 30 minutes de marche par jour en moyenne
   
 Par ailleurs, [consommation d'alcool occasionnelle](à faire).
 
@@ -307,7 +305,7 @@ Fréquence cardiaque : 68 /min (régulière), [Pression artérielle 145/90 mmHg]
 
 Examen cardiovasculaire :
 
-Auscultation cardiaque : bruits du cœur réguliers, pas de souffle. Pas de signe d'insuffisance cardiaque (pas d'œdème des membres inférieurs, pas de turgescence jugulaire? pas de reflux hépato-jugulaire).
+Auscultation cardiaque : bruits du cœur réguliers, pas de souffle. Pas de signe d'insuffisance cardiaque (pas d'œdème des membres inférieurs, pas de turgescence jugulaire, pas de reflux hépato-jugulaire).
 
 Pouls périphériques perçus et symétriques.
 
@@ -317,18 +315,18 @@ Examen pulmonaire et abdominal : normaux
 
 Bilan biologique à l'admission :
 
-  - [Anémie microcytaire](Condition-cas6-diag-03.html) avec [hémoglobinémie à 10.5 g/dL hemoglobine](Observation-cas6-bio-hb-01.html) et [VGM à 72 fL](Observation-cas6-bio-vgm-01.html)
-  - Le reste du bilan est sans particularité avec notamment une fonction rénale normale avec une [créatininémie à 75 µmol/L](Observation-cas6-bio-creat-01.html)
+- [Anémie microcytaire](Condition-cas6-diag-03.html) avec [hémoglobinémie à 10.5 g/dL](Observation-cas6-bio-hb-01.html) et [VGM à 72 fL](Observation-cas6-bio-vgm-01.html)
+- Le reste du bilan est sans particularité avec notamment une fonction rénale normale avec une [créatininémie à 75 µmol/L](Observation-cas6-bio-creat-01.html)
 
 [L'électrocardiogramme sur 12 dérivations](Procedure-cas6-acte-01.html) réalisée à l'admission montre un rythme sinusal régulier à 68 /min, avec axe normal, sans trouble de la conduction ni de la repolarisation.
 
 [L'échocardiographie transthoracique](Procedure-cas6-acte-03.html) réalisée à l'admission retrouve une fonction ventriculaire gauche préservée avec une FEVG à 55%
 
 [La coronarographie](Procedure-cas6-acte-02.html), réalisée le 6 janvier 2024 à 11h30 par le Dr. Cardiologue par voie radiale droite sous anesthésie locale et contrôle scopique, met en évidence :
- 
-  - Artère coronaire droite : sténose de 60% au niveau du segment moyen, non significative hémodynamiquement
-  - Artère interventriculaire antérieure : sténose à 40-50% au niveau du segment proximal non significative
-  - Artère circonflexe : pas de sténose significative
+
+- Artère coronaire droite : sténose de 60% au niveau du segment moyen, non significative hémodynamiquement
+- Artère interventriculaire antérieure : sténose à 40-50% au niveau du segment proximal non significative
+- Artère circonflexe : pas de sténose significative
 
 Décision d'opter pour un traitement médical optimal dans un premier temps avec réévaluation clinique et fonctionnelle rapprochée.
 Introduction de [Bisoprolol 5 mg](MedicationRequest-cas6-medpresc-04.html) , [Ramipril 5 mg](MedicationRequest-cas6-medpresc-02.html), [Simvastatine 20 mg](MedicationRequest-cas6-medpresc-03.html) et [Aspirine 75 mg](MedicationRequest-cas6-medpresc-01.html) à partir du 6 janvier 2024.
@@ -337,11 +335,11 @@ En cas d'aggravation ou de persistance, il y aura une indication formelle à un 
 
 Règles hygiéno-diététiques :
 
- - Automesure tensionnelle au domicile avec objectif < 140/90 mmHg
- - Pas de reprise du tabac
- - Activité physique régulière recommandée avec plus de 30 minutes de marche par jour à adapter selon tolérance
- - Adaptation du régime alimentaire avec alimentation contrôlée en sel et acides gras saturés conformément à la documentation remise par la diététicienne du service
- - Contrôle du poids (objectif : IMC < 25 kg/m²)
+- Automesure tensionnelle au domicile avec objectif < 140/90 mmHg
+- Pas de reprise du tabac
+- Activité physique régulière recommandée avec plus de 30 minutes de marche par jour à adapter selon tolérance
+- Adaptation du régime alimentaire avec alimentation contrôlée en sel et acides gras saturés conformément à la documentation remise par la diététicienne du service
+- Contrôle du poids (objectif : IMC < 25 kg/m²)
 
 Le patient rentre à domicile le 7 janvier 2024 après une surveillance de 24h post-coronarographie sans complication.
 
@@ -351,14 +349,13 @@ Le patient est informé des signes d'alertes motivant une consultation en urgenc
 
 Prescription de sortie :
 
- - [Acide acétylsalicylique 75 mg, 1 sachet le matin](MedicationRequest-cas6-medpresc-01.html)
- - [Ramipril 5 mg, 1 comprimé le matin](MedicationRequest-cas6-medpresc-02.html)
- - [Simvastatine 20 mg, 1 comprimé le matin](MedicationRequest-cas6-medpresc-03.html)
- - [Bisoprolol 5 mg, 1 comprimé le matin](MedicationRequest-cas6-medpresc-04.html)
- - [Trinitrine 0.15 mg, 1 pulvérisation sublinguale en cas de douleur thoracique](MedicationRequest-cas6-medpresc-05.html), si persistance de la douleur au bout de 5 min, refaire une pulvérisation et appeler le 15
+- [Acide acétylsalicylique 75 mg, 1 sachet le matin](MedicationRequest-cas6-medpresc-01.html)
+- [Ramipril 5 mg, 1 comprimé le matin](MedicationRequest-cas6-medpresc-02.html)
+- [Simvastatine 20 mg, 1 comprimé le matin](MedicationRequest-cas6-medpresc-03.html)
+- [Bisoprolol 5 mg, 1 comprimé le matin](MedicationRequest-cas6-medpresc-04.html)
+- [Trinitrine 0.15 mg, 1 pulvérisation sublinguale en cas de douleur thoracique](MedicationRequest-cas6-medpresc-05.html), si persistance de la douleur au bout de 5 min, refaire une pulvérisation et appeler le 15
 
 Fait à Georges-Pompidou le 7 janvier 2024
-
 
 #### Cas 7 : État de mal migraineux
 
@@ -370,11 +367,11 @@ La céphalée est d'apparition progressive, pulsatile et prédomine sur l'hémic
 
 Antécédents médicaux :
 
- - [Migraine](Condition-cas7-diag-02.html) depuis l'adolescence avec 2 à 3 crises par an habituellement soulagé par paracétamol et anti-inflammatoires non stéroïdiens
- - Pas d'autre antécédent notable
- - [Pas d'intoxication tabagique](à faire)
- - [Consommation d'alcool occasionnelle](à faire)
- - [Activité physique régulière avec marche et yoga plusieurs fois par semaines](à faire)
+- [Migraine](Condition-cas7-diag-02.html) depuis l'adolescence avec 2 à 3 crises par an habituellement soulagé par paracétamol et anti-inflammatoires non stéroïdiens
+- Pas d'autre antécédent notable
+- [Pas d'intoxication tabagique](à faire)
+- [Consommation d'alcool occasionnelle](à faire)
+- [Activité physique régulière avec marche et yoga plusieurs fois par semaines](à faire)
 
 Examen clinique à l'admission :
 
@@ -404,19 +401,19 @@ Compte tenu de l'absence de lésion retrouvée et de l'antécédent de migraine,
 
 Prise en charge thérapeutique :
 
- - Mise au repos en chambre individuelle avec environnement calme
- - Traitement antiémétique par [Metoclopramide 10 mg intraveineux](MedicationRequest-cas7-medpresc-03.html)
- - Traitement antalgique avec poursuite du Paracetamol 1 g, [Ketoprofene 100 mg](MedicationRequest-cas7-medpresc-02.html) et introduction de [Sumatriptan 50 mg](MedicationRequest-cas7-medpresc-01.html)
+- Mise au repos en chambre individuelle avec environnement calme
+- Traitement antiémétique par [Metoclopramide 10 mg intraveineux](MedicationRequest-cas7-medpresc-03.html)
+- Traitement antalgique avec poursuite du [Paracetamol 1 g](MedicationRequest-cas7-medpresc-04.html), [Ketoprofene 100 mg](MedicationRequest-cas7-medpresc-02.html) et introduction de [Sumatriptan 50 mg](MedicationRequest-cas7-medpresc-01.html)
 
 Évolution rapidement favorable avec résolution progressive de la céphalée et amendement de la photo-phonophobie et de nausées/vomissements.
 
 Éducation thérapeutique et conseils :
 
- - Hygiène de sommeil : régularité du sommeil (7-8h par nuit), éviter la dette de sommeil
- - Eviter la consommation d'alcool
- - Traitement précoce des crises dès les premiers signes
- - Éviter la surconsommation d'antalgiques (risque de céphalée par abus médicamenteux si prise >10 jours par mois)
- - Tenir un agenda des crises pour identifier les facteurs déclenchants
+- Hygiène de sommeil : régularité du sommeil (7-8h par nuit), éviter la dette de sommeil
+- Eviter la consommation d'alcool
+- Traitement précoce des crises dès les premiers signes
+- Éviter la surconsommation d'antalgiques (risque de céphalée par abus médicamenteux si prise >10 jours par mois)
+- Tenir un agenda des crises pour identifier les facteurs déclenchants
 
 La patiente rentre à domicile le 16 janvier 2024.
 
@@ -426,9 +423,9 @@ Signes d'alerte devant faire consulter en urgence en cas de céphalée : brutale
 
 Prescription de sortie :
 
- - [Sumatriptan 50 mg, 1 comprimé si migraine](MedicationRequest-cas7-medpresc-01.html) à prendre dès le début de la crise migraineuse, renouvelable après 2 heures si besoin
- - [Ketoprofene 100 mg, 1 comprimé 2 fois par jour si migraine](MedicationRequest-cas7-medpresc-02.html) à prendre dès le début de la crise migraineuse
- - [Metoclopramide 10 mg, 1 comprimé 3 fois par jour si nausées/vomissements](MedicationRequest-cas7-medpresc-03.html)
+- [Sumatriptan 50 mg, 1 comprimé si migraine](MedicationRequest-cas7-medpresc-01.html) à prendre dès le début de la crise migraineuse, renouvelable après 2 heures si besoin
+- [Ketoprofene 100 mg, 1 comprimé 2 fois par jour si migraine](MedicationRequest-cas7-medpresc-02.html) à prendre dès le début de la crise migraineuse
+- [Metoclopramide 10 mg, 1 comprimé 3 fois par jour si nausées/vomissements](MedicationRequest-cas7-medpresc-03.html)
 
 Fait à Tenon le 16 janvier 2024
 
@@ -482,8 +479,8 @@ Introduction d'une anticoagulation préventive par [Enoxaparine 4000 UI par jour
 
 Sur le plan de la rééducation :
 
- - [Kinésithérapie](Procedure-cas8-acte-03.html) débutée à J1 avec mobilisation de la hanche et travail musculaire isométrique
- - Marche avec appui partiel sur le membre inférieur droit et 2 cannes anglaises autorisé selon tolérance
+- [Kinésithérapie](Procedure-cas8-acte-03.html) débutée à J1 avec mobilisation de la hanche et travail musculaire isométrique
+- Marche avec appui partiel sur le membre inférieur droit et 2 cannes anglaises autorisé selon tolérance
 
 Le patient rentre à domicile le 14 janvier 2024 avec un programme de rééducation en ambulatoire.
 
@@ -491,22 +488,22 @@ Il sera revu en consultation d'orthopédie dans 6 semaines avec une radiographie
 
 Consignes post-opératoires :
 
- - Poursuivre la kinésithérapie 3 fois par semaine
- - Appui partiel avec 2 cannes anglaises pendant 4 semaines puis avec 1 canne anglaise. La reprise de l'appui complet se fera selon les résultats de la radiographie de contrôle dans 6 semaines
- - Activité physique hors kinésithérapie contre indiquée pour le moment
- - Mouvements proscrits pendant les 6 premières semaines : flexion de hanche > 90°, rotation externe, croisement des jambes, adduction forcée
+- Poursuivre la kinésithérapie 3 fois par semaine
+- Appui partiel avec 2 cannes anglaises pendant 4 semaines puis avec 1 canne anglaise. La reprise de l'appui complet se fera selon les résultats de la radiographie de contrôle dans 6 semaines
+- Activité physique hors kinésithérapie contre indiquée pour le moment
+- Mouvements proscrits pendant les 6 premières semaines : flexion de hanche > 90°, rotation externe, croisement des jambes, adduction forcée
 
 Signes d'alerte motivant une consultation aux urgences :
 
- - Fièvre, écoulement purulent au niveau de la cicatrice
- - Douleur, gonflement et rougeur du mollet
- - Douleur brutale de la hanche droite
+- Fièvre, écoulement purulent au niveau de la cicatrice
+- Douleur, gonflement et rougeur du mollet
+- Douleur brutale de la hanche droite
 
 Prescription de sortie :
 
- - [Paracétamol 1 g, 1 comprimé toutes les 6 h](MedicationRequest-cas8-medpresc-02.html) si douleurs
- - [Tramadol 50 mg, 1 comprimé toutes les 8 h](MedicationRequest-cas8-medpresc-03.html) si douleurs malgré le Paracétamol
- - [Enoxaparine 4000 UI, 1 injection par voie sous cutanée par jour pendant 1 mois](MedicationRequest-cas8-medpresc-01.html)
+- [Paracétamol 1 g, 1 comprimé toutes les 6 h](MedicationRequest-cas8-medpresc-02.html) si douleurs
+- [Tramadol 50 mg, 1 comprimé toutes les 8 h](MedicationRequest-cas8-medpresc-03.html) si douleurs malgré le Paracétamol
+- [Enoxaparine 4000 UI, 1 injection par voie sous cutanée par jour pendant 1 mois](MedicationRequest-cas8-medpresc-01.html)
 
 Fait à Henri-Mondor le 14 janvier 2024
 
@@ -518,7 +515,7 @@ Patiente suivie dans le service depuis 7 ans dans un contexte de [cirrhose alcoo
 
 Examen clinique :
 
-Abdomen tendu avec matité à la percussion, périmètre abdo : 92 cm. [Poids 58.2 kg](Observation-cas9-exam-poids-01.html) à l'entré, soit 9 kg de plus que son poids de forme.
+Abdomen tendu avec matité à la percussion, périmètre abdo : 92 cm. [Poids 58.2 kg](Observation-cas9-exam-poids-01.html) à l'entrée, soit 9 kg de plus que son poids de forme.
 
 Examen neurologique normal, en particulier pas de signe d'encéphalopathie.
 
@@ -526,9 +523,9 @@ Le reste de l'examen est sans particularité.
 
 Le bilan biologique à l'entrée retrouve un bilan hépatique stable avec :
 
- - [ASAT à 1.5 N](Observation-cas9-bio-asat-01.html), [ALAT 1.5 Na](Observation-cas9-bio-alat-01.html), [PAL à 100 U/LP](Observation-cas9-bio-pal-01.html), [GGT à 30 UI/L](Observation-cas9-bio-ggt-01.html), [bilirubinémie totale à 25 µmol/L](Observation-cas9-bio-bili-01.html)
- - [TP à 80%](Observation-cas9-bio-tp-01.html)
- - Albuminémie à 40 g/L
+- [ASAT à 1.5 N](Observation-cas9-bio-asat-01.html), [ALAT 1.5 N](Observation-cas9-bio-alat-01.html), [PAL à 100 U/L](Observation-cas9-bio-pal-01.html), [GGT à 30 UI/L](Observation-cas9-bio-ggt-01.html), [bilirubinémie totale à 25 µmol/L](Observation-cas9-bio-bili-01.html)
+- [TP à 80%](Observation-cas9-bio-tp-01.html)
+- Albuminémie à 40 g/L
 
 Soit un score de Child Pugh B7.
 
@@ -536,7 +533,7 @@ Réalisation d'une [ponction évacuatrice d'ascite](Procedure-cas9-acte-01.html)
 
 L'analyse du liquide d'ascite retrouve 57 PNN/mm3.
 
- - l'analyse du liquide d'ascite ne révèle pas d'infection (57 PNN/mm3)
+- l'analyse du liquide d'ascite ne révèle pas d'infection (57 PNN/mm3)
 
 La patiente rentre à domicile le 14 janvier 2025.
 
@@ -544,8 +541,8 @@ Elle sera reconvoquée pour la prochaine ponction évacuatrice.
 
 Renouvellement de la prescription :
 
- - [Furosemide 40 mg, 1 comprimé le matin et le midi](MedicationRequest-cas9-medpresc-01.html)
- - [Spironolactone 25 mg, 1 comprimé le matin](MedicationRequest-cas9-medpresc-02.html)
+- [Furosemide 40 mg, 1 comprimé le matin et le midi](MedicationRequest-cas9-medpresc-01.html)
+- [Spironolactone 25 mg, 1 comprimé le matin](MedicationRequest-cas9-medpresc-02.html)
 
 Fait à Beaujon le 15 janvier 2024
 
@@ -557,11 +554,11 @@ Patient de 34 ans se présentant aux urgences de l'hôpital Avicenne le 16 janvi
 
 Antécédents :
 
- - [Bronchopneumopathie chronique obstructive GOLD 3](Condition-cas10-diag-05.html) diagnostiquée à 31 ans diagnostiquée de façon précoce à l'âge de 31 ans.
- - [Allergie à la pénicilline](Condition-cas10-diag-02.html)
- - [Tabagisme actif avec consommation estimée à 20 paquets-années](à faire) (1 paquet par jour depuis l'âge de 15 ans)
- - [Consommation d'alcool occasionnelle](à faire)
- - [Pas d'activité physique régulière](à faire) car limité par sa dyspnée d'effort chronique
+- [Bronchopneumopathie chronique obstructive GOLD 3](Condition-cas10-diag-05.html) diagnostiquée à 31 ans diagnostiquée de façon précoce à l'âge de 31 ans.
+- [Allergie à la pénicilline](Condition-cas10-diag-02.html)
+- [Tabagisme actif avec consommation estimée à 20 paquets-années](à faire) (1 paquet par jour depuis l'âge de 15 ans)
+- [Consommation d'alcool occasionnelle](à faire)
+- [Pas d'activité physique régulière](à faire) car limité par sa dyspnée d'effort chronique
 
 Examen clinique à l'admission :
 
@@ -577,9 +574,9 @@ Examen cardiovasculaire : tachycardie, bruits du cœur réguliers sans souffle, 
 
 Le bilan biologique à l'entrée retrouve :
 
- - [Anémie normocytaire](Condition-cas10-diag-03.html) avec [Hb à 11.2 g/dL](Observation-cas10-bio-hb-01.html) et [VGM à 87 fL](Observation-cas10-bio-vgm-01.html)
- - [Syndrome inflammatoire biologique](Condition-cas10-diag-04.html) avec [hyperleucocytose à 14 G/L](Observation-cas10-bio-leuco-01.html) et CRP à 58 mg/L
- - [Gazométrie artérielle](Procedure-cas10-acte-03.html) : pH 7.38, PaO2 = 62 mmHg, PaCO2 = 48 mmHg (discrète hypercapnie), Bicarbonates 29 mmol/L
+- [Anémie normocytaire](Condition-cas10-diag-03.html) avec [Hb à 11.2 g/dL](Observation-cas10-bio-hb-01.html) et [VGM à 87 fL](Observation-cas10-bio-vgm-01.html)
+- [Syndrome inflammatoire biologique](Condition-cas10-diag-04.html) avec [hyperleucocytose à 14 G/L](Observation-cas10-bio-leuco-01.html) et CRP à 58 mg/L
+- [Gazométrie artérielle](Procedure-cas10-acte-03.html) : pH 7.38, PaO2 = 62 mmHg, PaCO2 = 48 mmHg (discrète hypercapnie), Bicarbonates 29 mmol/L
 
 La [radiographie thoracique](Procedure-cas10-acte-02.html) montre un thorax distendu avec aplatissement des coupoles diaphragmatiques, évocateur d'un emphysème, sans foyer de condensation alvéolaire.
 
@@ -589,18 +586,18 @@ Le patient est transféré dans le service de pneumologie pour la suite de la pr
 
 La prise en charge initiale consiste en :
 
- - [Oxygénothérapie à 2 L/min aux lunettes nasales](MedicationRequest-cas10-medpresc-06.html) avec objectif de SpO2 entre 88 et 92%
- - Aérosolthérapie avec administration de [Terbutaline 5 mg toutes les 6 heures et de Bromure d'ipratropium 0.5 mg toutes les 8 heures](MedicationRequest-cas10-medpresc-07.html)
- - Antibiothérapie probabiliste par [Azithromycine](MedicationRequest-cas10-medpresc-03.html) compte tenu de l'antécédent d'allergie à la pénicilline et des crachats verdâtres chez un patient avec BPCO GOLD 3.
- - [Kinésithérapie respiratoire](Procedure-cas10-acte-04.html)
+- [Oxygénothérapie à 2 L/min aux lunettes nasales](MedicationRequest-cas10-medpresc-06.html) avec objectif de SpO2 entre 88 et 92%
+- Aérosolthérapie avec administration de [Terbutaline 5 mg toutes les 6 heures](MedicationRequest-cas10-medpresc-07.html) et de [Bromure d'ipratropium 0.5 mg toutes les 8 heures](MedicationRequest-cas10-medpresc-08.html)
+- Antibiothérapie probabiliste par [Azithromycine](MedicationRequest-cas10-medpresc-03.html) compte tenu de l'antécédent d'allergie à la pénicilline et des crachats verdâtres chez un patient avec BPCO GOLD 3.
+- [Kinésithérapie respiratoire](Procedure-cas10-acte-04.html)
 
 L'évolution est progressivement favorable avec sevrage de l'oxygénothérapie à J2 et reprise du traitement de fond. L'ECBC réalisé le 16 janvier est de mauvaise qualité et retrouve de la flore orale polymorphe donc poursuite de l'antibiothérapie probabiliste initiale pour 5 jours au total.
 
 Concernant la maladie respiratoire chronique :
 
- - Nous insistons sur la nécessité d'un arrêt total et définitif du tabac qui est primordial pour ralentir la progression de la maladie. Nous organisons une consultation de tabacologie dans 2 semaines au patient et nous lui prescrivons des [substituts nicotiniques](MedicationRequest-cas10-medpresc-04.html)
- - Le patient sera convoqué dans les prochaines semaines pour débuter une réhabilitation respiratoire dans un centre spécialisé
- - Nous remettons une prescription du [vaccin anti-pneumococcique](MedicationRequest-cas10-medpresc-09.html) à faire en ville et nous informons le patient de l'importance de se faire vacciner contre la grippe chaque année et contre le COVID tous les 6 mois.
+- Nous insistons sur la nécessité d'un arrêt total et définitif du tabac qui est primordial pour ralentir la progression de la maladie. Nous organisons une consultation de tabacologie dans 2 semaines au patient et nous lui prescrivons des [substituts nicotiniques](MedicationRequest-cas10-medpresc-04.html)
+- Le patient sera convoqué dans les prochaines semaines pour débuter une réhabilitation respiratoire dans un centre spécialisé
+- Nous remettons une prescription du [vaccin anti-pneumococcique](MedicationRequest-cas10-medpresc-09.html) à faire en ville et nous informons le patient de l'importance de se faire vacciner contre la grippe chaque année et contre le COVID tous les 6 mois.
 
 Le patient rentre à domicile le 19 janvier 2024.
 
@@ -608,10 +605,10 @@ Il sera revu en consultation de pneumologie dans 1 mois et convoqué prochaineme
 
 Prescription de sortie :
 
- - [Ultibro Breezhaler 85/43 µg](MedicationRequest-cas10-medpresc-01.html), 1 inhalation le matin
- - [Salbutamol 100 µg](MedicationRequest-cas10-medpresc-02.html) en inhalation : 1-2 bouffées 4 fois par jour et à la demande en cas de gêne respiratoire
- - [Azithromycine 250 mg, 1 comprimé par jour](MedicationRequest-cas10-medpresc-03.html) (fin du traitement antibiotique à J5)
- - [Nicopatch 15 mg](MedicationRequest-cas10-medpresc-04.html) 1 patch à appliquer le matin et à retirer avant de dormir
- - [Nicorette gomme 2 mg](MedicationRequest-cas10-medpresc-05.html), prendre une gomme en cas d'envie de fumer malgré le patch, ne pas dépasser 20 par jours
+- [Ultibro Breezhaler 85/43 µg](MedicationRequest-cas10-medpresc-01.html), 1 inhalation le matin
+- [Salbutamol 100 µg](MedicationRequest-cas10-medpresc-02.html) en inhalation : 1-2 bouffées 4 fois par jour et à la demande en cas de gêne respiratoire
+- [Azithromycine 250 mg, 1 comprimé par jour](MedicationRequest-cas10-medpresc-03.html) (fin du traitement antibiotique à J5)
+- [Nicopatch 15 mg](MedicationRequest-cas10-medpresc-04.html) 1 patch à appliquer le matin et à retirer avant de dormir
+- [Nicorette gomme 2 mg](MedicationRequest-cas10-medpresc-05.html), prendre une gomme en cas d'envie de fumer malgré le patch, ne pas dépasser 20 par jours
 
 Fait à Avicenne le 19 janvier 2024
