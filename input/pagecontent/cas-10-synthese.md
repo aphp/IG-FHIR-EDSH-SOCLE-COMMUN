@@ -6,7 +6,7 @@ Antécédents :
 
 - **Bronchopneumopathie chronique obstructive GOLD 3**_[diagnostic]_ diagnostiquée à 31 ans diagnostiquée de façon précoce à l'âge de 31 ans.
 - **Allergie à la pénicilline**_[diagnostic]_
-- **Tabagisme actif** **avec consommation estimée à 20 paquets-années**_[consommation-tabac]_ (1 paquet par jour depuis l'âge de 15 ans)
+- Tabagisme actif **avec consommation estimée à 20 paquets-années**_[consommation-tabac]_ (1 paquet par jour depuis l'âge de 15 ans)
 - **Consommation d'alcool occasionnelle**_[consommation-alcool]_
 - **Pas d'activité physique régulière**_[activite-physique]_ car limité par sa dyspnée d'effort chronique
 
@@ -23,7 +23,7 @@ Examen cardiovasculaire : tachycardie, bruits du cœur réguliers sans souffle, 
 
 Le bilan biologique à l'entrée retrouve :
 
-- **Anémie normocytaire**_[diagnostic]_ avec **Hb à 11.2 g/dL**_[hemoglobine]_ et **VGM** **à 87 fL**_[volume-globulaire-moyen]_
+- **Anémie normocytaire**_[diagnostic]_ avec **Hb à 11.2 g/dL**_[hemoglobine]_ et VGM **à 87 fL**_[volume-globulaire-moyen]_
 - **Syndrome inflammatoire biologique**_[diagnostic]_ avec **hyperleucocytose à 14 G/L**_[leucocyte]_ et CRP à 58 mg/L
 - **Gazométrie artérielle**_[acte]_ : pH 7.38, PaO2 = 62 mmHg, PaCO2 = 48 mmHg (discrète hypercapnie), Bicarbonates 29 mmol/L
 
