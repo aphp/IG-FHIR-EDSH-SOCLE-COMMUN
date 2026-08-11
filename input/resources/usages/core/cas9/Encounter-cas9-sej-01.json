@@ -23,14 +23,14 @@
     "admitSource": {
       "coding": [
         {
-          "code": "Domicile"
+          "code": "8"
         }
       ]
     },
     "dischargeDisposition": {
       "coding": [
         {
-          "code": "Domicile"
+          "code": "8"
         }
       ]
     }

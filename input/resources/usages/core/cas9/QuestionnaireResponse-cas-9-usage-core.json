@@ -179,7 +179,7 @@
             {
               "answer": [
                 {
-                  "valueDate": "2024-01-14"
+                  "valueDate": "2024-01-13"
                 }
               ],
               "linkId": "7114466839467",
@@ -221,7 +221,7 @@
             {
               "answer": [
                 {
-                  "valueDate": "2024-01-14"
+                  "valueDate": "2024-01-13"
                 }
               ],
               "linkId": "7114466839467",
@@ -263,7 +263,7 @@
             {
               "answer": [
                 {
-                  "valueDate": "2024-01-14"
+                  "valueDate": "2024-01-13"
                 }
               ],
               "linkId": "9436509453137",
@@ -321,7 +321,7 @@
         {
           "answer": [
             {
-              "valueString": "Domicile"
+              "valueString": "8"
             }
           ],
           "linkId": "6172398101212",
@@ -330,7 +330,7 @@
         {
           "answer": [
             {
-              "valueString": "Domicile"
+              "valueString": "8"
             }
           ],
           "linkId": "3354867075704",
@@ -764,7 +764,7 @@
           "text": "Médicament prescrit",
           "answer": [
             {
-              "valueString": "furosémide 40mg",
+              "valueString": "Furosémide 40mg",
               "item": [
                 {
                   "answer": [
@@ -780,7 +780,7 @@
                   "text": "codification",
                   "answer": [
                     {
-                      "valueString": "01958"
+                      "valueString": "C03CA01"
                     }
                   ]
                 },
@@ -832,7 +832,7 @@
           "text": "Médicament prescrit",
           "answer": [
             {
-              "valueString": "spironolactone 25mg",
+              "valueString": "Spironolactone 25mg",
               "item": [
                 {
                   "answer": [
@@ -848,7 +848,7 @@
                   "text": "codification",
                   "answer": [
                     {
-                      "valueString": "00977"
+                      "valueString": "C03DA01"
                     }
                   ]
                 },
