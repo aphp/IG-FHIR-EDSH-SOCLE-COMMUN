@@ -23,7 +23,7 @@ Examen cardiovasculaire : tachycardie, bruits du cœur réguliers sans souffle, 
 
 Le bilan biologique à l'entrée retrouve :
 
-- **Anémie normocytaire**_[diagnostic]_ avec **Hb à 11.2 g/dL**_[hemoglobine]_ et VGM **à 87 fL**_[volume-globulaire-moyen]_
+- **Anémie normocytaire**_[diagnostic]_ avec **Hb à 11.2 g/dL**_[hemoglobine]_ et **VGM à 87 fL**_[volume-globulaire-moyen]_
 - **Syndrome inflammatoire biologique**_[diagnostic]_ avec **hyperleucocytose à 14 G/L**_[leucocyte]_ et CRP à 58 mg/L
 - **Gazométrie artérielle**_[acte]_ : pH 7.38, PaO2 = 62 mmHg, PaCO2 = 48 mmHg (discrète hypercapnie), Bicarbonates 29 mmol/L
 

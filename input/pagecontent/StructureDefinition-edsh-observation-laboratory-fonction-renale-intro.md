@@ -8,7 +8,7 @@ Cette page documente le jeu de données correspondant à la **fonction rénale d
 ### Modèle conceptuel
 
 <div style="text-align: center;" id="conceptual">
-  <img style="width: 100%" src="StructureDefinition-edsh-observation-laboratory-fonction-renale-conceptual.png" alt="Modèle conceptuel"/>
+  <img style="width: 100%" src="conceptual-renal-function.png" alt="Modèle conceptuel"/>
 </div>
 
 ### Cas d'usages
