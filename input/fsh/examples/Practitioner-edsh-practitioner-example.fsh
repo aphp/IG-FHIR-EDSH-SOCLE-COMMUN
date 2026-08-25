@@ -2,7 +2,7 @@ Instance: edsh-practitioner-example
 InstanceOf: EdshPractitioner
 Description: "Exemple de EdshPractitioner"
 
-* identifier
+* identifier[rpps]
   * type = $fr-core-cs-v2-0203#RPPS
   * system = "https://rpps.esante.gouv.fr"
   * value = "10001234567"

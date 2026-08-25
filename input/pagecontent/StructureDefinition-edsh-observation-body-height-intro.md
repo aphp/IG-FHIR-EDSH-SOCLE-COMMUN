@@ -8,7 +8,7 @@ Cette page documente le jeu de données correspondant à la **taille du patient*
 ### Modèle conceptuel
 
 <div style="text-align: center;" id="conceptual">
-  <img style="width: 100%" src="StructureDefinition-edsh-observation-body-height-conceptual.png" alt="Modèle conceptuel"/>
+  <img style="width: 100%" src="conceptual-body-height.png" alt="Modèle conceptuel"/>
 </div>
 
 ### Cas d'usages

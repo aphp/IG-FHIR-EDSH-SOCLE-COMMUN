@@ -1,7 +1,7 @@
 ### Explication détaillées
 
-La StructureMap comporte 11 groupes. Le point d'entrée `QuestionnaireResponseToBundle`
-initialise le `Bundle` puis enchaîne les 9 autres groupes producteurs de ressources ;
+La StructureMap comporte 10 groupes. Le point d'entrée `QuestionnaireResponseToBundle`
+initialise le `Bundle` puis enchaîne les 8 autres groupes producteurs de ressources ;
 `CreateLabObservation` est un groupe utilitaire appelé par `CreateLaboratoryObservations`
 pour chacune des 23 analyses de biologie, afin d'éviter de dupliquer 23 fois la même
 logique de construction d'`Observation`.
@@ -10,7 +10,7 @@ logique de construction d'`Observation`.
 
 Initialise le `Bundle` (`type = collection`, `timestamp`), crée l'entrée `Patient` et
 enchaîne, dans cet ordre, tous les autres groupes producteurs de ressources : `CreatePatient`,
-`CreateLocations`, `CreateEncounters` (qui enchaîne lui-même `CreateConditions` et
+ `CreateEncounters` (qui enchaîne lui-même `CreateConditions` et
 `CreateProcedures`), `CreateLaboratoryObservations`, `CreateMedicationRequests`,
 `CreateMedicationAdministrations`, `CreateVitalSignObservations`.
 
@@ -159,74 +159,6 @@ group CreatePatient(source src : QuestionnaireResponse, target patient : Patient
     } "extract-pmsi-demographics";
 
   } "process-sociodemographics";
-}
-```
-
-#### `CreateLocations`
-
-Crée, à partir de l'item "Environnement" (linkId 5491974639955), une ressource `Location`
-représentant le lieu de résidence du patient :
-
-- `id` : concaténation de l'identifiant de l'environnement (linkId 708100685391) et de la
-  date du recueil du géocodage (linkId 1185653257776)
-- `position` (élément FHIR standard `Location.position`) : latitude/longitude du géocodage
-  (linkId 3709843054556 / 7651448032665) — duplique la même donnée que l'extension
-  `geolocation` posée sur `Location.address`, pour l'usage direct des clients FHIR qui
-  savent lire `position`
-- `address` : reprend **exactement** les mêmes extensions que `Patient.address` — code
-  géographique PMSI (`edsh-pmsi-code-geo`, linkId 2446369196222), géolocalisation
-  (`geolocation`, mêmes linkIds que la position), IRIS (`iso21090-ADXP-censusTract`, linkId
-  7621032273792)
-- l'IRIS est en outre répercuté comme `Location.identifier` (système
-  `urn:oid:2.16.840.1.113883.2.8.1.5.5`)
-- une fois la `Location` créée, le groupe pose sur `Patient` l'extension
-  **`edsh-patient-residence`** (voir `input/fsh/extensions/StructureDefinition-edsh-patient-residence.fsh`)
-  référençant cette `Location` — c'est le seul groupe qui l'émet
-
-``` fml
-group CreateLocations(source src : QuestionnaireResponse, target patient : Patient, target bundle : Bundle) {
-  src.item as socioDemo where (linkId = '4647259356106') then {
-    socioDemo.item as environment where (linkId = '5491974639955') then {
-      environment.item as envIdItem where (linkId = '708100685391') then {
-        envIdAns -> bundle.entry as locationEntry then {
-          envIdAns -> locationEntry.resource = create('Location') as location then {
-            envIdAns -> location.meta = create('Meta') as meta then {
-              envIdAns -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-location' "location-profile";
-            } "location-meta";
-            environment.item as geocodingItem where (linkId = '3816475533472') then {
-              geocodingItem.item as geoDateItem where (linkId = '1185653257776') then {
-                geoDateItem.answer as geoDateAns -> location.id = (%envIdAns.value.ofType(string) + '-' + %geoDateAns.value.ofType(date).toString()) "location-id";
-              } "extract-location-id";
-            } "process-geocoding-id";
-            environment.item as geocodagePosItem where (linkId = '3816475533472') -> location.position as position then {
-              geocodagePosItem.item as latPosItem where (linkId = '3709843054556') then {
-                latPosItem.answer as latPos -> position.latitude = (%latPos.value.ofType(decimal)) "setPositionLat";
-              } "navLatPos";
-              geocodagePosItem.item as longPosItem where (linkId = '7651448032665') then {
-                longPosItem.answer as longPos -> position.longitude = (%longPos.value.ofType(decimal)) "setPositionLong";
-              } "navLongPos";
-            } "setPosition";
-            envIdAns -> location.address as addr then {
-              // code géo PMSI, geolocation, IRIS — mêmes extensions que Patient.address (voir CreatePatient)
-            } "set-address";
-            environment.item as irisIdentItem where (linkId = '7621032273792') then {
-              irisIdentItem.answer as irisIdentAns -> location.identifier = create('Identifier') as identifier then {
-                irisIdentAns -> identifier.system = 'urn:oid:2.16.840.1.113883.2.8.1.5.5' "iris-ident-system";
-                irisIdentAns -> identifier.value = (%irisIdentAns.value.ofType(string)) "iris-ident-value";
-              } "set-iris-identifier";
-            } "process-iris-identifier";
-            envIdAns -> locationEntry.request as request, request.method = 'POST', request.url = 'Location' "set-request";
-            envIdAns -> location.id as locId, locationEntry.fullUrl = append('urn:uuid:', locId) then {
-              envIdAns -> patient.extension = create('Extension') as residenceExt then {
-                envIdAns -> residenceExt.url = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-patient-residence' "residence-ext-url";
-                envIdAns -> residenceExt.value = create('Reference') as ref, ref.reference = append('Location/', locId) "residence-ext-value";
-              } "set-patient-residence-ext";
-            } "set-fullUrl";
-          } "create-location";
-        } "location-entry";
-      } "extract-env-id";
-    } "process-environment";
-  } "process-sociodemographics-location";
 }
 ```
 
