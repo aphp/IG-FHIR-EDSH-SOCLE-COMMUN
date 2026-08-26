@@ -5,4 +5,4 @@ pluginManagement {
     }
 }
 
-rootProject.name = "Edsh"
+rootProject.name = "IG-FHIR-EDSH-SOCLE-COMMUN"
