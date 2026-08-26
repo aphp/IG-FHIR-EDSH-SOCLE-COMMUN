@@ -165,9 +165,13 @@ resources:
     name: Les ASAT de Madame Dupont
     description: Représente les ASAT du patient 1
     exampleBoolean: true
-  Observation/cas1-bio-frenale-01:
-    name: La fonction rénale (créatininémie et DFG estimé) de Madame Dupont
-    description: Représente la créatininémie et le DFG estimé du patient 1
+  Observation/cas1-bio-creat-01:
+    name: La créatininémie de Madame Dupont
+    description: Représente la créatininémie du patient 1
+    exampleBoolean: true
+  Observation/cas1-bio-dfg-01:
+    name: Le débit de filtration glomérulaire estimé de Madame Dupont
+    description: Représente le DFG du patient 1
     exampleBoolean: true
   Observation/cas1-bio-ggt-01:
     name: Les GGT de Madame Dupont
@@ -233,7 +237,7 @@ resources:
     name: Prescription de Oméprazole 20 mg de Monsieur Martin
     description: Prescription de Oméprazole 20 mg du patient 2
     exampleBoolean: true
-  Observation/cas2-bio-frenale-01:
+  Observation/cas2-bio-creat-01:
     name: La créatininémie de Monsieur Martin
     description: Représente la créatininémie du patient 2
     exampleBoolean: true
@@ -277,7 +281,7 @@ resources:
     name: Prescription de Acide folique 5 mg de Madame Leroy
     description: Prescription de Acide folique 5 mg du patient 3
     exampleBoolean: true
-  Observation/cas3-bio-frenale-01:
+  Observation/cas3-bio-creat-01:
     name: La créatininémie de Madame Leroy
     description: Représente la créatininémie du patient 3
     exampleBoolean: true
@@ -401,10 +405,6 @@ resources:
     name: Ticagrelor 180 mg administré à Monsieur Moreau
     description: Représente la dose et le processus d'administration de Ticagrelor 180 mg au patient 4
     exampleBoolean: true
-  Observation/cas4-bio-frenale-01:
-    name: La créatininémie de Monsieur Moreau
-    description: Représente la créatininémie du patient 4
-    exampleBoolean: true
   Observation/cas4-exam-tas-01-cas4-exam-tad-01:
     name: La pression artérielle de Monsieur Moreau
     description: Représente la pression artérielle du patient 4
@@ -485,11 +485,11 @@ resources:
     name: Prescription de NaCl 0.9% 1L/jour de Madame Simon
     description: Prescription de NaCl 0.9% 1L/jour du patient 5
     exampleBoolean: true
-  Observation/cas5-bio-frenale-02:
+  Observation/cas5-bio-creat-02:
     name: La créatininémie (J3) de Madame Simon
     description: Représente la créatininémie (J3) du patient 5
     exampleBoolean: true
-  Observation/cas5-bio-frenale-01:
+  Observation/cas5-bio-creat-01:
     name: La créatininémie (admission) de Madame Simon
     description: Représente la créatininémie (admission) du patient 5
     exampleBoolean: true
@@ -557,7 +557,7 @@ resources:
     name: Prescription de Trinitrine 0.15 mg de Monsieur Petit
     description: Prescription de Trinitrine 0.15 mg du patient 6
     exampleBoolean: true
-  Observation/cas6-bio-frenale-01:
+  Observation/cas6-bio-creat-01:
     name: La créatininémie de Monsieur Petit
     description: Représente la créatininémie du patient 6
     exampleBoolean: true
