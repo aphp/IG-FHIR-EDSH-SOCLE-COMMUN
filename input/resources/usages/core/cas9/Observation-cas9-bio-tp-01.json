@@ -3,7 +3,7 @@
   "id": "cas9-bio-tp-01",
   "meta": {
     "profile": [
-      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-generic"
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-tp"
     ]
   },
   "status": "final",
@@ -20,7 +20,9 @@
   "code": {
     "coding": [
       {
-        "code": "5894-1"
+        "system": "http://loinc.org",
+        "code": "5894-1",
+        "display": "Temps de quick Patient (%) [Temps relatif] Plasma pauvre en plaquettes ; Numérique ; Coagulation"
       }
     ]
   },

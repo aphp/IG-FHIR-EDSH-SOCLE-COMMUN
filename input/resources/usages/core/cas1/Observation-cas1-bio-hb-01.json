@@ -3,7 +3,7 @@
   "id": "cas1-bio-hb-01",
   "meta": {
     "profile": [
-      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-generic"
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-hemoglobine"
     ]
   },
   "status": "final",
@@ -20,7 +20,9 @@
   "code": {
     "coding": [
       {
-        "code": "718-7"
+        "system": "http://loinc.org",
+        "code": "718-7",
+        "display": "Hémoglobine [Masse/Volume] Sang ; Numérique"
       }
     ]
   },

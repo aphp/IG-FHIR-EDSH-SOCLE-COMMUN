@@ -3,7 +3,7 @@
   "id": "cas5-bio-neut-01",
   "meta": {
     "profile": [
-      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-generic"
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-neutrophiles"
     ]
   },
   "status": "final",
@@ -20,7 +20,9 @@
   "code": {
     "coding": [
       {
-        "code": "26499-4"
+        "system": "http://loinc.org",
+        "code": "26499-4",
+        "display": "Polynucléaires neutrophiles [Nombre/Volume] Sang ; Numérique"
       }
     ]
   },
@@ -30,23 +32,23 @@
   "effectiveDateTime": "2024-01-12T07:29:19.788Z",
   "valueQuantity": {
     "value": 15,
-    "unit": "g/L",
+    "unit": "10*3/uL",
     "system": "http://unitsofmeasure.org",
-    "code": "g/L"
+    "code": "10*3/uL"
   },
   "referenceRange": [
     {
       "low": {
         "system": "http://unitsofmeasure.org",
-        "code": "g/L",
+        "code": "10*3/uL",
         "value": 1.5,
-        "unit": "g/L"
+        "unit": "10*3/uL"
       },
       "high": {
         "system": "http://unitsofmeasure.org",
-        "code": "g/L",
+        "code": "10*3/uL",
         "value": 7,
-        "unit": "g/L"
+        "unit": "10*3/uL"
       }
     }
   ]

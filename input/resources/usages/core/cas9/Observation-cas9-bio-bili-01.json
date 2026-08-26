@@ -1,8 +1,9 @@
 {
   "resourceType": "Observation",
+  "id": "cas9-bio-bili-01",
   "meta": {
     "profile": [
-      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-generic"
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-bilirubine-totale"
     ]
   },
   "status": "final",
@@ -19,13 +20,16 @@
   "code": {
     "coding": [
       {
-        "code": "14631-6"
+        "system": "http://loinc.org",
+        "code": "14631-6",
+        "display": "Bilirubine [Moles/Volume] Sérum/Plasma ; Numérique"
       }
     ]
   },
   "subject": {
     "reference": "Patient/cas9-pat-01"
   },
+  "effectiveDateTime": "2024-01-13T07:30:00.000Z",
   "valueQuantity": {
     "value": 25,
     "unit": "umol/L",
@@ -47,7 +51,5 @@
         "unit": "umol/L"
       }
     }
-  ],
-  "id": "cas9-bio-bili-01",
-  "effectiveDateTime": "2024-01-13T07:30:00.000Z"
+  ]
 }

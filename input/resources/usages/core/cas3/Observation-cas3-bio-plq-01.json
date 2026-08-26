@@ -3,7 +3,7 @@
   "id": "cas3-bio-plq-01",
   "meta": {
     "profile": [
-      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-generic"
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-plaquettes"
     ]
   },
   "status": "final",
@@ -20,7 +20,9 @@
   "code": {
     "coding": [
       {
-        "code": "777-3"
+        "system": "http://loinc.org",
+        "code": "777-3",
+        "display": "Plaquettes [Nombre/Volume] Sang ; Numérique ; Comptage automate"
       }
     ]
   },
@@ -30,23 +32,23 @@
   "effectiveDateTime": "2024-01-15T05:00:00.000Z",
   "valueQuantity": {
     "value": 285,
-    "unit": "10e9/L",
+    "unit": "10*3/uL",
     "system": "http://unitsofmeasure.org",
-    "code": "10*9/L"
+    "code": "10*3/uL"
   },
   "referenceRange": [
     {
       "low": {
         "system": "http://unitsofmeasure.org",
-        "code": "10*9/L",
+        "code": "10*3/uL",
         "value": 150,
-        "unit": "10e9/L"
+        "unit": "10*3/uL"
       },
       "high": {
         "system": "http://unitsofmeasure.org",
-        "code": "10*9/L",
+        "code": "10*3/uL",
         "value": 450,
-        "unit": "10e9/L"
+        "unit": "10*3/uL"
       }
     }
   ]

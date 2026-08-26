@@ -3,7 +3,7 @@
   "id": "cas9-bio-pal-01",
   "meta": {
     "profile": [
-      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-generic"
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-pal"
     ]
   },
   "status": "final",
@@ -20,13 +20,16 @@
   "code": {
     "coding": [
       {
-        "code": "6768-6"
+        "system": "http://loinc.org",
+        "code": "6768-6",
+        "display": "Phosphatases alcalines [Catalytique/Volume] Sérum/Plasma ; Numérique"
       }
     ]
   },
   "subject": {
     "reference": "Patient/cas9-pat-01"
   },
+  "effectiveDateTime": "2024-01-13T07:30:00.000Z",
   "valueQuantity": {
     "value": 100,
     "unit": "U/L",
@@ -48,6 +51,5 @@
         "unit": "U/L"
       }
     }
-  ],
-  "effectiveDateTime": "2024-01-13T07:30:00.000Z"
+  ]
 }

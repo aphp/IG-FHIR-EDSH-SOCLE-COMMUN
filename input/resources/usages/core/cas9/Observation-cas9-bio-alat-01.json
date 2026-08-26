@@ -3,7 +3,7 @@
   "id": "cas9-bio-alat-01",
   "meta": {
     "profile": [
-      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-generic"
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-alat"
     ]
   },
   "status": "final",
@@ -20,7 +20,9 @@
   "code": {
     "coding": [
       {
-        "code": "1742-6"
+        "system": "http://loinc.org",
+        "code": "1743-4",
+        "display": "Alanine aminotransférase [Catalytique/Volume] Sérum/Plasma ; Numérique ; Avec phosphate de pyridoxal"
       }
     ]
   },
@@ -30,23 +32,23 @@
   "effectiveDateTime": "2024-01-13T07:30:00.000Z",
   "valueQuantity": {
     "value": 38,
-    "unit": "UI/L",
+    "unit": "[IU]/L",
     "system": "http://unitsofmeasure.org",
-    "code": "[iU]/L"
+    "code": "[IU]/L"
   },
   "referenceRange": [
     {
       "low": {
         "system": "http://unitsofmeasure.org",
-        "code": "[iU]/L",
+        "code": "[IU]/L",
         "value": 6,
-        "unit": "UI/L"
+        "unit": "[IU]/L"
       },
       "high": {
         "system": "http://unitsofmeasure.org",
-        "code": "[iU]/L",
+        "code": "[IU]/L",
         "value": 25,
-        "unit": "UI/L"
+        "unit": "[IU]/L"
       }
     }
   ]

@@ -3,7 +3,7 @@
   "id": "cas1-bio-pal-01",
   "meta": {
     "profile": [
-      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-generic"
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-pal"
     ]
   },
   "status": "final",
@@ -20,7 +20,9 @@
   "code": {
     "coding": [
       {
-        "code": "6768-6"
+        "system": "http://loinc.org",
+        "code": "6768-6",
+        "display": "Phosphatases alcalines [Catalytique/Volume] Sérum/Plasma ; Numérique"
       }
     ]
   },
@@ -30,23 +32,23 @@
   "effectiveDateTime": "2024-01-10T11:53:34.253Z",
   "valueQuantity": {
     "value": 30,
-    "unit": "UI/L",
+    "unit": "U/L",
     "system": "http://unitsofmeasure.org",
-    "code": "[iU]/L"
+    "code": "U/L"
   },
   "referenceRange": [
     {
       "low": {
         "system": "http://unitsofmeasure.org",
-        "code": "[iU]/L",
+        "code": "U/L",
         "value": 30,
-        "unit": "UI/L"
+        "unit": "U/L"
       },
       "high": {
         "system": "http://unitsofmeasure.org",
-        "code": "[iU]/L",
+        "code": "U/L",
         "value": 120,
-        "unit": "UI/L"
+        "unit": "U/L"
       }
     }
   ]
