@@ -1,0 +1,19 @@
+{
+  "resourceType": "Procedure",
+  "id": "cas3-acte-04",
+  "meta": {
+    "profile": [
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-procedure"
+    ]
+  },
+  "status": "completed",
+  "code": {
+    "text": "Rééducation périnéale"
+  },
+  "subject": {
+    "reference": "Patient/cas3-pat-01"
+  },
+  "encounter": {
+    "reference": "Encounter/cas3-sej-01"
+  }
+}

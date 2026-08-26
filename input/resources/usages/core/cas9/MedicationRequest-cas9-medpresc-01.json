@@ -1,0 +1,41 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "cas9-medpresc-01",
+  "meta": {
+    "profile": [
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-medication-request"
+    ]
+  },
+  "status": "active",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "code": "C03CA01",
+        "display": "Furosémide 40mg"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/cas9-pat-01"
+  },
+  "dosageInstruction": [
+    {
+      "timing": {
+        "repeat": {
+          "boundsPeriod": {
+            "start": "2024-01-13",
+            "end": "2024-02-13"
+          }
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "code": "20053000"
+          }
+        ]
+      }
+    }
+  ]
+}

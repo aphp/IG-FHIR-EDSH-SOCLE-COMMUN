@@ -1,0 +1,55 @@
+{
+  "resourceType": "Observation",
+  "id": "cas1-bio-asat-01",
+  "meta": {
+    "profile": [
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-asat"
+    ]
+  },
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "30239-8",
+        "display": "Aspartate aminotransférase [Catalytique/Volume] Sérum/Plasma ; Numérique ; Avec phosphate de pyridoxal"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/cas1-pat-01"
+  },
+  "effectiveDateTime": "2024-01-10T06:00:00.285Z",
+  "valueQuantity": {
+    "value": 50,
+    "unit": "[IU]/L",
+    "system": "http://unitsofmeasure.org",
+    "code": "[IU]/L"
+  },
+  "referenceRange": [
+    {
+      "low": {
+        "system": "http://unitsofmeasure.org",
+        "code": "[IU]/L",
+        "value": 20,
+        "unit": "[IU]/L"
+      },
+      "high": {
+        "system": "http://unitsofmeasure.org",
+        "code": "[IU]/L",
+        "value": 40,
+        "unit": "[IU]/L"
+      }
+    }
+  ]
+}

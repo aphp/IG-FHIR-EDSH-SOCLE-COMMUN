@@ -1,0 +1,18 @@
+/// url = 'http://example.org/StructureMap/LiteralSourceParamReproFails'
+/// name = 'LiteralSourceParamReproFails'
+/// title = 'Literal source parameter repro (fails)'
+/// description = "Minimal repro: a literal-valued `source` group parameter, unused in the callee body, is rejected at bind time (HTTP 500) even though it is grammar-legal (groupParam : literal | ID | fpExpression in the FML ANTLR grammar)."
+/// status = 'active'
+
+uses "http://hl7.org/fhir/StructureDefinition/Patient" alias SrcPatient as source
+uses "http://hl7.org/fhir/StructureDefinition/Patient" alias TgtPatient as target
+
+group Caller(source src : SrcPatient, target tgt : TgtPatient) {
+  src -> tgt then Callee(src, 'a literal string, never used by Callee', tgt) "call-callee";
+}
+
+// `configValue` is declared as a `source` parameter but bound to a literal string
+// constant at the call site above, and is never referenced anywhere in this body.
+group Callee(source src : SrcPatient, source configValue : string, target tgt : TgtPatient) {
+  src.id as srcId -> tgt.id = srcId "copy-id";
+}

@@ -1,0 +1,24 @@
+{
+  "resourceType": "Procedure",
+  "id": "cas8-acte-02",
+  "meta": {
+    "profile": [
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-procedure"
+    ]
+  },
+  "status": "completed",
+  "code": {
+    "coding": [
+      {
+        "code": "NAQK071"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/cas8-pat-01"
+  },
+  "encounter": {
+    "reference": "Encounter/cas8-sej-01"
+  },
+  "performedDateTime": "2024-01-11T09:30:00.000Z"
+}

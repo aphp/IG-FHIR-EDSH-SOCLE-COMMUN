@@ -1,6 +1,6 @@
 Profile: EdshAddress
 Parent: FRCoreAddressProfile
-Id : edsh-address
+Id: edsh-address
 Title: "Address"
 Description: "Profil Address du socle commun des EDS"
 

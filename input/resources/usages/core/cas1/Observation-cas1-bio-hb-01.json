@@ -1,0 +1,55 @@
+{
+  "resourceType": "Observation",
+  "id": "cas1-bio-hb-01",
+  "meta": {
+    "profile": [
+      "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-hemoglobine"
+    ]
+  },
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "718-7",
+        "display": "Hémoglobine [Masse/Volume] Sang ; Numérique"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/cas1-pat-01"
+  },
+  "effectiveDateTime": "2024-01-10T07:00:00.000Z",
+  "valueQuantity": {
+    "value": 14.2,
+    "unit": "g/dL",
+    "system": "http://unitsofmeasure.org",
+    "code": "g/dL"
+  },
+  "referenceRange": [
+    {
+      "low": {
+        "system": "http://unitsofmeasure.org",
+        "code": "g/dL",
+        "value": 12,
+        "unit": "g/dL"
+      },
+      "high": {
+        "system": "http://unitsofmeasure.org",
+        "code": "g/dL",
+        "value": 16,
+        "unit": "g/dL"
+      }
+    }
+  ]
+}

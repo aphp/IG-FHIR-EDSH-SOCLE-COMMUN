@@ -1,0 +1,16 @@
+/// url = 'http://example.org/StructureMap/LiteralSourceParamReproFixed'
+/// name = 'LiteralSourceParamReproFixed'
+/// title = 'Literal source parameter repro (control, fixed)'
+/// description = "Control case: identical to LiteralSourceParamReproFails except the unused literal-valued `source` parameter is removed. Binds successfully -- isolates the literal `source` argument, not something else about the two-group call shape, as the cause of the bind-time failure."
+/// status = 'active'
+
+uses "http://hl7.org/fhir/StructureDefinition/Patient" alias SrcPatient as source
+uses "http://hl7.org/fhir/StructureDefinition/Patient" alias TgtPatient as target
+
+group Caller(source src : SrcPatient, target tgt : TgtPatient) {
+  src -> tgt then Callee(src, tgt) "call-callee";
+}
+
+group Callee(source src : SrcPatient, target tgt : TgtPatient) {
+  src.id as srcId -> tgt.id = srcId "copy-id";
+}

@@ -32,10 +32,6 @@ group QuestionnaireResponseToBundle(source src : QuestionnaireResponse, target b
 
       src -> patient.id as patientId, patientEntry.fullUrl = append('urn:uuid:', patientId) "set-fullUrl";  
 
-      // Create Locations from geocoding data
-
-      src then CreateLocations(src, patient, bundle) "create-locations";
-
       // Create Encounters from PMSI data
 
       src then CreateEncounters(src, patient, bundle) "create-encounters";
@@ -249,160 +245,6 @@ group CreatePatient(source src : QuestionnaireResponse, target patient : Patient
     } "extract-pmsi-demographics";
 
   } "process-sociodemographics";
-
-}
-
-// Group: Create Locations from geocoding and IRIS data
-
-group CreateLocations(source src : QuestionnaireResponse, target patient : Patient, target bundle : Bundle) {
-
-  // Extract geocoding data from linkId 4647259356106 > 5491974639955
-
-  src.item as socioDemo where (linkId = '4647259356106') then {
-
-    socioDemo.item as environment where (linkId = '5491974639955') then {
-
-      // Identifiant saisi manuellement pour l'environnement (linkId 708100685391)
-
-      environment.item as envIdItem where (linkId = '708100685391') then {
-
-        envIdItem.answer as envIdAns -> bundle.entry as locationEntry then {
-
-          envIdAns -> locationEntry.resource = create('Location') as location then {
-
-            envIdAns -> location.meta = create('Meta') as meta then {
-
-              envIdAns -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-location' "location-profile";
-
-            } "location-meta";
-
-            // id = Identifiant Environnement + date du recueil du géocodage (linkId 1185653257776)
-
-            environment.item as geocodingItem where (linkId = '3816475533472') then {
-
-              geocodingItem.item as geoDateItem where (linkId = '1185653257776') then {
-
-                geoDateItem.answer as geoDateAns -> location.id = (%envIdAns.value.ofType(string) + '-' + %geoDateAns.value.ofType(date).toString()) "location-id";
-
-              } "extract-location-id";
-
-            } "process-geocoding-id";
-
-            // Position (champ standard FHIR Location.position), dupliqué à partir des
-
-            // mêmes données de géocodage que l'extension geolocation ci-dessous.
-
-            environment.item as geocodagePosItem where (linkId = '3816475533472') -> location.position as position then {
-
-              geocodagePosItem.item as latPosItem where (linkId = '3709843054556') then {
-
-                latPosItem.answer as latPos -> position.latitude = (%latPos.value.ofType(decimal)) "setPositionLat";
-
-              } "navLatPos";
-
-              geocodagePosItem.item as longPosItem where (linkId = '7651448032665') then {
-
-                longPosItem.answer as longPos -> position.longitude = (%longPos.value.ofType(decimal)) "setPositionLong";
-
-              } "navLongPos";
-
-            } "setPosition";
-
-            // Address : reprend EXACTEMENT les mêmes extensions que Patient.address
-
-            envIdAns -> location.address as addr then {
-
-              // Code géographique de résidence (PMSI, linkId 2446369196222)
-
-              src.item as pmsiGroup where (linkId = '2825244231605') then {
-
-                pmsiGroup.item as codeGeoItem where (linkId = '2446369196222') then {
-
-                  codeGeoItem.answer as ans -> addr.extension = create('Extension') as ext then {
-
-                    ans -> ext.url = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-pmsi-code-geo' "codegeo-url";
-
-                    ans.value as val -> ext.value = cast(val, 'code') "codegeo-value";
-
-                  } "set-codegeo-ext";
-
-                } "extract-codegeo";
-
-              } "extract-pmsi-demographics";
-
-              // Géolocalisation (latitude/longitude, linkId 3816475533472)
-
-              environment.item as geocodageItem where (linkId = '3816475533472') -> addr.extension = create('Extension') as geolocationExt then {
-
-                geocodageItem.item as latItem where (linkId = '3709843054556') -> geolocationExt.url = 'http://hl7.org/fhir/StructureDefinition/geolocation', geolocationExt.extension = create('Extension') as latExt then {
-
-                  latItem.answer as lat -> latExt.url = 'latitude', latExt.value = (%lat.value.ofType(decimal)) then {
-
-                    geocodageItem.item as longItem where (linkId = '7651448032665') -> geolocationExt.extension = create('Extension') as longExt then {
-
-                      longItem.answer as long -> longExt.url = 'longitude', longExt.value = (%long.value.ofType(decimal)) "setLong";
-
-                    } "createLongExt";
-
-                  } "setLat";
-
-                } "createLatExt";
-
-              } "createGeolocExt";
-
-              // IRIS (linkId 7621032273792) -> même extension census-tract que sur Patient.address
-
-              environment.item as irisItem where (linkId = '7621032273792') -> addr.line as addrLine, addrLine.extension = create('Extension') as irisExt then {
-
-                irisItem.answer as ans -> irisExt.url = 'http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-censusTract',
-
-                irisExt.valueString = (%ans.value.ofType(string)) "setIrisExt";
-
-              } "navIrisItem";
-
-            } "set-address";
-
-            // IRIS également répercuté en tant que Location.identifier
-
-            environment.item as irisIdentItem where (linkId = '7621032273792') then {
-
-              irisIdentItem.answer as irisIdentAns -> location.identifier = create('Identifier') as identifier then {
-
-                irisIdentAns -> identifier.system = 'urn:oid:2.16.840.1.113883.2.8.1.5.5' "iris-ident-system";
-
-                irisIdentAns -> identifier.value = (%irisIdentAns.value.ofType(string)) "iris-ident-value";
-
-              } "set-iris-identifier";
-
-            } "process-iris-identifier";
-
-            envIdAns -> locationEntry.request as request,
-
-              request.method = 'POST',
-
-              request.url = 'Location' "set-request";
-
-            envIdAns -> location.id as locId, locationEntry.fullUrl = append('urn:uuid:', locId) then {
-
-              envIdAns -> patient.extension = create('Extension') as residenceExt then {
-
-                envIdAns -> residenceExt.url = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-patient-residence' "residence-ext-url";
-
-                envIdAns -> residenceExt.value = create('Reference') as ref, ref.reference = append('Location/', locId) "residence-ext-value";
-
-              } "set-patient-residence-ext";
-
-            } "set-fullUrl";
-
-          } "create-location";
-
-        } "location-entry";
-
-      } "extract-env-id";
-
-    } "process-environment";
-
-  } "process-sociodemographics-location";
 
 }
 
@@ -1006,21 +848,192 @@ group CreateLaboratoryObservations(source src : QuestionnaireResponse, target pa
 
       renalGroup.item as ureaItem where (linkId = '7169026818760') then {
 
-        ureaItem.answer as ans -> bundle then CreateLabObservation(ans, ureaItem, patient, bundle) "create-urea-obs";
+        ureaItem.answer as ans -> bundle.entry as obsEntry then {
+
+          ans -> obsEntry.resource = create('Observation') as obs then {
+
+            ans then CreateLabObservationCommon(ans, patient, obs, obsEntry) "create-common";
+
+            ans -> obs.meta = create('Meta') as meta then {
+              ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-uremie' "set-profile";
+            } "set-meta";
+
+            ans -> obs.code = create('CodeableConcept') as code then {
+              ans -> code.coding = create('Coding') as coding then {
+                ans -> coding.system = 'http://loinc.org' "set-code-system";
+                ans -> coding.code = '22664-7' "set-code-value";
+
+                ans -> coding.display = 'Urée [Moles/Volume] Sérum/Plasma ; Numérique' "set-code-display";
+              } "set-coding";
+            } "set-code";
+
+            ans -> obs.value = (%ans.value.ofType(Quantity)) as val,
+
+              val.code = 'mmol/L',
+
+              val.unit = 'mmol/L',
+
+              val.system = 'http://unitsofmeasure.org' "set-value";
+
+            ans -> obs.referenceRange as refRange then {
+
+              ans.item as lowItem where (text.contains('Borne inférieure')) then {
+
+                lowItem.answer as lowAns -> refRange.low = (%lowAns.value.ofType(Quantity)) as tgtLow,
+
+                  tgtLow.code = 'mmol/L',
+
+                  tgtLow.unit = 'mmol/L',
+
+                  tgtLow.system = 'http://unitsofmeasure.org' "set-low";
+
+              } "extract-low";
+
+              ans.item as highItem where (text.contains('Borne supérieure')) then {
+
+                highItem.answer as highAns -> refRange.high = (%highAns.value.ofType(Quantity)) as tgtHigh,
+
+                  tgtHigh.code = 'mmol/L',
+
+                  tgtHigh.unit = 'mmol/L',
+
+                  tgtHigh.system = 'http://unitsofmeasure.org' "set-high";
+
+              } "extract-high";
+
+            } "set-ref-range";
+
+          } "create-obs";
+
+        } "obs-entry";
 
       } "extract-urea";
 
       renalGroup.item as creatItem where (linkId = '500408205043') then {
 
-        creatItem.answer as ans -> bundle then CreateLabObservation(ans, creatItem, patient, bundle) "create-creat-obs";
+        creatItem.answer as ans -> bundle.entry as obsEntry then {
+
+          ans -> obsEntry.resource = create('Observation') as obs then {
+
+            ans then CreateLabObservationCommon(ans, patient, obs, obsEntry) "create-common";
+
+            ans -> obs.meta = create('Meta') as meta then {
+              ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-creat' "set-profile";
+            } "set-meta";
+
+            ans -> obs.code = create('CodeableConcept') as code then {
+              ans -> code.coding = create('Coding') as coding then {
+                ans -> coding.system = 'http://loinc.org' "set-code-system";
+                ans -> coding.code = '14682-9' "set-code-value";
+
+                ans -> coding.display = 'Créatinine [Moles/Volume] Sérum/Plasma ; Numérique' "set-code-display";
+              } "set-coding";
+            } "set-code";
+
+            ans -> obs.value = (%ans.value.ofType(Quantity)) as val,
+
+              val.code = 'umol/L',
+
+              val.unit = 'umol/L',
+
+              val.system = 'http://unitsofmeasure.org' "set-value";
+
+            ans -> obs.referenceRange as refRange then {
+
+              ans.item as lowItem where (linkId='488869963230') then {
+
+                lowItem.answer as lowAns -> refRange.low = (%lowAns.value.ofType(Quantity)) as tgtLow,
+
+                  tgtLow.code = 'umol/L',
+
+                  tgtLow.unit = 'umol/L',
+
+                  tgtLow.system = 'http://unitsofmeasure.org' "set-low";
+
+              } "extract-low";
+
+              ans.item as highItem where (linkId='984480974142') then {
+
+                highItem.answer as highAns -> refRange.high = (%highAns.value.ofType(Quantity)) as tgtHigh,
+
+                  tgtHigh.code = 'umol/L',
+
+                  tgtHigh.unit = 'umol/L',
+
+                  tgtHigh.system = 'http://unitsofmeasure.org' "set-high";
+
+              } "extract-high";
+
+            } "set-ref-range";
+
+          } "create-obs";
+
+        } "obs-entry";
 
       } "extract-creat";
 
       renalGroup.item as dfgItem where (linkId = '786621340679') then {
 
-        dfgItem.answer as ans -> bundle then CreateLabObservation(ans, dfgItem, patient, bundle) "create-dfg-obs";
+        dfgItem.answer as ans -> bundle.entry as obsEntry then {
+
+          ans -> obsEntry.resource = create('Observation') as obs then {
+
+            ans then CreateLabObservationCommon(ans, patient, obs, obsEntry) "create-common";
+
+            ans -> obs.meta = create('Meta') as meta then {
+              ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-dfg' "set-profile";
+            } "set-meta";
+
+            ans.item as loincItem where (linkId = '974417569313') -> obs.code = create('CodeableConcept') as code then {
+              loincItem.answer as loincAns -> code.coding = create('Coding') as coding then {
+                loincAns -> coding.system = 'http://loinc.org' "set-code-system";
+                loincAns.value as loincValue -> coding.code = loincValue "set-code-value";
+              } "set-coding";
+            } "set-code";
+
+            ans -> obs.value = (%ans.value.ofType(Quantity)) as val/*,
+
+              val.code = 'umol/L',
+
+              val.unit = 'umol/L'*/,
+
+              val.system = 'http://unitsofmeasure.org' "set-value";
+
+            ans -> obs.referenceRange as refRange then {
+
+              ans.item as lowItem where (linkId='809916645548') then {
+
+                lowItem.answer as lowAns -> refRange.low = (%lowAns.value.ofType(Quantity)) as tgtLow,/*
+
+                  tgtLow.code = 'umol/L',
+
+                  tgtLow.unit = 'umol/L',*/
+
+                  tgtLow.system = 'http://unitsofmeasure.org' "set-low";
+
+              } "extract-low";
+
+              ans.item as highItem where (linkId='323493215684') then {
+
+                highItem.answer as highAns -> refRange.high = (%highAns.value.ofType(Quantity)) as tgtHigh,/*
+
+                  tgtHigh.code = 'umol/L',
+
+                  tgtHigh.unit = 'umol/L',*/
+
+                  tgtHigh.system = 'http://unitsofmeasure.org' "set-high";
+
+              } "extract-high";
+
+            } "set-ref-range";
+
+          } "create-obs";
+
+        } "obs-entry";
 
       } "extract-dfg";
+
+
 
     } "process-renal";
 
@@ -1028,73 +1041,748 @@ group CreateLaboratoryObservations(source src : QuestionnaireResponse, target pa
 
       hemoGroup.item as leukoItem where (linkId = '210077225604') then {
 
-        leukoItem.answer as ans -> bundle then CreateLabObservation(ans, leukoItem, patient, bundle) "create-leuko-obs";
+        leukoItem.answer as ans -> bundle.entry as obsEntry then {
+
+          ans -> obsEntry.resource = create('Observation') as obs then {
+
+            ans then CreateLabObservationCommon(ans, patient, obs, obsEntry) "create-common";
+
+            ans -> obs.meta = create('Meta') as meta then {
+              ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-leucocytes' "set-profile";
+            } "set-meta";
+
+            ans -> obs.code = create('CodeableConcept') as code then {
+              ans -> code.coding = create('Coding') as coding then {
+                ans -> coding.system = 'http://loinc.org' "set-code-system";
+                ans -> coding.code = '6690-2' "set-code-value";
+
+                ans -> coding.display = 'Leucocytes [Nombre/Volume] Sang ; Numérique ; Comptage automate' "set-code-display";
+              } "set-coding";
+            } "set-code";
+
+            ans -> obs.value = (%ans.value.ofType(Quantity)) as val,
+
+              val.code = '10*3/uL',
+
+              val.unit = '10*3/uL',
+
+              val.system = 'http://unitsofmeasure.org' "set-value";
+
+            ans -> obs.referenceRange as refRange then {
+
+              ans.item as lowItem where (text.contains('Borne inférieure')) then {
+
+                lowItem.answer as lowAns -> refRange.low = (%lowAns.value.ofType(Quantity)) as tgtLow,
+
+                  tgtLow.code = '10*3/uL',
+
+                  tgtLow.unit = '10*3/uL',
+
+                  tgtLow.system = 'http://unitsofmeasure.org' "set-low";
+
+              } "extract-low";
+
+              ans.item as highItem where (text.contains('Borne supérieure')) then {
+
+                highItem.answer as highAns -> refRange.high = (%highAns.value.ofType(Quantity)) as tgtHigh,
+
+                  tgtHigh.code = '10*3/uL',
+
+                  tgtHigh.unit = '10*3/uL',
+
+                  tgtHigh.system = 'http://unitsofmeasure.org' "set-high";
+
+              } "extract-high";
+
+            } "set-ref-range";
+
+          } "create-obs";
+
+        } "obs-entry";
 
       } "extract-leuko";
 
       hemoGroup.item as hemoItem where (linkId = '304159088493') then {
 
-        hemoItem.answer as ans -> bundle then CreateLabObservation(ans, hemoItem, patient, bundle) "create-hemo-obs";
+        hemoItem.answer as ans -> bundle.entry as obsEntry then {
+
+          ans -> obsEntry.resource = create('Observation') as obs then {
+
+            ans then CreateLabObservationCommon(ans, patient, obs, obsEntry) "create-common";
+
+            ans -> obs.meta = create('Meta') as meta then {
+              ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-hemoglobine' "set-profile";
+            } "set-meta";
+
+            ans -> obs.code = create('CodeableConcept') as code then {
+              ans -> code.coding = create('Coding') as coding then {
+                ans -> coding.system = 'http://loinc.org' "set-code-system";
+                ans -> coding.code = '718-7' "set-code-value";
+
+                ans -> coding.display = 'Hémoglobine [Masse/Volume] Sang ; Numérique' "set-code-display";
+              } "set-coding";
+            } "set-code";
+
+            ans -> obs.value = (%ans.value.ofType(Quantity)) as val,
+
+              val.code = 'g/dL',
+
+              val.unit = 'g/dL',
+
+              val.system = 'http://unitsofmeasure.org' "set-value";
+
+            ans -> obs.referenceRange as refRange then {
+
+              ans.item as lowItem where (text.contains('Borne inférieure')) then {
+
+                lowItem.answer as lowAns -> refRange.low = (%lowAns.value.ofType(Quantity)) as tgtLow,
+
+                  tgtLow.code = 'g/dL',
+
+                  tgtLow.unit = 'g/dL',
+
+                  tgtLow.system = 'http://unitsofmeasure.org' "set-low";
+
+              } "extract-low";
+
+              ans.item as highItem where (text.contains('Borne supérieure')) then {
+
+                highItem.answer as highAns -> refRange.high = (%highAns.value.ofType(Quantity)) as tgtHigh,
+
+                  tgtHigh.code = 'g/dL',
+
+                  tgtHigh.unit = 'g/dL',
+
+                  tgtHigh.system = 'http://unitsofmeasure.org' "set-high";
+
+              } "extract-high";
+
+            } "set-ref-range";
+
+          } "create-obs";
+
+        } "obs-entry";
 
       } "extract-hemo";
 
       hemoGroup.item as hematItem where (linkId = '813863316705') then {
 
-        hematItem.answer as ans -> bundle then CreateLabObservation(ans, hematItem, patient, bundle) "create-hemat-obs";
+        hematItem.answer as ans -> bundle.entry as obsEntry then {
+
+          ans -> obsEntry.resource = create('Observation') as obs then {
+
+            ans then CreateLabObservationCommon(ans, patient, obs, obsEntry) "create-common";
+
+            ans -> obs.meta = create('Meta') as meta then {
+              ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-hematocrite' "set-profile";
+            } "set-meta";
+
+            ans -> obs.code = create('CodeableConcept') as code then {
+              ans -> code.coding = create('Coding') as coding then {
+                ans -> coding.system = 'http://loinc.org' "set-code-system";
+                ans -> coding.code = '4544-3' "set-code-value";
+
+                ans -> coding.display = 'Hématocrite [Fraction volumique] Sang ; Numérique ; Comptage automate' "set-code-display";
+              } "set-coding";
+            } "set-code";
+
+            ans -> obs.value = (%ans.value.ofType(Quantity)) as val,
+
+              val.code = '%',
+
+              val.unit = '%',
+
+              val.system = 'http://unitsofmeasure.org' "set-value";
+
+            ans -> obs.referenceRange as refRange then {
+
+              ans.item as lowItem where (text.contains('Borne inférieure')) then {
+
+                lowItem.answer as lowAns -> refRange.low = (%lowAns.value.ofType(Quantity)) as tgtLow,
+
+                  tgtLow.code = '%',
+
+                  tgtLow.unit = '%',
+
+                  tgtLow.system = 'http://unitsofmeasure.org' "set-low";
+
+              } "extract-low";
+
+              ans.item as highItem where (text.contains('Borne supérieure')) then {
+
+                highItem.answer as highAns -> refRange.high = (%highAns.value.ofType(Quantity)) as tgtHigh,
+
+                  tgtHigh.code = '%',
+
+                  tgtHigh.unit = '%',
+
+                  tgtHigh.system = 'http://unitsofmeasure.org' "set-high";
+
+              } "extract-high";
+
+            } "set-ref-range";
+
+          } "create-obs";
+
+        } "obs-entry";
 
       } "extract-hemat";
 
       hemoGroup.item as eryItem where (linkId = '459731866614') then {
 
-        eryItem.answer as ans -> bundle then CreateLabObservation(ans, eryItem, patient, bundle) "create-ery-obs";
+        eryItem.answer as ans -> bundle.entry as obsEntry then {
+
+          ans -> obsEntry.resource = create('Observation') as obs then {
+
+            ans then CreateLabObservationCommon(ans, patient, obs, obsEntry) "create-common";
+
+            ans -> obs.meta = create('Meta') as meta then {
+              ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-erythrocytes' "set-profile";
+            } "set-meta";
+
+            ans -> obs.code = create('CodeableConcept') as code then {
+              ans -> code.coding = create('Coding') as coding then {
+                ans -> coding.system = 'http://loinc.org' "set-code-system";
+                ans -> coding.code = '789-8' "set-code-value";
+
+                ans -> coding.display = 'Érythrocytes [Nombre/Volume] Sang ; Numérique ; Comptage automate' "set-code-display";
+              } "set-coding";
+            } "set-code";
+
+            ans -> obs.value = (%ans.value.ofType(Quantity)) as val,
+
+              val.code = '10*6/uL',
+
+              val.unit = '10*6/uL',
+
+              val.system = 'http://unitsofmeasure.org' "set-value";
+
+            ans -> obs.referenceRange as refRange then {
+
+              ans.item as lowItem where (text.contains('Borne inférieure')) then {
+
+                lowItem.answer as lowAns -> refRange.low = (%lowAns.value.ofType(Quantity)) as tgtLow,
+
+                  tgtLow.code = '10*6/uL',
+
+                  tgtLow.unit = '10*6/uL',
+
+                  tgtLow.system = 'http://unitsofmeasure.org' "set-low";
+
+              } "extract-low";
+
+              ans.item as highItem where (text.contains('Borne supérieure')) then {
+
+                highItem.answer as highAns -> refRange.high = (%highAns.value.ofType(Quantity)) as tgtHigh,
+
+                  tgtHigh.code = '10*6/uL',
+
+                  tgtHigh.unit = '10*6/uL',
+
+                  tgtHigh.system = 'http://unitsofmeasure.org' "set-high";
+
+              } "extract-high";
+
+            } "set-ref-range";
+
+          } "create-obs";
+
+        } "obs-entry";
 
       } "extract-ery";
 
       hemoGroup.item as vgmItem where (linkId = '163624088831') then {
 
-        vgmItem.answer as ans -> bundle then CreateLabObservation(ans, vgmItem, patient, bundle) "create-vgm-obs";
+        vgmItem.answer as ans -> bundle.entry as obsEntry then {
+
+          ans -> obsEntry.resource = create('Observation') as obs then {
+
+            ans then CreateLabObservationCommon(ans, patient, obs, obsEntry) "create-common";
+
+            ans -> obs.meta = create('Meta') as meta then {
+              ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-vgm' "set-profile";
+            } "set-meta";
+
+            ans -> obs.code = create('CodeableConcept') as code then {
+              ans -> code.coding = create('Coding') as coding then {
+                ans -> coding.system = 'http://loinc.org' "set-code-system";
+                ans -> coding.code = '30428-7' "set-code-value";
+
+                ans -> coding.display = 'Volume globulaire moyen [Volume d\'entité] Érythrocytes ; Numérique' "set-code-display";
+              } "set-coding";
+            } "set-code";
+
+            ans -> obs.value = (%ans.value.ofType(Quantity)) as val,
+
+              val.code = 'fL',
+
+              val.unit = 'fL',
+
+              val.system = 'http://unitsofmeasure.org' "set-value";
+
+            ans -> obs.referenceRange as refRange then {
+
+              ans.item as lowItem where (text.contains('Borne inférieure')) then {
+
+                lowItem.answer as lowAns -> refRange.low = (%lowAns.value.ofType(Quantity)) as tgtLow,
+
+                  tgtLow.code = 'fL',
+
+                  tgtLow.unit = 'fL',
+
+                  tgtLow.system = 'http://unitsofmeasure.org' "set-low";
+
+              } "extract-low";
+
+              ans.item as highItem where (text.contains('Borne supérieure')) then {
+
+                highItem.answer as highAns -> refRange.high = (%highAns.value.ofType(Quantity)) as tgtHigh,
+
+                  tgtHigh.code = 'fL',
+
+                  tgtHigh.unit = 'fL',
+
+                  tgtHigh.system = 'http://unitsofmeasure.org' "set-high";
+
+              } "extract-high";
+
+            } "set-ref-range";
+
+          } "create-obs";
+
+        } "obs-entry";
 
       } "extract-vgm";
 
       hemoGroup.item as platItem where (linkId = '794156787471') then {
 
-        platItem.answer as ans -> bundle then CreateLabObservation(ans, platItem, patient, bundle) "create-plat-obs";
+        platItem.answer as ans -> bundle.entry as obsEntry then {
+
+          ans -> obsEntry.resource = create('Observation') as obs then {
+
+            ans then CreateLabObservationCommon(ans, patient, obs, obsEntry) "create-common";
+
+            ans -> obs.meta = create('Meta') as meta then {
+              ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-plaquettes' "set-profile";
+            } "set-meta";
+
+            ans -> obs.code = create('CodeableConcept') as code then {
+              ans -> code.coding = create('Coding') as coding then {
+                ans -> coding.system = 'http://loinc.org' "set-code-system";
+                ans -> coding.code = '777-3' "set-code-value";
+
+                ans -> coding.display = 'Plaquettes [Nombre/Volume] Sang ; Numérique ; Comptage automate' "set-code-display";
+              } "set-coding";
+            } "set-code";
+
+            ans -> obs.value = (%ans.value.ofType(Quantity)) as val,
+
+              val.code = '10*3/uL',
+
+              val.unit = '10*3/uL',
+
+              val.system = 'http://unitsofmeasure.org' "set-value";
+
+            ans -> obs.referenceRange as refRange then {
+
+              ans.item as lowItem where (text.contains('Borne inférieure')) then {
+
+                lowItem.answer as lowAns -> refRange.low = (%lowAns.value.ofType(Quantity)) as tgtLow,
+
+                  tgtLow.code = '10*3/uL',
+
+                  tgtLow.unit = '10*3/uL',
+
+                  tgtLow.system = 'http://unitsofmeasure.org' "set-low";
+
+              } "extract-low";
+
+              ans.item as highItem where (text.contains('Borne supérieure')) then {
+
+                highItem.answer as highAns -> refRange.high = (%highAns.value.ofType(Quantity)) as tgtHigh,
+
+                  tgtHigh.code = '10*3/uL',
+
+                  tgtHigh.unit = '10*3/uL',
+
+                  tgtHigh.system = 'http://unitsofmeasure.org' "set-high";
+
+              } "extract-high";
+
+            } "set-ref-range";
+
+          } "create-obs";
+
+        } "obs-entry";
 
       } "extract-plat";
 
       hemoGroup.item as neutItem where (linkId = '961905168477') then {
 
-        neutItem.answer as ans -> bundle then CreateLabObservation(ans, neutItem, patient, bundle) "create-neut-obs";
+        neutItem.answer as ans -> bundle.entry as obsEntry then {
+
+          ans -> obsEntry.resource = create('Observation') as obs then {
+
+            ans then CreateLabObservationCommon(ans, patient, obs, obsEntry) "create-common";
+
+            ans -> obs.meta = create('Meta') as meta then {
+              ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-neutrophiles' "set-profile";
+            } "set-meta";
+
+            ans -> obs.code = create('CodeableConcept') as code then {
+              ans -> code.coding = create('Coding') as coding then {
+                ans -> coding.system = 'http://loinc.org' "set-code-system";
+                ans -> coding.code = '26499-4' "set-code-value";
+
+                ans -> coding.display = 'Polynucléaires neutrophiles [Nombre/Volume] Sang ; Numérique' "set-code-display";
+              } "set-coding";
+            } "set-code";
+
+            ans -> obs.value = (%ans.value.ofType(Quantity)) as val,
+
+              val.code = '10*3/uL',
+
+              val.unit = '10*3/uL',
+
+              val.system = 'http://unitsofmeasure.org' "set-value";
+
+            ans -> obs.referenceRange as refRange then {
+
+              ans.item as lowItem where (text.contains('Borne inférieure')) then {
+
+                lowItem.answer as lowAns -> refRange.low = (%lowAns.value.ofType(Quantity)) as tgtLow,
+
+                  tgtLow.code = '10*3/uL',
+
+                  tgtLow.unit = '10*3/uL',
+
+                  tgtLow.system = 'http://unitsofmeasure.org' "set-low";
+
+              } "extract-low";
+
+              ans.item as highItem where (text.contains('Borne supérieure')) then {
+
+                highItem.answer as highAns -> refRange.high = (%highAns.value.ofType(Quantity)) as tgtHigh,
+
+                  tgtHigh.code = '10*3/uL',
+
+                  tgtHigh.unit = '10*3/uL',
+
+                  tgtHigh.system = 'http://unitsofmeasure.org' "set-high";
+
+              } "extract-high";
+
+            } "set-ref-range";
+
+          } "create-obs";
+
+        } "obs-entry";
 
       } "extract-neut";
 
       hemoGroup.item as lymphItem where (linkId = '695150914696') then {
 
-        lymphItem.answer as ans -> bundle then CreateLabObservation(ans, lymphItem, patient, bundle) "create-lymph-obs";
+        lymphItem.answer as ans -> bundle.entry as obsEntry then {
+
+          ans -> obsEntry.resource = create('Observation') as obs then {
+
+            ans then CreateLabObservationCommon(ans, patient, obs, obsEntry) "create-common";
+
+            ans -> obs.meta = create('Meta') as meta then {
+              ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-lymphocytes' "set-profile";
+            } "set-meta";
+
+            ans -> obs.code = create('CodeableConcept') as code then {
+              ans -> code.coding = create('Coding') as coding then {
+                ans -> coding.system = 'http://loinc.org' "set-code-system";
+                ans -> coding.code = '26474-7' "set-code-value";
+
+                ans -> coding.display = 'Lymphocytes totaux [Nombre/Volume] Sang ; Numérique' "set-code-display";
+              } "set-coding";
+            } "set-code";
+
+            ans -> obs.value = (%ans.value.ofType(Quantity)) as val,
+
+              val.code = '10*3/uL',
+
+              val.unit = '10*3/uL',
+
+              val.system = 'http://unitsofmeasure.org' "set-value";
+
+            ans -> obs.referenceRange as refRange then {
+
+              ans.item as lowItem where (text.contains('Borne inférieure')) then {
+
+                lowItem.answer as lowAns -> refRange.low = (%lowAns.value.ofType(Quantity)) as tgtLow,
+
+                  tgtLow.code = '10*3/uL',
+
+                  tgtLow.unit = '10*3/uL',
+
+                  tgtLow.system = 'http://unitsofmeasure.org' "set-low";
+
+              } "extract-low";
+
+              ans.item as highItem where (text.contains('Borne supérieure')) then {
+
+                highItem.answer as highAns -> refRange.high = (%highAns.value.ofType(Quantity)) as tgtHigh,
+
+                  tgtHigh.code = '10*3/uL',
+
+                  tgtHigh.unit = '10*3/uL',
+
+                  tgtHigh.system = 'http://unitsofmeasure.org' "set-high";
+
+              } "extract-high";
+
+            } "set-ref-range";
+
+          } "create-obs";
+
+        } "obs-entry";
 
       } "extract-lymph";
 
       hemoGroup.item as eosiItem where (linkId = '700490326748') then {
 
-        eosiItem.answer as ans -> bundle then CreateLabObservation(ans, eosiItem, patient, bundle) "create-eosi-obs";
+        eosiItem.answer as ans -> bundle.entry as obsEntry then {
+
+          ans -> obsEntry.resource = create('Observation') as obs then {
+
+            ans then CreateLabObservationCommon(ans, patient, obs, obsEntry) "create-common";
+
+            ans -> obs.meta = create('Meta') as meta then {
+              ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-eosinophiles' "set-profile";
+            } "set-meta";
+
+            ans -> obs.code = create('CodeableConcept') as code then {
+              ans -> code.coding = create('Coding') as coding then {
+                ans -> coding.system = 'http://loinc.org' "set-code-system";
+                ans -> coding.code = '26449-9' "set-code-value";
+
+                ans -> coding.display = 'Polynucléaires éosinophiles [Nombre/Volume] Sang ; Numérique' "set-code-display";
+              } "set-coding";
+            } "set-code";
+
+            ans -> obs.value = (%ans.value.ofType(Quantity)) as val,
+
+              val.code = '10*3/uL',
+
+              val.unit = '10*3/uL',
+
+              val.system = 'http://unitsofmeasure.org' "set-value";
+
+            ans -> obs.referenceRange as refRange then {
+
+              ans.item as lowItem where (text.contains('Borne inférieure')) then {
+
+                lowItem.answer as lowAns -> refRange.low = (%lowAns.value.ofType(Quantity)) as tgtLow,
+
+                  tgtLow.code = '10*3/uL',
+
+                  tgtLow.unit = '10*3/uL',
+
+                  tgtLow.system = 'http://unitsofmeasure.org' "set-low";
+
+              } "extract-low";
+
+              ans.item as highItem where (text.contains('Borne supérieure')) then {
+
+                highItem.answer as highAns -> refRange.high = (%highAns.value.ofType(Quantity)) as tgtHigh,
+
+                  tgtHigh.code = '10*3/uL',
+
+                  tgtHigh.unit = '10*3/uL',
+
+                  tgtHigh.system = 'http://unitsofmeasure.org' "set-high";
+
+              } "extract-high";
+
+            } "set-ref-range";
+
+          } "create-obs";
+
+        } "obs-entry";
 
       } "extract-eosi";
 
       hemoGroup.item as monoItem where (linkId = '168661900522') then {
 
-        monoItem.answer as ans -> bundle then CreateLabObservation(ans, monoItem, patient, bundle) "create-mono-obs";
+        monoItem.answer as ans -> bundle.entry as obsEntry then {
+
+          ans -> obsEntry.resource = create('Observation') as obs then {
+
+            ans then CreateLabObservationCommon(ans, patient, obs, obsEntry) "create-common";
+
+            ans -> obs.meta = create('Meta') as meta then {
+              ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-monocytes' "set-profile";
+            } "set-meta";
+
+            ans -> obs.code = create('CodeableConcept') as code then {
+              ans -> code.coding = create('Coding') as coding then {
+                ans -> coding.system = 'http://loinc.org' "set-code-system";
+                ans -> coding.code = '26484-6' "set-code-value";
+
+                ans -> coding.display = 'Monocytes [Nombre/Volume] Sang ; Numérique' "set-code-display";
+              } "set-coding";
+            } "set-code";
+
+            ans -> obs.value = (%ans.value.ofType(Quantity)) as val,
+
+              val.code = '10*3/uL',
+
+              val.unit = '10*3/uL',
+
+              val.system = 'http://unitsofmeasure.org' "set-value";
+
+            ans -> obs.referenceRange as refRange then {
+
+              ans.item as lowItem where (text.contains('Borne inférieure')) then {
+
+                lowItem.answer as lowAns -> refRange.low = (%lowAns.value.ofType(Quantity)) as tgtLow,
+
+                  tgtLow.code = '10*3/uL',
+
+                  tgtLow.unit = '10*3/uL',
+
+                  tgtLow.system = 'http://unitsofmeasure.org' "set-low";
+
+              } "extract-low";
+
+              ans.item as highItem where (text.contains('Borne supérieure')) then {
+
+                highItem.answer as highAns -> refRange.high = (%highAns.value.ofType(Quantity)) as tgtHigh,
+
+                  tgtHigh.code = '10*3/uL',
+
+                  tgtHigh.unit = '10*3/uL',
+
+                  tgtHigh.system = 'http://unitsofmeasure.org' "set-high";
+
+              } "extract-high";
+
+            } "set-ref-range";
+
+          } "create-obs";
+
+        } "obs-entry";
 
       } "extract-mono";
 
       hemoGroup.item as tpItem where (linkId = '658898841893') then {
 
-        tpItem.answer as ans -> bundle then CreateLabObservation(ans, tpItem, patient, bundle) "create-tp-obs";
+        tpItem.answer as ans -> bundle.entry as obsEntry then {
+
+          ans -> obsEntry.resource = create('Observation') as obs then {
+
+            ans then CreateLabObservationCommon(ans, patient, obs, obsEntry) "create-common";
+
+            ans -> obs.meta = create('Meta') as meta then {
+              ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-tp' "set-profile";
+            } "set-meta";
+
+            ans -> obs.code = create('CodeableConcept') as code then {
+              ans -> code.coding = create('Coding') as coding then {
+                ans -> coding.system = 'http://loinc.org' "set-code-system";
+                ans -> coding.code = '5894-1' "set-code-value";
+
+                ans -> coding.display = 'Temps de quick Patient (%) [Temps relatif] Plasma pauvre en plaquettes ; Numérique ; Coagulation' "set-code-display";
+              } "set-coding";
+            } "set-code";
+
+            ans -> obs.value = (%ans.value.ofType(Quantity)) as val,
+
+              val.code = '%',
+
+              val.unit = '%',
+
+              val.system = 'http://unitsofmeasure.org' "set-value";
+
+            ans -> obs.referenceRange as refRange then {
+
+              ans.item as lowItem where (text.contains('Borne inférieure')) then {
+
+                lowItem.answer as lowAns -> refRange.low = (%lowAns.value.ofType(Quantity)) as tgtLow,
+
+                  tgtLow.code = '%',
+
+                  tgtLow.unit = '%',
+
+                  tgtLow.system = 'http://unitsofmeasure.org' "set-low";
+
+              } "extract-low";
+
+              ans.item as highItem where (text.contains('Borne supérieure')) then {
+
+                highItem.answer as highAns -> refRange.high = (%highAns.value.ofType(Quantity)) as tgtHigh,
+
+                  tgtHigh.code = '%',
+
+                  tgtHigh.unit = '%',
+
+                  tgtHigh.system = 'http://unitsofmeasure.org' "set-high";
+
+              } "extract-high";
+
+            } "set-ref-range";
+
+          } "create-obs";
+
+        } "obs-entry";
 
       } "extract-tp";
 
       hemoGroup.item as tcaItem where (linkId = '795145096241') then {
 
-        tcaItem.answer as ans -> bundle then CreateLabObservation(ans, tcaItem, patient, bundle) "create-tca-obs";
+        tcaItem.answer as ans -> bundle.entry as obsEntry then {
+
+          ans -> obsEntry.resource = create('Observation') as obs then {
+
+            ans then CreateLabObservationCommon(ans, patient, obs, obsEntry) "create-common";
+
+            ans -> obs.meta = create('Meta') as meta then {
+              ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-generic' "set-profile";
+            } "set-meta";
+
+            ans.item as loincItem where (text.contains('code loinc')) then {
+              loincItem.answer as loincAns -> obs.code as code,
+                code.coding as coding,
+                coding.code = (%loincAns.value.ofType(string)) "set-loinc-coding";
+            } "extract-loinc";
+
+            ans -> obs.value = (%ans.value.ofType(Quantity)) as val,
+
+              val.code = (%ans.value.ofType(Quantity).unit),
+
+              val.system = 'http://unitsofmeasure.org' "set-value";
+
+            ans -> obs.referenceRange as refRange then {
+
+              ans.item as lowItem where (text.contains('Borne inférieure')) then {
+
+                lowItem.answer as lowAns -> refRange.low = (%lowAns.value.ofType(Quantity)) as tgtLow,
+
+                  tgtLow.code = (%ans.value.ofType(Quantity).unit),
+
+                  tgtLow.system = 'http://unitsofmeasure.org' "set-low";
+
+              } "extract-low";
+
+              ans.item as highItem where (text.contains('Borne supérieure')) then {
+
+                highItem.answer as highAns -> refRange.high = (%highAns.value.ofType(Quantity)) as tgtHigh,
+
+                  tgtHigh.code = (%ans.value.ofType(Quantity).unit),
+
+                  tgtHigh.system = 'http://unitsofmeasure.org' "set-high";
+
+              } "extract-high";
+
+            } "set-ref-range";
+
+          } "create-obs";
+
+        } "obs-entry";
 
       } "extract-tca";
 
@@ -1104,37 +1792,379 @@ group CreateLaboratoryObservations(source src : QuestionnaireResponse, target pa
 
       liverGroup.item as asatItem where (linkId = '715226319725') then {
 
-        asatItem.answer as ans -> bundle then CreateLabObservation(ans, asatItem, patient, bundle) "create-asat-obs";
+        asatItem.answer as ans -> bundle.entry as obsEntry then {
+
+          ans -> obsEntry.resource = create('Observation') as obs then {
+
+            ans then CreateLabObservationCommon(ans, patient, obs, obsEntry) "create-common";
+
+            ans -> obs.meta = create('Meta') as meta then {
+              ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-asat' "set-profile";
+            } "set-meta";
+
+            ans -> obs.code = create('CodeableConcept') as code then {
+              ans -> code.coding = create('Coding') as coding then {
+                ans -> coding.system = 'http://loinc.org' "set-code-system";
+                ans -> coding.code = '30239-8' "set-code-value";
+
+                ans -> coding.display = 'Aspartate aminotransférase [Catalytique/Volume] Sérum/Plasma ; Numérique ; Avec phosphate de pyridoxal' "set-code-display";
+              } "set-coding";
+            } "set-code";
+
+            ans -> obs.value = (%ans.value.ofType(Quantity)) as val,
+
+              val.code = '[IU]/L',
+
+              val.unit = '[IU]/L',
+
+              val.system = 'http://unitsofmeasure.org' "set-value";
+
+            ans -> obs.referenceRange as refRange then {
+
+              ans.item as lowItem where (text.contains('Borne inférieure')) then {
+
+                lowItem.answer as lowAns -> refRange.low = (%lowAns.value.ofType(Quantity)) as tgtLow,
+
+                  tgtLow.code = '[IU]/L',
+
+                  tgtLow.unit = '[IU]/L',
+
+                  tgtLow.system = 'http://unitsofmeasure.org' "set-low";
+
+              } "extract-low";
+
+              ans.item as highItem where (text.contains('Borne supérieure')) then {
+
+                highItem.answer as highAns -> refRange.high = (%highAns.value.ofType(Quantity)) as tgtHigh,
+
+                  tgtHigh.code = '[IU]/L',
+
+                  tgtHigh.unit = '[IU]/L',
+
+                  tgtHigh.system = 'http://unitsofmeasure.org' "set-high";
+
+              } "extract-high";
+
+            } "set-ref-range";
+
+          } "create-obs";
+
+        } "obs-entry";
 
       } "extract-asat";
 
       liverGroup.item as alatItem where (linkId = '876439410327') then {
 
-        alatItem.answer as ans -> bundle then CreateLabObservation(ans, alatItem, patient, bundle) "create-alat-obs";
+        alatItem.answer as ans -> bundle.entry as obsEntry then {
+
+          ans -> obsEntry.resource = create('Observation') as obs then {
+
+            ans then CreateLabObservationCommon(ans, patient, obs, obsEntry) "create-common";
+
+            ans -> obs.meta = create('Meta') as meta then {
+              ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-alat' "set-profile";
+            } "set-meta";
+
+            ans -> obs.code = create('CodeableConcept') as code then {
+              ans -> code.coding = create('Coding') as coding then {
+                ans -> coding.system = 'http://loinc.org' "set-code-system";
+                ans -> coding.code = '1743-4' "set-code-value";
+
+                ans -> coding.display = 'Alanine aminotransférase [Catalytique/Volume] Sérum/Plasma ; Numérique ; Avec phosphate de pyridoxal' "set-code-display";
+              } "set-coding";
+            } "set-code";
+
+            ans -> obs.value = (%ans.value.ofType(Quantity)) as val,
+
+              val.code = '[IU]/L',
+
+              val.unit = '[IU]/L',
+
+              val.system = 'http://unitsofmeasure.org' "set-value";
+
+            ans -> obs.referenceRange as refRange then {
+
+              ans.item as lowItem where (text.contains('Borne inférieure')) then {
+
+                lowItem.answer as lowAns -> refRange.low = (%lowAns.value.ofType(Quantity)) as tgtLow,
+
+                  tgtLow.code = '[IU]/L',
+
+                  tgtLow.unit = '[IU]/L',
+
+                  tgtLow.system = 'http://unitsofmeasure.org' "set-low";
+
+              } "extract-low";
+
+              ans.item as highItem where (text.contains('Borne supérieure')) then {
+
+                highItem.answer as highAns -> refRange.high = (%highAns.value.ofType(Quantity)) as tgtHigh,
+
+                  tgtHigh.code = '[IU]/L',
+
+                  tgtHigh.unit = '[IU]/L',
+
+                  tgtHigh.system = 'http://unitsofmeasure.org' "set-high";
+
+              } "extract-high";
+
+            } "set-ref-range";
+
+          } "create-obs";
+
+        } "obs-entry";
 
       } "extract-alat";
 
       liverGroup.item as ggtItem where (linkId = '287545455976') then {
 
-        ggtItem.answer as ans -> bundle then CreateLabObservation(ans, ggtItem, patient, bundle) "create-ggt-obs";
+        ggtItem.answer as ans -> bundle.entry as obsEntry then {
+
+          ans -> obsEntry.resource = create('Observation') as obs then {
+
+            ans then CreateLabObservationCommon(ans, patient, obs, obsEntry) "create-common";
+
+            ans -> obs.meta = create('Meta') as meta then {
+              ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-ggt' "set-profile";
+            } "set-meta";
+
+            ans -> obs.code = create('CodeableConcept') as code then {
+              ans -> code.coding = create('Coding') as coding then {
+                ans -> coding.system = 'http://loinc.org' "set-code-system";
+                ans -> coding.code = '2324-2' "set-code-value";
+
+                ans -> coding.display = 'Gamma glutamyltransférase [Catalytique/Volume] Sérum/Plasma ; Numérique' "set-code-display";
+              } "set-coding";
+            } "set-code";
+
+            ans -> obs.value = (%ans.value.ofType(Quantity)) as val,
+
+              val.code = 'U/L',
+
+              val.unit = 'U/L',
+
+              val.system = 'http://unitsofmeasure.org' "set-value";
+
+            ans -> obs.referenceRange as refRange then {
+
+              ans.item as lowItem where (text.contains('Borne inférieure')) then {
+
+                lowItem.answer as lowAns -> refRange.low = (%lowAns.value.ofType(Quantity)) as tgtLow,
+
+                  tgtLow.code = 'U/L',
+
+                  tgtLow.unit = 'U/L',
+
+                  tgtLow.system = 'http://unitsofmeasure.org' "set-low";
+
+              } "extract-low";
+
+              ans.item as highItem where (text.contains('Borne supérieure')) then {
+
+                highItem.answer as highAns -> refRange.high = (%highAns.value.ofType(Quantity)) as tgtHigh,
+
+                  tgtHigh.code = 'U/L',
+
+                  tgtHigh.unit = 'U/L',
+
+                  tgtHigh.system = 'http://unitsofmeasure.org' "set-high";
+
+              } "extract-high";
+
+            } "set-ref-range";
+
+          } "create-obs";
+
+        } "obs-entry";
 
       } "extract-ggt";
 
       liverGroup.item as palItem where (linkId = '508269571594') then {
 
-        palItem.answer as ans -> bundle then CreateLabObservation(ans, palItem, patient, bundle) "create-pal-obs";
+        palItem.answer as ans -> bundle.entry as obsEntry then {
+
+          ans -> obsEntry.resource = create('Observation') as obs then {
+
+            ans then CreateLabObservationCommon(ans, patient, obs, obsEntry) "create-common";
+
+            ans -> obs.meta = create('Meta') as meta then {
+              ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-pal' "set-profile";
+            } "set-meta";
+
+            ans -> obs.code = create('CodeableConcept') as code then {
+              ans -> code.coding = create('Coding') as coding then {
+                ans -> coding.system = 'http://loinc.org' "set-code-system";
+                ans -> coding.code = '6768-6' "set-code-value";
+
+                ans -> coding.display = 'Phosphatases alcalines [Catalytique/Volume] Sérum/Plasma ; Numérique' "set-code-display";
+              } "set-coding";
+            } "set-code";
+
+            ans -> obs.value = (%ans.value.ofType(Quantity)) as val,
+
+              val.code = 'U/L',
+
+              val.unit = 'U/L',
+
+              val.system = 'http://unitsofmeasure.org' "set-value";
+
+            ans -> obs.referenceRange as refRange then {
+
+              ans.item as lowItem where (text.contains('Borne inférieure')) then {
+
+                lowItem.answer as lowAns -> refRange.low = (%lowAns.value.ofType(Quantity)) as tgtLow,
+
+                  tgtLow.code = 'U/L',
+
+                  tgtLow.unit = 'U/L',
+
+                  tgtLow.system = 'http://unitsofmeasure.org' "set-low";
+
+              } "extract-low";
+
+              ans.item as highItem where (text.contains('Borne supérieure')) then {
+
+                highItem.answer as highAns -> refRange.high = (%highAns.value.ofType(Quantity)) as tgtHigh,
+
+                  tgtHigh.code = 'U/L',
+
+                  tgtHigh.unit = 'U/L',
+
+                  tgtHigh.system = 'http://unitsofmeasure.org' "set-high";
+
+              } "extract-high";
+
+            } "set-ref-range";
+
+          } "create-obs";
+
+        } "obs-entry";
 
       } "extract-pal";
 
       liverGroup.item as bilTotItem where (linkId = '927344090061') then {
 
-        bilTotItem.answer as ans -> bundle then CreateLabObservation(ans, bilTotItem, patient, bundle) "create-biltot-obs";
+        bilTotItem.answer as ans -> bundle.entry as obsEntry then {
+
+          ans -> obsEntry.resource = create('Observation') as obs then {
+
+            ans then CreateLabObservationCommon(ans, patient, obs, obsEntry) "create-common";
+
+            ans -> obs.meta = create('Meta') as meta then {
+              ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-bilirubine-totale' "set-profile";
+            } "set-meta";
+
+            ans -> obs.code = create('CodeableConcept') as code then {
+              ans -> code.coding = create('Coding') as coding then {
+                ans -> coding.system = 'http://loinc.org' "set-code-system";
+                ans -> coding.code = '14631-6' "set-code-value";
+
+                ans -> coding.display = 'Bilirubine [Moles/Volume] Sérum/Plasma ; Numérique' "set-code-display";
+              } "set-coding";
+            } "set-code";
+
+            ans -> obs.value = (%ans.value.ofType(Quantity)) as val,
+
+              val.code = 'umol/L',
+
+              val.unit = 'umol/L',
+
+              val.system = 'http://unitsofmeasure.org' "set-value";
+
+            ans -> obs.referenceRange as refRange then {
+
+              ans.item as lowItem where (text.contains('Borne inférieure')) then {
+
+                lowItem.answer as lowAns -> refRange.low = (%lowAns.value.ofType(Quantity)) as tgtLow,
+
+                  tgtLow.code = 'umol/L',
+
+                  tgtLow.unit = 'umol/L',
+
+                  tgtLow.system = 'http://unitsofmeasure.org' "set-low";
+
+              } "extract-low";
+
+              ans.item as highItem where (text.contains('Borne supérieure')) then {
+
+                highItem.answer as highAns -> refRange.high = (%highAns.value.ofType(Quantity)) as tgtHigh,
+
+                  tgtHigh.code = 'umol/L',
+
+                  tgtHigh.unit = 'umol/L',
+
+                  tgtHigh.system = 'http://unitsofmeasure.org' "set-high";
+
+              } "extract-high";
+
+            } "set-ref-range";
+
+          } "create-obs";
+
+        } "obs-entry";
 
       } "extract-biltot";
 
       liverGroup.item as bilConjItem where (linkId = '208196328453') then {
 
-        bilConjItem.answer as ans -> bundle then CreateLabObservation(ans, bilConjItem, patient, bundle) "create-bilconj-obs";
+        bilConjItem.answer as ans -> bundle.entry as obsEntry then {
+
+          ans -> obsEntry.resource = create('Observation') as obs then {
+
+            ans then CreateLabObservationCommon(ans, patient, obs, obsEntry) "create-common";
+
+            ans -> obs.meta = create('Meta') as meta then {
+              ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-bilirubine-conjuguee' "set-profile";
+            } "set-meta";
+
+            ans -> obs.code = create('CodeableConcept') as code then {
+              ans -> code.coding = create('Coding') as coding then {
+                ans -> coding.system = 'http://loinc.org' "set-code-system";
+                ans -> coding.code = '29760-6' "set-code-value";
+
+                ans -> coding.display = 'Bilirubine conjuguée [Moles/Volume] Sérum/Plasma ; Numérique' "set-code-display";
+              } "set-coding";
+            } "set-code";
+
+            ans -> obs.value = (%ans.value.ofType(Quantity)) as val,
+
+              val.code = 'umol/L',
+
+              val.unit = 'umol/L',
+
+              val.system = 'http://unitsofmeasure.org' "set-value";
+
+            ans -> obs.referenceRange as refRange then {
+
+              ans.item as lowItem where (text.contains('Borne inférieure')) then {
+
+                lowItem.answer as lowAns -> refRange.low = (%lowAns.value.ofType(Quantity)) as tgtLow,
+
+                  tgtLow.code = 'umol/L',
+
+                  tgtLow.unit = 'umol/L',
+
+                  tgtLow.system = 'http://unitsofmeasure.org' "set-low";
+
+              } "extract-low";
+
+              ans.item as highItem where (text.contains('Borne supérieure')) then {
+
+                highItem.answer as highAns -> refRange.high = (%highAns.value.ofType(Quantity)) as tgtHigh,
+
+                  tgtHigh.code = 'umol/L',
+
+                  tgtHigh.unit = 'umol/L',
+
+                  tgtHigh.system = 'http://unitsofmeasure.org' "set-high";
+
+              } "extract-high";
+
+            } "set-ref-range";
+
+          } "create-obs";
+
+        } "obs-entry";
 
       } "extract-bilconj";
 
@@ -1144,13 +2174,127 @@ group CreateLaboratoryObservations(source src : QuestionnaireResponse, target pa
 
       glucoseGroup.item as glycItem where (linkId = '273778921448') then {
 
-        glycItem.answer as ans -> bundle then CreateLabObservation(ans, glycItem, patient, bundle) "create-glyc-obs";
+        glycItem.answer as ans -> bundle.entry as obsEntry then {
+
+          ans -> obsEntry.resource = create('Observation') as obs then {
+
+            ans then CreateLabObservationCommon(ans, patient, obs, obsEntry) "create-common";
+
+            ans -> obs.meta = create('Meta') as meta then {
+              ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-glycemie-a-jeun' "set-profile";
+            } "set-meta";
+
+            ans -> obs.code = create('CodeableConcept') as code then {
+              ans -> code.coding = create('Coding') as coding then {
+                ans -> coding.system = 'http://loinc.org' "set-code-system";
+                ans -> coding.code = '14749-6' "set-code-value";
+
+                ans -> coding.display = 'Glucose [Moles/Volume] Sérum/Plasma ; Numérique' "set-code-display";
+              } "set-coding";
+            } "set-code";
+
+            ans -> obs.value = (%ans.value.ofType(Quantity)) as val,
+
+              val.code = 'mmol/L',
+
+              val.unit = 'mmol/L',
+
+              val.system = 'http://unitsofmeasure.org' "set-value";
+
+            ans -> obs.referenceRange as refRange then {
+
+              ans.item as lowItem where (text.contains('Borne inférieure')) then {
+
+                lowItem.answer as lowAns -> refRange.low = (%lowAns.value.ofType(Quantity)) as tgtLow,
+
+                  tgtLow.code = 'mmol/L',
+
+                  tgtLow.unit = 'mmol/L',
+
+                  tgtLow.system = 'http://unitsofmeasure.org' "set-low";
+
+              } "extract-low";
+
+              ans.item as highItem where (text.contains('Borne supérieure')) then {
+
+                highItem.answer as highAns -> refRange.high = (%highAns.value.ofType(Quantity)) as tgtHigh,
+
+                  tgtHigh.code = 'mmol/L',
+
+                  tgtHigh.unit = 'mmol/L',
+
+                  tgtHigh.system = 'http://unitsofmeasure.org' "set-high";
+
+              } "extract-high";
+
+            } "set-ref-range";
+
+          } "create-obs";
+
+        } "obs-entry";
 
       } "extract-glyc";
 
       glucoseGroup.item as hba1cItem where (linkId = '632894677152') then {
 
-        hba1cItem.answer as ans -> bundle then CreateLabObservation(ans, hba1cItem, patient, bundle) "create-hba1c-obs";
+        hba1cItem.answer as ans -> bundle.entry as obsEntry then {
+
+          ans -> obsEntry.resource = create('Observation') as obs then {
+
+            ans then CreateLabObservationCommon(ans, patient, obs, obsEntry) "create-common";
+
+            ans -> obs.meta = create('Meta') as meta then {
+              ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-hba1c' "set-profile";
+            } "set-meta";
+
+            ans -> obs.code = create('CodeableConcept') as code then {
+              ans -> code.coding = create('Coding') as coding then {
+                ans -> coding.system = 'http://loinc.org' "set-code-system";
+                ans -> coding.code = '4548-4' "set-code-value";
+
+                ans -> coding.display = 'Hémoglobine A1c/hémoglobine totale [Fraction massique] Sang ; Numérique' "set-code-display";
+              } "set-coding";
+            } "set-code";
+
+            ans -> obs.value = (%ans.value.ofType(Quantity)) as val,
+
+              val.code = '%',
+
+              val.unit = '%',
+
+              val.system = 'http://unitsofmeasure.org' "set-value";
+
+            ans -> obs.referenceRange as refRange then {
+
+              ans.item as lowItem where (text.contains('Borne inférieure')) then {
+
+                lowItem.answer as lowAns -> refRange.low = (%lowAns.value.ofType(Quantity)) as tgtLow,
+
+                  tgtLow.code = '%',
+
+                  tgtLow.unit = '%',
+
+                  tgtLow.system = 'http://unitsofmeasure.org' "set-low";
+
+              } "extract-low";
+
+              ans.item as highItem where (text.contains('Borne supérieure')) then {
+
+                highItem.answer as highAns -> refRange.high = (%highAns.value.ofType(Quantity)) as tgtHigh,
+
+                  tgtHigh.code = '%',
+
+                  tgtHigh.unit = '%',
+
+                  tgtHigh.system = 'http://unitsofmeasure.org' "set-high";
+
+              } "extract-high";
+
+            } "set-ref-range";
+
+          } "create-obs";
+
+        } "obs-entry";
 
       } "extract-hba1c";
 
@@ -1160,94 +2304,42 @@ group CreateLaboratoryObservations(source src : QuestionnaireResponse, target pa
 
 }
 
-// Helper: Create a single Laboratory Observation
+// Helper: fields common to every simple lab Observation (id/fullUrl, status, category, subject,
+// value, effective, referenceRange). meta.profile and code are call-site responsibilities --
+// a literal `source` group parameter is rejected by Matchbox even when unused (see issue #10),
+// so each call site sets those two fields itself via trailing rules against the `obs`/`obsEntry`
+// target parameters this group is handed, rather than passing them in as data.
 
-group CreateLabObservation(source ans, source parentItem, target patient : Patient, target bundle : Bundle) {
+group CreateLabObservationCommon(source ans, target patient : Patient, target obs : Observation, target obsEntry) {
 
-  ans -> bundle.entry as obsEntry then {
+  ans.item as labIdItem where (text = 'Identifiant') then {
 
-    ans -> obsEntry.resource = create('Observation') as obs then {
+    labIdItem.answer as labIdAns -> obs.id = (%labIdAns.value.ofType(string)) "set-obs-id";
 
-      ans.item as labIdItem where (text = 'Identifiant') then {
+  } "extract-obs-id";
 
-        labIdItem.answer as labIdAns -> obs.id = (%labIdAns.value.ofType(string)) "set-obs-id";
+  ans -> obs.id as obsId, obsEntry.fullUrl = append('urn:uuid:', obsId) "set-fullUrl";
 
-      } "extract-obs-id";
+  ans -> obs.status = 'final' "obs-status";
 
-      ans -> obs.id as obsId, obsEntry.fullUrl = append('urn:uuid:', obsId) "set-fullUrl";
+  ans -> obs.category = create('CodeableConcept') as cat then {
 
-      ans -> obs.meta = create('Meta') as meta then {
+    ans -> cat.coding = create('Coding') as coding then {
 
-        ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-generic' "obs-profile";
+      ans -> coding.system = 'http://terminology.hl7.org/CodeSystem/observation-category' "cat-system";
 
-      } "obs-meta";
+      ans -> coding.code = 'laboratory' "cat-code";
 
-      ans -> obs.status = 'final' "obs-status";
+    } "set-category-coding";
 
-      ans -> obs.category = create('CodeableConcept') as cat then {
+  } "set-category";
 
-        ans -> cat.coding = create('Coding') as coding then {
+  ans -> obs.subject = create('Reference') as ref, patient.id as patId, ref.reference = append('Patient/', patId) "set-subject";
 
-          ans -> coding.system = 'http://terminology.hl7.org/CodeSystem/observation-category' "cat-system";
+  ans.item as dateItem where (text.contains('Date et heure du prélèvement')) then {
 
-          ans -> coding.code = 'laboratory' "cat-code";
+    dateItem.answer as dateAns -> obs.effective = (%dateAns.value.ofType(dateTime)) "set-effective";
 
-        } "set-category-coding";
-
-      } "set-category";
-
-      ans -> obs.subject = create('Reference') as ref, patient.id as patId, ref.reference = append('Patient/', patId) "set-subject";
-
-      ans -> obs.value = (%ans.value.ofType(Quantity)) as tgtObsVal,
-
-      tgtObsVal.code = (%ans.value.ofType(Quantity).unit),
-
-      tgtObsVal.system = 'http://unitsofmeasure.org' "set-value";
-
-      ans.item as loincItem where (text.contains('code loinc')) then {
-
-        loincItem.answer as loincAns -> obs.code as code,
-
-          code.coding as coding,
-
-          coding.code = (%loincAns.value.ofType(string)) "set-loinc-coding";
-
-      } "extract-loinc";
-
-      ans.item as dateItem where (text.contains('Date et heure du prélèvement')) then {
-
-        dateItem.answer as dateAns -> obs.effective = (%dateAns.value.ofType(dateTime)) "set-effective";
-
-      } "extract-effective";
-
-      ans -> obs.referenceRange as refRange then {
-
-        ans.item as lowItem where (text.contains('Borne inférieure')) then {
-
-          lowItem.answer as lowAns -> refRange.low = (%lowAns.value.ofType(Quantity)) as tgtLow,
-
-            tgtLow.code = (%ans.value.ofType(Quantity).unit),
-
-            tgtLow.system = 'http://unitsofmeasure.org' "set-low";
-
-        } "extract-low";
-
-        ans.item as highItem where (text.contains('Borne supérieure')) then {
-
-          highItem.answer as highAns -> refRange.high = (%highAns.value.ofType(Quantity)) as tgtHigh,
-
-            tgtHigh.code = (%ans.value.ofType(Quantity).unit),
-
-            tgtHigh.system = 'http://unitsofmeasure.org' "set-high";
-
-        } "extract-high";
-
-      } "set-ref-range";
-
-    } "create-obs";
-
-  } "obs-entry";
+  } "extract-effective";
 
 }
-
-                                                                     

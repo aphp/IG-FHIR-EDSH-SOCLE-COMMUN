@@ -5,7 +5,7 @@ title: Données socles des Entrepôts de Données de Santé Hospitalier
 description: "Ce guide d'implémentation décrit: (i) les données socles sélectionnées par le GT sur les EDSH, (ii) la méthode de modélisation de ces données et, (iii) les profils FHIR cible."
 status: draft
 version: 0.1.0
-jurisdiction: urn:iso:std:iso:3166#FRA
+jurisdiction: urn:iso:std:iso:3166#FR
 fhirVersion: 4.0.1
 copyrightYear: 2023+
 releaseLabel: ci-build
@@ -79,9 +79,6 @@ parameters:  # see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-pa
     - input/resources/usages/core/cas9
     - input/resources/usages/core/cas10
     - input/fml
-    - input/fml/usages/core
-    - input/resources/ViewDefinition_OMOP
-    - input/resources/usages/core/View_definition
     
 # The instanceOptions property is used to configure certain aspects of how SUSHI processes instances.
 instanceOptions:
@@ -173,8 +170,8 @@ resources:
     description: Représente la créatininémie du patient 1
     exampleBoolean: true
   Observation/cas1-bio-dfg-01:
-    name: Le DFG estimé de Madame Dupont
-    description: Représente le DFG estimé du patient 1
+    name: Le débit de filtration glomérulaire estimé de Madame Dupont
+    description: Représente le DFG du patient 1
     exampleBoolean: true
   Observation/cas1-bio-ggt-01:
     name: Les GGT de Madame Dupont
@@ -407,10 +404,6 @@ resources:
   MedicationAdministration/cas4-medadm-04:
     name: Ticagrelor 180 mg administré à Monsieur Moreau
     description: Représente la dose et le processus d'administration de Ticagrelor 180 mg au patient 4
-    exampleBoolean: true
-  Observation/cas4-bio-creat-01:
-    name: La créatininémie de Monsieur Moreau
-    description: Représente la créatininémie du patient 4
     exampleBoolean: true
   Observation/cas4-exam-tas-01-cas4-exam-tad-01:
     name: La pression artérielle de Monsieur Moreau
