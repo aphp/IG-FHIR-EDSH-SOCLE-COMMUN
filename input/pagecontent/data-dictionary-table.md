@@ -6,8 +6,8 @@
 | PMSI | [Diagnostic CIM10](StructureDefinition-edsh-condition.html) | Données d'intérêt |
 | PMSI | [Acte CCAM](StructureDefinition-edsh-procedure.html) | Données d'intérêt |
 | Résultats d'examens biologiques | [Urémie](StructureDefinition-edsh-observation-laboratory-uremie.html) | Données d'intérêt |
-| Résultats d'examens biologiques | [Créatininémie](StructureDefinition-edsh-observation-laboratory-fonction-renale.html) | Données d'intérêt |
-| Résultats d'examens biologiques | [Débit de filtration glomérulaire (DFG)](StructureDefinition-edsh-observation-laboratory-fonction-renale.html) | Données d'intérêt |
+| Résultats d'examens biologiques | [Créatininémie](StructureDefinition-edsh-observation-laboratory-creat.html) | Données d'intérêt |
+| Résultats d'examens biologiques | [Débit de filtration glomérulaire (DFG)](StructureDefinition-edsh-observation-laboratory-dfg.html) | Données d'intérêt |
 | Résultats d'examens biologiques | [Leucocytes](StructureDefinition-edsh-observation-laboratory-leucocytes.html) | Données d'intérêt |
 | Résultats d'examens biologiques | [Hémoglobine](StructureDefinition-edsh-observation-laboratory-hemoglobine.html) | Données d'intérêt |
 | Résultats d'examens biologiques | [Hématocrite](StructureDefinition-edsh-observation-laboratory-hematocrite.html) | Données d'intérêt |

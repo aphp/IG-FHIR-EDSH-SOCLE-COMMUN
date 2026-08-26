@@ -46,7 +46,7 @@ Examens complémentaires
 Son dernier bilan du 10/01/2024 montrent :
 
 - NFS normale ([hémoglobine : 14.2 g/dL](Observation-cas1-bio-hb-01.html), [leucocytes 7G/L](Observation-cas1-bio-leuco-01.html) , [plaquettes 295 G/L](Observation-cas1-bio-plq-01.html))
-- [Créatinine sérique : 85 µmol/L avec DFG estimé : 74 mL/min/1.73m²](Observation-cas1-bio-frenale-01.html)
+- [Créatinine sérique : 85 µmol/L](Observation-cas1-bio-creat-01.html) avec [DFG estimé : 74 mL/min/1.73m²](Observation-cas1-bio-dfg-01.html)
 - Bilan hépatique sans particularité :
   - [ASAT 50 UI/L](Observation-cas1-bio-asat-01.html)
   - [alanine aminotransférase : 45 UI/L](Observation-cas1-bio-alat-01.html)
@@ -89,7 +89,7 @@ Examen clinique à l'admission : État général conservé. Fréquence cardiaque
 
 Les examens complémentaires à son arrivée montre une anémie normocytaire régénérative : [hémoglobine à 7 g/dL](Observation-cas2-bio-hb-01.html), [VGM 87 fL](Observation-cas2-bio-vgm-01.html) Réticulocytes 190 G/L.
 
-Le reste du bilan est sans particularité, la [créatininémie est à 98 µmol/L](Observation-cas2-bio-frenale-01.html).
+Le reste du bilan est sans particularité, la [créatininémie est à 98 µmol/L](Observation-cas2-bio-creat-01.html).
 
 La [FOGD](Procedure-cas2-acte-01.html) réalisée le 8 janvier retrouve un [ulcère gastrique](Condition-cas2-diag-01.html) de 1,5 cm de diamètre au niveau de l'antre gastrique. L'ulcère présente un fond fibrineux sans stigmate de saignement actif au moment de l'examen. Pas de signe de perforation. L'œsophage et le duodénum sont d'aspect normal. Des biopsies gastriques sont réalisées pour recherche d'Helicobacter pylori et analyse anatomopathologique.
 
@@ -132,7 +132,7 @@ Les analyses biologiques du 15/01/2024 montrent :
 - [Hémoglobine : 11.8 g/dL](Observation-cas3-bio-hb-01.html)
 - [Plaquettes : 285 x10⁹/L](Observation-cas3-bio-plq-01.html)
 - Pas de cytolyse hépatique
-- Bonne fonction rénale avec [créatininémie à 60 µmol/L](Observation-cas3-bio-frenale-01.html)
+- Bonne fonction rénale avec [créatininémie à 60 µmol/L](Observation-cas3-bio-creat-01.html)
 
 Le reste du bilan est sans particularité. En particulier l'hémostase est normal, compatible avec un accouchement par voie basse sans contre-indication à une éventuelle péridurale.
 
@@ -242,7 +242,7 @@ Bandelette urinaire avec leucocyturie +++ et hématurie +.
 Le bilan biologique retrouve :
 
 - Syndrome inflammatoire biologique avec [leucocytes à 18 g/L](Observation-cas5-bio-leuco-01.html) dont [PNN 15 G/L](Observation-cas5-bio-neut-01.html)
-- [Insuffisance rénale aigue](Condition-cas5-diag-02.html) avec [créatininémie à 150 µmol/L](Observation-cas5-bio-frenale-01.html)
+- [Insuffisance rénale aigue](Condition-cas5-diag-02.html) avec [créatininémie à 150 µmol/L](Observation-cas5-bio-creat-01.html)
 
 La prise en charge initiale a consisté en :
 
@@ -261,7 +261,7 @@ Examen cardiovasculaire et abdominal : normaux
 
 Prise en charge et évolution
 
-Evolution rapidement favorable sur le plan septique et néphrologique avec amendement de la fièvre à J1, décroissance progressive du syndrome inflammatoire biologique et stabilisation de la [créatininémie autour de 60 µmol/L](Observation-cas5-bio-frenale-02.html) à J3.
+Evolution rapidement favorable sur le plan septique et néphrologique avec amendement de la fièvre à J1, décroissance progressive du syndrome inflammatoire biologique et stabilisation de la [créatininémie autour de 60 µmol/L](Observation-cas5-bio-creat-02.html) à J3.
 
 [L'ECBU](Procedure-cas5-acte-02.html) réalisé aux urgences revient positif à E. coli avec une pénicillinase de bas niveau.
 
@@ -316,7 +316,7 @@ Examen pulmonaire et abdominal : normaux
 Bilan biologique à l'admission :
 
 - [Anémie microcytaire](Condition-cas6-diag-03.html) avec [hémoglobinémie à 10.5 g/dL](Observation-cas6-bio-hb-01.html) et [VGM à 72 fL](Observation-cas6-bio-vgm-01.html)
-- Le reste du bilan est sans particularité avec notamment une fonction rénale normale avec une [créatininémie à 75 µmol/L](Observation-cas6-bio-frenale-01.html)
+- Le reste du bilan est sans particularité avec notamment une fonction rénale normale avec une [créatininémie à 75 µmol/L](Observation-cas6-bio-creat-01.html)
 
 [L'électrocardiogramme sur 12 dérivations](Procedure-cas6-acte-01.html) réalisée à l'admission montre un rythme sinusal régulier à 68 /min, avec axe normal, sans trouble de la conduction ni de la repolarisation.
 

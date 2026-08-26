@@ -909,18 +909,131 @@ group CreateLaboratoryObservations(source src : QuestionnaireResponse, target pa
 
       } "extract-urea";
 
-      // Fonction-renale panel: one Observation combining Créat + DFG as optional (0..1) sliced
-      // components (EdshObservationLaboratoryFonctionRenale, relaxed per issue #12 -- neither
-      // component is guaranteed present in real vignette data). The whole Observation is only
-      // created if at least one of the two is actually answered; each component is only built
-      // if its own item is answered -- see CreateRenalPanelObservation below.
-      // Combined panel Observation (2 components) only when both sides have exactly one
-      // answer each (issue #12's user decision). Every other shape -- 0 of either, or more
-      // than 1 of either (e.g. repeated Créat readings) -- falls through to the per-answer
-      // path below instead: nothing merged, nothing dropped, nothing arbitrarily chosen.
-      renalGroup where (item.where(linkId = '500408205043').answer.count() = 1 and item.where(linkId = '786621340679').answer.count() = 1) -> bundle then CreateRenalPanelObservation(renalGroup, patient, bundle) "create-renal-panel-combined";
+      renalGroup.item as creatItem where (linkId = '500408205043') then {
 
-      renalGroup where ((item.where(linkId = '500408205043').answer.count() = 1 and item.where(linkId = '786621340679').answer.count() = 1).not()) -> bundle then CreateRenalPanelObservationsIndividual(renalGroup, patient, bundle) "create-renal-panel-individual";
+        creatItem.answer as ans -> bundle.entry as obsEntry then {
+
+          ans -> obsEntry.resource = create('Observation') as obs then {
+
+            ans then CreateLabObservationCommon(ans, patient, obs, obsEntry) "create-common";
+
+            ans -> obs.meta = create('Meta') as meta then {
+              ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-creat' "set-profile";
+            } "set-meta";
+
+            ans -> obs.code = create('CodeableConcept') as code then {
+              ans -> code.coding = create('Coding') as coding then {
+                ans -> coding.system = 'http://loinc.org' "set-code-system";
+                ans -> coding.code = '14682-9' "set-code-value";
+
+                ans -> coding.display = 'Créatinine [Moles/Volume] Sérum/Plasma ; Numérique' "set-code-display";
+              } "set-coding";
+            } "set-code";
+
+            ans -> obs.value = (%ans.value.ofType(Quantity)) as val,
+
+              val.code = 'umol/L',
+
+              val.unit = 'umol/L',
+
+              val.system = 'http://unitsofmeasure.org' "set-value";
+
+            ans -> obs.referenceRange as refRange then {
+
+              ans.item as lowItem where (linkId='488869963230') then {
+
+                lowItem.answer as lowAns -> refRange.low = (%lowAns.value.ofType(Quantity)) as tgtLow,
+
+                  tgtLow.code = 'umol/L',
+
+                  tgtLow.unit = 'umol/L',
+
+                  tgtLow.system = 'http://unitsofmeasure.org' "set-low";
+
+              } "extract-low";
+
+              ans.item as highItem where (linkId='984480974142') then {
+
+                highItem.answer as highAns -> refRange.high = (%highAns.value.ofType(Quantity)) as tgtHigh,
+
+                  tgtHigh.code = 'umol/L',
+
+                  tgtHigh.unit = 'umol/L',
+
+                  tgtHigh.system = 'http://unitsofmeasure.org' "set-high";
+
+              } "extract-high";
+
+            } "set-ref-range";
+
+          } "create-obs";
+
+        } "obs-entry";
+
+      } "extract-creat";
+
+      renalGroup.item as dfgItem where (linkId = '786621340679') then {
+
+        dfgItem.answer as ans -> bundle.entry as obsEntry then {
+
+          ans -> obsEntry.resource = create('Observation') as obs then {
+
+            ans then CreateLabObservationCommon(ans, patient, obs, obsEntry) "create-common";
+
+            ans -> obs.meta = create('Meta') as meta then {
+              ans -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-dfg' "set-profile";
+            } "set-meta";
+
+            ans.item as loincItem where (linkId = '974417569313') -> obs.code = create('CodeableConcept') as code then {
+              loincItem.answer as loincAns -> code.coding = create('Coding') as coding then {
+                loincAns -> coding.system = 'http://loinc.org' "set-code-system";
+                loincAns.value as loincValue -> coding.code = loincValue "set-code-value";
+              } "set-coding";
+            } "set-code";
+
+            ans -> obs.value = (%ans.value.ofType(Quantity)) as val/*,
+
+              val.code = 'umol/L',
+
+              val.unit = 'umol/L'*/,
+
+              val.system = 'http://unitsofmeasure.org' "set-value";
+
+            ans -> obs.referenceRange as refRange then {
+
+              ans.item as lowItem where (linkId='809916645548') then {
+
+                lowItem.answer as lowAns -> refRange.low = (%lowAns.value.ofType(Quantity)) as tgtLow,/*
+
+                  tgtLow.code = 'umol/L',
+
+                  tgtLow.unit = 'umol/L',*/
+
+                  tgtLow.system = 'http://unitsofmeasure.org' "set-low";
+
+              } "extract-low";
+
+              ans.item as highItem where (linkId='323493215684') then {
+
+                highItem.answer as highAns -> refRange.high = (%highAns.value.ofType(Quantity)) as tgtHigh,/*
+
+                  tgtHigh.code = 'umol/L',
+
+                  tgtHigh.unit = 'umol/L',*/
+
+                  tgtHigh.system = 'http://unitsofmeasure.org' "set-high";
+
+              } "extract-high";
+
+            } "set-ref-range";
+
+          } "create-obs";
+
+        } "obs-entry";
+
+      } "extract-dfg";
+
+
 
     } "process-renal";
 
@@ -2230,324 +2343,3 @@ group CreateLabObservationCommon(source ans, target patient : Patient, target ob
   } "extract-effective";
 
 }
-
-// Helper: fonction-renale panel -- one Observation (code 45066-8) combining Créat + DFG as two
-// OPTIONAL (0..1) sliced components (issue #12 relaxed the profile's cardinality since real
-// data rarely has both). renalGroup is the group's own source parameter (ancestor scope for
-// creatItem/dfgItem, sidestepping the sibling-scope limitation -- see issue #11) so both
-// components can be built independently. The whole Observation is only created if at least one
-// of Créat/DFG is actually answered; each component is only built if its own item is answered.
-
-group CreateRenalPanelObservation(source renalGroup, target patient : Patient, target bundle : Bundle) {
-
-  renalGroup where (item.where(linkId = '500408205043').answer.exists() or item.where(linkId = '786621340679').answer.exists()) -> bundle.entry as obsEntry then {
-
-    renalGroup -> obsEntry.resource = create('Observation') as obs then {
-
-      renalGroup -> obs.meta = create('Meta') as meta then {
-        renalGroup -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-fonction-renale' "set-profile";
-      } "set-meta";
-
-      renalGroup -> obs.status = 'final' "set-status";
-
-      renalGroup -> obs.category = create('CodeableConcept') as cat then {
-        renalGroup -> cat.coding = create('Coding') as coding then {
-          renalGroup -> coding.system = 'http://terminology.hl7.org/CodeSystem/observation-category' "cat-system";
-          renalGroup -> coding.code = 'laboratory' "cat-code";
-        } "set-category-coding";
-      } "set-category";
-
-      renalGroup -> obs.subject = create('Reference') as ref, patient.id as patId, ref.reference = append('Patient/', patId) "set-subject";
-
-      renalGroup -> obs.code = create('CodeableConcept') as code then {
-        renalGroup -> code.coding = create('Coding') as coding then {
-          renalGroup -> coding.system = 'http://loinc.org' "set-top-system";
-          renalGroup -> coding.code = '45066-8' "set-top-code";
-        } "set-top-coding";
-      } "set-top-concept";
-
-      renalGroup.item as creatItem where (linkId = '500408205043') then {
-
-        creatItem.answer as creatAns then {
-
-          creatAns.item as creatIdItem where (text = 'Identifiant') then {
-            creatIdItem.answer as creatIdAns -> obs.id = (%creatIdAns.value.ofType(string)) "set-obs-id";
-          } "extract-obs-id";
-
-          creatAns -> obs.id as obsId, obsEntry.fullUrl = append('urn:uuid:', obsId) "set-fullUrl";
-
-          creatAns -> obs.component as creatComp then {
-
-            creatAns -> creatComp.code = create('CodeableConcept') as ccode then {
-              creatAns -> ccode.coding = create('Coding') as ccoding then {
-                creatAns -> ccoding.system = 'http://loinc.org' "set-creat-system";
-                creatAns -> ccoding.code = '14682-9' "set-creat-code";
-              } "set-creat-coding";
-            } "set-creat-concept";
-
-            creatAns -> creatComp.value = (%creatAns.value.ofType(Quantity)) as creatVal,
-
-              creatVal.code = 'umol/L',
-
-              creatVal.unit = 'umol/L',
-
-              creatVal.system = 'http://unitsofmeasure.org' "set-creat-value";
-
-            creatAns -> creatComp.referenceRange as creatRefRange then {
-
-              creatAns.item as creatLowItem where (text.contains('Borne inférieure')) then {
-                creatLowItem.answer as creatLowAns -> creatRefRange.low = (%creatLowAns.value.ofType(Quantity)) as creatTgtLow,
-
-                  creatTgtLow.code = 'umol/L',
-
-                  creatTgtLow.unit = 'umol/L',
-
-                  creatTgtLow.system = 'http://unitsofmeasure.org' "set-creat-low";
-              } "extract-creat-low";
-
-              creatAns.item as creatHighItem where (text.contains('Borne supérieure')) then {
-                creatHighItem.answer as creatHighAns -> creatRefRange.high = (%creatHighAns.value.ofType(Quantity)) as creatTgtHigh,
-
-                  creatTgtHigh.code = 'umol/L',
-
-                  creatTgtHigh.unit = 'umol/L',
-
-                  creatTgtHigh.system = 'http://unitsofmeasure.org' "set-creat-high";
-              } "extract-creat-high";
-
-            } "set-creat-ref-range";
-
-          } "build-creat-component";
-
-        } "navigate-creat-ans";
-
-      } "extract-creat";
-
-      renalGroup.item as dfgItem where (linkId = '786621340679') then {
-
-        dfgItem.answer as dfgAns then {
-
-          dfgAns.item as dfgIdItem where (text = 'Identifiant') then {
-            dfgIdItem.answer as dfgIdAns -> obs.id = (%dfgIdAns.value.ofType(string)) "set-obs-id";
-          } "extract-obs-id";
-
-          dfgAns -> obs.id as obsId, obsEntry.fullUrl = append('urn:uuid:', obsId) "set-fullUrl";
-
-          dfgAns -> obs.component as dfgComp then {
-
-            dfgAns.item as dfgLoincItem where (text.contains('code loinc')) then {
-              dfgLoincItem.answer as dfgLoincAns -> dfgComp.code as dcode,
-                dcode.coding as dcoding,
-                dcoding.code = (%dfgLoincAns.value.ofType(string)) "set-dfg-code";
-            } "extract-dfg-loinc";
-
-            dfgAns -> dfgComp.value = (%dfgAns.value.ofType(Quantity)) as dfgVal,
-
-              dfgVal.code = (%dfgAns.value.ofType(Quantity).unit),
-
-              dfgVal.system = 'http://unitsofmeasure.org' "set-dfg-value";
-
-            dfgAns -> dfgComp.referenceRange as dfgRefRange then {
-
-              dfgAns.item as dfgLowItem where (text.contains('Borne inférieure')) then {
-                dfgLowItem.answer as dfgLowAns -> dfgRefRange.low = (%dfgLowAns.value.ofType(Quantity)) as dfgTgtLow,
-
-                  dfgTgtLow.code = (%dfgAns.value.ofType(Quantity).unit),
-
-                  dfgTgtLow.system = 'http://unitsofmeasure.org' "set-dfg-low";
-              } "extract-dfg-low";
-
-              dfgAns.item as dfgHighItem where (text.contains('Borne supérieure')) then {
-                dfgHighItem.answer as dfgHighAns -> dfgRefRange.high = (%dfgHighAns.value.ofType(Quantity)) as dfgTgtHigh,
-
-                  dfgTgtHigh.code = (%dfgAns.value.ofType(Quantity).unit),
-
-                  dfgTgtHigh.system = 'http://unitsofmeasure.org' "set-dfg-high";
-              } "extract-dfg-high";
-
-            } "set-dfg-ref-range";
-
-          } "build-dfg-component";
-
-        } "navigate-dfg-ans";
-
-      } "extract-dfg";
-
-    } "create-obs";
-
-  } "obs-entry";
-
-}
-
-// Helper: fonction-renale panel, per-answer fallback (issue #12's user decision). Fires
-// whenever the renal group is NOT exactly one Créat answer and one DFG answer -- covers both
-// "one side missing" (0..1 relaxation already handles this structurally) and "one side
-// repeated" (e.g. two Créat readings, no DFG -- merging those into one Observation would put
-// two Creat-coded components on a 0..1 slice). Each answer on each side becomes its own
-// standalone Observation with just that one component: nothing merged, nothing dropped,
-// nothing arbitrarily chosen as first/last.
-
-group CreateRenalPanelObservationsIndividual(source renalGroup, target patient : Patient, target bundle : Bundle) {
-
-  renalGroup.item as creatItem where (linkId = '500408205043') then {
-
-    creatItem.answer as creatAns -> bundle.entry as obsEntry then {
-
-      creatAns -> obsEntry.resource = create('Observation') as obs then {
-
-        creatAns.item as creatIdItem where (text = 'Identifiant') then {
-          creatIdItem.answer as creatIdAns -> obs.id = (%creatIdAns.value.ofType(string)) "set-obs-id";
-        } "extract-obs-id";
-
-        creatAns -> obs.id as obsId, obsEntry.fullUrl = append('urn:uuid:', obsId) "set-fullUrl";
-
-        creatAns -> obs.meta = create('Meta') as meta then {
-          creatAns -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-fonction-renale' "set-profile";
-        } "set-meta";
-
-        creatAns -> obs.status = 'final' "set-status";
-
-        creatAns -> obs.category = create('CodeableConcept') as cat then {
-          creatAns -> cat.coding = create('Coding') as coding then {
-            creatAns -> coding.system = 'http://terminology.hl7.org/CodeSystem/observation-category' "cat-system";
-            creatAns -> coding.code = 'laboratory' "cat-code";
-          } "set-category-coding";
-        } "set-category";
-
-        creatAns -> obs.subject = create('Reference') as ref, patient.id as patId, ref.reference = append('Patient/', patId) "set-subject";
-
-        creatAns -> obs.code = create('CodeableConcept') as code then {
-          creatAns -> code.coding = create('Coding') as coding then {
-            creatAns -> coding.system = 'http://loinc.org' "set-top-system";
-            creatAns -> coding.code = '45066-8' "set-top-code";
-          } "set-top-coding";
-        } "set-top-concept";
-
-        creatAns -> obs.component as creatComp then {
-
-          creatAns -> creatComp.code = create('CodeableConcept') as ccode then {
-            creatAns -> ccode.coding = create('Coding') as ccoding then {
-              creatAns -> ccoding.system = 'http://loinc.org' "set-creat-system";
-              creatAns -> ccoding.code = '14682-9' "set-creat-code";
-            } "set-creat-coding";
-          } "set-creat-concept";
-
-          creatAns -> creatComp.value = (%creatAns.value.ofType(Quantity)) as creatVal,
-
-            creatVal.code = 'umol/L',
-
-            creatVal.unit = 'umol/L',
-
-            creatVal.system = 'http://unitsofmeasure.org' "set-creat-value";
-
-          creatAns -> creatComp.referenceRange as creatRefRange then {
-
-            creatAns.item as creatLowItem where (text.contains('Borne inférieure')) then {
-              creatLowItem.answer as creatLowAns -> creatRefRange.low = (%creatLowAns.value.ofType(Quantity)) as creatTgtLow,
-
-                creatTgtLow.code = 'umol/L',
-
-                creatTgtLow.unit = 'umol/L',
-
-                creatTgtLow.system = 'http://unitsofmeasure.org' "set-creat-low";
-            } "extract-creat-low";
-
-            creatAns.item as creatHighItem where (text.contains('Borne supérieure')) then {
-              creatHighItem.answer as creatHighAns -> creatRefRange.high = (%creatHighAns.value.ofType(Quantity)) as creatTgtHigh,
-
-                creatTgtHigh.code = 'umol/L',
-
-                creatTgtHigh.unit = 'umol/L',
-
-                creatTgtHigh.system = 'http://unitsofmeasure.org' "set-creat-high";
-            } "extract-creat-high";
-
-          } "set-creat-ref-range";
-
-        } "build-creat-component";
-
-      } "create-obs";
-
-    } "obs-entry";
-
-  } "extract-creat-individual";
-
-  renalGroup.item as dfgItem where (linkId = '786621340679') then {
-
-    dfgItem.answer as dfgAns -> bundle.entry as obsEntry then {
-
-      dfgAns -> obsEntry.resource = create('Observation') as obs then {
-
-        dfgAns.item as dfgIdItem where (text = 'Identifiant') then {
-          dfgIdItem.answer as dfgIdAns -> obs.id = (%dfgIdAns.value.ofType(string)) "set-obs-id";
-        } "extract-obs-id";
-
-        dfgAns -> obs.id as obsId, obsEntry.fullUrl = append('urn:uuid:', obsId) "set-fullUrl";
-
-        dfgAns -> obs.meta = create('Meta') as meta then {
-          dfgAns -> meta.profile = 'https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-observation-laboratory-fonction-renale' "set-profile";
-        } "set-meta";
-
-        dfgAns -> obs.status = 'final' "set-status";
-
-        dfgAns -> obs.category = create('CodeableConcept') as cat then {
-          dfgAns -> cat.coding = create('Coding') as coding then {
-            dfgAns -> coding.system = 'http://terminology.hl7.org/CodeSystem/observation-category' "cat-system";
-            dfgAns -> coding.code = 'laboratory' "cat-code";
-          } "set-category-coding";
-        } "set-category";
-
-        dfgAns -> obs.subject = create('Reference') as ref, patient.id as patId, ref.reference = append('Patient/', patId) "set-subject";
-
-        dfgAns -> obs.code = create('CodeableConcept') as code then {
-          dfgAns -> code.coding = create('Coding') as coding then {
-            dfgAns -> coding.system = 'http://loinc.org' "set-top-system";
-            dfgAns -> coding.code = '45066-8' "set-top-code";
-          } "set-top-coding";
-        } "set-top-concept";
-
-        dfgAns -> obs.component as dfgComp then {
-
-          dfgAns.item as dfgLoincItem where (text.contains('code loinc')) then {
-            dfgLoincItem.answer as dfgLoincAns -> dfgComp.code as dcode,
-              dcode.coding as dcoding,
-              dcoding.code = (%dfgLoincAns.value.ofType(string)) "set-dfg-code";
-          } "extract-dfg-loinc";
-
-          dfgAns -> dfgComp.value = (%dfgAns.value.ofType(Quantity)) as dfgVal,
-
-            dfgVal.code = (%dfgAns.value.ofType(Quantity).unit),
-
-            dfgVal.system = 'http://unitsofmeasure.org' "set-dfg-value";
-
-          dfgAns -> dfgComp.referenceRange as dfgRefRange then {
-
-            dfgAns.item as dfgLowItem where (text.contains('Borne inférieure')) then {
-              dfgLowItem.answer as dfgLowAns -> dfgRefRange.low = (%dfgLowAns.value.ofType(Quantity)) as dfgTgtLow,
-
-                dfgTgtLow.code = (%dfgAns.value.ofType(Quantity).unit),
-
-                dfgTgtLow.system = 'http://unitsofmeasure.org' "set-dfg-low";
-            } "extract-dfg-low";
-
-            dfgAns.item as dfgHighItem where (text.contains('Borne supérieure')) then {
-              dfgHighItem.answer as dfgHighAns -> dfgRefRange.high = (%dfgHighAns.value.ofType(Quantity)) as dfgTgtHigh,
-
-                dfgTgtHigh.code = (%dfgAns.value.ofType(Quantity).unit),
-
-                dfgTgtHigh.system = 'http://unitsofmeasure.org' "set-dfg-high";
-            } "extract-dfg-high";
-
-          } "set-dfg-ref-range";
-
-        } "build-dfg-component";
-
-      } "create-obs";
-
-    } "obs-entry";
-
-  } "extract-dfg-individual";
-
-}
-
-                                                                     
