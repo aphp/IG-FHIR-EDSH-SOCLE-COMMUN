@@ -211,3 +211,13 @@ fixes, so tracked here rather than as a TODO anyone could silently drop:
 - GT: Groupe de Travail
 - PMSI: Programme de Médicalisation des Systèmes d'Information
 - MCO: Médecine, Chirurgie, Obstétrique
+
+## Agent skills
+
+### Issue tracker
+
+Issues live as GitHub issues on `aphp/IG-FHIR-EDSH-SOCLE-COMMUN`, using the `gh` CLI. See `docs/agents/issue-tracker.md`.
+
+### Domain docs
+
+Single-context layout: `CONTEXT.md` + `docs/adr/` at the repo root. See `docs/agents/domain.md`.
