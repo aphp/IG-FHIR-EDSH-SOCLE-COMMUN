@@ -14,3 +14,9 @@ Thumbs.db
 package.json
 package-lock.json
 Requirements-fromNarrative.json
+
+# Fichiers de config locaux Claude Code
+.claude/*.local.json
+
+# Dumps de crash Git Bash (Windows)
+*.stackdump
