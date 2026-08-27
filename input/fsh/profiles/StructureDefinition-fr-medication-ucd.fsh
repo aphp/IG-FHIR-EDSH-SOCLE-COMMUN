@@ -3,6 +3,7 @@ Parent: Medication
 Id: fr-medication-ucd
 Title: "French branded name Medication"
 Description: "French prescribed, dispensed or used medication expressed as branded medication composed of one to many substances. The code the french UCD (Unité Commune de Dispensation)."
+* . ^comment = "Cardinalités et contraintes de cette couche datatype/médicament adaptée de l'IG ANS e-prescription (ans.fhir.fr.eprescription), non introduites par le socle : elles font partie de la définition même du profil (une SimpleQuantity UCUM impose son unité ; un Medication composé ne porte ni lot ni dosage d'ingrédient au niveau du groupement). L'alignement avec l'amont est suivi hors de la remédiation robustesse du socle (carte #19)."
 * code 1..
 * code from $SIPh-CIO_UCD (extensible)
 * code ^definition = "The UCD code of the branded medication."

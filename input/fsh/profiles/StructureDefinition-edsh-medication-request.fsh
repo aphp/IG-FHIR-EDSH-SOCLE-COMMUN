@@ -3,22 +3,30 @@ Parent:   MedicationRequest
 Id: edsh-medication-request
 Title:    "Prescription de médicaments"
 Description:  "Profil pour les prescriptions médicamenteuses"
+* medication[x] ^short = "Médicament prescrit : code (CIM/UCD/ATC…) ou référence à une ressource Medication"
 * medication[x] only Reference(Medication or FrMedicationUcd or FrMedicationNonproprietaryName or FrMedicationCompound) or CodeableConcept
+* subject ^short = "Patient à qui le médicament est prescrit"
 * subject only Reference(Patient or Group or FRCorePatientProfile or EdshPatient)
 * encounter only Reference(Encounter or FRCoreEncounterProfile or EdshEncounter)
 * reported[x] only boolean or Reference(Patient or Practitioner or PractitionerRole or RelatedPerson or Organization or FRCorePatientProfile or FRCorePractitionerProfile or FRCorePractitionerRole or FRCoreRelatedPersonProfile or FRCoreOrganizationProfile or EdshPatient or EdshPractitioner or EdshPractitionerRole or EdshOrganization)
 * requester only Reference(Practitioner or PractitionerRole or Organization or Patient or RelatedPerson or Device or FRCorePractitionerProfile or FRCorePractitionerRole or FRCoreOrganizationProfile or FRCorePatientProfile or FRCoreRelatedPersonProfile or EdshPractitioner or EdshPractitionerRole or EdshOrganization or EdshPatient)
 * performer only Reference(Practitioner or PractitionerRole or Organization or Patient or Device or RelatedPerson or CareTeam or FRCorePractitionerProfile or FRCorePractitionerRole or FRCoreOrganizationProfile or FRCorePatientProfile or FRCoreRelatedPersonProfile or EdshPractitioner or EdshPractitionerRole or EdshOrganization or EdshPatient)
+* dosageInstruction ^short = "Posologie prescrite"
 * dosageInstruction 0..* // base cardinality (reverted from 1.. per #22)
+  * route ^short = "Voie d'administration"
   * route from FrRouteOfAdministration (extensible)
   * doseAndRate
+    * dose[x] ^short = "Dose par prise, avec unité UCUM"
     * dose[x] only FrRangeUcum or FrSimpleQuantityUcum
+    * rate[x] ^short = "Débit d'administration, avec unité UCUM"
     * rate[x] only FrRatioUcum or FrRangeUcum or FrSimpleQuantityUcum
     * rate[x] ^definition = "Amount of medication per unit of time. Using a ratio, the denominator SHALL be a quantity of time. Using a simple quantity the UCUM unit SHALL be a unit of rate."
   * maxDosePerPeriod
     * numerator only FrSimpleQuantityUcum
     * denominator only FrSimpleQuantityUcum
+  * maxDosePerAdministration ^short = "Dose maximale par administration, avec unité UCUM"
   * maxDosePerAdministration only FrSimpleQuantityUcum
+  * maxDosePerLifetime ^short = "Dose maximale sur la vie du patient, avec unité UCUM"
   * maxDosePerLifetime only FrSimpleQuantityUcum
 
 Instance: f99b5bbd-3144-4bd0-b0f3-9f6e061ed363

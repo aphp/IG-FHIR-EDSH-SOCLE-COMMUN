@@ -8,8 +8,9 @@ Taux d'ALAT dans le sang. L'alanine-aminotransférase est capable de transférer
 
 * code = $loinc#1743-4 "Alanine aminotransférase [Catalytique/Volume] Sérum/Plasma ; Numérique ; Avec phosphate de pyridoxal" (exactly)
 
+* value[x] ^short = "Alanine aminotransférase (ALAT) — valeur mesurée, en [IU]/L"
 * value[x] only Quantity
-* valueQuantity.value ^short = "Valeur mesurée"
+* valueQuantity.value ^short = "Valeur numérique du résultat"
 * valueQuantity.system = $ucum (exactly)
 * valueQuantity.code = #[IU]/L (exactly)
 * valueQuantity.unit = "[IU]/L"

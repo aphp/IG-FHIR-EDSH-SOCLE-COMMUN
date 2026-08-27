@@ -5,7 +5,7 @@ Title: "SimpleQuantity with UCUM quantity unit"
 Description: "simple quantity datatype requiring a UCUM unit"
 * . ^short = "A fixed quantity (no comparator) with UCUM unit"
 * . ^definition = "The comparator is not used on a SimpleQuantity. The unit SHALL be a UCUM code."
-* . ^comment = "The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use explicitely excludes the use of the simpleQuantity \"comparator\" element."
+* . ^comment = "The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use explicitely excludes the use of the simpleQuantity \"comparator\" element. Cardinalités et contraintes de cette couche datatype adaptée de l'IG ANS e-prescription (ans.fhir.fr.eprescription), non introduites par le socle : imposer `system` et `code` fait partie de la définition même du datatype « SimpleQuantity avec unité UCUM ». L'alignement avec l'amont est suivi hors de la remédiation robustesse du socle (carte #19)."
 * system 1..
 * system = "http://unitsofmeasure.org" (exactly)
 * system ^definition = "UCUM requiered for the identification of the system that provides the coded form of the unit."

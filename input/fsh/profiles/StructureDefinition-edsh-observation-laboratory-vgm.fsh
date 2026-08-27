@@ -8,8 +8,9 @@ Profil Volume globulaire moyen du socle commun des EDSH
 
 * code = $loinc#30428-7 "Volume globulaire moyen [Volume d'entité] Érythrocytes ; Numérique" (exactly)
 
+* value[x] ^short = "Volume globulaire moyen — valeur mesurée, en fL"
 * value[x] only Quantity
-* valueQuantity.value ^short = "Valeur mesurée"
+* valueQuantity.value ^short = "Valeur numérique du résultat"
 * valueQuantity.system = $ucum (exactly)
 * valueQuantity.code = #fL (exactly)
 * valueQuantity.unit = "fL"

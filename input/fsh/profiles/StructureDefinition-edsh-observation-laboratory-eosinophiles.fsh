@@ -8,8 +8,9 @@ Profil Eosinophiles du socle commun des EDSH
 
 * code = $loinc#26449-9 "Polynucléaires éosinophiles [Nombre/Volume] Sang ; Numérique" (exactly)
 
+* value[x] ^short = "Eosinophiles — valeur mesurée, en 10*3/uL"
 * value[x] only Quantity
-* valueQuantity.value ^short = "Valeur mesurée"
+* valueQuantity.value ^short = "Valeur numérique du résultat"
 * valueQuantity.system = $ucum (exactly)
 * valueQuantity.code = #10*3/uL (exactly)
 * valueQuantity.unit = "10*3/uL"

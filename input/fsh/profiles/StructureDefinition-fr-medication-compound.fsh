@@ -5,6 +5,7 @@ Title: "French compound Medication"
 Description: "A complex medication composed of two to many simple médication. The simple medications component are described in as many ingredient.itemReference referencing a Medication resource profiled fr-medication-1."
 * . ^short = "Definition of a Medication compound of a MedicinalRequest, Dispense or Usage"
 * . ^definition = "Medication compound of a Medication representing the composition of a MedicationRequest, a MedicationDispense or a MedicationUsage (pka MedicationStatement). For instance, Glucose 5% 1L part of an infusion made of 3 compounds, Glucose 5% 1L + Sodium chloride 3g + Potassium chloride 2g."
+* . ^comment = "Cardinalités et contraintes de cette couche datatype/médicament adaptée de l'IG ANS e-prescription (ans.fhir.fr.eprescription), non introduites par le socle : elles font partie de la définition même du profil (une SimpleQuantity UCUM impose son unité ; un Medication composé ne porte ni lot ni dosage d'ingrédient au niveau du groupement). L'alignement avec l'amont est suivi hors de la remédiation robustesse du socle (carte #19)."
 * code 1..
 * code ^short = "No code that identify this medication"
 * code ^definition = "Defines the text of the compound detailed in this compound Medication."

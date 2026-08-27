@@ -8,8 +8,9 @@ Profil Taux prothrombine (TP) du socle commun des EDSH
 
 * code = $loinc#5894-1 "Temps de quick Patient (%) [Temps relatif] Plasma pauvre en plaquettes ; Numérique ; Coagulation" (exactly)
 
+* value[x] ^short = "Taux prothrombine (TP) — valeur mesurée, en %"
 * value[x] only Quantity
-* valueQuantity.value ^short = "Valeur mesurée"
+* valueQuantity.value ^short = "Valeur numérique du résultat"
 * valueQuantity.system = $ucum (exactly)
 * valueQuantity.code = #% (exactly)
 * valueQuantity.unit = "%"

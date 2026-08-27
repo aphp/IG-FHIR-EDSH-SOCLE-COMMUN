@@ -4,13 +4,19 @@ Id: edsh-encounter
 Title: "Encounter"
 Description: "Encounter adapted to Data Management"
 
+* subject ^short = "Patient concerné par le passage"
 * subject only Reference(FRCorePatientProfile or EdshPatient)
+* episodeOfCare ^short = "Épisode de soins auquel ce passage se rattache"
 * episodeOfCare only Reference(EpisodeOfCare or EdshEpisodeOfCare)
+* hospitalization.preAdmissionIdentifier.assigner ^short = "Organisation ayant attribué l'identifiant de pré-admission"
 * hospitalization.preAdmissionIdentifier.assigner only Reference(FRCoreOrganizationProfile or EdshOrganization)
+* hospitalization.origin ^short = "Provenance du patient (lieu ou organisation d'origine)"
 * hospitalization.origin only Reference(FRCoreLocationProfile or FRCoreOrganizationProfile or EdshLocation or EdshOrganization)
 
+* serviceProvider ^short = "Organisation responsable du passage"
 * serviceProvider only Reference(FRCoreOrganizationProfile or EdshOrganization)
 
+* partOf ^short = "Passage englobant, quand ce passage en est une sous-partie"
 * partOf only Reference(FRCoreEncounterProfile or EdshEncounter)
 
 Instance: ceaac970-fd2b-43fc-b22c-db2a376e663c

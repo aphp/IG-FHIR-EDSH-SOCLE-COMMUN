@@ -6,7 +6,9 @@ Description: "Profil abstrait pour les invariants dans les claims du champs MCO 
 
 * ^abstract = true
 
+* type ^short = "Champ du PMSI : toujours « PMSI MCO » pour ce sous-arbre"
 * type = FrClaimType#PMSIMCO
+* subType ^short = "Sous-type de résumé MCO (RUM, RSS…)"
 * subType from FrMcoClaimSubType (required)
 
 Instance: ec3b0504-7d75-4601-87b1-b9143672cbf0

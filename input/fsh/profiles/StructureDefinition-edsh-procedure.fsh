@@ -4,19 +4,27 @@ Id: edsh-procedure
 Title: "Procedure"
 Description: "Procedure adapted to Data Management"
 
+* partOf ^short = "Acte englobant, quand cet acte en est une étape"
 * partOf only Reference(Procedure or Observation or MedicationAdministration or EdshProcedure or EdshMedicationAdministration)
+* subject ^short = "Patient ayant bénéficié de l'acte"
 * subject only Reference(Patient or Group or FRCorePatientProfile or EdshPatient)
+* encounter ^short = "Passage au cours duquel l'acte est réalisé"
 * encounter only Reference(Encounter or FRCoreEncounterProfile or EdshEncounter)
-* recorder only Reference(Patient or RelatedPerson or Practitioner or PractitionerRole or FRCorePatientProfile or FRCoreRelatedPersonProfile or FRCorePractitionerProfile or FRCorePractitionerRole or EdshPatient or EdshPractitioner or EdshPractitionerRole)
-* asserter only Reference(Patient or RelatedPerson or Practitioner or PractitionerRole or FRCorePatientProfile or FRCoreRelatedPersonProfile or FRCorePractitionerProfile or FRCorePractitionerRole or EdshPatient or EdshPractitioner or EdshPractitionerRole)
 
 * performer
+  * actor ^short = "Intervenant ayant réalisé l'acte"
   * actor only Reference(Practitioner or PractitionerRole or Organization or Patient or RelatedPerson or Device or FRCorePractitionerProfile or FRCorePractitionerRole or FRCoreOrganizationProfile or FRCorePatientProfile or FRCoreRelatedPersonProfile or EdshPractitioner or EdshPractitionerRole or EdshOrganization or EdshPatient)
+  * onBehalfOf ^short = "Organisation pour le compte de laquelle l'intervenant a agi"
   * onBehalfOf only Reference(Organization or FRCoreOrganizationProfile or EdshOrganization)
 
+* location ^short = "Lieu de réalisation de l'acte"
 * location only Reference(Location or FRCoreLocationProfile or EdshLocation)
+* recorder only Reference(Patient or RelatedPerson or Practitioner or PractitionerRole or FRCorePatientProfile or FRCoreRelatedPersonProfile or FRCorePractitionerProfile or FRCorePractitionerRole or EdshPatient or EdshPractitioner or EdshPractitionerRole)
+* asserter only Reference(Patient or RelatedPerson or Practitioner or PractitionerRole or FRCorePatientProfile or FRCoreRelatedPersonProfile or FRCorePractitionerProfile or FRCorePractitionerRole or EdshPatient or EdshPractitioner or EdshPractitionerRole)
+* reasonReference ^short = "Motif de l'acte, exprimé comme référence à une condition, un résultat ou un autre acte"
 * reasonReference only Reference(Condition or Observation or Procedure or DiagnosticReport or DocumentReference or EdshCondition or EdshProcedure)
 
+* code ^short = "Acte, codé en CCAM"
 * code from CcamVs (extensible)
 
 Instance: e286e28b-c58b-4cc5-953d-8e6e7af22e56

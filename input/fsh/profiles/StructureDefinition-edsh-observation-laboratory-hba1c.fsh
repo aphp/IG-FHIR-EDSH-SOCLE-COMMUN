@@ -8,8 +8,9 @@ Forme glycquée de la molécule de l'hémoglobine dans le sang. Sa valeur biolog
 
 * code = $loinc#4548-4 "Hémoglobine A1c/hémoglobine totale [Fraction massique] Sang ; Numérique" (exactly)
 
+* value[x] ^short = "Hémoglobine glyquée — valeur mesurée, en %"
 * value[x] only Quantity
-* valueQuantity.value ^short = "Valeur mesurée"
+* valueQuantity.value ^short = "Valeur numérique du résultat"
 * valueQuantity.system = $ucum (exactly)
 * valueQuantity.code = #% (exactly)
 * valueQuantity.unit = "%"

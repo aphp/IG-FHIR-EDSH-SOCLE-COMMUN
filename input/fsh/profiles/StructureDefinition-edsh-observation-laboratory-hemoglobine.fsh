@@ -8,8 +8,9 @@ Profil Hémoglobine du socle commun des EDSH
 
 * code = $loinc#718-7 "Hémoglobine [Masse/Volume] Sang ; Numérique" (exactly)
 
+* value[x] ^short = "Hémoglobine — valeur mesurée, en g/dL"
 * value[x] only Quantity
-* valueQuantity.value ^short = "Valeur mesurée"
+* valueQuantity.value ^short = "Valeur numérique du résultat"
 * valueQuantity.system = $ucum (exactly)
 * valueQuantity.code = #g/dL (exactly)
 * valueQuantity.unit = "g/dL"

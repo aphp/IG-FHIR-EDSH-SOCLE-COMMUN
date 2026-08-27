@@ -8,8 +8,9 @@ Taux de bilirubine sanguin. La bilirubine est un pigment jaune produit de la dé
 
 * code = $loinc#14631-6 "Bilirubine [Moles/Volume] Sérum/Plasma ; Numérique" (exactly)
 
+* value[x] ^short = "Bilirubine totale — valeur mesurée, en umol/L"
 * value[x] only Quantity
-* valueQuantity.value ^short = "Valeur mesurée"
+* valueQuantity.value ^short = "Valeur numérique du résultat"
 * valueQuantity.system = $ucum (exactly)
 * valueQuantity.code = #umol/L (exactly)
 * valueQuantity.unit = "umol/L"

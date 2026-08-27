@@ -3,7 +3,10 @@ Parent: EdshObservationLaboratoryGeneric
 Id: edsh-observation-laboratory-tca
 Title: "Temps de céphaline activée (TCA)"
 Description: """
-Profil Temps de céphaline activée (TCA) du socle commun des EDSH
+Profil Temps de céphaline activée (TCA) du socle commun des EDSH. Profil de panel
+(LOINC 50197-3) : le résultat racine ne porte pas de valeur ; les trois résultats
+élémentaires — temps du patient, temps témoin, ratio patient/témoin — sont portés
+comme `component`s tranchés par code.
 """
 
 * code = $loinc#50197-3 "Temps de céphaline activée panel [-] Plasma pauvre en plaquettes ; Numérique" (exactly)
@@ -16,8 +19,11 @@ Profil Temps de céphaline activée (TCA) du socle commun des EDSH
     PatientTCA 1..1 and
     ControlTCA 1..1 and
     TCARatioPonC 1..1
+* component[PatientTCA] ^comment = "Cardinalité de slice 1..1 : le panel TCA (LOINC 50197-3) rapporte par définition le temps de céphaline du patient et le temps témoin. Un résultat dépourvu de l'un des deux n'est pas un TCA interprétable."
+* component[ControlTCA] ^comment = "Cardinalité de slice 1..1 : le panel TCA (LOINC 50197-3) rapporte par définition le temps de céphaline du patient et le temps témoin. Un résultat dépourvu de l'un des deux n'est pas un TCA interprétable."
+* component[TCARatioPonC] ^comment = "Cardinalité de slice 1..1 : le ratio patient/témoin fait partie intégrante du panel TCA (LOINC 50197-3) et est systématiquement transmis avec le résultat."
 
-* component[PatientTCA] ^short = "pour rapporter le TCA patient."
+* component[PatientTCA] ^short = "Temps de céphaline activée du patient"
 * component[PatientTCA]
   * code = $loinc#14979-9 (exactly)
   * value[x] only Quantity
@@ -27,7 +33,7 @@ Profil Temps de céphaline activée (TCA) du socle commun des EDSH
     * unit = "s"
     * system = $ucum (exactly)
 
-* component[ControlTCA] ^short = "pour rapporter le TCA témoin."
+* component[ControlTCA] ^short = "Temps de céphaline activée témoin"
 * component[ControlTCA]
   * code = $loinc#13488-2 (exactly)
   * value[x] only Quantity
@@ -37,7 +43,7 @@ Profil Temps de céphaline activée (TCA) du socle commun des EDSH
     * unit = "s"
     * system = $ucum (exactly)
 
-* component[TCARatioPonC] ^short = "pour rapporter le ratio des TCA P/T."
+* component[TCARatioPonC] ^short = "Ratio patient/témoin des temps de céphaline activée"
 * component[TCARatioPonC]
   * code = $loinc#63561-5 (exactly)
   * value[x] only Quantity

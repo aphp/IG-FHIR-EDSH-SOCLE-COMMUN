@@ -9,12 +9,16 @@ Description: "Profil abstrait pour les invariants dans les claims du PMSI."
 * type from FrClaimTypeVs (required)
 * type ^short = "Champ du PMSI concerné."
 
+* patient ^short = "Patient objet du séjour facturé"
 * patient only Reference(Patient or FRCorePatientProfile or EdshPatient)
 * payee.party only Reference(Practitioner or PractitionerRole or Organization or Patient or RelatedPerson or FRCorePractitionerProfile or FRCorePractitionerRole or FRCoreOrganizationProfile or FRCorePatientProfile or FRCoreRelatedPersonProfile or EdshPractitioner or EdshPractitionerRole or EdshOrganization or EdshPatient)
 * provider ^short = "Entité juridique émettrice"
+* priority ^short = "Priorité de traitement : toujours « normal » pour le PMSI"
 * priority = http://terminology.hl7.org/CodeSystem/processpriority#normal
+* use ^short = "Usage de la ressource : toujours « claim » pour le PMSI"
 * use = #claim
 
+* insurance ^short = "Couverture : le PMSI ne renseigne que l'Assurance Maladie"
 * insurance.sequence = 1
 * insurance.focal = true
 * insurance.coverage.display 1..1

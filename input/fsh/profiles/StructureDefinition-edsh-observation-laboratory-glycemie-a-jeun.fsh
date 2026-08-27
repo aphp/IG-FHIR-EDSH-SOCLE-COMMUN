@@ -8,8 +8,9 @@ Taux de glucose dans le sang à jeun (c'est à dire après une période sans app
 
 * code = $loinc#14749-6 "Glucose [Moles/Volume] Sérum/Plasma ; Numérique" (exactly)
 
+* value[x] ^short = "Glycémie à jeun — valeur mesurée, en mmol/L"
 * value[x] only Quantity
-* valueQuantity.value ^short = "Valeur mesurée"
+* valueQuantity.value ^short = "Valeur numérique du résultat"
 * valueQuantity.system = $ucum (exactly)
 * valueQuantity.code = #mmol/L (exactly)
 * valueQuantity.unit = "mmol/L"

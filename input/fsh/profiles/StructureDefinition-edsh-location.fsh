@@ -4,6 +4,7 @@ Id: edsh-location
 Title: "Location"
 Description: "Location adapted to Data Management"
 
+* managingOrganization ^short = "Organisation gestionnaire du lieu"
 * managingOrganization only Reference(FRCoreOrganizationProfile or EdshOrganization)
 
 Instance: b6c7d8e9-0f1a-2b3c-4d5e-6f7a8b9c0d1e

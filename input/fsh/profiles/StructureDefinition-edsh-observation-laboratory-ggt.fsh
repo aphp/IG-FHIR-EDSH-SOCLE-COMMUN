@@ -8,8 +8,9 @@ Taux sanguin de GGT. Aminoacyltransférase impliquées dans la catalyse d'enzyme
 
 * code = $loinc#2324-2 "Gamma glutamyltransférase [Catalytique/Volume] Sérum/Plasma ; Numérique" (exactly)
 
+* value[x] ^short = "Gamma-glutamyl transférase (GGT) — valeur mesurée, en U/L"
 * value[x] only Quantity
-* valueQuantity.value ^short = "Valeur mesurée"
+* valueQuantity.value ^short = "Valeur numérique du résultat"
 * valueQuantity.system = $ucum (exactly)
 * valueQuantity.code = #U/L (exactly)
 * valueQuantity.unit = "U/L"
