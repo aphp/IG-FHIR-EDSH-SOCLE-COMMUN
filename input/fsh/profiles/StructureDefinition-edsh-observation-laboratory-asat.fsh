@@ -8,8 +8,9 @@ Taux d'ASAT dans le sang. L'ASAT est une enzyme faisant partie des transaminases
 
 * code = $loinc#30239-8 "Aspartate aminotransférase [Catalytique/Volume] Sérum/Plasma ; Numérique ; Avec phosphate de pyridoxal" (exactly)
 
+* value[x] ^short = "Aspartate aminotransférase (ASAT) — valeur mesurée, en [IU]/L"
 * value[x] only Quantity
-* valueQuantity.value ^short = "Valeur mesurée"
+* valueQuantity.value ^short = "Valeur numérique du résultat"
 * valueQuantity.system = $ucum (exactly)
 * valueQuantity.code = #[IU]/L (exactly)
 * valueQuantity.unit = "[IU]/L"

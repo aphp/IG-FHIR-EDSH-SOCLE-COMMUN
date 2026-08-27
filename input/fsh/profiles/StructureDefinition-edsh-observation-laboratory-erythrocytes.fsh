@@ -8,8 +8,9 @@ Profil Erythrocytes du socle commun des EDSH
 
 * code = $loinc#789-8 "Érythrocytes [Nombre/Volume] Sang ; Numérique ; Comptage automate" (exactly)
 
+* value[x] ^short = "Erythrocytes — valeur mesurée, en 10*6/uL"
 * value[x] only Quantity
-* valueQuantity.value ^short = "Valeur mesurée"
+* valueQuantity.value ^short = "Valeur numérique du résultat"
 * valueQuantity.system = $ucum (exactly)
 * valueQuantity.code = #10*6/uL (exactly)
 * valueQuantity.unit = "10*6/uL"

@@ -14,6 +14,7 @@ Description: "Ce profil définit la manière de représenter les observations de
 * encounter ^short = "NDA (Numéro de Dossier Administratif) associé à la mesure"
 * encounter ^definition = "Le NDA peut correspondre à une hospitalisation complète, un dossier de consultation, d'hospitalisation de jour..."
 
+* performer ^short = "Intervenant ayant réalisé la mesure"
 * performer only Reference(CareTeam or RelatedPerson or FRCorePractitionerProfile or PractitionerRole or FRCoreOrganizationProfile or FRCorePatientProfile or EdshPatient or EdshPractitioner or EdshPractitionerRole or EdshOrganization)
 
 * effective[x] only dateTime
@@ -21,6 +22,7 @@ Description: "Ce profil définit la manière de représenter les observations de
 
 * value[x] ^short = "Valeur de la mesure. Les signes vitaux sont enregistrés sous forme de quantité, exprimés en unité du Système International."
 
+* method ^short = "Méthode de mesure du poids"
 * method from WeightMeasurementMethod (example)
 
 Instance: 44b5a472-6a1e-4d9b-b02f-0f3cc2e74393

@@ -8,8 +8,9 @@ Profil Phosphatases alcaline du socle commun des EDSH
 
 * code = $loinc#6768-6 "Phosphatases alcalines [Catalytique/Volume] Sérum/Plasma ; Numérique" (exactly)
 
+* value[x] ^short = "Phosphatases alcaline — valeur mesurée, en U/L"
 * value[x] only Quantity
-* valueQuantity.value ^short = "Valeur mesurée"
+* valueQuantity.value ^short = "Valeur numérique du résultat"
 * valueQuantity.system = $ucum (exactly)
 * valueQuantity.code = #U/L (exactly)
 * valueQuantity.unit = "U/L"

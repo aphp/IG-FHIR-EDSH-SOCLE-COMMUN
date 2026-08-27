@@ -8,8 +8,9 @@ Taux d'urée dans le sang. L'urée est un catabolite composé formé dans le foi
 
 * code = $loinc#22664-7 "Urée [Moles/Volume] Sérum/Plasma ; Numérique" (exactly)
 
+* value[x] ^short = "Urée — valeur mesurée, en mmol/L"
 * value[x] only Quantity
-* valueQuantity.value ^short = "Valeur mesurée"
+* valueQuantity.value ^short = "Valeur numérique du résultat"
 * valueQuantity.system = $ucum (exactly)
 * valueQuantity.code = #mmol/L (exactly)
 * valueQuantity.unit = "mmol/L"

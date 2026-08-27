@@ -8,8 +8,9 @@ Profil Hématocrite du socle commun des EDSH
 
 * code = $loinc#4544-3 "Hématocrite [Fraction volumique] Sang ; Numérique ; Comptage automate" (exactly)
 
+* value[x] ^short = "Hématocrite — valeur mesurée, en %"
 * value[x] only Quantity
-* valueQuantity.value ^short = "Valeur mesurée"
+* valueQuantity.value ^short = "Valeur numérique du résultat"
 * valueQuantity.system = $ucum (exactly)
 * valueQuantity.code = #% (exactly)
 * valueQuantity.unit = "%"

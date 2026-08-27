@@ -3,6 +3,7 @@ Parent: Medication
 Id: fr-medication-nonproprietary-name
 Title: "French non proprietary name Medication"
 Description: "Simple prescribed, dispensed, administered or used medication expressed in non proprietary name composed of one to many substances. If composed of many substance, the strengh SHALL be defined."
+* . ^comment = "Cardinalités et contraintes de cette couche datatype/médicament adaptée de l'IG ANS e-prescription (ans.fhir.fr.eprescription), non introduites par le socle : elles font partie de la définition même du profil (une SimpleQuantity UCUM impose son unité ; un Medication composé ne porte ni lot ni dosage d'ingrédient au niveau du groupement). L'alignement avec l'amont est suivi hors de la remédiation robustesse du socle (carte #19)."
 * code 1..
 * code from FrMedicinalProductOnly (extensible)
 * code ^definition = "A sctid  that specify this medication."

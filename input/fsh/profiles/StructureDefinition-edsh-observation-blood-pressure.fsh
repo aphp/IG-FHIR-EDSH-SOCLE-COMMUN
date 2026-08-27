@@ -11,12 +11,15 @@ Description: "Profil de la pression artérielle du socle commun des EDS"
 * encounter ^short = "NDA (Numéro de Dossier Administratif) associé à la mesure"
 * encounter ^definition = "Le NDA peut correspondre à une hospitalisation complète, un dossier de consultation, d'hospitalisation de jour..."
 
+* performer ^short = "Intervenant ayant réalisé la mesure"
 * performer only Reference(CareTeam or FRCorePatientProfile or FRCorePractitionerProfile or PractitionerRole or FRCoreOrganizationProfile or FRCoreRelatedPersonProfile or EdshPatient or EdshPractitioner or EdshPractitionerRole or EdshOrganization)
 
 * effective[x] only dateTime
 * effective[x] ^short = "Date de réalisation de la mesure"
 
+* bodySite ^short = "Site anatomique de la mesure"
 * bodySite from BloodPressureMeasurementBodyLocationPrecoordinated (example)
+* method ^short = "Méthode de mesure de la pression artérielle"
 * method from BloodPressureMeasurementMethod (example)
 
 Instance: 5236693c-8f6f-46fc-8ba6-63665228922e

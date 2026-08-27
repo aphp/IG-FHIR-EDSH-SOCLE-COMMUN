@@ -17,10 +17,13 @@ Description: "Profil Patient du socle commun des EDSH"
 * gender from $fr-core-vs-patient-gender-INS (required)
 * gender ^short = "male | female | unknown"
 
+* deceased[x] ^short = "Statut ou date de décès du patient"
 * deceased[x]
   * extension contains
     EdshDeathSource named DeathSource 0..1
+  * extension[DeathSource] ^short = "Source de l'information de décès (état civil, hôpital, INSEE…)"
 
+* address ^short = "Adresse du patient, avec géolocalisation et code géographique PMSI"
 * address only EdshAddress
 
 Instance: a5b6c7d8-9e0f-1a2b-3c4d-5e6f7a8b9c0d

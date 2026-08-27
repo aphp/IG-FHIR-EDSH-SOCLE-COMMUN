@@ -8,6 +8,7 @@ Profil créatininémie du socle commun des EDS
 
 * code = $loinc#14682-9 "Créatinine [Moles/Volume] Sérum/Plasma ; Numérique" (exactly)
 
+* value[x] ^short = "Créatininémie — valeur mesurée, en µmol/L"
 * value[x] only Quantity
 * valueQuantity ^short = "Valeur mesurée"
 * valueQuantity
