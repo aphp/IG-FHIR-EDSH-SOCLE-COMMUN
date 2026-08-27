@@ -13,25 +13,15 @@ Description: "Profil Patient du socle commun des EDSH"
 * identifier[INS-NIR].system = "urn:oid:1.2.250.1.213.1.4.8"
 * identifier[INS-NIR].system ^short = "Autorité d'affectation des INS-NIR"
 * identifier[INS-NIR].value 1..
-* identifier[INS-NIR] MS
 
-* identifier[NSS] MS
-
-* gender MS
 * gender from $fr-core-vs-patient-gender-INS (required)
 * gender ^short = "male | female | unknown"
 
-* birthDate MS
-
-* deceased[x] MS
-* deceased[x] 
+* deceased[x]
   * extension contains
     EdshDeathSource named DeathSource 0..1
 
-* address MS
 * address only EdshAddress
-
-* multipleBirthInteger MS
 
 Instance: a5b6c7d8-9e0f-1a2b-3c4d-5e6f7a8b9c0d
 InstanceOf: Provenance

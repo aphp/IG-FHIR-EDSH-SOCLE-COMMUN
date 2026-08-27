@@ -4,8 +4,8 @@ Id: edsh-condition
 Title: "Condition"
 Description: "Condition adapted to Data Management"
 
-* subject only Reference(EdshPatient)
-* encounter only Reference(EdshEncounter)
+* subject only Reference(Patient or Group or EdshPatient)
+* encounter only Reference(Encounter or EdshEncounter)
 
 * code from EdshCim10Vs (extensible)
 

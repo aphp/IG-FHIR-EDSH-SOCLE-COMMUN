@@ -9,13 +9,6 @@ Description: "Profil Address du socle commun des EDS"
   and EdshPmsiCodeGeo named PmsiCodeGeo 0..1
   and http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-censusTract named iso21090-ADXP-censusTract 0..1
 
-* extension[geolocation] MS
-* extension[inseeCode] MS
-* text MS
-* line MS
-* city MS
-* postalCode MS
-
 Instance: bde2c040-e464-4735-8b9a-e6ace74659ed
 InstanceOf: Provenance
 Title: "first import"

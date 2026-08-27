@@ -9,15 +9,14 @@ Description: "Profil abstrait pour les invariants dans les claims du PMSI."
 * type from FrClaimTypeVs (required)
 * type ^short = "Champ du PMSI concerné."
 
-* patient only Reference(EdshPatient)
+* patient only Reference(Patient or EdshPatient)
 * provider ^short = "Entité juridique émettrice"
 * priority = http://terminology.hl7.org/CodeSystem/processpriority#normal
 * use = #claim
 
 * insurance.sequence = 1
 * insurance.focal = true
-* insurance.coverage.display 1..1
-* insurance.coverage.display = "Assurance Maladie"
+* insurance.coverage.display = "Assurance Maladie" // base cardinality 0..1 (reverted from 1..1 per #22)
 
 Instance: 00ced63e-5fff-4e7b-ab78-736c1d3bfcd8
 InstanceOf: Provenance

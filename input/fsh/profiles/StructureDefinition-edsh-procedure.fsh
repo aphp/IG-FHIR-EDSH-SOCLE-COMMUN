@@ -4,16 +4,16 @@ Id: edsh-procedure
 Title: "Procedure"
 Description: "Procedure adapted to Data Management"
 
-* partOf only Reference(EdshProcedure)
-* subject only Reference(EdshPatient)
-* encounter only Reference(EdshEncounter)
+* partOf only Reference(Procedure or Observation or MedicationAdministration or EdshProcedure)
+* subject only Reference(Patient or Group or EdshPatient)
+* encounter only Reference(Encounter or EdshEncounter)
 
 * performer
-  * actor only Reference(EdshPractitioner or EdshPractitionerRole or EdshOrganization)
-  * onBehalfOf only Reference(EdshOrganization)
+  * actor only Reference(Practitioner or PractitionerRole or Organization or Patient or RelatedPerson or Device or EdshPractitioner or EdshPractitionerRole or EdshOrganization)
+  * onBehalfOf only Reference(Organization or EdshOrganization)
 
-* location only Reference(EdshLocation)
-* reasonReference only Reference(EdshCondition or Observation or EdshProcedure)
+* location only Reference(Location or EdshLocation)
+* reasonReference only Reference(Condition or Observation or Procedure or DiagnosticReport or DocumentReference or EdshCondition or EdshProcedure)
 
 * code from CcamVs (extensible)
 

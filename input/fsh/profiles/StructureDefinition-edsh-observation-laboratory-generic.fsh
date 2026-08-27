@@ -8,22 +8,15 @@ Profil générique des résultats de laboratoire du socle commun des EDS.
 
 * ^abstract = true
 
-* status MS // restreindre à final, amended et corrected ? Enfait, le GT demande un status, mais il n'y a pas de place dans OMOP pour cela. 
+// status: le GT demande un status, mais il n'y a pas de place dans OMOP pour cela.
 
-* category MS
 * category 1..1
 * category = $observation-category#laboratory (exactly)
 
-* code MS
 * code from EdshLaboratory (required)
 
-* subject MS
-* subject only Reference(EdshPatient)
+* subject only Reference(Patient or Group or Device or Location or EdshPatient)
 * subject ^short = "L'observation concerne la personne que l'on analyse."
-
-* effective[x] MS
-
-* value[x] MS
 
 * obeys dm-lab-1
 * obeys dm-lab-2
@@ -32,13 +25,7 @@ Profil générique des résultats de laboratoire du socle commun des EDS.
 * obeys dm-lab-5
 * obeys dm-lab-6
 
-* component MS
-  * code MS
-  * code from EdshLaboratory (required) // créer le VS et le CS
-
-  * value[x] MS
-
-  * referenceRange MS
+* component.code from EdshLaboratory (required) // créer le VS et le CS
 
 Instance: 1f3e2728-1d70-4ca7-ac28-a4c1b11c4b80
 InstanceOf: Provenance

@@ -7,14 +7,14 @@ Description: "Ce profil définit la manière de représenter les observations de
 * code ^short = "Code standardisé pour 'Poids'"
 * code ^definition = "Poids, codé en LOINC, en cohérence avec le cadre d'interopérabilité des systèmes d'information en santé (CI-SIS)."
 
-* subject only Reference(EdshPatient)
+* subject only Reference(FRCorePatientProfile or EdshPatient)
 * subject ^short = "Patient dont le poids est mesuré"
 
-* encounter only Reference(EdshEncounter)
+* encounter only Reference(FRCoreEncounterProfile or EdshEncounter)
 * encounter ^short = "NDA (Numéro de Dossier Administratif) associé à la mesure"
 * encounter ^definition = "Le NDA peut correspondre à une hospitalisation complète, un dossier de consultation, d'hospitalisation de jour..."
 
-* performer only Reference(EdshPatient or EdshPractitioner or EdshPractitionerRole or EdshOrganization)
+* performer only Reference(CareTeam or RelatedPerson or FRCorePractitionerProfile or PractitionerRole or FRCoreOrganizationProfile or FRCorePatientProfile or EdshPatient or EdshPractitioner or EdshPractitionerRole or EdshOrganization)
 
 * effective[x] only dateTime
 * effective[x] ^short = "Date de réalisation de la mesure"

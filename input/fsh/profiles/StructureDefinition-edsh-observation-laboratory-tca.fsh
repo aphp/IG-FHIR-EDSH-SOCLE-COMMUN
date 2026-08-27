@@ -13,9 +13,9 @@ Profil Temps de céphaline activée (TCA) du socle commun des EDSH
 * component ^slicing.rules = #open
 * component ^short = "Permet de rapporter le temps patient, le temps témoins et le ratio."
 * component contains
-    PatientTCA 1..1 MS and
-    ControlTCA 1..1 MS and
-    TCARatioPonC 1..1 MS
+    PatientTCA 1..1 and
+    ControlTCA 1..1 and
+    TCARatioPonC 1..1
 
 * component[PatientTCA] ^short = "pour rapporter le TCA patient."
 * component[PatientTCA]
