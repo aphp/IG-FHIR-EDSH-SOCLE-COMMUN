@@ -4,7 +4,9 @@ Id: edsh-episode-of-care
 Title: "Episode of care"
 Description: "Episode of care adapted to Data Management"
 
+* patient ^short = "Patient suivi dans cet épisode de soins"
 * patient only Reference(Patient or EdshPatient)
+* managingOrganization ^short = "Organisation responsable de l'épisode de soins"
 * managingOrganization only Reference(Organization or EdshOrganization)
 
 Instance: c4a1cf2f-5519-421d-9040-461a2598c8cb

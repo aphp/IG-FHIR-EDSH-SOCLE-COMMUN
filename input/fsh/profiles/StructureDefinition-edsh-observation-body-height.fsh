@@ -10,6 +10,7 @@ Description: "Ce profil définit la manière de représenter les observations de
 * encounter only Reference(FRCoreEncounterProfile or EdshEncounter)
 * encounter ^short = "NDA (Numéro de Dossier Administratif) associé à la mesure"
 * encounter ^definition = "Le NDA peut correspondre à une hospitalisation complète, un dossier de consultation, d'hospitalisation de jour..."
+* performer ^short = "Intervenant ayant réalisé la mesure"
 * performer only Reference(CareTeam or RelatedPerson or FRCorePatientProfile or FRCorePractitionerProfile or PractitionerRole or FRCoreOrganizationProfile or EdshPatient or EdshPractitioner or EdshPractitionerRole or EdshOrganization)
 
 * code ^short = "Code standardisé pour 'Taille'"
@@ -19,6 +20,7 @@ Description: "Ce profil définit la manière de représenter les observations de
 * effective[x] ^short = "Date de réalisation de la mesure"
 * value[x] ^short = "Valeur de la mesure. Les signes vitaux sont enregistrés sous forme de quantité, exprimés en unité du Système International."
 
+* method ^short = "Méthode de mesure de la taille"
 * method from HeightLengthMeasurementMethod (example)
 
 Instance: 9be02e59-c737-45b0-a64a-53484a5b79d4

@@ -3,6 +3,7 @@ Parent: Medication
 Id: fr-medication-ucd-part
 Title: "French Ucd Part Medication"
 Description: "Part of a multipart branded medication."
+* . ^comment = "Cardinalités et contraintes de cette couche datatype/médicament adaptée de l'IG ANS e-prescription (ans.fhir.fr.eprescription), non introduites par le socle : elles font partie de la définition même du profil (une SimpleQuantity UCUM impose son unité ; un Medication composé ne porte ni lot ni dosage d'ingrédient au niveau du groupement). L'alignement avec l'amont est suivi hors de la remédiation robustesse du socle (carte #19)."
 * code ^short = "Short text that identifies this branded medication part"
 * code ^definition = "A short relevant text to discern each part."
 * code ^comment = "No code assigned by the regultory authorities, use a short relevant text to discern each part."

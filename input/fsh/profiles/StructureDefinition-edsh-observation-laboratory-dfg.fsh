@@ -8,6 +8,7 @@ Profil Débit de filtration glomérulaire estimé du socle commun des EDS
 
 * code from EdshLaboratoryEstimatedDfg (required)
 
+* value[x] ^short = "Débit de filtration glomérulaire estimé — valeur mesurée"
 * value[x] only Quantity
 * valueQuantity ^short = "Valeur mesurée"
 * valueQuantity

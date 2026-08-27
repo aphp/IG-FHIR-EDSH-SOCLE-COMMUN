@@ -5,6 +5,7 @@ Id: edsh-practitioner-role
 Title: "PractitionerRole"
 Description: "PractitionerRole adapted to Data Management"
 
+* practitioner ^short = "Professionnel occupant ce rôle"
 * practitioner only Reference(Practitioner or EdshPractitioner)
 
 Instance: f0a1b2c3-4d5e-6f7a-8b9c-0d1e2f3a4b5c

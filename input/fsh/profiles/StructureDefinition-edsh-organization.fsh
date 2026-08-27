@@ -4,6 +4,7 @@ Id: edsh-organization
 Title: "Organization"
 Description: "Organization adapted for Data Management"
 
+* partOf ^short = "Organisation de rattachement (entité juridique, groupe hospitalier…)"
 * partOf only Reference(EdshOrganization or AsOrganizationProfile or FRCoreOrganizationProfile)
 
 Instance: f4a5b6c7-8d9e-0f1a-2b3c-4d5e6f7a8b9c
