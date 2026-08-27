@@ -861,3 +861,71 @@ resources:
     name: La radiographie thoracique de Monsieur David
     description: Représente la radiographie thoracique dont a bénéficié le patient 10
     exampleBoolean: true
+  Observation/edsh-observation-laboratory-bilirubine-conjuguee-example:
+    name: Exemple — la bilirubine conjuguée
+    description: Exemple conforme au profil EdshObservationLaboratoryBilirubineConjuguee
+    exampleBoolean: true
+  Observation/edsh-observation-laboratory-eosinophiles-example:
+    name: Exemple — les polynucléaires éosinophiles
+    description: Exemple conforme au profil EdshObservationLaboratoryEosinophiles
+    exampleBoolean: true
+  Observation/edsh-observation-laboratory-erythrocytes-example:
+    name: Exemple — les érythrocytes
+    description: Exemple conforme au profil EdshObservationLaboratoryErythrocytes
+    exampleBoolean: true
+  Observation/edsh-observation-laboratory-glycemie-a-jeun-example:
+    name: Exemple — la glycémie à jeun
+    description: Exemple conforme au profil EdshObservationLaboratoryGlycemieAJeun
+    exampleBoolean: true
+  Observation/edsh-observation-laboratory-hba1c-example:
+    name: Exemple — l'hémoglobine glyquée
+    description: Exemple conforme au profil EdshObservationLaboratoryHba1C
+    exampleBoolean: true
+  Observation/edsh-observation-laboratory-hematocrite-example:
+    name: Exemple — l'hématocrite
+    description: Exemple conforme au profil EdshObservationLaboratoryHematocrite
+    exampleBoolean: true
+  Observation/edsh-observation-laboratory-lymphocytes-example:
+    name: Exemple — les lymphocytes totaux
+    description: Exemple conforme au profil EdshObservationLaboratoryLymphocytes
+    exampleBoolean: true
+  Observation/edsh-observation-laboratory-monocytes-example:
+    name: Exemple — les monocytes
+    description: Exemple conforme au profil EdshObservationLaboratoryMonocytes
+    exampleBoolean: true
+  Observation/edsh-observation-laboratory-uremie-example:
+    name: Exemple — l'urée
+    description: Exemple conforme au profil EdshObservationLaboratoryUremie
+    exampleBoolean: true
+  Observation/edsh-observation-laboratory-vgm-example:
+    name: Exemple — le volume globulaire moyen
+    description: Exemple conforme au profil EdshObservationLaboratoryVgm
+    exampleBoolean: true
+  Claim/edsh-claim-rum-example:
+    name: Exemple — RUM du séjour de Madame Dupont
+    description: Exemple conforme au profil EdshClaimRum
+    exampleBoolean: true
+  Organization/edsh-organization-example:
+    name: Exemple — GHU Pitié-Salpêtrière
+    description: Exemple conforme au profil EdshOrganization
+    exampleBoolean: true
+  Location/edsh-location-example:
+    name: Exemple — Unité de cardiologie
+    description: Exemple conforme au profil EdshLocation
+    exampleBoolean: true
+  EpisodeOfCare/edsh-episode-of-care-example:
+    name: Exemple — Suivi cardiologique de Madame Dupont
+    description: Exemple conforme au profil EdshEpisodeOfCare
+    exampleBoolean: true
+  PractitionerRole/edsh-practitioner-role-example:
+    name: Exemple — Rôle de cardiologue du Dr Quenum
+    description: Exemple conforme au profil EdshPractitionerRole
+    exampleBoolean: true
+  Patient/edsh-patient-deceased-example:
+    name: Exemple — Patiente décédée
+    description: Exemple EdshPatient décédé portant la source de l'information de décès
+    exampleBoolean: true
+  Observation/edsh-observation-laboratory-tca-example:
+    name: Exemple — panel TCA
+    description: Exemple conforme au profil EdshObservationLaboratoryTca
+    exampleBoolean: true
