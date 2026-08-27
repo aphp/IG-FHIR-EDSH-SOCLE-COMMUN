@@ -4,14 +4,14 @@ Id: edsh-encounter
 Title: "Encounter"
 Description: "Encounter adapted to Data Management"
 
-* subject only Reference(EdshPatient)
-* episodeOfCare only Reference(EdshEpisodeOfCare)
-* hospitalization.preAdmissionIdentifier.assigner only Reference(EdshOrganization)
-* hospitalization.origin only Reference(EdshLocation or EdshOrganization)
+* subject only Reference(FRCorePatientProfile or EdshPatient)
+* episodeOfCare only Reference(EpisodeOfCare or EdshEpisodeOfCare)
+* hospitalization.preAdmissionIdentifier.assigner only Reference(FRCoreOrganizationProfile or EdshOrganization)
+* hospitalization.origin only Reference(FRCoreLocationProfile or FRCoreOrganizationProfile or EdshLocation or EdshOrganization)
 
-* serviceProvider only Reference(EdshOrganization)
+* serviceProvider only Reference(FRCoreOrganizationProfile or EdshOrganization)
 
-* partOf only Reference(EdshEncounter)
+* partOf only Reference(FRCoreEncounterProfile or EdshEncounter)
 
 Instance: ceaac970-fd2b-43fc-b22c-db2a376e663c
 InstanceOf: Provenance

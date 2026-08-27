@@ -14,9 +14,6 @@ Taux d'urée dans le sang. L'urée est un catabolite composé formé dans le foi
 * valueQuantity.code = #mmol/L (exactly)
 * valueQuantity.unit = "mmol/L"
 
-* referenceRange 1..
-* referenceRange MS
-
 Instance: a9b0c1d2-3e4f-5a6b-7c8d-9e0f1a2b3c4d
 InstanceOf: Provenance
 Title: "fixing QA assessment"

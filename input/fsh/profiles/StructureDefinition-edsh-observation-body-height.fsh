@@ -4,13 +4,13 @@ Id: edsh-observation-body-height
 Title: "Taille du patient"
 Description: "Ce profil définit la manière de représenter les observations de taille corporelle en utilisant un code LOINC standard et des unités de mesure UCUM."
 
-* subject only Reference(EdshPatient)
+* subject only Reference(FRCorePatientProfile or EdshPatient)
 * subject ^short = "Patient dont la taille est mesurée"
 
-* encounter only Reference(EdshEncounter)
+* encounter only Reference(FRCoreEncounterProfile or EdshEncounter)
 * encounter ^short = "NDA (Numéro de Dossier Administratif) associé à la mesure"
 * encounter ^definition = "Le NDA peut correspondre à une hospitalisation complète, un dossier de consultation, d'hospitalisation de jour..."
-* performer only Reference(EdshPatient or EdshPractitioner or EdshPractitionerRole or EdshOrganization)
+* performer only Reference(CareTeam or RelatedPerson or FRCorePatientProfile or FRCorePractitionerProfile or PractitionerRole or FRCoreOrganizationProfile or EdshPatient or EdshPractitioner or EdshPractitionerRole or EdshOrganization)
 
 * code ^short = "Code standardisé pour 'Taille'"
 * code ^definition = "Taille, codé en LOINC, en cohérence avec le cadre d'interopérabilité des systèmes d'information en santé (CI-SIS)."

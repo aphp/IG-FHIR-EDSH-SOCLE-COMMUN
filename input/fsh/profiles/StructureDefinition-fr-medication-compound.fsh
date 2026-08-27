@@ -22,7 +22,7 @@ Description: "A complex medication composed of two to many simple médication. T
 * ingredient ^short = "Medication component of compound medication"
 * ingredient ^definition = "Identifies a medicinal component of the compound medicinal product"
 * ingredient ^comment = "The Medication SHALL contain ALL the items of the item element list AND ONLY the items of the item element list."
-* ingredient.item[x] only Reference(FrMedicationNonproprietaryName or FrMedicationUcd)
+* ingredient.item[x] only Reference(Substance or Medication or FrMedicationNonproprietaryName or FrMedicationUcd) or CodeableConcept
 * ingredient.item[x] ^short = "The actual compound"
 * ingredient.item[x] ^definition = "The actual compound, either nonproprietary named medication or branded named medication identified by a UCD code."
 * ingredient.strength ..0

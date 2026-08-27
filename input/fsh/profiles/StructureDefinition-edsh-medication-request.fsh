@@ -3,20 +3,14 @@ Parent:   MedicationRequest
 Id: edsh-medication-request
 Title:    "Prescription de médicaments"
 Description:  "Profil pour les prescriptions médicamenteuses"
-* medication[x] only Reference(FrMedicationUcd or FrMedicationNonproprietaryName or FrMedicationCompound) or CodeableConcept
-* medication[x] MS
-* subject only Reference(EdshPatient)
-* subject MS
-* dosageInstruction 1..
+* medication[x] only Reference(Medication or FrMedicationUcd or FrMedicationNonproprietaryName or FrMedicationCompound) or CodeableConcept
+* subject only Reference(Patient or Group or EdshPatient)
+* dosageInstruction 0..* // base cardinality (reverted from 1.. per #22)
   * route from FrRouteOfAdministration (extensible)
-  * route MS
   * doseAndRate
     * dose[x] only FrRangeUcum or FrSimpleQuantityUcum
-    * dose[x] MS
     * rate[x] only FrRatioUcum or FrRangeUcum or FrSimpleQuantityUcum
     * rate[x] ^definition = "Amount of medication per unit of time. Using a ratio, the denominator SHALL be a quantity of time. Using a simple quantity the UCUM unit SHALL be a unit of rate."
-    * rate[x] MS
-  * timing MS
   * maxDosePerPeriod
     * numerator only FrSimpleQuantityUcum
     * denominator only FrSimpleQuantityUcum

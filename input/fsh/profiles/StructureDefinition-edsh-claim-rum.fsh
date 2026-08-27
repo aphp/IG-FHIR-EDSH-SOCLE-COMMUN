@@ -13,18 +13,16 @@ Description: "Profil pour les Résumés d'Unité Médicale (RUM) du PMSI MCO."
 
 * billablePeriod.start ^short = "date d'entrée dans la première unité médicale visitée"
 * billablePeriod.end ^short = "date de sortie de la dernière unité médicale visitée"
-* billablePeriod MS
 
-* diagnosis MS
 * diagnosis ^slicing.discriminator[+].type = #value
 * diagnosis ^slicing.discriminator[=].path = "type"
 * diagnosis ^slicing.description = "slicing permettant de préciser le binding terminologique des codes diagnostics en fonction de leur type"
 * diagnosis ^slicing.rules = #open
 * diagnosis contains
-  dp 1..1 MS
-  and dr 0..1 MS
-  and da 0..* MS
-  and dad 0..* MS
+  dp 1..1
+  and dr 0..1
+  and da 0..*
+  and dad 0..*
 
 * diagnosis[dp]
   * diagnosis[x] only CodeableConcept
@@ -46,7 +44,6 @@ Description: "Profil pour les Résumés d'Unité Médicale (RUM) du PMSI MCO."
   * diagnosisCodeableConcept from EdshCim10Vs
   * type = PmsiMcoDiagType#DAD (exactly)
 
-* procedure MS
 * procedure
   * procedure[x] only CodeableConcept
   * procedureCodeableConcept from CcamVs
@@ -58,8 +55,8 @@ Description: "Profil pour les Résumés d'Unité Médicale (RUM) du PMSI MCO."
 * item ^slicing.rules = #open
 * item ^slicing.description = "Slicing des items de claim"
 * item contains
-    RUMGrouped 0..1 MS
-    and CCAMProcedure 0..* MS
+    RUMGrouped 0..1
+    and CCAMProcedure 0..*
 
 * item[RUMGrouped]
   * category 1..1 
@@ -71,8 +68,8 @@ Description: "Profil pour les Résumés d'Unité Médicale (RUM) du PMSI MCO."
   * modifier ^slicing.rules = #open
   * modifier ^slicing.description = "Slicing des modifier pour les items de type RUM"
   * modifier contains
-    MDE 1..1 MS and
-    MDS 1..1 MS
+    MDE 1..1 and
+    MDS 1..1
 
   * modifier[MDE] ^short = "Mode d'entrée du patient"
   * modifier[MDE].coding.system = "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/CodeSystem/PmsiMcoMde"
