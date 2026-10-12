@@ -22,17 +22,20 @@ LOINC qu'il fixe et l'unité de résultat qu'il impose.
 * category = $observation-category#laboratory (exactly)
 
 * code ^short = "Analyte mesuré, codé en LOINC"
-* code ^definition = "Code LOINC identifiant l'analyte. Chaque profil analyte enfant fixe ce code à une valeur exacte ; le value set `EdshLaboratory` liste l'ensemble des analytes du socle."
+* code ^definition = "Code LOINC identifiant l'analyte. Chaque profil analyte enfant fixe ce code à une valeur exacte ; le jeu de valeurs `EdshLaboratory` liste l'ensemble des analytes du socle."
 * code from EdshLaboratory (required)
 
 * subject ^short = "Patient sur lequel porte l'analyse"
 * subject only Reference(Patient or Group or Device or Location or FRCorePatientProfile or FRCoreLocationProfile or EdshPatient or EdshLocation)
+* encounter ^short = "Passage au cours duquel le prélèvement est réalisé"
 * encounter only Reference(Encounter or FRCoreEncounterProfile or EdshEncounter)
+* performer ^short = "Laboratoire ou intervenant responsable du résultat"
 * performer only Reference(Practitioner or PractitionerRole or Organization or CareTeam or Patient or RelatedPerson or FRCorePractitionerProfile or FRCorePractitionerRole or FRCoreOrganizationProfile or FRCorePatientProfile or FRCoreRelatedPersonProfile or EdshPractitioner or EdshPractitionerRole or EdshOrganization or EdshPatient)
 
 * effective[x] ^short = "Date, et heure si connue, du prélèvement"
 
 * value[x] ^short = "Résultat mesuré. Reste vide au niveau racine pour un profil de panel — voir `component`."
+* referenceRange ^short = "Intervalle de référence, tel que fourni par le laboratoire"
 
 * obeys dm-lab-1
 * obeys dm-lab-2
@@ -43,7 +46,7 @@ LOINC qu'il fixe et l'unité de résultat qu'il impose.
 
 * component ^short = "Résultats élémentaires d'un panel (ex. temps patient / témoin / ratio d'un TCA)"
 * component.code ^short = "Analyte du composant, codé en LOINC"
-* component.code from EdshLaboratory (required) // créer le VS et le CS
+* component.code from EdshLaboratory (required)
 * component.value[x] ^short = "Résultat mesuré du composant"
 * component.referenceRange ^short = "Intervalle de référence du composant, tel que fourni par le laboratoire"
 
@@ -76,3 +79,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2026-10-12T12:00:00+02:00"
+
+Instance: 196f8a2a-afe0-418a-a999-c65c523d5b07
+InstanceOf: Provenance
+Title: "Documentation des éléments (PR2)"
+Description: """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment) ; justification de la cardinalité de category (#22) ; referenceRange documenté comme component.referenceRange (revue PR #28)."""
+Usage: #definition
+
+* target[0] = Reference(EdshObservationLaboratoryGeneric)
+* occurredDateTime = "2026-10-12"
+* reason.text = """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment) ; justification de la cardinalité de category (#22) ; referenceRange documenté comme component.referenceRange (revue PR #28)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-12T14:00:00+02:00"

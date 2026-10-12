@@ -26,6 +26,7 @@ Description: "Profil Patient du socle commun des EDSH"
 * address ^short = "Adresse du patient, avec géolocalisation et code géographique PMSI"
 * address only EdshAddress
 
+* link.other ^short = "Autre ressource Patient ou RelatedPerson liée à ce patient"
 * link.other only Reference(Patient or RelatedPerson or FRCorePatientProfile or FRCoreRelatedPersonProfile or EdshPatient)
 
 Instance: a5b6c7d8-9e0f-1a2b-3c4d-5e6f7a8b9c0d
@@ -57,3 +58,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2026-10-12T12:00:00+02:00"
+
+Instance: f8c6751c-9729-4239-aff6-dc9d821bd9a3
+InstanceOf: Provenance
+Title: "Documentation des éléments (PR2)"
+Description: """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment)."""
+Usage: #definition
+
+* target[0] = Reference(EdshPatient)
+* occurredDateTime = "2026-10-12"
+* reason.text = """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-12T14:00:00+02:00"

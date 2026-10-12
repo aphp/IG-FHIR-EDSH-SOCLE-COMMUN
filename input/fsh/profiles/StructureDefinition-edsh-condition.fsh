@@ -8,7 +8,9 @@ Description: "Condition adapted to Data Management"
 * subject only Reference(Patient or Group or FRCorePatientProfile or EdshPatient)
 * encounter ^short = "Passage au cours duquel la condition est documentée"
 * encounter only Reference(Encounter or FRCoreEncounterProfile or EdshEncounter)
+* recorder ^short = "Personne ayant enregistré la condition"
 * recorder only Reference(Practitioner or PractitionerRole or Patient or RelatedPerson or FRCorePractitionerProfile or FRCorePractitionerRole or FRCorePatientProfile or FRCoreRelatedPersonProfile or EdshPractitioner or EdshPractitionerRole or EdshPatient)
+* asserter ^short = "Personne ayant affirmé la condition"
 * asserter only Reference(Practitioner or PractitionerRole or Patient or RelatedPerson or FRCorePractitionerProfile or FRCorePractitionerRole or FRCorePatientProfile or FRCoreRelatedPersonProfile or EdshPractitioner or EdshPractitionerRole or EdshPatient)
 
 * code ^short = "Condition, codée en CIM-10"
@@ -43,3 +45,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2026-10-12T12:00:00+02:00"
+
+Instance: 2531a5b2-68bc-460e-9a96-8ca084c0b08d
+InstanceOf: Provenance
+Title: "Documentation des éléments (PR2)"
+Description: """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment)."""
+Usage: #definition
+
+* target[0] = Reference(EdshCondition)
+* occurredDateTime = "2026-10-12"
+* reason.text = """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-12T14:00:00+02:00"

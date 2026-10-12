@@ -10,6 +10,9 @@
         <li>retour à la cardinalité de base pour <code>EdshObservationLaboratoryUremie.referenceRange</code>, <code>EdshMedicationAdministration.dosage</code> et <code>EdshMedicationRequest.dosageInstruction</code>.</li>
     </ul>
     </li>
+    <li>Documentation des éléments des profils du Lot 1 : <code>^short</code> sur chaque élément contraint, <code>^definition</code> sur les règles métier non évidentes (diagnostics du RUM notamment), <code>^comment</code> justifiant les cardinalités resserrées conservées (invariants structurels PMSI, discriminants de tranche, famille <code>Fr*</code>).</li>
+    <li><code>EdshMedicationAdministration</code> : titre « Administration de médicaments » (au lieu de « Prise de médicaments »).</li>
+    <li>Glossaire : ajout du terme « tranche » (traduction de <i>slice</i>).</li>
 </ul>
 </details>
 

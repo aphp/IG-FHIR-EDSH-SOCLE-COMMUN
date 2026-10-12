@@ -7,9 +7,13 @@ Description:  "Profil pour les prescriptions médicamenteuses"
 * medication[x] only Reference(Medication or FrMedicationUcd or FrMedicationNonproprietaryName or FrMedicationCompound) or CodeableConcept
 * subject ^short = "Patient à qui le médicament est prescrit"
 * subject only Reference(Patient or Group or FRCorePatientProfile or EdshPatient)
+* encounter ^short = "Passage au cours duquel la prescription est faite"
 * encounter only Reference(Encounter or FRCoreEncounterProfile or EdshEncounter)
+* reported[x] ^short = "Prescription rapportée (et non saisie à la source), et par qui"
 * reported[x] only boolean or Reference(Patient or Practitioner or PractitionerRole or RelatedPerson or Organization or FRCorePatientProfile or FRCorePractitionerProfile or FRCorePractitionerRole or FRCoreRelatedPersonProfile or FRCoreOrganizationProfile or EdshPatient or EdshPractitioner or EdshPractitionerRole or EdshOrganization)
+* requester ^short = "Prescripteur"
 * requester only Reference(Practitioner or PractitionerRole or Organization or Patient or RelatedPerson or Device or FRCorePractitionerProfile or FRCorePractitionerRole or FRCoreOrganizationProfile or FRCorePatientProfile or FRCoreRelatedPersonProfile or EdshPractitioner or EdshPractitionerRole or EdshOrganization or EdshPatient)
+* performer ^short = "Intervenant attendu pour l'administration"
 * performer only Reference(Practitioner or PractitionerRole or Organization or Patient or Device or RelatedPerson or CareTeam or FRCorePractitionerProfile or FRCorePractitionerRole or FRCoreOrganizationProfile or FRCorePatientProfile or FRCoreRelatedPersonProfile or EdshPractitioner or EdshPractitionerRole or EdshOrganization or EdshPatient)
 * dosageInstruction ^short = "Posologie prescrite"
 * dosageInstruction 0..* // base cardinality (reverted from 1.. per #22)
@@ -58,3 +62,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2026-10-12T12:00:00+02:00"
+
+Instance: 6e2ff099-83f2-4133-8881-c9f3d6232d01
+InstanceOf: Provenance
+Title: "Documentation des éléments (PR2)"
+Description: """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment)."""
+Usage: #definition
+
+* target[0] = Reference(EdshMedicationRequest)
+* occurredDateTime = "2026-10-12"
+* reason.text = """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-12T14:00:00+02:00"

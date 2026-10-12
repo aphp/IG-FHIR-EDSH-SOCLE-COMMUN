@@ -13,7 +13,7 @@ Description: "Encounter adapted to Data Management"
 * hospitalization.origin ^short = "Provenance du patient (lieu ou organisation d'origine)"
 * hospitalization.origin only Reference(FRCoreLocationProfile or FRCoreOrganizationProfile or EdshLocation or EdshOrganization)
 
-* serviceProvider ^short = "Organisation responsable du passage"
+* serviceProvider ^short = "Organisation en responsabilité médicale lors du passage"
 * serviceProvider only Reference(FRCoreOrganizationProfile or EdshOrganization)
 
 * partOf ^short = "Passage englobant, quand ce passage en est une sous-partie"
@@ -48,3 +48,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2026-10-12T12:00:00+02:00"
+
+Instance: edd9255b-e9a7-4363-a647-be3b1da2c98c
+InstanceOf: Provenance
+Title: "Documentation des éléments (PR2)"
+Description: """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment)."""
+Usage: #definition
+
+* target[0] = Reference(EdshEncounter)
+* occurredDateTime = "2026-10-12"
+* reason.text = """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-12T14:00:00+02:00"

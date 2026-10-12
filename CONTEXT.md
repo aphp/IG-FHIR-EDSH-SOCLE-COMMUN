@@ -52,3 +52,9 @@ no cardinality tightened without a documented domain invariant. The obligation t
 EDS hold the socle items is documented, not encoded as `Must Support`; that belongs in a
 deriving project IG.
 _Avoid_: "socle IG" used to mean a project/conformance IG.
+
+**Tranche**:
+The French term the guide uses for a FHIR *slice* (`^short` / `^definition` text such as
+"diagnostics tranchés par type"). Recorded in the guide glossary (`glossary.md#tranche`)
+so the profile text and the guide agree. The mechanism itself stays "slicing".
+_Avoid_: "coupe", "sous-arbre", mixing "slice" and "tranche" in the same text.

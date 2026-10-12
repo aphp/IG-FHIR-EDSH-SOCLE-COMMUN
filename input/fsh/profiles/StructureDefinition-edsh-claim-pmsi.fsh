@@ -11,6 +11,7 @@ Description: "Profil abstrait pour les invariants dans les claims du PMSI."
 
 * patient ^short = "Patient objet du séjour facturé"
 * patient only Reference(Patient or FRCorePatientProfile or EdshPatient)
+* payee.party ^short = "Bénéficiaire du remboursement"
 * payee.party only Reference(Practitioner or PractitionerRole or Organization or Patient or RelatedPerson or FRCorePractitionerProfile or FRCorePractitionerRole or FRCoreOrganizationProfile or FRCorePatientProfile or FRCoreRelatedPersonProfile or EdshPractitioner or EdshPractitionerRole or EdshOrganization or EdshPatient)
 * provider ^short = "Entité juridique émettrice"
 * priority ^short = "Priorité de traitement : toujours « normal » pour le PMSI"
@@ -25,6 +26,7 @@ Description: "Profil abstrait pour les invariants dans les claims du PMSI."
 * insurance.coverage.display = "Assurance Maladie"
 * insurance.coverage.display ^comment = "Invariant PMSI conservé : Claim.insurance (1..*) et Claim.insurance.coverage (1..1) sont obligatoires en FHIR R4 mais sans objet pour le PMSI. Imposer ce display fixe garantit une Reference non vide sans exiger de ressource Coverage."
 
+* item.encounter ^short = "Passage auquel se rattache la ligne"
 * item.encounter only Reference(Encounter or FRCoreEncounterProfile or EdshEncounter)
 
 Instance: 00ced63e-5fff-4e7b-ab78-736c1d3bfcd8
@@ -56,3 +58,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2026-10-12T12:00:00+02:00"
+
+Instance: 029088e7-1c03-4d99-b117-02cda746fc3a
+InstanceOf: Provenance
+Title: "Documentation des éléments (PR2)"
+Description: """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment)."""
+Usage: #definition
+
+* target[0] = Reference(EdshClaimPmsi)
+* occurredDateTime = "2026-10-12"
+* reason.text = """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-12T14:00:00+02:00"

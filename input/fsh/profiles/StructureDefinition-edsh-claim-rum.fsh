@@ -14,20 +14,20 @@ groupage rend obligatoires.
     EdshDrg named DRG 0..1
     and EdshItemRank named ItemRank 1..1
 * extension[DRG] ^short = "Groupe homogène de malades (GHM) attribué au RUM par le groupage ATIH"
-* extension[ItemRank] ^short = "Rang de l'unité médicale dans le séjour"
-* extension[ItemRank] ^comment = "Cardinalité de slice 1..1 : le rang de l'unité médicale dans le séjour est un identifiant obligatoire du RUM dans le PMSI MCO (données post-groupage ATIH)."
+* extension[ItemRank] ^short = "Rang du RUM dans le séjour"
+* extension[ItemRank] ^comment = "Cardinalité de slice 1..1 : le rang du RUM dans le séjour est un identifiant obligatoire du RUM dans le PMSI MCO (données post-groupage ATIH)."
 
 * subType ^short = "Type de résumé : toujours RUM"
 * subType ^comment = "Cardinalité resserrée à 1..1 (base FHIR 0..1) : un RUM du PMSI MCO porte toujours exactement un type de résumé. Données parvenant à l'EDS après groupage ATIH, où ce champ est réglementairement obligatoire."
 * subType 1..1
 * subType = FrClaimType#RUM
 
-* billablePeriod ^short = "Période couverte par le RUM, de l'entrée dans la première unité médicale à la sortie de la dernière"
-* billablePeriod.start ^short = "date d'entrée dans la première unité médicale visitée"
-* billablePeriod.end ^short = "date de sortie de la dernière unité médicale visitée"
+* billablePeriod ^short = "Période couverte par le RUM : séjour du patient dans l'unité médicale"
+* billablePeriod.start ^short = "Date d'entrée dans l'unité médicale"
+* billablePeriod.end ^short = "Date de sortie de l'unité médicale"
 
 * diagnosis ^short = "Diagnostics du RUM, tranchés par type (DP, DR, DA, DAD)"
-* diagnosis ^definition = "Chaque tranche fixe le type de diagnostic et le value set CIM-10 applicable. Le slicing est ouvert : d'autres diagnostics hors socle peuvent coexister."
+* diagnosis ^definition = "Chaque tranche fixe le type de diagnostic et le jeu de valeurs CIM-10 applicable. Le slicing est ouvert : d'autres diagnostics hors socle peuvent coexister."
 * diagnosis ^slicing.discriminator[+].type = #value
 * diagnosis ^slicing.discriminator[=].path = "type"
 * diagnosis ^slicing.description = "slicing permettant de préciser le binding terminologique des codes diagnostics en fonction de leur type"
@@ -39,7 +39,7 @@ groupage rend obligatoires.
   and dad 0..*
 
 * diagnosis[dp] ^short = "Diagnostic principal (DP)"
-* diagnosis[dp] ^definition = "Motif de prise en charge qui a mobilisé l'essentiel de l'effort médical et soignant au cours du séjour dans l'unité médicale. Exactement un par RUM."
+* diagnosis[dp] ^definition = "Problème de santé qui a motivé l'admission du patient dans l'unité médicale (UM), pris en charge pendant le séjour et déterminé à la sortie de celle-ci (guide méthodologique du PMSI MCO). Exactement un par RUM."
 * diagnosis[dp] ^comment = "Cardinalité de slice 1..1 : tout RUM du PMSI MCO comporte exactement un diagnostic principal (DP). Contrainte réglementaire ATIH, garantie sur les données parvenant à l'EDS."
 * diagnosis[dp]
   * diagnosis[x] only CodeableConcept
@@ -47,7 +47,7 @@ groupage rend obligatoires.
   * type = PmsiMcoDiagType#DP (exactly)
 
 * diagnosis[dr] ^short = "Diagnostic relié (DR)"
-* diagnosis[dr] ^definition = "Affection chronique ou de longue durée éclairant le contexte du DP lorsque celui-ci n'y suffit pas seul. Au plus un par RUM."
+* diagnosis[dr] ^definition = "Affection chronique ou de longue durée, ou état permanent, éclairant le contexte du DP lorsque celui-ci n'y suffit pas seul. Au plus un par RUM."
 * diagnosis[dr]
   * diagnosis[x] only CodeableConcept
   * diagnosisCodeableConcept from EdshCim10DrVs
@@ -151,3 +151,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2026-10-12T12:00:00+02:00"
+
+Instance: 2643f6f1-5ef0-4854-b165-a3e82c22442e
+InstanceOf: Provenance
+Title: "Documentation des éléments (PR2)"
+Description: """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment) ; justification des cardinalités conservées (#22) ; définitions du DP et du DR alignées sur le guide méthodologique du PMSI MCO ; billablePeriod ramené à l'unité médicale (revue PR #28)."""
+Usage: #definition
+
+* target[0] = Reference(EdshClaimRum)
+* occurredDateTime = "2026-10-12"
+* reason.text = """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment) ; justification des cardinalités conservées (#22) ; définitions du DP et du DR alignées sur le guide méthodologique du PMSI MCO ; billablePeriod ramené à l'unité médicale (revue PR #28)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-12T14:00:00+02:00"

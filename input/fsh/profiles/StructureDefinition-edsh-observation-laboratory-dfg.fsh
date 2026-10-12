@@ -8,12 +8,11 @@ Profil Débit de filtration glomérulaire estimé du socle commun des EDS
 
 * code from EdshLaboratoryEstimatedDfg (required)
 
-* value[x] ^short = "Débit de filtration glomérulaire estimé — valeur mesurée"
+* value[x] ^short = "Débit de filtration glomérulaire estimé — valeur calculée, unité selon le jeu de valeurs EdshLaboratoryEstimatedDfgUnit"
 * value[x] only Quantity
-* valueQuantity ^short = "Valeur mesurée"
-* valueQuantity
-  * system = $ucum (exactly)
-  * code from EdshLaboratoryEstimatedDfgUnit (extensible)
+* valueQuantity.value ^short = "Valeur numérique du résultat"
+* valueQuantity.system = $ucum (exactly)
+* valueQuantity.code from EdshLaboratoryEstimatedDfgUnit (extensible)
 
 
 Instance: f847f299-16aa-45c3-bd87-563d4e70fced
@@ -60,3 +59,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2025-03-24T09:26:15+01:00"
+
+Instance: 241517b3-b8ec-4ddc-a87b-25abecd6cbe3
+InstanceOf: Provenance
+Title: "Documentation des éléments (PR2)"
+Description: """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment) ; forme des règles valueQuantity alignée sur les autres analytes (revue PR #28)."""
+Usage: #definition
+
+* target[0] = Reference(EdshObservationLaboratoryDfg)
+* occurredDateTime = "2026-10-12"
+* reason.text = """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment) ; forme des règles valueQuantity alignée sur les autres analytes (revue PR #28)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-12T14:00:00+02:00"

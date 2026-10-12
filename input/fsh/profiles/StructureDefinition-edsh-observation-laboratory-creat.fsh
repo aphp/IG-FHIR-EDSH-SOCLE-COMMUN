@@ -10,11 +10,10 @@ Profil créatininémie du socle commun des EDS
 
 * value[x] ^short = "Créatininémie — valeur mesurée, en µmol/L"
 * value[x] only Quantity
-* valueQuantity ^short = "Valeur mesurée"
-* valueQuantity
-  * system = $ucum (exactly)
-  * code = #umol/L (exactly)
-  * unit = "umol/L"
+* valueQuantity.value ^short = "Valeur numérique du résultat"
+* valueQuantity.system = $ucum (exactly)
+* valueQuantity.code = #umol/L (exactly)
+* valueQuantity.unit = "umol/L"
 
 
 Instance: 31e47753-0b65-47ac-a51c-9bd219378094
@@ -61,3 +60,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2025-03-24T09:26:15+01:00"
+
+Instance: e3f7053f-845b-4110-8970-f70f69962f38
+InstanceOf: Provenance
+Title: "Documentation des éléments (PR2)"
+Description: """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment) ; forme des règles valueQuantity alignée sur les autres analytes (revue PR #28)."""
+Usage: #definition
+
+* target[0] = Reference(EdshObservationLaboratoryCreat)
+* occurredDateTime = "2026-10-12"
+* reason.text = """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment) ; forme des règles valueQuantity alignée sur les autres analytes (revue PR #28)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-12T14:00:00+02:00"

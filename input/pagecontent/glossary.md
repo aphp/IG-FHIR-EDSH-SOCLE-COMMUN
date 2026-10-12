@@ -35,4 +35,6 @@ En santé, l'interopérabilité est essentielle pour assurer la continuité des 
 
 <a name="sih" />**Système d'Information Hospitalier** : un Système d'Information Hospitalier (SIH) est l'ensemble organisé des ressources (logiciels, bases de données, équipements, procédures, etc.) qui permet de gérer l'ensemble des flux d'informations au sein d'un établissement de santé. Il vise à soutenir l'activité médicale, soignante, administrative et logistique de l'hôpital en assurant la circulation, le stockage, la sécurité et la traçabilité des données.
 
+<a name="tranche" />**Tranche (*slice*)** : traduction retenue dans ce guide pour le terme FHIR *slice*. Une tranche est un sous-ensemble nommé des répétitions d'un élément, identifié par un discriminant (par exemple, dans un RUM, les diagnostics sont « tranchés par type » : DP, DR, DAS, DAD). Le mécanisme lui-même (*slicing*) est désigné par le terme anglais.
+
 {% include markdown-link-references.md %}
