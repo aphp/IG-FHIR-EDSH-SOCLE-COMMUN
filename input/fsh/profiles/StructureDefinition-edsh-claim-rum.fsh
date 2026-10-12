@@ -101,3 +101,17 @@ Usage: #definition
   * who.display = "@ngr"
 * recorded = "2025-02-02T21:36:10+01:00"
 
+Instance: c23a84d4-852c-4a76-b7be-d173cc71cd9d
+InstanceOf: Provenance
+Title: "Remédiation robustesse Core (PR1)"
+Description: """Remédiation robustesse (#19) : retrait des Must Support (principe de robustesse d'un IG Core)."""
+Usage: #definition
+
+* target[0] = Reference(EdshClaimRum)
+* occurredDateTime = "2026-10-12"
+* reason.text = """Remédiation robustesse (#19) : retrait des Must Support (principe de robustesse d'un IG Core)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-12T12:00:00+02:00"

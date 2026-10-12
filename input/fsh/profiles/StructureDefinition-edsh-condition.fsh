@@ -4,8 +4,10 @@ Id: edsh-condition
 Title: "Condition"
 Description: "Condition adapted to Data Management"
 
-* subject only Reference(Patient or Group or EdshPatient)
-* encounter only Reference(Encounter or EdshEncounter)
+* subject only Reference(Patient or Group or FRCorePatientProfile or EdshPatient)
+* encounter only Reference(Encounter or FRCoreEncounterProfile or EdshEncounter)
+* recorder only Reference(Practitioner or PractitionerRole or Patient or RelatedPerson or FRCorePractitionerProfile or FRCorePractitionerRole or FRCorePatientProfile or FRCoreRelatedPersonProfile or EdshPractitioner or EdshPractitionerRole or EdshPatient)
+* asserter only Reference(Practitioner or PractitionerRole or Patient or RelatedPerson or FRCorePractitionerProfile or FRCorePractitionerRole or FRCorePatientProfile or FRCoreRelatedPersonProfile or EdshPractitioner or EdshPractitionerRole or EdshPatient)
 
 * code from EdshCim10Vs (extensible)
 
@@ -24,3 +26,17 @@ Usage: #definition
   * who.display = "@ngr"
 * recorded = "2025-02-02T21:36:10+01:00"
 
+Instance: 12612c2e-ddb6-4e75-bd2a-b42da426e897
+InstanceOf: Provenance
+Title: "Remédiation robustesse Core (PR1)"
+Description: """Remédiation robustesse (#19) : élargissement des bornes Reference : cibles autorisées par le parent, puis profil FR Core s'il existe, puis profil Edsh (#21, revue PR #27)."""
+Usage: #definition
+
+* target[0] = Reference(EdshCondition)
+* occurredDateTime = "2026-10-12"
+* reason.text = """Remédiation robustesse (#19) : élargissement des bornes Reference : cibles autorisées par le parent, puis profil FR Core s'il existe, puis profil Edsh (#21, revue PR #27)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-12T12:00:00+02:00"

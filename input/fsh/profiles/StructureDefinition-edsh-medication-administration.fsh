@@ -4,7 +4,9 @@ Id: edsh-medication-administration
 Title:    "Prise de médicaments"
 Description: "Profil pour la prise de médicaments"
 * medication[x] only Reference(Medication or FrMedicationUcd or FrMedicationNonproprietaryName or FrMedicationCompound) or CodeableConcept
-* subject only Reference(Patient or Group or EdshPatient)
+* subject only Reference(Patient or Group or FRCorePatientProfile or EdshPatient)
+* context only Reference(Encounter or EpisodeOfCare or FRCoreEncounterProfile or EdshEncounter or EdshEpisodeOfCare)
+* performer.actor only Reference(Practitioner or PractitionerRole or Patient or RelatedPerson or Device or FRCorePractitionerProfile or FRCorePractitionerRole or FRCorePatientProfile or FRCoreRelatedPersonProfile or EdshPractitioner or EdshPractitionerRole or EdshPatient)
 * dosage 0..1 // base cardinality (reverted from 1..1 per #22)
   * route from FrRouteOfAdministration (extensible)
   * dose only FrSimpleQuantityUcum
@@ -24,3 +26,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "@ngr"
 * recorded = "2025-02-02T21:36:10+01:00"
+
+Instance: 6c74dc91-f52e-486e-a0d2-f748da6969cd
+InstanceOf: Provenance
+Title: "Remédiation robustesse Core (PR1)"
+Description: """Remédiation robustesse (#19) : retrait des Must Support (principe de robustesse d'un IG Core) ; élargissement des bornes Reference : cibles autorisées par le parent, puis profil FR Core s'il existe, puis profil Edsh (#21, revue PR #27) ; retour à la cardinalité de base de dosage (#22)."""
+Usage: #definition
+
+* target[0] = Reference(EdshMedicationAdministration)
+* occurredDateTime = "2026-10-12"
+* reason.text = """Remédiation robustesse (#19) : retrait des Must Support (principe de robustesse d'un IG Core) ; élargissement des bornes Reference : cibles autorisées par le parent, puis profil FR Core s'il existe, puis profil Edsh (#21, revue PR #27) ; retour à la cardinalité de base de dosage (#22)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-12T12:00:00+02:00"

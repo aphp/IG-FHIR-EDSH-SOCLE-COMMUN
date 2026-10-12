@@ -23,6 +23,8 @@ Description: "Profil Patient du socle commun des EDSH"
 
 * address only EdshAddress
 
+* link.other only Reference(Patient or RelatedPerson or FRCorePatientProfile or FRCoreRelatedPersonProfile or EdshPatient)
+
 Instance: a5b6c7d8-9e0f-1a2b-3c4d-5e6f7a8b9c0d
 InstanceOf: Provenance
 Title: "first import"
@@ -37,3 +39,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "@ngr"
 * recorded = "2025-02-02T21:36:10+01:00"
+
+Instance: 6f20e0f3-cdb6-49e6-bddd-7bde5fab2740
+InstanceOf: Provenance
+Title: "Remédiation robustesse Core (PR1)"
+Description: """Remédiation robustesse (#19) : retrait des Must Support (principe de robustesse d'un IG Core) ; élargissement des bornes Reference : cibles autorisées par le parent, puis profil FR Core s'il existe, puis profil Edsh (#21, revue PR #27)."""
+Usage: #definition
+
+* target[0] = Reference(EdshPatient)
+* occurredDateTime = "2026-10-12"
+* reason.text = """Remédiation robustesse (#19) : retrait des Must Support (principe de robustesse d'un IG Core) ; élargissement des bornes Reference : cibles autorisées par le parent, puis profil FR Core s'il existe, puis profil Edsh (#21, revue PR #27)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-12T12:00:00+02:00"

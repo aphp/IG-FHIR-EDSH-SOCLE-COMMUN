@@ -24,3 +24,23 @@ profile's components may be sourced from several sibling `QuestionnaireResponse`
 yet (TCA — see the TCA panel decision tracked on the wayfinder map for
 `StructureMap-Q2FSL.fml` lab-profile routing).
 _Avoid_: "grouped profile", "composite profile"
+
+**`Fr*` profile family**:
+The datatype and medication modelling layer — `FrSimpleQuantityUcum`, `FrRangeUcum`,
+`FrRatioUcum`, and `FrMedicationCompound` / `FrMedicationNonproprietaryName` /
+`FrMedicationUcdPart` / `FrMedicationUcd` — adapted from the ANS e-prescription IG
+(`ans.fhir.fr.eprescription`), not authored for the socle. Carries local Provenance
+("first import") but tracks upstream conceptually. Its internal constraints (a UCUM
+quantity mandating `system`/`code`; a compound `Medication` zeroing `batch` and
+`ingredient.strength`) are part of the borrowed datatype definition, so socle-level
+robustness remediation treats the family as a block, not element-by-element.
+_Avoid_: calling these "socle profiles" or "EDSH profiles".
+
+**PMSI structural invariant**:
+A field the socle keeps mandatory on a PMSI-MCO profile (`EdshClaimRum` `subType`,
+`diagnosis[dp]`, `modifier[MDE]` / `[MDS]`, the `ItemRank` extension) because PMSI data
+reaches an EDS *after* ATIH grouping, where those fields are regulatorily obligatory — a
+record lacking them is not a well-formed RUM. Distinguished from an *incidental*
+over-constraint (a tightened cardinality with no domain rule behind it), which socle
+remediation reverts to the FHIR base.
+_Avoid_: "PMSI rule", "ATIH constraint" used loosely for both kinds.
