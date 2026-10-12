@@ -5,5 +5,6 @@ Description: "Exemple de EdshObservationLaboratoryLymphocytes : lymphocytes tota
 
 * status = #final
 * subject = Reference(Patient/cas1-pat-01)
+* performer = Reference(edsh-organization-example)
 * effectiveDateTime = "2024-01-10T08:30:00+01:00"
 * valueQuantity = 2.1 '10*3/uL' "10*3/uL"
