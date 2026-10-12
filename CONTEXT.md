@@ -44,3 +44,11 @@ record lacking them is not a well-formed RUM. Distinguished from an *incidental*
 over-constraint (a tightened cardinality with no domain rule behind it), which socle
 remediation reverts to the FHIR base.
 _Avoid_: "PMSI rule", "ATIH constraint" used loosely for both kinds.
+
+**Core IG**:
+What this guide is (ADR 0002): a base other IGs derive from, so the robustness
+principle applies in full — no `Must Support`, `Reference` bounds widened not narrowed,
+no cardinality tightened without a documented domain invariant. The obligation that an
+EDS hold the socle items is documented, not encoded as `Must Support`; that belongs in a
+deriving project IG.
+_Avoid_: "socle IG" used to mean a project/conformance IG.
