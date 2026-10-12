@@ -10,6 +10,12 @@
         <li>retour à la cardinalité de base pour <code>EdshObservationLaboratoryUremie.referenceRange</code>, <code>EdshMedicationAdministration.dosage</code> et <code>EdshMedicationRequest.dosageInstruction</code>.</li>
     </ul>
     </li>
+    <li>Correctifs PMSI :
+    <ul>
+        <li><code>EdshClaimRum</code> : les URL de CodeSystem fixées sur <code>modifier[MDE]</code> et <code>modifier[MDS]</code> étaient erronées et contredisaient le binding <code>required</code> ;</li>
+        <li><code>EdshItemRank</code> : le contexte d'usage passe de <code>Claim.item</code> à <code>Claim</code> (rang du RUM dans le séjour).</li>
+    </ul>
+    </li>
 </ul>
 </details>
 
