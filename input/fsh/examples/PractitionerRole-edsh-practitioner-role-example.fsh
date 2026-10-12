@@ -7,3 +7,5 @@ Description: "Exemple de EdshPractitionerRole : le rôle de cardiologue du Dr Qu
 * practitioner = Reference(edsh-practitioner-example)
 * organization = Reference(edsh-organization-example)
 * code = http://terminology.hl7.org/CodeSystem/practitioner-role#doctor "Doctor"
+* specialty = http://snomed.info/sct#394579002 "Cardiology"
+* location = Reference(edsh-location-example)

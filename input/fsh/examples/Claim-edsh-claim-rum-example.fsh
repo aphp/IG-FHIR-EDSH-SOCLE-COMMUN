@@ -9,7 +9,7 @@ Description: "Exemple de EdshClaimRum : RUM du séjour de Madame Dupont dans l'u
 * use = #claim
 * patient = Reference(Patient/cas1-pat-01)
 * created = "2024-01-14"
-* provider.display = "AP-HP"
+* provider = Reference(edsh-organization-example)
 * priority = http://terminology.hl7.org/CodeSystem/processpriority#normal
 
 * insurance.sequence = 1
@@ -20,7 +20,7 @@ Description: "Exemple de EdshClaimRum : RUM du séjour de Madame Dupont dans l'u
 * billablePeriod.end = "2024-01-14"
 
 * extension[ItemRank].valuePositiveInt = 1
-* extension[DRG].extension[GHM].valueCodeableConcept = Ghm#05M09 "Insuffisances cardiaques et états de choc circulatoire"
+* extension[DRG].extension[GHM].valueCodeableConcept = Ghm#05M093 "Insuffisances cardiaques et états de choc circulatoire, niveau 3"
 * extension[DRG].extension[vClassif].valueString = "2024"
 
 * diagnosis[dp].sequence = 1
@@ -36,11 +36,11 @@ Description: "Exemple de EdshClaimRum : RUM du séjour de Madame Dupont dans l'u
 
 * item[RUMGrouped].sequence = 1
 * item[RUMGrouped].category = FrMcoClaimItemCategory#1
-* item[RUMGrouped].productOrService = Ghm#05M09 "Insuffisances cardiaques et états de choc circulatoire"
-* item[RUMGrouped].modifier[MDE].coding.system = "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/CodeSystem/PmsiMcoMde"
+* item[RUMGrouped].productOrService = Ghm#05M093 "Insuffisances cardiaques et états de choc circulatoire, niveau 3"
+* item[RUMGrouped].modifier[MDE].coding.system = "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/CodeSystem/pmsi-mco-mde"
 * item[RUMGrouped].modifier[MDE].coding.code = #6
 * item[RUMGrouped].modifier[MDE].coding.display = "Mutation"
-* item[RUMGrouped].modifier[MDS].coding.system = "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/CodeSystem/PmsiMcoMds"
+* item[RUMGrouped].modifier[MDS].coding.system = "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/CodeSystem/pmsi-mco-mds"
 * item[RUMGrouped].modifier[MDS].coding.code = #8
 * item[RUMGrouped].modifier[MDS].coding.display = "Domicile"
 

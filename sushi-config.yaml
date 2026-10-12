@@ -923,9 +923,9 @@ resources:
     exampleBoolean: true
   Patient/edsh-patient-deceased-example:
     name: Exemple — Patiente décédée
-    description: Exemple EdshPatient décédé portant la source de l'information de décès
-    exampleBoolean: true
+    description: Exemple conforme au profil EdshPatient (patiente décédée) et exemple d'usage de l'extension EdshDeathSource (source de l'information de décès)
+    exampleCanonical: https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureDefinition/edsh-death-source
   Observation/edsh-observation-laboratory-tca-example:
-    name: Exemple — panel TCA
+    name: Exemple — TCA de Madame Dupont
     description: Exemple conforme au profil EdshObservationLaboratoryTca
     exampleBoolean: true

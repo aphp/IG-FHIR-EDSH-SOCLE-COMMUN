@@ -3,7 +3,7 @@ InstanceOf: EdshPatient
 Usage: #example
 Description: "Exemple de EdshPatient décédé, portant la source de l'information de décès."
 
-* identifier[INS-NIR].value = "199012912345678"
+* identifier[INS-NIR].value = "249037505612324"
 * name.family = "Martin"
 * name.given[0] = "Jeanne"
 * gender = #female

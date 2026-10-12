@@ -7,3 +7,4 @@ Description: "Exemple de EdshEpisodeOfCare : le suivi cardiologique de Madame Du
 * patient = Reference(Patient/cas1-pat-01)
 * managingOrganization = Reference(edsh-organization-example)
 * period.start = "2024-01-10"
+* careManager = Reference(edsh-practitioner-role-example)
