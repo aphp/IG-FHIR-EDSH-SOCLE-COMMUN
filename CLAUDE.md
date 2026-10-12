@@ -115,8 +115,8 @@ Other key files:
   `cleanIG`/`reBuildIG` reflexively.
 - ⚠️ **Never run bare `gradle`/`./gradlew` with no task name** — `build.gradle.kts:38` sets
   `defaultTasks("cleanIG", "buildIG")`, the slowest possible path.
-- Versions are pinned in `gradle.properties`: Node 22.22.0, SUSHI 3.20.0, IG Publisher
-  2.3.1. SUSHI is Gradle-managed via the `node` plugin — never install it globally.
+- Versions are pinned in `gradle.properties`: Node 22.22.0, SUSHI 3.20.1, IG Publisher
+  2.3.3. SUSHI is Gradle-managed via the `node` plugin — never install it globally.
 - Local prerequisites: Java 21, Jekyll. Note `deploy-ig.yaml` (CI) pins Java **17** instead
   — a real version inconsistency between local and CI, not yet reconciled.
 - The Gradle wrapper (`gradlew`/`gradlew.bat`/`gradle/wrapper/`, Gradle 9.2.0) is present
