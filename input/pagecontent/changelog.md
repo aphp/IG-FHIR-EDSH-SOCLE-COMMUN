@@ -1,4 +1,17 @@
+### <a id="next">Version en cours (non publiée)</a>
 
+<details open>
+  <summary>Cliquez ici pour voir les évolutions en cours</summary>
+<ul>
+    <li>Remédiation robustesse (IG Core, <a href="https://github.com/aphp/IG-FHIR-EDSH-SOCLE-COMMUN/issues/19">#19</a>), profils du Lot 1 :
+    <ul>
+        <li>retrait de tous les <code>Must Support</code> (9 profils) ;</li>
+        <li>élargissement des bornes <code>Reference</code> : chaque règle liste les cibles autorisées par le parent, puis le profil FR Core correspondant s'il existe, puis le profil EDSH. Des règles de ce type sont ajoutées sur les références vers <code>Patient</code> et <code>Encounter</code> qui n'en avaient pas. Aucune cible n'est retirée ;</li>
+        <li>retour à la cardinalité de base pour <code>EdshObservationLaboratoryUremie.referenceRange</code>, <code>EdshMedicationAdministration.dosage</code> et <code>EdshMedicationRequest.dosageInstruction</code>.</li>
+    </ul>
+    </li>
+</ul>
+</details>
 
 ### <a id="0.1.">Version 0.1.0</a>
 

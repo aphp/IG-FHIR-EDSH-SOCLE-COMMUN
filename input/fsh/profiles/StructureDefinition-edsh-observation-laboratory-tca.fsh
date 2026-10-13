@@ -13,9 +13,9 @@ Profil Temps de céphaline activée (TCA) du socle commun des EDSH
 * component ^slicing.rules = #open
 * component ^short = "Permet de rapporter le temps patient, le temps témoins et le ratio."
 * component contains
-    PatientTCA 1..1 MS and
-    ControlTCA 1..1 MS and
-    TCARatioPonC 1..1 MS
+    PatientTCA 1..1 and
+    ControlTCA 1..1 and
+    TCARatioPonC 1..1
 
 * component[PatientTCA] ^short = "pour rapporter le TCA patient."
 * component[PatientTCA]
@@ -72,3 +72,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2025-03-24T09:26:15+01:00"
+
+Instance: 8c14e416-276f-4e63-b634-deb8a53a4ec3
+InstanceOf: Provenance
+Title: "Remédiation robustesse Core (PR1)"
+Description: """Remédiation robustesse (#19) : retrait des Must Support (principe de robustesse d'un IG Core)."""
+Usage: #definition
+
+* target[0] = Reference(EdshObservationLaboratoryTca)
+* occurredDateTime = "2026-10-12"
+* reason.text = """Remédiation robustesse (#19) : retrait des Must Support (principe de robustesse d'un IG Core)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-12T12:00:00+02:00"

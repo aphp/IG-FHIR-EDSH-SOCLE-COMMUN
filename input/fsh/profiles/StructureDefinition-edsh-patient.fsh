@@ -13,25 +13,17 @@ Description: "Profil Patient du socle commun des EDSH"
 * identifier[INS-NIR].system = "urn:oid:1.2.250.1.213.1.4.8"
 * identifier[INS-NIR].system ^short = "Autorité d'affectation des INS-NIR"
 * identifier[INS-NIR].value 1..
-* identifier[INS-NIR] MS
 
-* identifier[NSS] MS
-
-* gender MS
 * gender from $fr-core-vs-patient-gender-INS (required)
 * gender ^short = "male | female | unknown"
 
-* birthDate MS
-
-* deceased[x] MS
-* deceased[x] 
+* deceased[x]
   * extension contains
     EdshDeathSource named DeathSource 0..1
 
-* address MS
 * address only EdshAddress
 
-* multipleBirthInteger MS
+* link.other only Reference(Patient or RelatedPerson or FRCorePatientProfile or FRCoreRelatedPersonProfile or EdshPatient)
 
 Instance: a5b6c7d8-9e0f-1a2b-3c4d-5e6f7a8b9c0d
 InstanceOf: Provenance
@@ -47,3 +39,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "@ngr"
 * recorded = "2025-02-02T21:36:10+01:00"
+
+Instance: 6f20e0f3-cdb6-49e6-bddd-7bde5fab2740
+InstanceOf: Provenance
+Title: "Remédiation robustesse Core (PR1)"
+Description: """Remédiation robustesse (#19) : retrait des Must Support (principe de robustesse d'un IG Core) ; élargissement des bornes Reference : cibles autorisées par le parent, puis profil FR Core s'il existe, puis profil Edsh (#21, revue PR #27)."""
+Usage: #definition
+
+* target[0] = Reference(EdshPatient)
+* occurredDateTime = "2026-10-12"
+* reason.text = """Remédiation robustesse (#19) : retrait des Must Support (principe de robustesse d'un IG Core) ; élargissement des bornes Reference : cibles autorisées par le parent, puis profil FR Core s'il existe, puis profil Edsh (#21, revue PR #27)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-12T12:00:00+02:00"

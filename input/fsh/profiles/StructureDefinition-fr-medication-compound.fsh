@@ -22,7 +22,7 @@ Description: "A complex medication composed of two to many simple médication. T
 * ingredient ^short = "Medication component of compound medication"
 * ingredient ^definition = "Identifies a medicinal component of the compound medicinal product"
 * ingredient ^comment = "The Medication SHALL contain ALL the items of the item element list AND ONLY the items of the item element list."
-* ingredient.item[x] only Reference(FrMedicationNonproprietaryName or FrMedicationUcd)
+* ingredient.item[x] only Reference(Substance or Medication or FrMedicationNonproprietaryName or FrMedicationUcd) or CodeableConcept
 * ingredient.item[x] ^short = "The actual compound"
 * ingredient.item[x] ^definition = "The actual compound, either nonproprietary named medication or branded named medication identified by a UCD code."
 * ingredient.strength ..0
@@ -43,3 +43,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "@ngr"
 * recorded = "2025-02-02T21:36:10+01:00"
+
+Instance: f17767c1-6df6-41d1-8175-ac2785ea86a4
+InstanceOf: Provenance
+Title: "Remédiation robustesse Core (PR1)"
+Description: """Remédiation robustesse (#19) : élargissement des bornes Reference : cibles autorisées par le parent, puis profil FR Core s'il existe, puis profil Edsh (#21, revue PR #27)."""
+Usage: #definition
+
+* target[0] = Reference(FrMedicationCompound)
+* occurredDateTime = "2026-10-12"
+* reason.text = """Remédiation robustesse (#19) : élargissement des bornes Reference : cibles autorisées par le parent, puis profil FR Core s'il existe, puis profil Edsh (#21, revue PR #27)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-12T12:00:00+02:00"
