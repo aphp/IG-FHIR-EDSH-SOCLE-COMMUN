@@ -17,7 +17,9 @@ Description: "Profil abstrait pour les invariants dans les claims du PMSI."
 
 * insurance.sequence = 1
 * insurance.focal = true
-* insurance.coverage.display = "Assurance Maladie" // base cardinality 0..1 (reverted from 1..1 per #22)
+* insurance.coverage.display 1..1
+* insurance.coverage.display = "Assurance Maladie"
+* insurance.coverage.display ^comment = "Invariant PMSI conservé : Claim.insurance (1..*) et Claim.insurance.coverage (1..1) sont obligatoires en FHIR R4 mais sans objet pour le PMSI. Imposer ce display fixe garantit une Reference non vide sans exiger de ressource Coverage."
 
 * item.encounter only Reference(Encounter or FRCoreEncounterProfile or EdshEncounter)
 
@@ -39,12 +41,12 @@ Usage: #definition
 Instance: 19d3eee0-3b02-4699-803d-492dc5952ae6
 InstanceOf: Provenance
 Title: "Remédiation robustesse Core (PR1)"
-Description: """Remédiation robustesse (#19) : élargissement des bornes Reference : cibles autorisées par le parent, puis profil FR Core s'il existe, puis profil Edsh (#21, revue PR #27) ; retour à la cardinalité de base de insurance.coverage.display (#22)."""
+Description: """Remédiation robustesse (#19) : élargissement des bornes Reference : cibles autorisées par le parent, puis profil FR Core s'il existe, puis profil Edsh (#21, revue PR #27) ; documentation de l'invariant PMSI insurance.coverage.display 1..1 (conservé, revue PR #27)."""
 Usage: #definition
 
 * target[0] = Reference(EdshClaimPmsi)
 * occurredDateTime = "2026-10-12"
-* reason.text = """Remédiation robustesse (#19) : élargissement des bornes Reference : cibles autorisées par le parent, puis profil FR Core s'il existe, puis profil Edsh (#21, revue PR #27) ; retour à la cardinalité de base de insurance.coverage.display (#22)."""
+* reason.text = """Remédiation robustesse (#19) : élargissement des bornes Reference : cibles autorisées par le parent, puis profil FR Core s'il existe, puis profil Edsh (#21, revue PR #27) ; documentation de l'invariant PMSI insurance.coverage.display 1..1 (conservé, revue PR #27)."""
 * activity = $v3-DataOperation#UPDATE
 * agent
   * type = $provenance-participant-type#author

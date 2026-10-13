@@ -7,7 +7,7 @@
     <ul>
         <li>retrait de tous les <code>Must Support</code> (9 profils) ;</li>
         <li>élargissement des bornes <code>Reference</code> : chaque règle liste les cibles autorisées par le parent, puis le profil FR Core correspondant s'il existe, puis le profil EDSH. Des règles de ce type sont ajoutées sur les références vers <code>Patient</code> et <code>Encounter</code> qui n'en avaient pas. Aucune cible n'est retirée ;</li>
-        <li>retour à la cardinalité de base pour <code>EdshClaimPmsi.insurance.coverage.display</code>, <code>EdshObservationLaboratoryUremie.referenceRange</code>, <code>EdshMedicationAdministration.dosage</code> et <code>EdshMedicationRequest.dosageInstruction</code>.</li>
+        <li>retour à la cardinalité de base pour <code>EdshObservationLaboratoryUremie.referenceRange</code>, <code>EdshMedicationAdministration.dosage</code> et <code>EdshMedicationRequest.dosageInstruction</code>.</li>
     </ul>
     </li>
 </ul>
