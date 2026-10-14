@@ -27,7 +27,7 @@ LOINC qu'il fixe et l'unité de résultat qu'il impose.
 
 * subject ^short = "Patient sur lequel porte l'analyse"
 * subject only Reference(Patient or Group or Device or Location or FRCorePatientProfile or FRCoreLocationProfile or EdshPatient or EdshLocation)
-* encounter ^short = "Passage au cours duquel le prélèvement est réalisé"
+* encounter ^short = "Venue au cours de laquelle le prélèvement est réalisé"
 * encounter only Reference(Encounter or FRCoreEncounterProfile or EdshEncounter)
 * performer ^short = "Laboratoire ou intervenant responsable du résultat"
 * performer only Reference(Practitioner or PractitionerRole or Organization or CareTeam or Patient or RelatedPerson or FRCorePractitionerProfile or FRCorePractitionerRole or FRCoreOrganizationProfile or FRCorePatientProfile or FRCoreRelatedPersonProfile or EdshPractitioner or EdshPractitionerRole or EdshOrganization or EdshPatient)
@@ -94,3 +94,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2026-10-12T14:00:00+02:00"
+
+Instance: 621b4b05-3c43-406c-aa67-53b247c6c3c4
+InstanceOf: Provenance
+Title: "Documentation des éléments (PR2, seconde revue)"
+Description: """Remédiation robustesse (#19), PR2, seconde revue (#28) : reformulation des ^short (« venue » au lieu de « passage », unités lisibles et homogènes, référentiels du médicament, couverture PMSI)."""
+Usage: #definition
+
+* target[0] = Reference(EdshObservationLaboratoryGeneric)
+* occurredDateTime = "2026-10-14"
+* reason.text = """Remédiation robustesse (#19), PR2, seconde revue (#28) : reformulation des ^short (« venue » au lieu de « passage », unités lisibles et homogènes, référentiels du médicament, couverture PMSI)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-14T16:00:00+02:00"

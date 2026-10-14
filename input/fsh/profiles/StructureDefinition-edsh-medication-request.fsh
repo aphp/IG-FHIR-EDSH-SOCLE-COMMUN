@@ -3,13 +3,13 @@ Parent:   MedicationRequest
 Id: edsh-medication-request
 Title:    "Prescription de médicaments"
 Description:  "Profil pour les prescriptions médicamenteuses"
-* medication[x] ^short = "Médicament prescrit : code (CIM/UCD/ATC…) ou référence à une ressource Medication"
+* medication[x] ^short = "Médicament prescrit : code (UCD, CIP, CIS, ATC…) ou référence à une ressource Medication"
 * medication[x] only Reference(Medication or FrMedicationUcd or FrMedicationNonproprietaryName or FrMedicationCompound) or CodeableConcept
 * subject ^short = "Patient à qui le médicament est prescrit"
 * subject only Reference(Patient or Group or FRCorePatientProfile or EdshPatient)
-* encounter ^short = "Passage au cours duquel la prescription est faite"
+* encounter ^short = "Venue au cours de laquelle la prescription est faite"
 * encounter only Reference(Encounter or FRCoreEncounterProfile or EdshEncounter)
-* reported[x] ^short = "Prescription rapportée (et non saisie à la source), et par qui"
+* reported[x] ^short = "Prescription rapportée (et non saisie à la source), ou par qui"
 * reported[x] only boolean or Reference(Patient or Practitioner or PractitionerRole or RelatedPerson or Organization or FRCorePatientProfile or FRCorePractitionerProfile or FRCorePractitionerRole or FRCoreRelatedPersonProfile or FRCoreOrganizationProfile or EdshPatient or EdshPractitioner or EdshPractitionerRole or EdshOrganization)
 * requester ^short = "Prescripteur"
 * requester only Reference(Practitioner or PractitionerRole or Organization or Patient or RelatedPerson or Device or FRCorePractitionerProfile or FRCorePractitionerRole or FRCoreOrganizationProfile or FRCorePatientProfile or FRCoreRelatedPersonProfile or EdshPractitioner or EdshPractitionerRole or EdshOrganization or EdshPatient)
@@ -77,3 +77,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2026-10-12T14:00:00+02:00"
+
+Instance: 4f949d61-355a-40df-b619-93a176501280
+InstanceOf: Provenance
+Title: "Documentation des éléments (PR2, seconde revue)"
+Description: """Remédiation robustesse (#19), PR2, seconde revue (#28) : reformulation des ^short (« venue » au lieu de « passage », unités lisibles et homogènes, référentiels du médicament, couverture PMSI)."""
+Usage: #definition
+
+* target[0] = Reference(EdshMedicationRequest)
+* occurredDateTime = "2026-10-14"
+* reason.text = """Remédiation robustesse (#19), PR2, seconde revue (#28) : reformulation des ^short (« venue » au lieu de « passage », unités lisibles et homogènes, référentiels du médicament, couverture PMSI)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-14T16:00:00+02:00"

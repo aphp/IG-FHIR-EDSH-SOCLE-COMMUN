@@ -8,7 +8,7 @@ Description: "Procedure adapted to Data Management"
 * partOf only Reference(Procedure or Observation or MedicationAdministration or EdshProcedure or EdshMedicationAdministration)
 * subject ^short = "Patient ayant bénéficié de l'acte"
 * subject only Reference(Patient or Group or FRCorePatientProfile or EdshPatient)
-* encounter ^short = "Passage au cours duquel l'acte est réalisé"
+* encounter ^short = "Venue au cours de laquelle l'acte est réalisé"
 * encounter only Reference(Encounter or FRCoreEncounterProfile or EdshEncounter)
 
 * performer
@@ -73,3 +73,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2026-10-12T14:00:00+02:00"
+
+Instance: 93acfd66-8a25-413c-9fec-d3916fa437b9
+InstanceOf: Provenance
+Title: "Documentation des éléments (PR2, seconde revue)"
+Description: """Remédiation robustesse (#19), PR2, seconde revue (#28) : reformulation des ^short (« venue » au lieu de « passage », unités lisibles et homogènes, référentiels du médicament, couverture PMSI)."""
+Usage: #definition
+
+* target[0] = Reference(EdshProcedure)
+* occurredDateTime = "2026-10-14"
+* reason.text = """Remédiation robustesse (#19), PR2, seconde revue (#28) : reformulation des ^short (« venue » au lieu de « passage », unités lisibles et homogènes, référentiels du médicament, couverture PMSI)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-14T16:00:00+02:00"

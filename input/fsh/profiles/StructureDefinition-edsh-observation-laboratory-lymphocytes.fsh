@@ -8,7 +8,7 @@ Profil Lymphocytes du socle commun des EDSH
 
 * code = $loinc#26474-7 "Lymphocytes totaux [Nombre/Volume] Sang ; Numérique" (exactly)
 
-* value[x] ^short = "Lymphocytes — valeur mesurée, en 10*3/µL"
+* value[x] ^short = "Lymphocytes — valeur mesurée, en 10^3/µL"
 * value[x] only Quantity
 * valueQuantity.value ^short = "Valeur numérique du résultat"
 * valueQuantity.system = $ucum (exactly)
@@ -44,3 +44,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2026-10-12T14:00:00+02:00"
+
+Instance: 199ad678-9b5a-4de3-974d-e246ae377ae9
+InstanceOf: Provenance
+Title: "Documentation des éléments (PR2, seconde revue)"
+Description: """Remédiation robustesse (#19), PR2, seconde revue (#28) : reformulation des ^short (« venue » au lieu de « passage », unités lisibles et homogènes, référentiels du médicament, couverture PMSI)."""
+Usage: #definition
+
+* target[0] = Reference(EdshObservationLaboratoryLymphocytes)
+* occurredDateTime = "2026-10-14"
+* reason.text = """Remédiation robustesse (#19), PR2, seconde revue (#28) : reformulation des ^short (« venue » au lieu de « passage », unités lisibles et homogènes, référentiels du médicament, couverture PMSI)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-14T16:00:00+02:00"

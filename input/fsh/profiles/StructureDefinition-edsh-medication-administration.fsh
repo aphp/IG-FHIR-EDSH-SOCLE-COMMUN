@@ -3,11 +3,11 @@ Parent:   MedicationAdministration
 Id: edsh-medication-administration
 Title:    "Administration de médicaments"
 Description: "Profil pour l'administration de médicaments"
-* medication[x] ^short = "Médicament administré : code (CIM/UCD/ATC…) ou référence à une ressource Medication"
+* medication[x] ^short = "Médicament administré : code (UCD, CIP, CIS, ATC…) ou référence à une ressource Medication"
 * medication[x] only Reference(Medication or FrMedicationUcd or FrMedicationNonproprietaryName or FrMedicationCompound) or CodeableConcept
 * subject ^short = "Patient à qui le médicament est administré"
 * subject only Reference(Patient or Group or FRCorePatientProfile or EdshPatient)
-* context ^short = "Passage ou épisode de soins au cours duquel le médicament est administré"
+* context ^short = "Venue ou épisode de soins au cours duquel le médicament est administré"
 * context only Reference(Encounter or EpisodeOfCare or FRCoreEncounterProfile or EdshEncounter or EdshEpisodeOfCare)
 * performer.actor ^short = "Intervenant ayant administré le médicament"
 * performer.actor only Reference(Practitioner or PractitionerRole or Patient or RelatedPerson or Device or FRCorePractitionerProfile or FRCorePractitionerRole or FRCorePatientProfile or FRCoreRelatedPersonProfile or EdshPractitioner or EdshPractitionerRole or EdshPatient)
@@ -64,3 +64,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2026-10-12T14:00:00+02:00"
+
+Instance: 1231d769-5cc5-4f26-a503-713e4bace79d
+InstanceOf: Provenance
+Title: "Documentation des éléments (PR2, seconde revue)"
+Description: """Remédiation robustesse (#19), PR2, seconde revue (#28) : reformulation des ^short (« venue » au lieu de « passage », unités lisibles et homogènes, référentiels du médicament, couverture PMSI)."""
+Usage: #definition
+
+* target[0] = Reference(EdshMedicationAdministration)
+* occurredDateTime = "2026-10-14"
+* reason.text = """Remédiation robustesse (#19), PR2, seconde revue (#28) : reformulation des ^short (« venue » au lieu de « passage », unités lisibles et homogènes, référentiels du médicament, couverture PMSI)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-14T16:00:00+02:00"

@@ -6,7 +6,7 @@ Description: "Condition adapted to Data Management"
 
 * subject ^short = "Patient chez qui la condition est constatée"
 * subject only Reference(Patient or Group or FRCorePatientProfile or EdshPatient)
-* encounter ^short = "Passage au cours duquel la condition est documentée"
+* encounter ^short = "Venue au cours de laquelle la condition est documentée"
 * encounter only Reference(Encounter or FRCoreEncounterProfile or EdshEncounter)
 * recorder ^short = "Personne ayant enregistré la condition"
 * recorder only Reference(Practitioner or PractitionerRole or Patient or RelatedPerson or FRCorePractitionerProfile or FRCorePractitionerRole or FRCorePatientProfile or FRCoreRelatedPersonProfile or EdshPractitioner or EdshPractitionerRole or EdshPatient)
@@ -60,3 +60,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2026-10-12T14:00:00+02:00"
+
+Instance: 03d200b5-8aeb-40a1-b173-b414267a2559
+InstanceOf: Provenance
+Title: "Documentation des éléments (PR2, seconde revue)"
+Description: """Remédiation robustesse (#19), PR2, seconde revue (#28) : reformulation des ^short (« venue » au lieu de « passage », unités lisibles et homogènes, référentiels du médicament, couverture PMSI)."""
+Usage: #definition
+
+* target[0] = Reference(EdshCondition)
+* occurredDateTime = "2026-10-14"
+* reason.text = """Remédiation robustesse (#19), PR2, seconde revue (#28) : reformulation des ^short (« venue » au lieu de « passage », unités lisibles et homogènes, référentiels du médicament, couverture PMSI)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-14T16:00:00+02:00"

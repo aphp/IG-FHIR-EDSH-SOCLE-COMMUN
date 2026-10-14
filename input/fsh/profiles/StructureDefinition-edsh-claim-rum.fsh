@@ -3,7 +3,7 @@ Parent: EdshClaimPmsiMco
 Id: edsh-claim-rum
 Title: "RUM du PMSI MCO"
 Description: """
-Profil pour les Résumés d'Unité Médicale (RUM) du PMSI MCO. Un RUM décrit le passage d'un
+Profil pour les Résumés d'Unité Médicale (RUM) du PMSI MCO. Un RUM décrit le séjour d'un
 patient dans une unité médicale : période, diagnostics (principal, relié, associés), actes
 CCAM, GHM du RUM groupé, modes d'entrée et de sortie. Les données parviennent à l'EDS
 après groupage ATIH ; les cardinalités resserrées ci-dessous reflètent des champs que ce
@@ -166,3 +166,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2026-10-12T14:00:00+02:00"
+
+Instance: 0de59339-530a-4d50-8bbe-d7c27de1958c
+InstanceOf: Provenance
+Title: "Documentation des éléments (PR2, seconde revue)"
+Description: """Remédiation robustesse (#19), PR2, seconde revue (#28) : reformulation des ^short (« venue » au lieu de « passage », unités lisibles et homogènes, référentiels du médicament, couverture PMSI)."""
+Usage: #definition
+
+* target[0] = Reference(EdshClaimRum)
+* occurredDateTime = "2026-10-14"
+* reason.text = """Remédiation robustesse (#19), PR2, seconde revue (#28) : reformulation des ^short (« venue » au lieu de « passage », unités lisibles et homogènes, référentiels du médicament, couverture PMSI)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-14T16:00:00+02:00"
