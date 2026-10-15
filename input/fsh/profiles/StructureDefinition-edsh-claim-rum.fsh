@@ -105,12 +105,12 @@ groupage rend obligatoires.
 
   * modifier[MDE] ^short = "Mode d'entrée du patient"
   * modifier[MDE] ^comment = "Cardinalité de slice 1..1 : le mode d'entrée du patient dans l'unité médicale est un attribut obligatoire du RUM dans le PMSI MCO (données post-groupage ATIH)."
-  * modifier[MDE].coding.system = "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/CodeSystem/PmsiMcoMde"
+  * modifier[MDE].coding.system = Canonical(PmsiMcoMde)
   * modifier[MDE] from PmsiMcoMdeVs (required)
 
   * modifier[MDS] ^short = "Mode de sortie du patient"
   * modifier[MDS] ^comment = "Cardinalité de slice 1..1 : le mode de sortie du patient de l'unité médicale est un attribut obligatoire du RUM dans le PMSI MCO (données post-groupage ATIH)."
-  * modifier[MDS].coding.system = "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/CodeSystem/PmsiMcoMds"
+  * modifier[MDS].coding.system = Canonical(PmsiMcoMds)
   * modifier[MDS] from PmsiMcoMdsVs (required)
 
 
@@ -181,3 +181,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2026-10-14T16:00:00+02:00"
+
+Instance: be7ff3ff-5ed2-4ee1-80e0-fa350b6df948
+InstanceOf: Provenance
+Title: "Correctif PMSI"
+Description: """Correction des URL de CodeSystem fixées sur modifier[MDE] et modifier[MDS] (PmsiMcoMde/PmsiMcoMds au lieu des id pmsi-mco-mde/pmsi-mco-mds) : la valeur fixée contredisait le binding required et rendait toute instance invalide (revue PR #29)."""
+Usage: #definition
+
+* target[0] = Reference(EdshClaimRum)
+* occurredDateTime = "2026-10-12"
+* reason.text = """Correction des URL de CodeSystem fixées sur modifier[MDE] et modifier[MDS] (PmsiMcoMde/PmsiMcoMds au lieu des id pmsi-mco-mde/pmsi-mco-mds) : la valeur fixée contredisait le binding required et rendait toute instance invalide (revue PR #29)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-12T12:00:00+02:00"

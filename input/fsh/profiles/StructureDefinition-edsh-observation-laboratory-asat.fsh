@@ -13,7 +13,6 @@ Taux d'ASAT dans le sang. L'ASAT est une enzyme faisant partie des transaminases
 * valueQuantity.value ^short = "Valeur numérique du résultat"
 * valueQuantity.system = $ucum (exactly)
 * valueQuantity.code = #[IU]/L (exactly)
-* valueQuantity.unit = "[IU]/L"
 
 Instance: 54a2948b-6ae1-4fa7-8a99-d5db61701273
 InstanceOf: Provenance
@@ -59,3 +58,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2026-10-14T16:00:00+02:00"
+
+Instance: 7b5db164-34e2-4dff-a5b4-fb62c9e9971a
+InstanceOf: Provenance
+Title: "Unité d'affichage non fixée (PR3)"
+Description: """Remédiation robustesse (#19), revue PR #29 : retrait de la valeur fixée sur valueQuantity.unit. L'unité est imposée par valueQuantity.code (UCUM) ; le libellé d'affichage reste libre, ce qui permet une forme lisible (10^3/µL, µmol/L…)."""
+Usage: #definition
+
+* target[0] = Reference(EdshObservationLaboratoryAsat)
+* occurredDateTime = "2026-10-15"
+* reason.text = """Remédiation robustesse (#19), revue PR #29 : retrait de la valeur fixée sur valueQuantity.unit. L'unité est imposée par valueQuantity.code (UCUM) ; le libellé d'affichage reste libre, ce qui permet une forme lisible (10^3/µL, µmol/L…)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-15T17:00:00+02:00"

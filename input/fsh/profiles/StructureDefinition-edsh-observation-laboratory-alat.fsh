@@ -13,7 +13,6 @@ Taux d'ALAT dans le sang. L'alanine-aminotransférase est capable de transférer
 * valueQuantity.value ^short = "Valeur numérique du résultat"
 * valueQuantity.system = $ucum (exactly)
 * valueQuantity.code = #[IU]/L (exactly)
-* valueQuantity.unit = "[IU]/L"
 
 Instance: 6b8b7a13-8482-474b-83c7-d65be26142a4
 InstanceOf: Provenance
@@ -59,3 +58,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2026-10-14T16:00:00+02:00"
+
+Instance: 968860b4-e35e-42bd-85bb-f22b1a044e6d
+InstanceOf: Provenance
+Title: "Unité d'affichage non fixée (PR3)"
+Description: """Remédiation robustesse (#19), revue PR #29 : retrait de la valeur fixée sur valueQuantity.unit. L'unité est imposée par valueQuantity.code (UCUM) ; le libellé d'affichage reste libre, ce qui permet une forme lisible (10^3/µL, µmol/L…)."""
+Usage: #definition
+
+* target[0] = Reference(EdshObservationLaboratoryAlat)
+* occurredDateTime = "2026-10-15"
+* reason.text = """Remédiation robustesse (#19), revue PR #29 : retrait de la valeur fixée sur valueQuantity.unit. L'unité est imposée par valueQuantity.code (UCUM) ; le libellé d'affichage reste libre, ce qui permet une forme lisible (10^3/µL, µmol/L…)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-15T17:00:00+02:00"

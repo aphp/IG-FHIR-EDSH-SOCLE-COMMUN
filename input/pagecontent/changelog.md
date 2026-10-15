@@ -13,6 +13,14 @@
     <li>Documentation des éléments des profils du Lot 1 : <code>^short</code> sur chaque élément contraint, <code>^definition</code> sur les règles métier non évidentes (diagnostics du RUM notamment), <code>^comment</code> justifiant les cardinalités resserrées conservées (invariants structurels PMSI, discriminants de tranche, famille <code>Fr*</code>). Une rencontre (<code>Encounter</code>) y est désignée par « venue », comme dans FR Core, et les unités y sont écrites sous forme lisible (UI/L, µmol/L, 10^3/µL), le code UCUM restant imposé par les invariants.</li>
     <li><code>EdshMedicationAdministration</code> : titre « Administration de médicaments » (au lieu de « Prise de médicaments »).</li>
     <li>Glossaire : ajout du terme « tranche » (traduction de <i>slice</i>).</li>
+    <li>Correctifs PMSI :
+    <ul>
+        <li><code>EdshClaimRum</code> : les URL de CodeSystem fixées sur <code>modifier[MDE]</code> et <code>modifier[MDS]</code> étaient erronées et contredisaient le binding <code>required</code> ;</li>
+        <li><code>EdshItemRank</code> : le contexte d'usage passe de <code>Claim.item</code> à <code>Claim</code> (rang du RUM dans le séjour).</li>
+    </ul>
+    </li>
+    <li>Exemples : 18 exemples écrits à la main pour les profils du Lot 1 qu'aucune vignette clinique ne couvrait (11 analytes de biologie, un RUM complet, Organization, Location, EpisodeOfCare, PractitionerRole, un patient décédé portant l'extension <code>EdshDeathSource</code>). Ils se rattachent à un patient fictif dédié, et non à une vignette, pour ne pas ajouter aux cas cliniques des informations qu'ils ne contiennent pas.</li>
+    <li>Biologie : <code>valueQuantity.unit</code> n'est plus fixé dans les 21 profils d'analytes. L'unité reste imposée par le code UCUM ; le libellé d'affichage peut prendre une forme lisible (10^3/µL, µmol/L…).</li>
 </ul>
 </details>
 

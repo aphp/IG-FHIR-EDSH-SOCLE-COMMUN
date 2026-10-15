@@ -13,7 +13,6 @@ Profil Taux prothrombine (TP) du socle commun des EDSH
 * valueQuantity.value ^short = "Valeur numérique du résultat"
 * valueQuantity.system = $ucum (exactly)
 * valueQuantity.code = #% (exactly)
-* valueQuantity.unit = "%"
 
 Instance: 8f3edd54-5bca-4003-b07f-c665d6d0b788
 InstanceOf: Provenance
@@ -44,3 +43,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2026-10-12T14:00:00+02:00"
+
+Instance: 24d02175-e7b3-48ac-bb26-42b4906d5759
+InstanceOf: Provenance
+Title: "Unité d'affichage non fixée (PR3)"
+Description: """Remédiation robustesse (#19), revue PR #29 : retrait de la valeur fixée sur valueQuantity.unit. L'unité est imposée par valueQuantity.code (UCUM) ; le libellé d'affichage reste libre, ce qui permet une forme lisible (10^3/µL, µmol/L…)."""
+Usage: #definition
+
+* target[0] = Reference(EdshObservationLaboratoryTp)
+* occurredDateTime = "2026-10-15"
+* reason.text = """Remédiation robustesse (#19), revue PR #29 : retrait de la valeur fixée sur valueQuantity.unit. L'unité est imposée par valueQuantity.code (UCUM) ; le libellé d'affichage reste libre, ce qui permet une forme lisible (10^3/µL, µmol/L…)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-15T17:00:00+02:00"
