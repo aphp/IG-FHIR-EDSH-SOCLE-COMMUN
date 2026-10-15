@@ -5,7 +5,7 @@ Title: "SimpleQuantity with UCUM quantity unit"
 Description: "simple quantity datatype requiring a UCUM unit"
 * . ^short = "A fixed quantity (no comparator) with UCUM unit"
 * . ^definition = "The comparator is not used on a SimpleQuantity. The unit SHALL be a UCUM code."
-* . ^comment = "The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use explicitely excludes the use of the simpleQuantity \"comparator\" element."
+* . ^comment = "Ce profil de type de donnée est inspiré de [FrSimpleQuantityMedication](https://interop-sante.github.io/hl7.fhir.fr.medication/main/ig/StructureDefinition-FrSimpleQuantityMedication.html) du Guide d'implémentation du médicament [initié par Interop'Santé](https://github.com/Interop-Sante/hl7.fhir.fr.medication). Il sert à contraindre l'utilisation d'une unité UCUM (là où le profil de l'IG médicament permet d'utiliser également EDQM)."
 * system 1..
 * system = "http://unitsofmeasure.org" (exactly)
 * system ^definition = "UCUM requiered for the identification of the system that provides the coded form of the unit."
@@ -42,3 +42,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2026-10-12T12:00:00+02:00"
+
+Instance: 55edfd40-6e06-475f-8705-b602d921a4e5
+InstanceOf: Provenance
+Title: "Documentation des éléments (PR2)"
+Description: """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment) ; origine du profil précisée : inspiré de FrSimpleQuantityMedication (IG médicament Interop'Santé) (revue PR #28)."""
+Usage: #definition
+
+* target[0] = Reference(FrSimpleQuantityUcum)
+* occurredDateTime = "2026-10-12"
+* reason.text = """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment) ; origine du profil précisée : inspiré de FrSimpleQuantityMedication (IG médicament Interop'Santé) (revue PR #28)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-12T14:00:00+02:00"

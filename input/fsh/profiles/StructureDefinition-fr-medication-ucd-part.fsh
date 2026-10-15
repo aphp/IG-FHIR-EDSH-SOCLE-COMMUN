@@ -3,6 +3,7 @@ Parent: Medication
 Id: fr-medication-ucd-part
 Title: "French Ucd Part Medication"
 Description: "Part of a multipart branded medication."
+* . ^comment = "Cardinalités et contraintes de cette couche datatype/médicament adaptée de l'IG ANS e-prescription (ans.fhir.fr.eprescription), non introduites par le socle : elles font partie de la définition même du profil (une SimpleQuantity UCUM impose son unité ; un Medication composé ne porte ni lot ni dosage d'ingrédient au niveau du groupement). L'alignement avec l'amont est suivi hors de la remédiation robustesse du socle (carte #19)."
 * code ^short = "Short text that identifies this branded medication part"
 * code ^definition = "A short relevant text to discern each part."
 * code ^comment = "No code assigned by the regultory authorities, use a short relevant text to discern each part."
@@ -48,3 +49,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "@ngr"
 * recorded = "2025-02-02T21:36:10+01:00"
+
+Instance: 0386e251-d848-4a41-9e4f-4d370a4ccbbf
+InstanceOf: Provenance
+Title: "Documentation des éléments (PR2)"
+Description: """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment) ; note de profil sur l'origine des contraintes de la famille Fr* (#22)."""
+Usage: #definition
+
+* target[0] = Reference(FrMedicationUcdPart)
+* occurredDateTime = "2026-10-12"
+* reason.text = """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment) ; note de profil sur l'origine des contraintes de la famille Fr* (#22)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-12T14:00:00+02:00"

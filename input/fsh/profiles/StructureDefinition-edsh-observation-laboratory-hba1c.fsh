@@ -8,8 +8,9 @@ Forme glycquée de la molécule de l'hémoglobine dans le sang. Sa valeur biolog
 
 * code = $loinc#4548-4 "Hémoglobine A1c/hémoglobine totale [Fraction massique] Sang ; Numérique" (exactly)
 
+* value[x] ^short = "Hémoglobine glyquée — valeur mesurée, en %"
 * value[x] only Quantity
-* valueQuantity.value ^short = "Valeur mesurée"
+* valueQuantity.value ^short = "Valeur numérique du résultat"
 * valueQuantity.system = $ucum (exactly)
 * valueQuantity.code = #% (exactly)
 * valueQuantity.unit = "%"
@@ -28,3 +29,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2025-10-14T16:58:23+02:00"
+
+Instance: e01da7e8-8781-4923-98af-a886ac5572be
+InstanceOf: Provenance
+Title: "Documentation des éléments (PR2)"
+Description: """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment)."""
+Usage: #definition
+
+* target[0] = Reference(EdshObservationLaboratoryHba1c)
+* occurredDateTime = "2026-10-12"
+* reason.text = """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-12T14:00:00+02:00"

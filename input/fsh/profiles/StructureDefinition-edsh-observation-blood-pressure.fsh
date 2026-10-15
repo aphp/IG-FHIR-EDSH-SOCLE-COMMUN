@@ -11,12 +11,15 @@ Description: "Profil de la pression artérielle du socle commun des EDS"
 * encounter ^short = "NDA (Numéro de Dossier Administratif) associé à la mesure"
 * encounter ^definition = "Le NDA peut correspondre à une hospitalisation complète, un dossier de consultation, d'hospitalisation de jour..."
 
+* performer ^short = "Intervenant ayant réalisé la mesure"
 * performer only Reference(CareTeam or PractitionerRole or FRCorePatientProfile or FRCorePractitionerProfile or FRCorePractitionerRole or FRCoreOrganizationProfile or FRCoreRelatedPersonProfile or EdshPatient or EdshPractitioner or EdshPractitionerRole or EdshOrganization)
 
 * effective[x] only dateTime
 * effective[x] ^short = "Date de réalisation de la mesure"
 
+* bodySite ^short = "Site anatomique de la mesure"
 * bodySite from BloodPressureMeasurementBodyLocationPrecoordinated (example)
+* method ^short = "Méthode de mesure de la pression artérielle"
 * method from BloodPressureMeasurementMethod (example)
 
 Instance: 5236693c-8f6f-46fc-8ba6-63665228922e
@@ -48,3 +51,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2026-10-12T12:00:00+02:00"
+
+Instance: 657a4f57-9f2c-4025-96a4-7a749751febd
+InstanceOf: Provenance
+Title: "Documentation des éléments (PR2)"
+Description: """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment)."""
+Usage: #definition
+
+* target[0] = Reference(EdshObservationBloodPressure)
+* occurredDateTime = "2026-10-12"
+* reason.text = """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-12T14:00:00+02:00"

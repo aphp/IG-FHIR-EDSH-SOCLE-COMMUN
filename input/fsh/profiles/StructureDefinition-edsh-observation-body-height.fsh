@@ -10,6 +10,7 @@ Description: "Ce profil définit la manière de représenter les observations de
 * encounter only Reference(FRCoreEncounterProfile or EdshEncounter)
 * encounter ^short = "NDA (Numéro de Dossier Administratif) associé à la mesure"
 * encounter ^definition = "Le NDA peut correspondre à une hospitalisation complète, un dossier de consultation, d'hospitalisation de jour..."
+* performer ^short = "Intervenant ayant réalisé la mesure"
 * performer only Reference(CareTeam or RelatedPerson or PractitionerRole or FRCorePatientProfile or FRCorePractitionerProfile or FRCorePractitionerRole or FRCoreOrganizationProfile or FRCoreRelatedPersonProfile or EdshPatient or EdshPractitioner or EdshPractitionerRole or EdshOrganization)
 
 * code ^short = "Code standardisé pour 'Taille'"
@@ -19,6 +20,7 @@ Description: "Ce profil définit la manière de représenter les observations de
 * effective[x] ^short = "Date de réalisation de la mesure"
 * value[x] ^short = "Valeur de la mesure. Les signes vitaux sont enregistrés sous forme de quantité, exprimés en unité du Système International."
 
+* method ^short = "Méthode de mesure de la taille"
 * method from HeightLengthMeasurementMethod (example)
 
 Instance: 9be02e59-c737-45b0-a64a-53484a5b79d4
@@ -50,3 +52,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2026-10-12T12:00:00+02:00"
+
+Instance: 39547bb9-6e60-4dc1-85ba-1ff4da578117
+InstanceOf: Provenance
+Title: "Documentation des éléments (PR2)"
+Description: """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment)."""
+Usage: #definition
+
+* target[0] = Reference(EdshObservationBodyHeight)
+* occurredDateTime = "2026-10-12"
+* reason.text = """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-12T14:00:00+02:00"

@@ -4,6 +4,7 @@ Id: edsh-organization
 Title: "Organization"
 Description: "Organization adapted for Data Management"
 
+* partOf ^short = "Organisation de rattachement (entité juridique, groupe hospitalier…)"
 * partOf only Reference(EdshOrganization or AsOrganizationProfile or FRCoreOrganizationProfile)
 
 Instance: f4a5b6c7-8d9e-0f1a-2b3c-4d5e6f7a8b9c
@@ -20,3 +21,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "@ngr"
 * recorded = "2025-02-02T21:36:10+01:00"
+
+Instance: 031cda70-74ec-4c66-a86c-67423d1ec4a3
+InstanceOf: Provenance
+Title: "Documentation des éléments (PR2)"
+Description: """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment)."""
+Usage: #definition
+
+* target[0] = Reference(EdshOrganization)
+* occurredDateTime = "2026-10-12"
+* reason.text = """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-12T14:00:00+02:00"

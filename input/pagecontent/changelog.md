@@ -10,6 +10,9 @@
         <li>retour à la cardinalité de base pour <code>EdshObservationLaboratoryUremie.referenceRange</code>, <code>EdshMedicationAdministration.dosage</code> et <code>EdshMedicationRequest.dosageInstruction</code>.</li>
     </ul>
     </li>
+    <li>Documentation des éléments des profils du Lot 1 : <code>^short</code> sur chaque élément contraint, <code>^definition</code> sur les règles métier non évidentes (diagnostics du RUM notamment), <code>^comment</code> justifiant les cardinalités resserrées conservées (invariants structurels PMSI, discriminants de tranche, famille <code>Fr*</code>). Une rencontre (<code>Encounter</code>) y est désignée par « venue », comme dans FR Core, et les unités y sont écrites sous forme lisible (UI/L, µmol/L, 10^3/µL), le code UCUM restant imposé par les invariants.</li>
+    <li><code>EdshMedicationAdministration</code> : titre « Administration de médicaments » (au lieu de « Prise de médicaments »).</li>
+    <li>Glossaire : ajout du terme « tranche » (traduction de <i>slice</i>).</li>
 </ul>
 </details>
 
