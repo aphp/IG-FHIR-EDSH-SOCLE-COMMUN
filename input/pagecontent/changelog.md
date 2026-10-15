@@ -16,7 +16,7 @@
         <li><code>EdshItemRank</code> : le contexte d'usage passe de <code>Claim.item</code> à <code>Claim</code> (rang du RUM dans le séjour).</li>
     </ul>
     </li>
-    <li>Exemples : 17 exemples écrits à la main pour les profils du Lot 1 qu'aucune vignette clinique ne couvrait (11 analytes de biologie, un RUM complet, Organization, Location, EpisodeOfCare, PractitionerRole, un patient décédé portant l'extension <code>EdshDeathSource</code>).</li>
+    <li>Exemples : 17 exemples écrits à la main pour les profils du Lot 1 qu'aucune vignette clinique ne couvrait (11 analytes de biologie, un RUM complet, Organization, Location, EpisodeOfCare, PractitionerRole, un patient décédé portant l'extension <code>EdshDeathSource</code>, présenté sur la page de l'extension).</li>
 </ul>
 </details>
 
