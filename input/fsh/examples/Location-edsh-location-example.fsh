@@ -1,7 +1,7 @@
 Instance: edsh-location-example
 InstanceOf: EdshLocation
 Usage: #example
-Description: "Exemple de EdshLocation : l'unité de cardiologie où Madame Dupont a séjourné."
+Description: "Exemple de EdshLocation : une unité de cardiologie du GHU."
 
 * status = #active
 * name = "Unité de cardiologie — Pitié-Salpêtrière"

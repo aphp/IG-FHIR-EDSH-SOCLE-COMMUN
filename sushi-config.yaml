@@ -902,7 +902,7 @@ resources:
     description: Exemple conforme au profil EdshObservationLaboratoryVgm
     exampleBoolean: true
   Claim/edsh-claim-rum-example:
-    name: Exemple — RUM du séjour de Madame Dupont
+    name: Exemple — RUM du séjour de Paul Durand
     description: Exemple conforme au profil EdshClaimRum
     exampleBoolean: true
   Organization/edsh-organization-example:
@@ -914,18 +914,22 @@ resources:
     description: Exemple conforme au profil EdshLocation
     exampleBoolean: true
   EpisodeOfCare/edsh-episode-of-care-example:
-    name: Exemple — Suivi cardiologique de Madame Dupont
+    name: Exemple — Suivi cardiologique de Paul Durand
     description: Exemple conforme au profil EdshEpisodeOfCare
     exampleBoolean: true
   PractitionerRole/edsh-practitioner-role-example:
     name: Exemple — Rôle de cardiologue du Dr Quenum
     description: Exemple conforme au profil EdshPractitionerRole
     exampleBoolean: true
+  Patient/edsh-patient-example:
+    name: Exemple — Patient fictif
+    description: Exemple conforme au profil EdshPatient, sans lien avec les vignettes cliniques, auquel se rattachent les exemples de profils qu'aucune vignette ne couvre
+    exampleBoolean: true
   Patient/edsh-patient-deceased-example:
     name: Exemple — Patiente décédée
     description: Exemple conforme au profil EdshPatient (patiente décédée) et exemple d'usage de l'extension EdshDeathSource (source de l'information de décès)
     exampleBoolean: true
   Observation/edsh-observation-laboratory-tca-example:
-    name: Exemple — TCA de Madame Dupont
+    name: Exemple — TCA de Paul Durand
     description: Exemple conforme au profil EdshObservationLaboratoryTca
     exampleBoolean: true

@@ -13,7 +13,6 @@ Profil Phosphatases alcaline du socle commun des EDSH
 * valueQuantity.value ^short = "Valeur numérique du résultat"
 * valueQuantity.system = $ucum (exactly)
 * valueQuantity.code = #U/L (exactly)
-* valueQuantity.unit = "U/L"
 
 Instance: 36035e17-dee7-45eb-9f5a-1fa7628524da
 InstanceOf: Provenance
@@ -44,3 +43,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2026-10-12T14:00:00+02:00"
+
+Instance: a16d8681-4866-4129-a3d9-893bebeeedfb
+InstanceOf: Provenance
+Title: "Unité d'affichage non fixée (PR3)"
+Description: """Remédiation robustesse (#19), revue PR #29 : retrait de la valeur fixée sur valueQuantity.unit. L'unité est imposée par valueQuantity.code (UCUM) ; le libellé d'affichage reste libre, ce qui permet une forme lisible (10^3/µL, µmol/L…)."""
+Usage: #definition
+
+* target[0] = Reference(EdshObservationLaboratoryPal)
+* occurredDateTime = "2026-10-15"
+* reason.text = """Remédiation robustesse (#19), revue PR #29 : retrait de la valeur fixée sur valueQuantity.unit. L'unité est imposée par valueQuantity.code (UCUM) ; le libellé d'affichage reste libre, ce qui permet une forme lisible (10^3/µL, µmol/L…)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-15T17:00:00+02:00"

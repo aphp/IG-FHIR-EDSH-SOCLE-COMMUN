@@ -1,13 +1,13 @@
 Instance: edsh-claim-rum-example
 InstanceOf: EdshClaimRum
 Usage: #example
-Description: "Exemple de EdshClaimRum : RUM du séjour de Madame Dupont dans l'unité de cardiologie — un diagnostic principal, un diagnostic associé, un acte CCAM, GHM du RUM groupé, modes d'entrée et de sortie."
+Description: "Exemple de EdshClaimRum : RUM du séjour de Paul Durand dans l'unité de cardiologie — un diagnostic principal, un diagnostic associé, un acte CCAM, GHM du RUM groupé, modes d'entrée et de sortie."
 
 * status = #active
 * type = FrClaimType#PMSIMCO
 * subType = FrClaimType#RUM
 * use = #claim
-* patient = Reference(Patient/cas1-pat-01)
+* patient = Reference(edsh-patient-example)
 * created = "2024-01-14"
 * provider = Reference(edsh-organization-example)
 * priority = http://terminology.hl7.org/CodeSystem/processpriority#normal
