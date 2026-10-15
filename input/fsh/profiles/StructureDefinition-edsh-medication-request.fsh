@@ -3,22 +3,34 @@ Parent:   MedicationRequest
 Id: edsh-medication-request
 Title:    "Prescription de médicaments"
 Description:  "Profil pour les prescriptions médicamenteuses"
+* medication[x] ^short = "Médicament prescrit : code (UCD, CIP, CIS, ATC…) ou référence à une ressource Medication"
 * medication[x] only Reference(Medication or FrMedicationUcd or FrMedicationNonproprietaryName or FrMedicationCompound) or CodeableConcept
+* subject ^short = "Patient à qui le médicament est prescrit"
 * subject only Reference(Patient or Group or FRCorePatientProfile or EdshPatient)
+* encounter ^short = "Venue au cours de laquelle la prescription est faite"
 * encounter only Reference(Encounter or FRCoreEncounterProfile or EdshEncounter)
+* reported[x] ^short = "Prescription rapportée (et non saisie à la source), ou par qui"
 * reported[x] only boolean or Reference(Patient or Practitioner or PractitionerRole or RelatedPerson or Organization or FRCorePatientProfile or FRCorePractitionerProfile or FRCorePractitionerRole or FRCoreRelatedPersonProfile or FRCoreOrganizationProfile or EdshPatient or EdshPractitioner or EdshPractitionerRole or EdshOrganization)
+* requester ^short = "Prescripteur"
 * requester only Reference(Practitioner or PractitionerRole or Organization or Patient or RelatedPerson or Device or FRCorePractitionerProfile or FRCorePractitionerRole or FRCoreOrganizationProfile or FRCorePatientProfile or FRCoreRelatedPersonProfile or EdshPractitioner or EdshPractitionerRole or EdshOrganization or EdshPatient)
+* performer ^short = "Intervenant attendu pour l'administration"
 * performer only Reference(Practitioner or PractitionerRole or Organization or Patient or Device or RelatedPerson or CareTeam or FRCorePractitionerProfile or FRCorePractitionerRole or FRCoreOrganizationProfile or FRCorePatientProfile or FRCoreRelatedPersonProfile or EdshPractitioner or EdshPractitionerRole or EdshOrganization or EdshPatient)
+* dosageInstruction ^short = "Posologie prescrite"
 * dosageInstruction 0..* // base cardinality (reverted from 1.. per #22)
+  * route ^short = "Voie d'administration"
   * route from FrRouteOfAdministration (extensible)
   * doseAndRate
+    * dose[x] ^short = "Dose par prise, avec unité UCUM"
     * dose[x] only FrRangeUcum or FrSimpleQuantityUcum
+    * rate[x] ^short = "Débit d'administration, avec unité UCUM"
     * rate[x] only FrRatioUcum or FrRangeUcum or FrSimpleQuantityUcum
     * rate[x] ^definition = "Amount of medication per unit of time. Using a ratio, the denominator SHALL be a quantity of time. Using a simple quantity the UCUM unit SHALL be a unit of rate."
   * maxDosePerPeriod
     * numerator only FrSimpleQuantityUcum
     * denominator only FrSimpleQuantityUcum
+  * maxDosePerAdministration ^short = "Dose maximale par administration, avec unité UCUM"
   * maxDosePerAdministration only FrSimpleQuantityUcum
+  * maxDosePerLifetime ^short = "Dose maximale sur la vie du patient, avec unité UCUM"
   * maxDosePerLifetime only FrSimpleQuantityUcum
 
 Instance: f99b5bbd-3144-4bd0-b0f3-9f6e061ed363
@@ -50,3 +62,33 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2026-10-12T12:00:00+02:00"
+
+Instance: 6e2ff099-83f2-4133-8881-c9f3d6232d01
+InstanceOf: Provenance
+Title: "Documentation des éléments (PR2)"
+Description: """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment)."""
+Usage: #definition
+
+* target[0] = Reference(EdshMedicationRequest)
+* occurredDateTime = "2026-10-12"
+* reason.text = """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-12T14:00:00+02:00"
+
+Instance: 4f949d61-355a-40df-b619-93a176501280
+InstanceOf: Provenance
+Title: "Documentation des éléments (PR2, seconde revue)"
+Description: """Remédiation robustesse (#19), PR2, seconde revue (#28) : reformulation des ^short (« venue » au lieu de « passage », unités lisibles et homogènes, référentiels du médicament, couverture PMSI)."""
+Usage: #definition
+
+* target[0] = Reference(EdshMedicationRequest)
+* occurredDateTime = "2026-10-14"
+* reason.text = """Remédiation robustesse (#19), PR2, seconde revue (#28) : reformulation des ^short (« venue » au lieu de « passage », unités lisibles et homogènes, référentiels du médicament, couverture PMSI)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-14T16:00:00+02:00"

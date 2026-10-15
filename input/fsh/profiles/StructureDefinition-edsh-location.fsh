@@ -4,6 +4,7 @@ Id: edsh-location
 Title: "Location"
 Description: "Location adapted to Data Management"
 
+* managingOrganization ^short = "Organisation gestionnaire du lieu"
 * managingOrganization only Reference(FRCoreOrganizationProfile or EdshOrganization)
 
 Instance: b6c7d8e9-0f1a-2b3c-4d5e-6f7a8b9c0d1e
@@ -35,3 +36,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2026-10-12T12:00:00+02:00"
+
+Instance: 76403b93-c6f6-4efc-a130-b82ee9299456
+InstanceOf: Provenance
+Title: "Documentation des éléments (PR2)"
+Description: """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment)."""
+Usage: #definition
+
+* target[0] = Reference(EdshLocation)
+* occurredDateTime = "2026-10-12"
+* reason.text = """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-12T14:00:00+02:00"

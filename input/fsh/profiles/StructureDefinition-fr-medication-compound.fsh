@@ -5,6 +5,7 @@ Title: "French compound Medication"
 Description: "A complex medication composed of two to many simple médication. The simple medications component are described in as many ingredient.itemReference referencing a Medication resource profiled fr-medication-1."
 * . ^short = "Definition of a Medication compound of a MedicinalRequest, Dispense or Usage"
 * . ^definition = "Medication compound of a Medication representing the composition of a MedicationRequest, a MedicationDispense or a MedicationUsage (pka MedicationStatement). For instance, Glucose 5% 1L part of an infusion made of 3 compounds, Glucose 5% 1L + Sodium chloride 3g + Potassium chloride 2g."
+* . ^comment = "Cardinalités et contraintes de cette couche datatype/médicament adaptée de l'IG ANS e-prescription (ans.fhir.fr.eprescription), non introduites par le socle : elles font partie de la définition même du profil (une SimpleQuantity UCUM impose son unité ; un Medication composé ne porte ni lot ni dosage d'ingrédient au niveau du groupement). L'alignement avec l'amont est suivi hors de la remédiation robustesse du socle (carte #19)."
 * code 1..
 * code ^short = "No code that identify this medication"
 * code ^definition = "Defines the text of the compound detailed in this compound Medication."
@@ -58,3 +59,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2026-10-12T12:00:00+02:00"
+
+Instance: 8ca7dc90-31ed-43f0-8f19-b85ad69d79f3
+InstanceOf: Provenance
+Title: "Documentation des éléments (PR2)"
+Description: """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment) ; note de profil sur l'origine des contraintes de la famille Fr* (#22)."""
+Usage: #definition
+
+* target[0] = Reference(FrMedicationCompound)
+* occurredDateTime = "2026-10-12"
+* reason.text = """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment) ; note de profil sur l'origine des contraintes de la famille Fr* (#22)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-12T14:00:00+02:00"
