@@ -12,7 +12,8 @@ Profil Erythrocytes du socle commun des EDSH
 * value[x] only Quantity
 * valueQuantity.value ^short = "Valeur numérique du résultat"
 * valueQuantity.system = $ucum (exactly)
-* valueQuantity.code = #10*6/uL (exactly)
+* valueQuantity.code ^comment = "Code UCUM 10*6/uL ou sa notation équivalente 10^6/uL (invariant dm-lab-unit-10e6-ul). Dans une même ressource, la valeur et les bornes de referenceRange utilisent la même notation (dm-lab-3) ; un consommateur doit traiter les deux comme une même unité."
+* obeys dm-lab-unit-10e6-ul
 
 Instance: de1f2303-d9a4-485b-80c3-94a12081776f
 InstanceOf: Provenance
@@ -73,3 +74,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2026-10-15T17:00:00+02:00"
+
+Instance: b8b64da7-a5d4-4bc7-ab3c-1c675a734996
+InstanceOf: Provenance
+Title: "Deux notations UCUM acceptées (PR3)"
+Description: """Remédiation robustesse (#19), revue PR #29 : valueQuantity.code n'est plus fixé ; l'invariant dm-lab-unit-10e6-ul accepte les deux notations UCUM équivalentes (10*6/uL et 10^6/uL)."""
+Usage: #definition
+
+* target[0] = Reference(EdshObservationLaboratoryErythrocytes)
+* occurredDateTime = "2026-10-20"
+* reason.text = """Remédiation robustesse (#19), revue PR #29 : valueQuantity.code n'est plus fixé ; l'invariant dm-lab-unit-10e6-ul accepte les deux notations UCUM équivalentes (10*6/uL et 10^6/uL)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-20T10:00:00+02:00"
