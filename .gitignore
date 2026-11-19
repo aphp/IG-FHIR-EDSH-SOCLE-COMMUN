@@ -17,6 +17,7 @@ Requirements-fromNarrative.json
 
 # Fichiers de config locaux Claude Code
 .claude/*.local.json
+/.playwright-mcp
 
 # Dumps de crash Git Bash (Windows)
 *.stackdump
