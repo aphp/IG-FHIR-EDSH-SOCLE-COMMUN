@@ -95,7 +95,8 @@ Other key files:
 
 - `sushi-config.yaml`: menu, dependencies, pages, and `parameters.path-resource` (the list
   of non-`input/fsh` directories SUSHI/IG Publisher also scan for artifacts).
-- `ig.ini`: template `https://github.com/aphp/ig-template-aphp`.
+- `ig.ini`: template `https://github.com/aphp/ig-template-aphp-v2` (sidebar navigation built
+  from `site.data.pages`, per-page table of contents, responsive drawer).
 - `.github/workflows/deploy-ig.yaml`: builds and deploys to GitHub Pages on push to `main`.
 
 ## Important Commands
