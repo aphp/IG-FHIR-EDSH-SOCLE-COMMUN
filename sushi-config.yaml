@@ -879,7 +879,7 @@ resources:
     exampleBoolean: true
   Observation/edsh-observation-laboratory-hba1c-example:
     name: Exemple — l'hémoglobine glyquée
-    description: Exemple conforme au profil EdshObservationLaboratoryHba1C
+    description: Exemple conforme au profil EdshObservationLaboratoryHba1c
     exampleBoolean: true
   Observation/edsh-observation-laboratory-hematocrite-example:
     name: Exemple — l'hématocrite

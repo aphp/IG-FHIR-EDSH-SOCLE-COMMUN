@@ -122,35 +122,20 @@ groupage rend obligatoires.
   * productOrService ^short = "Code CCAM de l'acte"
   * productOrService from CcamVs (extensible)
 
-Instance: 6f9a35f2-9752-4a11-a4a1-027e0e34433a
+Instance: 0de59339-530a-4d50-8bbe-d7c27de1958c
 InstanceOf: Provenance
-Title: "first import"
-Description: """first import"""
+Title: "Documentation des éléments (PR2, seconde revue)"
+Description: """Remédiation robustesse (#19), PR2, seconde revue (#28) : reformulation des ^short (« venue » au lieu de « passage », unités lisibles et homogènes, référentiels du médicament, couverture PMSI)."""
 Usage: #definition
 
 * target[0] = Reference(EdshClaimRum)
-* occurredDateTime = "2025-02-02"
-* reason.text = """first import"""
-* activity = $v3-DataOperation#CREATE
-* agent
-  * type = $provenance-participant-type#author
-  * who.display = "@ngr"
-* recorded = "2025-02-02T21:36:10+01:00"
-
-Instance: c23a84d4-852c-4a76-b7be-d173cc71cd9d
-InstanceOf: Provenance
-Title: "Remédiation robustesse Core (PR1)"
-Description: """Remédiation robustesse (#19) : retrait des Must Support (principe de robustesse d'un IG Core)."""
-Usage: #definition
-
-* target[0] = Reference(EdshClaimRum)
-* occurredDateTime = "2026-10-12"
-* reason.text = """Remédiation robustesse (#19) : retrait des Must Support (principe de robustesse d'un IG Core)."""
+* occurredDateTime = "2026-10-14"
+* reason.text = """Remédiation robustesse (#19), PR2, seconde revue (#28) : reformulation des ^short (« venue » au lieu de « passage », unités lisibles et homogènes, référentiels du médicament, couverture PMSI)."""
 * activity = $v3-DataOperation#UPDATE
 * agent
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
-* recorded = "2026-10-12T12:00:00+02:00"
+* recorded = "2026-10-14T16:00:00+02:00"
 
 Instance: 2643f6f1-5ef0-4854-b165-a3e82c22442e
 InstanceOf: Provenance
@@ -167,32 +152,47 @@ Usage: #definition
   * who.display = "David Ouagne"
 * recorded = "2026-10-12T14:00:00+02:00"
 
-Instance: 0de59339-530a-4d50-8bbe-d7c27de1958c
+Instance: c23a84d4-852c-4a76-b7be-d173cc71cd9d
 InstanceOf: Provenance
-Title: "Documentation des éléments (PR2, seconde revue)"
-Description: """Remédiation robustesse (#19), PR2, seconde revue (#28) : reformulation des ^short (« venue » au lieu de « passage », unités lisibles et homogènes, référentiels du médicament, couverture PMSI)."""
-Usage: #definition
-
-* target[0] = Reference(EdshClaimRum)
-* occurredDateTime = "2026-10-14"
-* reason.text = """Remédiation robustesse (#19), PR2, seconde revue (#28) : reformulation des ^short (« venue » au lieu de « passage », unités lisibles et homogènes, référentiels du médicament, couverture PMSI)."""
-* activity = $v3-DataOperation#UPDATE
-* agent
-  * type = $provenance-participant-type#author
-  * who.display = "David Ouagne"
-* recorded = "2026-10-14T16:00:00+02:00"
-
-Instance: be7ff3ff-5ed2-4ee1-80e0-fa350b6df948
-InstanceOf: Provenance
-Title: "Correctif PMSI"
-Description: """Correction des URL de CodeSystem fixées sur modifier[MDE] et modifier[MDS] (PmsiMcoMde/PmsiMcoMds au lieu des id pmsi-mco-mde/pmsi-mco-mds) : la valeur fixée contredisait le binding required et rendait toute instance invalide (revue PR #29)."""
+Title: "Remédiation robustesse Core (PR1)"
+Description: """Remédiation robustesse (#19) : retrait des Must Support (principe de robustesse d'un IG Core)."""
 Usage: #definition
 
 * target[0] = Reference(EdshClaimRum)
 * occurredDateTime = "2026-10-12"
-* reason.text = """Correction des URL de CodeSystem fixées sur modifier[MDE] et modifier[MDS] (PmsiMcoMde/PmsiMcoMds au lieu des id pmsi-mco-mde/pmsi-mco-mds) : la valeur fixée contredisait le binding required et rendait toute instance invalide (revue PR #29)."""
+* reason.text = """Remédiation robustesse (#19) : retrait des Must Support (principe de robustesse d'un IG Core)."""
 * activity = $v3-DataOperation#UPDATE
 * agent
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2026-10-12T12:00:00+02:00"
+
+Instance: be7ff3ff-5ed2-4ee1-80e0-fa350b6df948
+InstanceOf: Provenance
+Title: "Correctif PMSI"
+Description: """Correction des URL de CodeSystem fixées sur modifier[MDE] et modifier[MDS] (URL fondées sur les id pmsi-mco-mde/pmsi-mco-mds, via Canonical(), au lieu des noms PmsiMcoMde/PmsiMcoMds) : la valeur fixée contredisait le binding required et rendait toute instance invalide (revue PR #29)."""
+Usage: #definition
+
+* target[0] = Reference(EdshClaimRum)
+* occurredDateTime = "2026-10-12"
+* reason.text = """Correction des URL de CodeSystem fixées sur modifier[MDE] et modifier[MDS] (URL fondées sur les id pmsi-mco-mde/pmsi-mco-mds, via Canonical(), au lieu des noms PmsiMcoMde/PmsiMcoMds) : la valeur fixée contredisait le binding required et rendait toute instance invalide (revue PR #29)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-12T12:00:00+02:00"
+
+Instance: 6f9a35f2-9752-4a11-a4a1-027e0e34433a
+InstanceOf: Provenance
+Title: "first import"
+Description: """first import"""
+Usage: #definition
+
+* target[0] = Reference(EdshClaimRum)
+* occurredDateTime = "2025-02-02"
+* reason.text = """first import"""
+* activity = $v3-DataOperation#CREATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "@ngr"
+* recorded = "2025-02-02T21:36:10+01:00"

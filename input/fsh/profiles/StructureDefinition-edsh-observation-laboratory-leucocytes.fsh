@@ -15,50 +15,20 @@ Profil Leucocytes du socle commun des EDSH
 * valueQuantity.code ^comment = "Code UCUM 10*3/uL ou sa notation équivalente 10^3/uL (invariant dm-lab-unit-10e3-ul). Dans une même ressource, la valeur et les bornes de referenceRange utilisent la même notation (dm-lab-3) ; un consommateur doit traiter les deux comme une même unité."
 * obeys dm-lab-unit-10e3-ul
 
-Instance: 6dbcf7b6-ef2f-4646-98e3-aae94bd5bfd2
+Instance: bc828da8-9834-45cd-8e25-892a16882d18
 InstanceOf: Provenance
-Title: "feat(fhir-profiles): add 18 laboratory observation profiles for EDSH core variables"
-Description: """feat(fhir-profiles): add 18 laboratory observation profiles for EDSH core variables"""
+Title: "Deux notations UCUM acceptées (PR3)"
+Description: """Remédiation robustesse (#19), revue PR #29 : valueQuantity.code n'est plus fixé ; l'invariant dm-lab-unit-10e3-ul accepte les deux notations UCUM équivalentes (10*3/uL et 10^3/uL)."""
 Usage: #definition
 
 * target[0] = Reference(EdshObservationLaboratoryLeucocytes)
-* occurredDateTime = "2025-10-14"
-* reason.text = """feat(fhir-profiles): add 18 laboratory observation profiles for EDSH core variables"""
-* activity = $v3-DataOperation#CREATE
-* agent
-  * type = $provenance-participant-type#author
-  * who.display = "David Ouagne"
-* recorded = "2025-10-14T16:58:23+02:00"
-
-Instance: 88a92714-4074-4ae1-a812-93183b69127f
-InstanceOf: Provenance
-Title: "Documentation des éléments (PR2)"
-Description: """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment)."""
-Usage: #definition
-
-* target[0] = Reference(EdshObservationLaboratoryLeucocytes)
-* occurredDateTime = "2026-10-12"
-* reason.text = """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment)."""
+* occurredDateTime = "2026-10-20"
+* reason.text = """Remédiation robustesse (#19), revue PR #29 : valueQuantity.code n'est plus fixé ; l'invariant dm-lab-unit-10e3-ul accepte les deux notations UCUM équivalentes (10*3/uL et 10^3/uL)."""
 * activity = $v3-DataOperation#UPDATE
 * agent
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
-* recorded = "2026-10-12T14:00:00+02:00"
-
-Instance: d1ba2357-0401-4c89-a88e-47bc129598df
-InstanceOf: Provenance
-Title: "Documentation des éléments (PR2, seconde revue)"
-Description: """Remédiation robustesse (#19), PR2, seconde revue (#28) : reformulation des ^short (« venue » au lieu de « passage », unités lisibles et homogènes, référentiels du médicament, couverture PMSI)."""
-Usage: #definition
-
-* target[0] = Reference(EdshObservationLaboratoryLeucocytes)
-* occurredDateTime = "2026-10-14"
-* reason.text = """Remédiation robustesse (#19), PR2, seconde revue (#28) : reformulation des ^short (« venue » au lieu de « passage », unités lisibles et homogènes, référentiels du médicament, couverture PMSI)."""
-* activity = $v3-DataOperation#UPDATE
-* agent
-  * type = $provenance-participant-type#author
-  * who.display = "David Ouagne"
-* recorded = "2026-10-14T16:00:00+02:00"
+* recorded = "2026-10-20T10:00:00+02:00"
 
 Instance: bf681542-704e-424f-8dae-de0855ab95fe
 InstanceOf: Provenance
@@ -75,17 +45,47 @@ Usage: #definition
   * who.display = "David Ouagne"
 * recorded = "2026-10-15T17:00:00+02:00"
 
-Instance: bc828da8-9834-45cd-8e25-892a16882d18
+Instance: d1ba2357-0401-4c89-a88e-47bc129598df
 InstanceOf: Provenance
-Title: "Deux notations UCUM acceptées (PR3)"
-Description: """Remédiation robustesse (#19), revue PR #29 : valueQuantity.code n'est plus fixé ; l'invariant dm-lab-unit-10e3-ul accepte les deux notations UCUM équivalentes (10*3/uL et 10^3/uL)."""
+Title: "Documentation des éléments (PR2, seconde revue)"
+Description: """Remédiation robustesse (#19), PR2, seconde revue (#28) : reformulation des ^short (« venue » au lieu de « passage », unités lisibles et homogènes, référentiels du médicament, couverture PMSI)."""
 Usage: #definition
 
 * target[0] = Reference(EdshObservationLaboratoryLeucocytes)
-* occurredDateTime = "2026-10-20"
-* reason.text = """Remédiation robustesse (#19), revue PR #29 : valueQuantity.code n'est plus fixé ; l'invariant dm-lab-unit-10e3-ul accepte les deux notations UCUM équivalentes (10*3/uL et 10^3/uL)."""
+* occurredDateTime = "2026-10-14"
+* reason.text = """Remédiation robustesse (#19), PR2, seconde revue (#28) : reformulation des ^short (« venue » au lieu de « passage », unités lisibles et homogènes, référentiels du médicament, couverture PMSI)."""
 * activity = $v3-DataOperation#UPDATE
 * agent
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
-* recorded = "2026-10-20T10:00:00+02:00"
+* recorded = "2026-10-14T16:00:00+02:00"
+
+Instance: 88a92714-4074-4ae1-a812-93183b69127f
+InstanceOf: Provenance
+Title: "Documentation des éléments (PR2)"
+Description: """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment)."""
+Usage: #definition
+
+* target[0] = Reference(EdshObservationLaboratoryLeucocytes)
+* occurredDateTime = "2026-10-12"
+* reason.text = """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-12T14:00:00+02:00"
+
+Instance: 6dbcf7b6-ef2f-4646-98e3-aae94bd5bfd2
+InstanceOf: Provenance
+Title: "feat(fhir-profiles): add 18 laboratory observation profiles for EDSH core variables"
+Description: """feat(fhir-profiles): add 18 laboratory observation profiles for EDSH core variables"""
+Usage: #definition
+
+* target[0] = Reference(EdshObservationLaboratoryLeucocytes)
+* occurredDateTime = "2025-10-14"
+* reason.text = """feat(fhir-profiles): add 18 laboratory observation profiles for EDSH core variables"""
+* activity = $v3-DataOperation#CREATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2025-10-14T16:58:23+02:00"

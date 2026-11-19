@@ -8,21 +8,6 @@ Description: "Cette extension permet d'ordonnancer les résumés PMSI d'un même
 * . 0..1
 * value[x] only positiveInt
 
-Instance: 31df1ab3-c776-493c-aacc-c4ff015893c7
-InstanceOf: Provenance
-Title: "first import"
-Description: """first import"""
-Usage: #definition
-
-* target[0] = Reference(EdshItemRank)
-* occurredDateTime = "2025-02-02"
-* reason.text = """first import"""
-* activity = $v3-DataOperation#CREATE
-* agent
-  * type = $provenance-participant-type#author
-  * who.display = "@ngr"
-* recorded = "2025-02-02T21:36:10+01:00"
-
 Instance: 37865e4b-c433-49c2-accc-845a8a585dfd
 InstanceOf: Provenance
 Title: "Correctif PMSI"
@@ -37,3 +22,18 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2026-10-12T12:00:00+02:00"
+
+Instance: 31df1ab3-c776-493c-aacc-c4ff015893c7
+InstanceOf: Provenance
+Title: "first import"
+Description: """first import"""
+Usage: #definition
+
+* target[0] = Reference(EdshItemRank)
+* occurredDateTime = "2025-02-02"
+* reason.text = """first import"""
+* activity = $v3-DataOperation#CREATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "@ngr"
+* recorded = "2025-02-02T21:36:10+01:00"

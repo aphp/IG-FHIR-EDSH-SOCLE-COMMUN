@@ -21,6 +21,7 @@
     </li>
     <li>Exemples : 18 exemples écrits à la main pour les profils du Lot 1 qu'aucune vignette clinique ne couvrait (11 analytes de biologie, un RUM complet, Organization, Location, EpisodeOfCare, PractitionerRole, un patient décédé portant l'extension <code>EdshDeathSource</code>). Ils se rattachent à un patient fictif dédié, et non à une vignette, pour ne pas ajouter aux cas cliniques des informations qu'ils ne contiennent pas.</li>
     <li>Biologie : <code>valueQuantity.unit</code> n'est plus fixé dans les 21 profils d'analytes. L'unité reste imposée par le code UCUM ; le libellé d'affichage peut prendre une forme lisible (10^3/µL, µmol/L…).</li>
+    <li>Biologie, numération sanguine : <code>valueQuantity.code</code> n'est plus fixé dans 7 profils (<code>Eosinophiles</code>, <code>Erythrocytes</code>, <code>Leucocytes</code>, <code>Lymphocytes</code>, <code>Monocytes</code>, <code>Neutrophiles</code>, <code>Plaquettes</code>). Deux nouveaux invariants, <code>dm-lab-unit-10e3-ul</code> et <code>dm-lab-unit-10e6-ul</code>, acceptent les deux notations UCUM équivalentes (<code>10*3/uL</code> ou <code>10^3/uL</code>, <code>10*6/uL</code> ou <code>10^6/uL</code>).</li>
 </ul>
 </details>
 
