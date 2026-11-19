@@ -180,9 +180,9 @@ group CreatePatient(source src : QuestionnaireResponse, target patient : Patient
 
         sexItem.answer as ans then {
 
-          ans.valueString as female where ($this = 'f') -> patient.gender = 'female' "setGenderF";
+          ans.value as sex where ($this = 'f') -> patient.gender = 'female' "setGenderF";
 
-          ans.valueString as female where ($this = 'm') -> patient.gender = 'male' "setGenderM";
+          ans.value as sex where ($this = 'm') -> patient.gender = 'male' "setGenderM";
 
         } "valueCoding";
 
@@ -232,7 +232,7 @@ group CreatePatient(source src : QuestionnaireResponse, target patient : Patient
 
               irisItem.answer as ans -> irisExt.url = 'http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-censusTract',
 
-              irisExt.valueString = (%ans.value.ofType(string)) "setIrisExt";
+              irisExt.value = (%ans.value.ofType(string)) "setIrisExt";
 
             } "navIrisItem";
 
@@ -290,13 +290,13 @@ group CreateEncounters(source src : QuestionnaireResponse, target patient : Pati
 
         modeInItem.answer as ans then {
 
-          ans.valueString as valueString -> encounter.hospitalization as hosp,
+          ans.value as modeIn -> encounter.hospitalization as hosp,
 
             hosp.admitSource as admitSource,
 
             admitSource.coding as admitSourceCoding,
 
-            admitSourceCoding.code = valueString "set-admit-source";
+            admitSourceCoding.code = modeIn "set-admit-source";
 
         } "navValue";
 
@@ -306,13 +306,13 @@ group CreateEncounters(source src : QuestionnaireResponse, target patient : Pati
 
         modeOutItem.answer as ans then {
 
-          ans.valueString as valueString -> encounter.hospitalization as hosp,
+          ans.value as modeOut -> encounter.hospitalization as hosp,
 
             hosp.dischargeDisposition as dischargeDisposition,
 
             dischargeDisposition.coding as dischargeDispositionCoding,
 
-            dischargeDispositionCoding.code = valueString "set-discharge-disposition";
+            dischargeDispositionCoding.code = modeOut "set-discharge-disposition";
 
         } "navValue";
 

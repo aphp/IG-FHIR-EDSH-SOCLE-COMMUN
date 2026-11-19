@@ -13,6 +13,7 @@
     <li>Documentation des éléments des profils du Lot 1 : <code>^short</code> sur chaque élément contraint, <code>^definition</code> sur les règles métier non évidentes (diagnostics du RUM notamment), <code>^comment</code> justifiant les cardinalités resserrées conservées (invariants structurels PMSI, discriminants de tranche, famille <code>Fr*</code>). Une rencontre (<code>Encounter</code>) y est désignée par « venue », comme dans FR Core, et les unités y sont écrites sous forme lisible (UI/L, µmol/L, 10^3/µL), le code UCUM restant imposé par les invariants.</li>
     <li><code>EdshMedicationAdministration</code> : titre « Administration de médicaments » (au lieu de « Prise de médicaments »).</li>
     <li>Glossaire : ajout du terme « tranche » (traduction de <i>slice</i>).</li>
+    <li><code>StructureMap/Q2FSL</code> : les chemins <code>ans.valueString</code> et <code>irisExt.valueString</code> deviennent <code>ans.value</code> et <code>irisExt.value</code> (élément à choix nommé sans son suffixe de type), refusés par la vérification des chemins d'IG Publisher 3.0. Les ressources produites sont inchangées.</li>
 </ul>
 </details>
 
