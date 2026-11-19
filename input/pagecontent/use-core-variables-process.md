@@ -1,6 +1,6 @@
 {% include markdown-link-references.md %}
 
-<div id="standardization-data-process" style="height: 750px;" markdown="1">
+<div id="standardization-data-process" markdown="1">
 {% include data-standardization-process.mermaid %}
 </div>
 

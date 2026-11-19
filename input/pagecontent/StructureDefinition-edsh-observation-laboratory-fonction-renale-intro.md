@@ -1,7 +1,7 @@
 Cette page documente le jeu de données correspondant à la **fonction rénale du patient** :
 
 - Modèle conceptuel
-- Cas d'usage
+- Usages de la variable
 - Exemple de ressource FHIR
 - Formalisation FHIR
 
@@ -11,9 +11,9 @@ Cette page documente le jeu de données correspondant à la **fonction rénale d
   <img style="width: 100%" src="conceptual-renal-function.png" alt="Modèle conceptuel"/>
 </div>
 
-### Cas d'usages
+### Usages de la variable
 
-Dans le tableau ci-dessous sont référencés tous les cas d'usages présents et passés de la variable **fonction rénale du patient**.
+Dans le tableau ci-dessous sont référencés tous les usages, présents et passés, de la variable **fonction rénale du patient**.
 
 <table style="width: 100%">
   <tr><th>Nom</th><th>Description</th></tr>

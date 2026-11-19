@@ -5,7 +5,7 @@
 
 [Ressource FHIR Questionnaire formalisant des variables du socle pour les EDSH](Questionnaire-UsageCore.html).
 
-### Exemples
+### Cas d'usage
 
 #### Cas 1 : Infarctus du myocarde
 

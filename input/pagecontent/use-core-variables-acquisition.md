@@ -5,7 +5,7 @@ référencées issues des travaux du GT Standards & Interopérabilité.
 
 ### Modéle conceptuel
 
-<div id="conceptual-model" style="height: 270px;" markdown="1">
+<div id="conceptual-model" markdown="1">
 {% include conceptual-model.mermaid %}
 </div>
 
@@ -55,9 +55,9 @@ référencées issues des travaux du GT Standards & Interopérabilité.
 | Activité physique | Préciser formellement ce qui est attendu. | | | | [99285-9](https://loinc.org/99285-9/){:target="_blank"} |
 {: .grid}
 
-### Exemples
+### Cas d'usage
 
-Exemples pour valider avec les experts le modèle conceptuel ... Ces exemples serviront également pour valider le processus de formalisation des données et le processus de standardisation.
+Cas d'usage cliniques permettant de valider avec les experts le modèle conceptuel. Ces cas d'usage serviront également pour valider le processus de formalisation des données et le processus de standardisation.
 
 #### Cas 1 : Infarctus du myocarde
 

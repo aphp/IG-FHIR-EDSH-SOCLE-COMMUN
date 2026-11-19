@@ -9,7 +9,7 @@ du GT « Standards et Interopérabilité ».
 Chaque item porte, dans sa hiérarchie, le concept métier qu'il capture ; les items
 `display` associés portent l'intention métier (la justification du GT pour la donnée),
 reprise du dictionnaire de données. Ce Questionnaire est ensuite instancié en une
-`QuestionnaireResponse` par cas d'usage (voir les 10 exemples ci-dessous), et sert de
+`QuestionnaireResponse` par cas d'usage (voir les 10 cas d'usage ci-dessous), et sert de
 source à la StructureMap [`Q2FSL`](StructureMap-Q2FSL.html) pour l'étape de
 **Standardisation** : c'est elle qui transforme mécaniquement chaque `QuestionnaireResponse`
 en un `Bundle` de ressources FHIR conformes aux profils du socle.

@@ -87,7 +87,7 @@ trois étapes, chacune produisant des livrables publiés dans ce guide :
 
 | Étape | Objet | Livrables publiés |
 | --- | --- | --- |
-| **1. [Acquisition](https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/use-core-variables-acquisition.html)** | Recueillir le besoin avec les experts métier | Modèle conceptuel, glossaire métier (40 concepts), 10 exemples cliniques annotés |
+| **1. [Acquisition](https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/use-core-variables-acquisition.html)** | Recueillir le besoin avec les experts métier | Modèle conceptuel, glossaire métier (40 concepts), 10 cas d'usage cliniques annotés |
 | **2. [Formalisation](https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/use-core-variables-formalization.html)** | Traduire le modèle conceptuel en modèle logique calculable | Ressource `Questionnaire/UsageCore` (5 groupes de variables), 10 `QuestionnaireResponse` |
 | **3. [Standardisation](https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/use-core-variables-standardization.html)** | Aligner le modèle logique sur des profils FHIR cible | 52 profils FHIR, `StructureMap/Q2FSL`, exemples de conformité générés |
 
@@ -125,7 +125,7 @@ CodeSystem des codes géographiques de résidence PMSI, à 6 665 concepts).
 
 ### Les dix cas d'usage
 
-Dix scénarios cliniques (`cas-1` à `cas-10`, un patient et une prise en charge par cas —
+Dix cas d'usage cliniques (`cas-1` à `cas-10`, un patient et une prise en charge par cas —
 infarctus du myocarde, ulcère gastrique, accouchement, choc cardiogénique, pyélonéphrite
 aiguë, suivi de cardiopathie ischémique, état de mal migraineux, fracture fémorale,
 ponction d'ascite, exacerbation de BPCO) servent de fil rouge tout au long des trois
