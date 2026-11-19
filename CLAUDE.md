@@ -29,10 +29,12 @@ The guide is built around a **three-step MDE pipeline**, each step with publishe
 deliverables you'll find referenced throughout `input/`:
 
 1. **Acquisition** — conceptual model + 40-concept business glossary + 10 annotated
-   clinical vignettes (`use-core-variables-acquisition.md`).
+   clinical use cases — "cas d'usage", the guide's single term for them; don't
+   reintroduce "exemples"/"vignettes", "exemple" is reserved for FHIR example instances
+   (`use-core-variables-acquisition.md`).
 2. **Formalisation** — `Questionnaire/UsageCore` (5 groups: socio-démographique, PMSI,
    biologie, exposition médicamenteuse, examen clinique) + 10 `QuestionnaireResponse`
-   instances (one per vignette, `input/resources/usages/core/`).
+   instances (one per cas d'usage, `input/resources/usages/core/`).
 3. **Standardisation** — 52 FHIR profiles, plus a hand-authored StructureMap
    **`Q2FSL`** ("Questionnaire to FHIR Semantic Layer", `input/fml/StructureMap-Q2FSL.fml`)
    that mechanically transforms each `QuestionnaireResponse` into a `Bundle` of
@@ -84,7 +86,7 @@ The directory containing the guide inputs is located in `input`. It includes:
   in `sushi-config.yaml` to be compiled into HTML by IG Publisher.
 - **`input/resources`**: hand-authored FHIR JSON, all under `usages/core/` (203 files —
   `Questionnaire/UsageCore`, its 10 `QuestionnaireResponse` instances, and a
-  `casN/` subfolder per vignette). **The `casN/` resources are `Q2FSL`'s generated
+  `casN/` subfolder per cas d'usage). **The `casN/` resources are `Q2FSL`'s generated
   output, not independently hand-maintained examples** — hand-editing one desynchronises
   it from its `QuestionnaireResponse`/the FML. Regenerate via the build rather than editing
   in place.
@@ -135,7 +137,7 @@ of the 56 FHIR artifacts — real work across dozens of files, not something a s
 fixes, so tracked here rather than as a TODO anyone could silently drop:
 
 1. **Example coverage is thin**: 44 of 56 artifacts have no example at all. (`EdshPatient`
-   and `EdshPractitioner` are covered — the former by the 10 `casN` vignettes, the latter
+   and `EdshPractitioner` are covered — the former by the 10 `casN` cas d'usage, the latter
    by `input/fsh/examples/Practitioner-edsh-practitioner-example.fsh`.)
 2. **Element documentation is thin**: 81 `^short` / 39 `^definition` / 23 `^comment` across
    ~700 constraint rules (~11% coverage). The `FrMedication*` profiles are the

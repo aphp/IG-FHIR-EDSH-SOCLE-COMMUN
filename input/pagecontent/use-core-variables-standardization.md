@@ -9,7 +9,7 @@ Le tableau ci-dessous référence tous les profils FHIR résultat du processus d
 
 {% include data-dictionary-table.md %}
 
-### Exemples
+### Cas d'usage
 
 [Cette StructureMap](https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/StructureMap/Q2FSL) permet de générer, à partir des QuestionnaireResponse, les ressources FHIR conformes.
 
