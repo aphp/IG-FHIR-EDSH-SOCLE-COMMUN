@@ -3,7 +3,7 @@
 Les [exigences de l'usage **Variables socles pour les EDSH** (fichier MSExcel)](DocumentReference-CoreExigences.html)
 référencées issues des travaux du GT Standards & Interopérabilité.
 
-### Modéle conceptuel
+### Modèle conceptuel
 
 <div id="conceptual-model" markdown="1">
 {% include conceptual-model.mermaid %}
