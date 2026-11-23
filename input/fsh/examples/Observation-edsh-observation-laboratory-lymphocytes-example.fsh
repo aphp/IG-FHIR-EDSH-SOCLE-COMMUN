@@ -1,5 +1,6 @@
 Instance: edsh-observation-laboratory-lymphocytes-example
 InstanceOf: EdshObservationLaboratoryLymphocytes
+Title: "Exemple — les lymphocytes totaux"
 Usage: #example
 Description: "Exemple de EdshObservationLaboratoryLymphocytes : lymphocytes totaux de Paul Durand."
 

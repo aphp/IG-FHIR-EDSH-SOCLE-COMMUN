@@ -1,5 +1,6 @@
 Instance: edsh-patient-deceased-example
 InstanceOf: EdshPatient
+Title: "Exemple — Patiente décédée"
 Usage: #example
 Description: "Exemple de EdshPatient décédé, portant la source de l'information de décès."
 

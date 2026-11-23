@@ -1,5 +1,6 @@
 Instance: edsh-practitioner-role-example
 InstanceOf: EdshPractitionerRole
+Title: "Exemple — Rôle de cardiologue du Dr Quenum"
 Usage: #example
 Description: "Exemple de EdshPractitionerRole : le rôle de cardiologue du Dr Quenum au sein du GHU."
 

@@ -1,5 +1,6 @@
 Instance: edsh-location-example
 InstanceOf: EdshLocation
+Title: "Exemple — Unité de cardiologie"
 Usage: #example
 Description: "Exemple de EdshLocation : une unité de cardiologie du GHU."
 

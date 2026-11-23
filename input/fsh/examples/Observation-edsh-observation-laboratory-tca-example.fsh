@@ -1,5 +1,6 @@
 Instance: edsh-observation-laboratory-tca-example
 InstanceOf: EdshObservationLaboratoryTca
+Title: "Exemple — TCA de Paul Durand"
 Usage: #example
 Description: "Exemple de EdshObservationLaboratoryTca : TCA de Paul Durand."
 
@@ -15,4 +16,4 @@ Description: "Exemple de EdshObservationLaboratoryTca : TCA de Paul Durand."
 * component[ControlTCA].valueQuantity = 30 's' "s"
 
 * component[TCARatioPonC].code = $loinc#63561-5
-* component[TCARatioPonC].valueQuantity.value = 1.13
+* component[TCARatioPonC].valueQuantity = 1.13 '1' "1"

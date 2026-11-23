@@ -1,5 +1,6 @@
 Instance: edsh-observation-laboratory-erythrocytes-example
 InstanceOf: EdshObservationLaboratoryErythrocytes
+Title: "Exemple — les érythrocytes"
 Usage: #example
 Description: "Exemple de EdshObservationLaboratoryErythrocytes : érythrocytes de Paul Durand."
 

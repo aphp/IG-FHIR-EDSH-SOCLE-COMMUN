@@ -1,5 +1,6 @@
 Instance: edsh-observation-laboratory-monocytes-example
 InstanceOf: EdshObservationLaboratoryMonocytes
+Title: "Exemple — les monocytes"
 Usage: #example
 Description: "Exemple de EdshObservationLaboratoryMonocytes : monocytes de Paul Durand."
 

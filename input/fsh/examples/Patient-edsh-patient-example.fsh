@@ -1,5 +1,6 @@
 Instance: edsh-patient-example
 InstanceOf: EdshPatient
+Title: "Exemple — Patient fictif"
 Usage: #example
 Description: "Exemple de EdshPatient : patient fictif, sans lien avec les cas d'usage, auquel se rattachent les exemples de profils qu'aucun cas d'usage ne couvre."
 

@@ -1,5 +1,6 @@
 Instance: edsh-claim-rum-example
 InstanceOf: EdshClaimRum
+Title: "Exemple — RUM du séjour de Paul Durand"
 Usage: #example
 Description: "Exemple de EdshClaimRum : RUM du séjour de Paul Durand dans l'unité de cardiologie — un diagnostic principal, un diagnostic associé, un acte CCAM, GHM du RUM groupé, modes d'entrée et de sortie."
 
@@ -37,10 +38,10 @@ Description: "Exemple de EdshClaimRum : RUM du séjour de Paul Durand dans l'uni
 * item[RUMGrouped].sequence = 1
 * item[RUMGrouped].category = FrMcoClaimItemCategory#1
 * item[RUMGrouped].productOrService = Ghm#05M093 "Insuffisances cardiaques et états de choc circulatoire, niveau 3"
-* item[RUMGrouped].modifier[MDE].coding.system = "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/CodeSystem/pmsi-mco-mde"
+* item[RUMGrouped].modifier[MDE].coding.system = Canonical(PmsiMcoMde)
 * item[RUMGrouped].modifier[MDE].coding.code = #6
 * item[RUMGrouped].modifier[MDE].coding.display = "Mutation"
-* item[RUMGrouped].modifier[MDS].coding.system = "https://aphp.github.io/IG-FHIR-EDSH-SOCLE-COMMUN/CodeSystem/pmsi-mco-mds"
+* item[RUMGrouped].modifier[MDS].coding.system = Canonical(PmsiMcoMds)
 * item[RUMGrouped].modifier[MDS].coding.code = #8
 * item[RUMGrouped].modifier[MDS].coding.display = "Domicile"
 

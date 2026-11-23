@@ -1,5 +1,6 @@
 Instance: edsh-episode-of-care-example
 InstanceOf: EdshEpisodeOfCare
+Title: "Exemple — Suivi cardiologique de Paul Durand"
 Usage: #example
 Description: "Exemple de EdshEpisodeOfCare : le suivi cardiologique de Paul Durand."
 

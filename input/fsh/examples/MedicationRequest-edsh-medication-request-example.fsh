@@ -1,5 +1,6 @@
 Instance: edsh-medication-request-example
 InstanceOf: EdshMedicationRequest
+Title: "Exemple — Paracétamol IV pour Paul Durand"
 Usage: #example
 Description: "Exemple de EdshMedicationRequest : prescription de paracétamol intraveineux pour Paul Durand. La posologie porte les trois types de données UCUM du guide : FrRangeUcum (dose par prise), FrRatioUcum (débit, dose maximale par période) et FrSimpleQuantityUcum (bornes de ces intervalles et rapports, dose maximale par administration)."
 

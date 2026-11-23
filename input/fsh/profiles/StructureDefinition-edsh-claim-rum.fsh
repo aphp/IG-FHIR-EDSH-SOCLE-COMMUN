@@ -180,7 +180,7 @@ Usage: #definition
 * agent
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
-* recorded = "2026-10-12T12:00:00+02:00"
+* recorded = "2026-10-12T11:21:21+02:00"
 
 Instance: 6f9a35f2-9752-4a11-a4a1-027e0e34433a
 InstanceOf: Provenance

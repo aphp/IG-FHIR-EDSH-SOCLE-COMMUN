@@ -1,5 +1,6 @@
 Instance: edsh-organization-example
 InstanceOf: EdshOrganization
+Title: "Exemple — GHU Pitié-Salpêtrière"
 Usage: #example
 Description: "Exemple de EdshOrganization : le groupe hospitalier universitaire Pitié-Salpêtrière."
 

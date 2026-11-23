@@ -1,5 +1,6 @@
 Instance: edsh-observation-laboratory-glycemie-a-jeun-example
 InstanceOf: EdshObservationLaboratoryGlycemieAJeun
+Title: "Exemple — la glycémie à jeun"
 Usage: #example
 Description: "Exemple de EdshObservationLaboratoryGlycemieAJeun : glycémie à jeun de Paul Durand."
 
