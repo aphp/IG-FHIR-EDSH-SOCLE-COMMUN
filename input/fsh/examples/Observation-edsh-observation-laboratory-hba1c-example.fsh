@@ -4,8 +4,5 @@ Title: "Exemple — l'hémoglobine glyquée"
 Usage: #example
 Description: "Exemple de EdshObservationLaboratoryHba1c : hémoglobine glyquée (hba1c) de Paul Durand."
 
-* status = #final
-* subject = Reference(edsh-patient-example)
-* performer = Reference(edsh-organization-example)
-* effectiveDateTime = "2024-01-10T08:30:00+01:00"
+* insert EdshLaboratoryExampleContext
 * valueQuantity = 6.1 '%' "%"

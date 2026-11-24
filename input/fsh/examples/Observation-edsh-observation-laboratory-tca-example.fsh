@@ -4,10 +4,7 @@ Title: "Exemple — TCA de Paul Durand"
 Usage: #example
 Description: "Exemple de EdshObservationLaboratoryTca : TCA de Paul Durand."
 
-* status = #final
-* subject = Reference(edsh-patient-example)
-* performer = Reference(edsh-organization-example)
-* effectiveDateTime = "2024-01-10T08:30:00+01:00"
+* insert EdshLaboratoryExampleContext
 
 * component[PatientTCA].code = $loinc#14979-9
 * component[PatientTCA].valueQuantity = 34 's' "s"
