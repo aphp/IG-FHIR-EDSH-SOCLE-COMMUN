@@ -29,7 +29,7 @@ Severity: #error
 Expression: "referenceRange.all((low.system.empty() or low.system = 'http://unitsofmeasure.org') and (high.system.empty() or high.system = 'http://unitsofmeasure.org'))" 
 
 Invariant: dm-lab-3
-Description: "Value and referenceRange SHALL have the same unit"
+Description: "Value and referenceRange SHALL have the same unit (same UCUM notation)"
 Severity: #error
 Expression: "((referenceRange.low.code in (value.ofType(Quantity).code)) or referenceRange.low.code.empty()) and ((referenceRange.high.code in (value.ofType(Quantity).code)) or referenceRange.high.code.empty())" 
 
@@ -47,3 +47,13 @@ Invariant: dm-lab-6
 Description: "component.value and component.referenceRange SHALL have the same unit.code"
 Severity: #error
 Expression: "component.all(((referenceRange.low.code in (value.ofType(Quantity).code)) or referenceRange.low.code.empty()) and ((referenceRange.high.code in (value.ofType(Quantity).code)) or referenceRange.high.code.empty()))"
+
+Invariant: dm-lab-unit-10e3-ul
+Description: "valueQuantity.code SHALL be 10*3/uL or its equivalent UCUM notation 10^3/uL"
+Severity: #error
+Expression: "value.ofType(Quantity).code.empty() or value.ofType(Quantity).code in ('10*3/uL' | '10^3/uL')"
+
+Invariant: dm-lab-unit-10e6-ul
+Description: "valueQuantity.code SHALL be 10*6/uL or its equivalent UCUM notation 10^6/uL"
+Severity: #error
+Expression: "value.ofType(Quantity).code.empty() or value.ofType(Quantity).code in ('10*6/uL' | '10^6/uL')"

@@ -13,8 +13,36 @@ Profil créatininémie du socle commun des EDS
 * valueQuantity.value ^short = "Valeur numérique du résultat"
 * valueQuantity.system = $ucum (exactly)
 * valueQuantity.code = #umol/L (exactly)
-* valueQuantity.unit = "umol/L"
 
+Instance: 3957a4ab-e1eb-4a8a-93d2-8b44f41fe59e
+InstanceOf: Provenance
+Title: "Unité d'affichage non fixée (PR3)"
+Description: """Remédiation robustesse (#19), revue PR #29 : retrait de la valeur fixée sur valueQuantity.unit. L'unité est imposée par valueQuantity.code (UCUM) ; le libellé d'affichage reste libre, ce qui permet une forme lisible (10^3/µL, µmol/L…)."""
+Usage: #definition
+
+* target[0] = Reference(EdshObservationLaboratoryCreat)
+* occurredDateTime = "2026-10-15"
+* reason.text = """Remédiation robustesse (#19), revue PR #29 : retrait de la valeur fixée sur valueQuantity.unit. L'unité est imposée par valueQuantity.code (UCUM) ; le libellé d'affichage reste libre, ce qui permet une forme lisible (10^3/µL, µmol/L…)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-15T17:00:00+02:00"
+
+Instance: e3f7053f-845b-4110-8970-f70f69962f38
+InstanceOf: Provenance
+Title: "Documentation des éléments (PR2)"
+Description: """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment) ; forme des règles valueQuantity alignée sur les autres analytes (revue PR #28)."""
+Usage: #definition
+
+* target[0] = Reference(EdshObservationLaboratoryCreat)
+* occurredDateTime = "2026-10-12"
+* reason.text = """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment) ; forme des règles valueQuantity alignée sur les autres analytes (revue PR #28)."""
+* activity = $v3-DataOperation#UPDATE
+* agent
+  * type = $provenance-participant-type#author
+  * who.display = "David Ouagne"
+* recorded = "2026-10-12T14:00:00+02:00"
 
 Instance: 31e47753-0b65-47ac-a51c-9bd219378094
 InstanceOf: Provenance
@@ -60,18 +88,3 @@ Usage: #definition
   * type = $provenance-participant-type#author
   * who.display = "David Ouagne"
 * recorded = "2025-03-24T09:26:15+01:00"
-
-Instance: e3f7053f-845b-4110-8970-f70f69962f38
-InstanceOf: Provenance
-Title: "Documentation des éléments (PR2)"
-Description: """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment) ; forme des règles valueQuantity alignée sur les autres analytes (revue PR #28)."""
-Usage: #definition
-
-* target[0] = Reference(EdshObservationLaboratoryCreat)
-* occurredDateTime = "2026-10-12"
-* reason.text = """Remédiation robustesse (#19), PR2 : Documentation des éléments contraints au niveau B2 (#23 : ^short, ^definition, ^comment) ; forme des règles valueQuantity alignée sur les autres analytes (revue PR #28)."""
-* activity = $v3-DataOperation#UPDATE
-* agent
-  * type = $provenance-participant-type#author
-  * who.display = "David Ouagne"
-* recorded = "2026-10-12T14:00:00+02:00"

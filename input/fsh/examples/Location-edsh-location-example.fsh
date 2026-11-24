@@ -1,0 +1,11 @@
+Instance: edsh-location-example
+InstanceOf: EdshLocation
+Title: "Exemple — Unité de cardiologie"
+Usage: #example
+Description: "Exemple de EdshLocation : une unité de cardiologie du GHU."
+
+* status = #active
+* name = "Unité de cardiologie — Pitié-Salpêtrière"
+* mode = #instance
+* physicalType = http://terminology.hl7.org/CodeSystem/location-physical-type#wa "Ward"
+* managingOrganization = Reference(edsh-organization-example)
