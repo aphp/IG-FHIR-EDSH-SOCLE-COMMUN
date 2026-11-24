@@ -17,3 +17,6 @@ Description: "Exemple de EdshObservationLaboratoryTca : TCA de Paul Durand."
 
 * component[TCARatioPonC].code = $loinc#63561-5
 * component[TCARatioPonC].valueQuantity = 1.13 '1' "1"
+* component[TCARatioPonC].referenceRange[0]
+  * high = 1.2 '1' "1"
+  * text = "< 1,2"
