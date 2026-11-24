@@ -5,4 +5,4 @@
 Exemples qui le portent :
 
 - `MedicationAdministration.dosage.dose` dans les administrations des cas d'usage, par exemple [cas1-medadm-01](MedicationAdministration-cas1-medadm-01.html), [cas4-medadm-01](MedicationAdministration-cas4-medadm-01.html) ou [cas9-medadm-01](MedicationAdministration-cas9-medadm-01.html) ;
-- `MedicationRequest.dosageInstruction.maxDosePerAdministration`, ainsi que les bornes de `doseRange` et les termes de `rateRatio` et `maxDosePerPeriod`, dans [edsh-medication-request-example](MedicationRequest-edsh-medication-request-example.html).
+- `MedicationRequest.dosageInstruction.maxDosePerAdministration`, ainsi que les bornes de `doseRange` et les termes de `maxDosePerPeriod`, dans [edsh-medication-request-example](MedicationRequest-edsh-medication-request-example.html).

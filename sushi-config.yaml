@@ -930,7 +930,7 @@ resources:
     description: Exemple conforme au profil EdshPatient (patiente décédée) et exemple d'usage de l'extension EdshDeathSource (source de l'information de décès)
     exampleBoolean: true
   MedicationRequest/edsh-medication-request-example:
-    name: Exemple — Paracétamol IV pour Paul Durand
+    name: Exemple — Paracétamol si douleur pour Paul Durand
     description: Exemple conforme au profil EdshMedicationRequest, dont la posologie porte les types de données FrRangeUcum, FrRatioUcum et FrSimpleQuantityUcum
     exampleBoolean: true
   Observation/edsh-observation-laboratory-tca-example:
