@@ -16,7 +16,7 @@ Description: "Exemple de EdshMedicationRequest : prescription de paracétamol in
     * frequency = 1
     * period = 6
     * periodUnit = #h
-  * route = $sct#47625008 "Intravenous route (qualifier value)"
+  * route = $sct#47625008 "voie intraveineuse"
   * doseAndRate[0]
     * doseRange
       * low = 500 'mg' "mg"
